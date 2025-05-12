@@ -30,28 +30,66 @@ export default {
     scroll: "Scroll para más"
   },
   solutions: {
-    heading: "Soluciones Reales para Problemas Reales",
-    subheading: "¿Cansado de Batallar con tu Presencia Online?",
-    description: "Entendemos tus frustraciones. Es por eso que hemos desarrollado soluciones específicas para cada problema común.",
-    problem1: "Páginas web lentas que ahuyentan a clientes potenciales",
-    solution1: "Tecnología moderna para cargas ultrarrápidas",
-    benefit1: "Mejora en SEO y retención de usuarios",
-    problem2: "Plataformas 'hazlo-tú-mismo' con diseño genérico",
-    solution2: "Diseño profesional y personalizado con todas las funcionalidades",
-    benefit2: "Diferenciación de marca y mayor credibilidad",
-    problem3: "'Secuestro de dominios' y falta de control sobre activos digitales",
-    solution3: "Control total sobre tus dominios y activos digitales",
-    benefit3: "Seguridad y autonomía garantizada",
-    problem4: "Recargas completas de página que hacen la navegación tediosa",
-    solution4: "Experiencias fluidas y profesionales sin recargas innecesarias",
-    benefit4: "Mayor satisfacción del usuario",
-    problem5: "Soporte técnico lento o inexistente",
-    solution5: "Soporte técnico 24/7 por profesionales expertos",
-    benefit5: "Resolución rápida de problemas",
-    problem6: "Costos excesivos por servicios que no cumplen expectativas",
-    solution6: "Precios transparentes y competitivos con resultados garantizados",
-    benefit6: "ROI maximizado y presupuesto optimizado",
-    cta: "Resuelve tus Problemas Ahora"
+    heading: "Transformando Tu Visión Digital",
+    subheading: "Soluciones Innovadoras para Empresas Modernas",
+    description: "Ofrecemos soluciones de vanguardia que ayudan a tu negocio a prosperar en el mundo digital. Experimenta el poder de la tecnología moderna combinada con soporte experto.",
+    cta: "Inicia Tu Transformación Digital",
+    items: {
+      performance: {
+        title: "Rendimiento Optimizado",
+        description: "Sitios web ultrarrápidos que mantienen a tus visitantes comprometidos",
+        features: [
+          "Tiempos de carga ultrarrápidos",
+          "Mejores rankings SEO",
+          "Mayor retención de usuarios"
+        ]
+      },
+      design: {
+        title: "Diseño Profesional",
+        description: "Destaca con una identidad de marca única y poderosa",
+        features: [
+          "Diseños personalizados",
+          "Diferenciación de marca",
+          "Credibilidad mejorada"
+        ]
+      },
+      control: {
+        title: "Control Completo",
+        description: "Propiedad y control total de tus activos digitales",
+        features: [
+          "Gestión segura de dominios",
+          "Propiedad total de activos",
+          "Autonomía completa"
+        ]
+      },
+      experience: {
+        title: "Experiencia Fluida",
+        description: "Aplicaciones web modernas con navegación suave",
+        features: [
+          "Transiciones fluidas",
+          "Experiencia de usuario mejorada",
+          "Mayor engagement"
+        ]
+      },
+      support: {
+        title: "Soporte 24/7",
+        description: "Soporte técnico experto cuando lo necesites",
+        features: [
+          "Tiempos de respuesta instantáneos",
+          "Experiencia profesional",
+          "Tranquilidad garantizada"
+        ]
+      },
+      investment: {
+        title: "Inversión Inteligente",
+        description: "Máximo valor por tu inversión tecnológica",
+        features: [
+          "Precios competitivos",
+          "Resultados garantizados",
+          "ROI optimizado"
+        ]
+      }
+    }
   },
   services: {
     heading: "Soluciones de Alto Impacto",

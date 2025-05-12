@@ -61,63 +61,39 @@ const Solutions: React.FC = () => {
 
   const solutions = [
     {
-      title: "Optimized Performance",
-      description: "Lightning-fast websites that keep your visitors engaged",
-      features: [
-        "Ultra-fast loading times",
-        "Improved SEO rankings",
-        "Higher user retention"
-      ],
+      title: t('solutions.items.performance.title'),
+      description: t('solutions.items.performance.description'),
+      features: t('solutions.items.performance.features', { returnObjects: true }) as string[],
       icon: <Zap className="w-6 h-6" />,
     },
     {
-      title: "Professional Design",
-      description: "Stand out with a unique and powerful brand identity",
-      features: [
-        "Custom-tailored designs",
-        "Brand differentiation",
-        "Enhanced credibility"
-      ],
+      title: t('solutions.items.design.title'),
+      description: t('solutions.items.design.description'),
+      features: t('solutions.items.design.features', { returnObjects: true }) as string[],
       icon: <Rocket className="w-6 h-6" />,
     },
     {
-      title: "Complete Control",
-      description: "Full ownership and control of your digital assets",
-      features: [
-        "Secure domain management",
-        "Full asset ownership",
-        "Complete autonomy"
-      ],
+      title: t('solutions.items.control.title'),
+      description: t('solutions.items.control.description'),
+      features: t('solutions.items.control.features', { returnObjects: true }) as string[],
       icon: <Shield className="w-6 h-6" />,
     },
     {
-      title: "Seamless Experience",
-      description: "Modern web applications with smooth navigation",
-      features: [
-        "Fluid transitions",
-        "Enhanced user experience",
-        "Higher engagement"
-      ],
+      title: t('solutions.items.experience.title'),
+      description: t('solutions.items.experience.description'),
+      features: t('solutions.items.experience.features', { returnObjects: true }) as string[],
       icon: <Star className="w-6 h-6" />,
     },
     {
-      title: "24/7 Support",
-      description: "Expert technical support whenever you need it",
-      features: [
-        "Instant response times",
-        "Professional expertise",
-        "Peace of mind"
-      ],
+      title: t('solutions.items.support.title'),
+      description: t('solutions.items.support.description'),
+      features: t('solutions.items.support.features', { returnObjects: true }) as string[],
       icon: <Clock className="w-6 h-6" />,
     },
     {
-      title: "Smart Investment",
-      description: "Maximum value for your technology investment",
-      features: [
-        "Competitive pricing",
-        "Guaranteed results",
-        "Optimized ROI"
-      ],
+      title: t('solutions.items.investment.title'),
+      description: t('solutions.items.investment.description'),
+      features: t('solutions.items.investment.features', { returnObjects: true }) as string[],
       icon: <DollarSign className="w-6 h-6" />,
     },
   ];
@@ -137,13 +113,13 @@ const Solutions: React.FC = () => {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
-            Transforming Your Digital Vision
+            {t('solutions.heading')}
           </h2>
           <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-6">
-            Innovative Solutions for Modern Businesses
+            {t('solutions.subheading')}
           </h3>
           <p className="text-gray-600 text-lg leading-relaxed">
-            We deliver cutting-edge solutions that help your business thrive in the digital world. Experience the power of modern technology combined with expert support.
+            {t('solutions.description')}
           </p>
         </motion.div>
 
@@ -170,7 +146,7 @@ const Solutions: React.FC = () => {
             href="#contact"
             className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-medium rounded-lg shadow-lg hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-300"
           >
-            Start Your Digital Transformation
+            {t('solutions.cta')}
             <Rocket className="w-5 h-5 ml-2 animate-pulse" />
           </a>
         </motion.div>

@@ -30,28 +30,66 @@ export default {
     scroll: "Scroll for more"
   },
   solutions: {
-    heading: "Real Solutions for Real Problems",
-    subheading: "Tired of Struggling with Your Online Presence?",
-    description: "We understand your frustrations. That's why we've developed specific solutions for each common problem.",
-    problem1: "Slow websites that drive away potential customers",
-    solution1: "Modern technology for ultra-fast loading",
-    benefit1: "Improved SEO and user retention",
-    problem2: "Do-it-yourself platforms with generic design",
-    solution2: "Professional and custom design with all functionalities",
-    benefit2: "Brand differentiation and greater credibility",
-    problem3: "Domain hijacking and lack of control over digital assets",
-    solution3: "Total control over your domains and digital assets",
-    benefit3: "Guaranteed security and autonomy",
-    problem4: "Complete page reloads that make navigation tedious",
-    solution4: "Smooth and professional experiences without unnecessary reloads",
-    benefit4: "Greater user satisfaction",
-    problem5: "Slow or non-existent technical support",
-    solution5: "24/7 technical support by expert professionals",
-    benefit5: "Quick problem resolution",
-    problem6: "Excessive costs for services that don't meet expectations",
-    solution6: "Transparent and competitive prices with guaranteed results",
-    benefit6: "Maximized ROI and optimized budget",
-    cta: "Solve Your Problems Now"
+    heading: "Transforming Your Digital Vision",
+    subheading: "Innovative Solutions for Modern Businesses",
+    description: "We deliver cutting-edge solutions that help your business thrive in the digital world. Experience the power of modern technology combined with expert support.",
+    cta: "Start Your Digital Transformation",
+    items: {
+      performance: {
+        title: "Optimized Performance",
+        description: "Lightning-fast websites that keep your visitors engaged",
+        features: [
+          "Ultra-fast loading times",
+          "Improved SEO rankings",
+          "Higher user retention"
+        ]
+      },
+      design: {
+        title: "Professional Design",
+        description: "Stand out with a unique and powerful brand identity",
+        features: [
+          "Custom-tailored designs",
+          "Brand differentiation",
+          "Enhanced credibility"
+        ]
+      },
+      control: {
+        title: "Complete Control",
+        description: "Full ownership and control of your digital assets",
+        features: [
+          "Secure domain management",
+          "Full asset ownership",
+          "Complete autonomy"
+        ]
+      },
+      experience: {
+        title: "Seamless Experience",
+        description: "Modern web applications with smooth navigation",
+        features: [
+          "Fluid transitions",
+          "Enhanced user experience",
+          "Higher engagement"
+        ]
+      },
+      support: {
+        title: "24/7 Support",
+        description: "Expert technical support whenever you need it",
+        features: [
+          "Instant response times",
+          "Professional expertise",
+          "Peace of mind"
+        ]
+      },
+      investment: {
+        title: "Smart Investment",
+        description: "Maximum value for your technology investment",
+        features: [
+          "Competitive pricing",
+          "Guaranteed results",
+          "Optimized ROI"
+        ]
+      }
+    }
   },
   services: {
     heading: "High-Impact Solutions",
