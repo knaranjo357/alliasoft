@@ -302,18 +302,18 @@ export default {
     subheading: "Estamos listos para ser el aliado de software que tu negocio necesita para triunfar en Estados Unidos y más allá. Contáctanos hoy mismo para una consulta gratuita.",
     email: {
       title: "Email",
-      value: "info@alliasoft.com",
+      value: "alliasoft@gmail.com",
       description: "Escríbenos en cualquier momento"
     },
     phone: {
       title: "Teléfono",
-      value: "+1 (555) 123-4567",
-      description: "Lunes a Viernes, 9am - 5pm EST"
+      value: "+57 300 100 2352",
+      description: "WhatsApp disponible 24/7"
     },
     chat: {
-      title: "Chat en vivo",
-      value: "Soporte 24/7",
-      description: "Nuestro equipo está siempre disponible"
+      title: "WhatsApp",
+      value: "+57 300 100 2352",
+      description: "Mensaje directo 24/7"
     },
     response: {
       title: "Tiempo de respuesta",

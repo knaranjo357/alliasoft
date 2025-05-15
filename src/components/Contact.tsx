@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Phone, MessageCircle, Clock, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MessageSquare, Clock, CheckCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.2,
+    rootMargin: "100px",
   });
   
   const [formState, setFormState] = useState({
@@ -29,9 +30,6 @@ const Contact: React.FC = () => {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you would submit the form data to your backend here
-    
-    // Simulating form submission
     setTimeout(() => {
       setIsSubmitted(true);
       setFormState({
@@ -49,18 +47,21 @@ const Contact: React.FC = () => {
       title: t('contact.email.title'),
       value: t('contact.email.value'),
       description: t('contact.email.description'),
+      link: `mailto:${t('contact.email.value')}`,
     },
     {
       icon: <Phone className="w-8 h-8 text-blue-500" />,
       title: t('contact.phone.title'),
       value: t('contact.phone.value'),
       description: t('contact.phone.description'),
+      link: `https://wa.me/573001002352`,
     },
     {
-      icon: <MessageCircle className="w-8 h-8 text-blue-500" />,
-      title: t('contact.chat.title'),
-      value: t('contact.chat.value'),
-      description: t('contact.chat.description'),
+      icon: <MessageSquare className="w-8 h-8 text-green-500" />,
+      title: "WhatsApp",
+      value: "+57 300 100 2352",
+      description: "Mensaje directo 24/7",
+      link: `https://wa.me/573001002352?text=${encodeURIComponent("Hola, me gustaría obtener más información sobre sus servicios.")}`,
     },
     {
       icon: <Clock className="w-8 h-8 text-blue-500" />,
@@ -77,7 +78,7 @@ const Contact: React.FC = () => {
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -96,14 +97,29 @@ const Contact: React.FC = () => {
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-gray-50 p-6 rounded-lg"
+                  transition={{ 
+                    duration: 0.8,
+                    delay: index * 0.1,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                  className="bg-gray-50 p-6 rounded-lg transform hover:scale-105 transition-all duration-300"
                 >
                   <div className="flex items-start">
                     <div className="flex-shrink-0">{method.icon}</div>
                     <div className="ml-4">
                       <h3 className="text-lg font-medium text-gray-900">{method.title}</h3>
-                      <p className="text-blue-600 font-semibold">{method.value}</p>
+                      {method.link ? (
+                        <a 
+                          href={method.link}
+                          target={method.link.startsWith('http') ? '_blank' : undefined}
+                          rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+                        >
+                          {method.value}
+                        </a>
+                      ) : (
+                        <p className="text-blue-600 font-semibold">{method.value}</p>
+                      )}
                       <p className="text-gray-500 text-sm mt-1">{method.description}</p>
                     </div>
                   </div>
@@ -114,7 +130,11 @@ const Contact: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+              transition={{ 
+                duration: 0.8,
+                delay: 0.4,
+                ease: [0.22, 1, 0.36, 1]
+              }}
               className="bg-gradient-to-br from-blue-50 to-teal-50 p-6 rounded-lg"
             >
               <div className="flex items-start">
@@ -132,7 +152,11 @@ const Contact: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ 
+              duration: 0.8,
+              delay: 0.2,
+              ease: [0.22, 1, 0.36, 1]
+            }}
             className="bg-white rounded-lg shadow-xl p-8"
           >
             {isSubmitted ? (

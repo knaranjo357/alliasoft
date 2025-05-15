@@ -14,7 +14,8 @@ interface FeatureCardProps {
 const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, delay }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.2,
+    rootMargin: "50px",
   });
 
   return (
@@ -22,7 +23,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, del
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.5, delay }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
       whileHover={{ scale: 1.05, y: -5 }}
       className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform"
     >
@@ -51,7 +52,8 @@ const Features: React.FC = () => {
   const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.2,
+    rootMargin: "50px",
   });
 
   return (
@@ -84,7 +86,7 @@ const Features: React.FC = () => {
           ref={ref}
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
           className="text-center mt-16 text-gray-500 flex items-center justify-center"
         >
           <motion.div
