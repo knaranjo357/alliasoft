@@ -1,133 +1,112 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { Zap, Lock, HeadsetIcon, DollarSign, UsersIcon, Layers } from 'lucide-react';
 
-interface ReasonCardProps {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  index: number;
-}
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
-const ReasonCard: React.FC<ReasonCardProps> = ({ title, description, icon, index }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ scale: 1.02, y: -5 }}
-      className="relative bg-white border border-slate-100 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] overflow-hidden group hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300"
-    >
-
-      <div className="relative p-8">
-        <motion.div 
-          className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors duration-300"
-        >
-          <div className="text-blue-600">
-            {icon}
-          </div>
-        </motion.div>
-
-        <motion.h3 
-          className="text-xl font-bold text-slate-900 mb-3 tracking-tight"
-          initial={{ opacity: 0, x: -20 }}
-          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-          transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-        >
-          {title}
-        </motion.h3>
-
-        <motion.p 
-          className="text-slate-600 leading-relaxed text-[0.95rem]"
-          initial={{ opacity: 0, x: -20 }}
-          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-          transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-        >
-          {description}
-        </motion.p>
-      </div>
-    </motion.div>
-  );
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
 };
 
 const WhyChooseUs: React.FC = () => {
   const { t } = useTranslation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
 
   const reasonsData = [
     {
       title: t('whyUs.reason1.title'),
       description: t('whyUs.reason1.description'),
-      icon: <Zap className="w-8 h-8" />,
+      icon: <Zap className="w-6 h-6" />,
     },
     {
       title: t('whyUs.reason2.title'),
       description: t('whyUs.reason2.description'),
-      icon: <Lock className="w-8 h-8" />,
+      icon: <Lock className="w-6 h-6" />,
     },
     {
       title: t('whyUs.reason3.title'),
       description: t('whyUs.reason3.description'),
-      icon: <HeadsetIcon className="w-8 h-8" />,
+      icon: <HeadsetIcon className="w-6 h-6" />,
     },
     {
       title: t('whyUs.reason4.title'),
       description: t('whyUs.reason4.description'),
-      icon: <DollarSign className="w-8 h-8" />,
+      icon: <DollarSign className="w-6 h-6" />,
     },
     {
       title: t('whyUs.reason5.title'),
       description: t('whyUs.reason5.description'),
-      icon: <UsersIcon className="w-8 h-8" />,
+      icon: <UsersIcon className="w-6 h-6" />,
     },
     {
       title: t('whyUs.reason6.title'),
       description: t('whyUs.reason6.description'),
-      icon: <Layers className="w-8 h-8" />,
+      icon: <Layers className="w-6 h-6" />,
     },
   ];
 
   return (
-    <section id="why-us" className="py-24 px-4 bg-white relative overflow-hidden border-b border-gray-100">
-
-      <div className="container mx-auto max-w-6xl relative z-10">
+    <section id="why-us" className="py-32 px-6 bg-[#FAFAFA]">
+      <div className="container mx-auto max-w-7xl">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+          }}
+          className="text-center max-w-3xl mx-auto mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight leading-tight">
             {t('whyUs.heading')}
           </h2>
-          <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="text-slate-500 text-lg md:text-xl leading-relaxed">
             {t('whyUs.subheading')}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {reasonsData.map((reason, index) => (
-            <ReasonCard
+            <motion.div
               key={index}
-              title={reason.title}
-              description={reason.description}
-              icon={reason.icon}
-              index={index}
-            />
+              variants={itemVariants}
+              className="group p-8 md:p-10 rounded-[2rem] bg-white border border-black/[0.03] shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] transition-all duration-500"
+            >
+              <div className="w-16 h-16 bg-blue-50/50 rounded-2xl flex items-center justify-center mb-8 text-blue-600 group-hover:scale-110 group-hover:bg-blue-50 transition-all duration-500 ease-out">
+                {reason.icon}
+              </div>
+              <h3 className="text-2xl font-semibold text-slate-900 mb-4 tracking-tight">
+                {reason.title}
+              </h3>
+              <p className="text-slate-500 leading-relaxed text-[1.05rem]">
+                {reason.description}
+              </p>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
