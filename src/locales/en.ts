@@ -3,165 +3,171 @@ export default {
     home: "Home",
     services: "Solutions",
     process: "Methodology",
-    whyUs: "Differentiators",
+    whyUs: "Why Us",
     portfolio: "Cases",
     sectors: "Sectors",
     contact: "Contact"
   },
   language: "ES",
   contact_btn: {
-    button: "Schedule Audit"
+    button: "Schedule Diagnostic"
   },
   hero: {
-    title1: "Operations, Automation, and Scale",
-    title2: "We turn messy processes",
-    title3: "into clear, automated systems",
-    title4: "ready to scale.",
-    description: "At Alliasoft, we analyze how your company operates, detect bottlenecks, and build custom digital solutions: automation, AI agents, web platforms, integrations, and experiences that genuinely improve operations.",
-    support: "Fewer manual tasks. Fewer reworks. More control, more speed, and a better experience for your customers.",
-    cta1: "Schedule Diagnostic",
-    cta2: "View Real Cases"
+    badge: "Operational Transformation with AI",
+    title_line1: "Your business runs.",
+    title_line2: "We make it run",
+    title_highlight: "without friction.",
+    description: "We analyze what's holding your business back — repetitive processes, scattered information, bottlenecks — and build the exact solution: automation, AI agents, web platforms and integrations your team actually adopts from day one.",
+    support: "No friction. No templates. No generic solutions.",
+    cta1: "See If It Applies →",
+    cta2: "Real Success Cases",
+    stat1_value: "+40",
+    stat1_label: "projects delivered",
+    stat2_value: "3",
+    stat2_label: "countries of impact",
+    stat3_value: "98%",
+    stat3_label: "adoption in 30 days"
   },
   features: {
-    title: "We don't sell generic software. We design solutions around your real operation.",
-    description: "We work with companies that need to organize processes, integrate channels, automate tasks, and scale without losing control.",
+    title: "We design solutions people actually use — because they start from understanding how your business operates.",
+    description: "Technology nobody adopts is wasted technology. Every solution we build starts with a real operational diagnostic, not a product demo.",
     items: [
-      "Operational Diagnostic",
-      "AI Automation",
-      "Custom Web Development",
-      "Channel and System Integration",
-      "Strategic Accompaniment"
+      "Process and bottleneck diagnostic",
+      "AI agents for service and operations",
+      "Custom web platforms and internal systems",
+      "Channel integration: WhatsApp, CRM, ERP",
+      "Hands-on support until it actually works"
     ]
   },
   solutions: {
-    heading: "Solutions designed for what really holds a company back",
+    heading: "Six areas where we turn operational chaos into competitive advantage.",
     subheading: "",
-    description: "When an operation grows, manual errors, scattered information, and the load on the team also grow. At Alliasoft, we design solutions to regain control, improve response times, and turn improvised processes into reliable systems.",
+    description: "Every solution starts from a diagnostic. Every line of code solves a real problem. We don't sell packages — we build what your operation needs, and nothing more.",
     cta: "Schedule Diagnostic",
     items: {
       performance: {
-        title: "Process Diagnostic and Redesign",
-        description: "We analyze how your operation works today, detect friction points, and propose a clear improvement path. Before developing, we understand the root problem."
+        title: "X-Ray of Your Operation",
+        description: "We map every process, every tool, and every point where time or money is lost. Before writing a single line of code, we know exactly what to build — and what not to."
       },
       design: {
-        title: "AI Automation and Conversational Agents",
-        description: "We create intelligent agents and flows for customer service, order taking, commercial follow-up, request classification, support, and repetitive tasks."
+        title: "Automation with AI Agents",
+        description: "Your clients can't wait. Your teams neither. We design agents that handle, quote, classify and escalate requests — with the precision of a person and the speed of a machine."
       },
       control: {
-        title: "Custom Web Platforms",
-        description: "We develop internal systems, portals, dashboards, CRMs, commercial platforms, and operational tools tailored to your business."
+        title: "Custom Platforms and Systems",
+        description: "Your business is unique. Your software should be too. We build dashboards, CRMs, portals and internal systems your team adopts in days, not months."
       },
       experience: {
-        title: "Channel and System Integrations",
-        description: "We connect WhatsApp, forms, databases, CRMs, ERPs, billing, and inventory so information flows without depending on copy-pasting."
+        title: "Total Channel Integration",
+        description: "WhatsApp, email, ERP, CRM, billing, inventory — all connected. Information that flows on its own, without copy-pasting. Without your team losing the thread."
       },
       support: {
-        title: "UX/UI Focused on Real Use",
-        description: "We design clear, fast, and pleasant interfaces, meant for the user to understand, act, and return."
+        title: "Interfaces People Actually Use",
+        description: "A good system nobody understands is useless. We design clear, fast experiences built for the user to understand, act, and return without friction."
       },
       investment: {
-        title: "Support and Continuous Evolution",
-        description: "We don't deliver and disappear. We accompany adoption, adjust what's necessary, and help the solution keep growing with you."
+        title: "Ally, Not Vendor",
+        description: "We don't deliver and disappear. We accompany adoption, measure results, and evolve the solution with you. Your growth is ours."
       }
     }
   },
   whyUs: {
     heading: "Why Alliasoft is different",
-    subheading: "Because we don't start with technology. We start by understanding the business, the operation, and the real problem.",
+    subheading: "We don't start with technology. We start by understanding what hurts your operation — and why what you have today isn't enough.",
     reasons: [
       {
-        title: "We think about operations, not just screens",
-        description: "We analyze how information moves, where time is lost, and what tasks should stop being manual."
+        title: "We think operations, not screens",
+        description: "We analyze how information moves, where time is lost, and what tasks should stop being manual. The screen is the consequence, not the starting point."
       },
       {
-        title: "We develop based on your company's reality",
-        description: "We don't force your business to adapt to a template. We design a solution that responds to the way you work."
+        title: "We build on your reality, not templates",
+        description: "We don't force your business to adapt to a template. We design a solution that responds to how you work — even if it's complex, irregular, or unique."
       },
       {
-        title: "We unite strategy, design, and development",
-        description: "We don't just build tools: we help you decide what's worth automating, what should be simplified, and what should scale."
+        title: "We unite strategy, design, and code",
+        description: "We don't just build tools: we help you decide what's worth automating, what to simplify, and what should scale first."
       },
       {
-        title: "We apply AI where it really adds value",
-        description: "We use artificial intelligence to reduce operational load, speed up responses, and improve the customer experience without complicating the team."
+        title: "We apply AI where it truly adds value",
+        description: "We use artificial intelligence to reduce operational load, speed up responses, and improve the customer experience — without complicating the team or adding technical debt."
       },
       {
-        title: "We work with you as an ally",
-        description: "We get involved in understanding the context, proposing improvements, and accompanying the implementation so the result actually works in practice."
+        title: "We work with you as an ally, not a vendor",
+        description: "We get involved in understanding the context, propose real improvements, and accompany implementation so the result actually works in practice, not just in the demo."
       }
     ]
   },
   process: {
-    heading: "How we work at Alliasoft",
+    heading: "A method that eliminates the risk of building the wrong thing.",
     steps: [
       {
-        title: "We understand the operation",
-        description: "We meet with you to identify critical processes, pain points, current tools, repetitive tasks, and improvement opportunities."
+        title: "We listen before we propose",
+        description: "We immerse ourselves in your operation: team interviews, flow analysis, review of current tools. We understand the business before proposing any solution."
       },
       {
-        title: "We diagnose and prioritize",
-        description: "We detect bottlenecks, risks, reworks, and automation opportunities. Then we prioritize what can generate the most impact."
+        title: "We diagnose with precision",
+        description: "We identify which processes block growth, which tasks consume time without generating value, and where risk of error exists. Then we prioritize what can have the most impact — with data, not intuition."
       },
       {
-        title: "We design the right solution",
-        description: "We define flows, user experience, architecture, automations, and integrations necessary to solve the problem sustainably."
+        title: "We design the right solution, not the most expensive",
+        description: "We propose the exact architecture that solves the problem — without unnecessary features that inflate development costs. Every design decision has an operational reason behind it."
       },
       {
-        title: "We build and integrate",
-        description: "We develop the platform, the agent, or the automation and connect it with the tools your team already uses."
+        title: "We build and integrate without interruption",
+        description: "We develop in stages, test with real users, and connect with tools your team already uses. No chaos. No downtime. No empty promises."
       },
       {
-        title: "We measure, adjust, and scale",
-        description: "We accompany adoption, measure results, and improve the solution so it evolves with your business."
+        title: "We measure, adjust, and scale together",
+        description: "Launch is the beginning, not the end. We measure real results, adjust what's needed, and build the next improvement — so the solution keeps growing with your business."
       }
     ]
   },
   portfolio: {
-    heading: "Projects that connect technology with real operations",
-    subheading: "",
+    heading: "Results that are measured, not promised.",
+    subheading: "Real cases of companies that went from operational chaos to systems that run themselves.",
     projects: [
       {
-        title: "Conversational Agent for Tourism",
-        description: "We designed a WhatsApp agent for immediate customer service, quoting, and follow-up, allowing faster responses and organized requests without losing closeness.",
-        tags: ["Time Reduction", "24/7 Support", "WhatsApp AI"]
+        title: "24/7 AI Attention Agent for Tourism",
+        description: "The team was manually answering 200+ daily WhatsApp inquiries. We designed an AI agent that quotes, filters, and qualifies clients — reducing response time from hours to seconds and freeing the team to close sales.",
+        tags: ["−85% response time", "24/7 Attention", "More sales, less load"]
       },
       {
-        title: "Gastronomic Ecosystem and POS",
-        description: "We built an integral solution for a restaurant with WhatsApp order taking, operational management, dispatch control, and POS tools, improving service times.",
-        tags: ["More Control", "Less Manual Work", "POS Systems"]
+        title: "Full Operating System for Restaurant",
+        description: "Order taking, dispatch management, inventory control, and POS — all integrated. What used to require 3 tools and a lot of coordination now runs on one system designed for the real operation of the business.",
+        tags: ["One system", "Fewer errors", "Faster service"]
       },
       {
-        title: "Logistics Agent with Integrated CRM",
-        description: "We developed a solution to centralize requests, coordinate agendas, organize dispatches, and keep real-time traceability, reducing manual work for the operational team.",
-        tags: ["Better Traceability", "Custom CRM", "Logistics"]
+        title: "Logistics CRM with Real-Time Traceability",
+        description: "Schedule coordination, request centralization, and dispatch traceability in one platform. The operational team went from using spreadsheets to having total visibility over every movement.",
+        tags: ["Total visibility", "Less manual work", "Custom CRM"]
       },
       {
-        title: "International E-commerce",
-        description: "We implemented a store oriented towards performance, conversion, and shopping experience, designed to compete in demanding markets with speed and commercial structure.",
-        tags: ["More Conversions", "US Market", "Performance"]
+        title: "High-Performance International E-commerce",
+        description: "Store built for demanding markets — speed, conversion, and shopping experience as priorities. Launched to compete in the US with a structure that scales without requiring constant technical support.",
+        tags: ["Conversion optimized", "US Market", "Scales effortlessly"]
       },
       {
-        title: "Retail and Commercial Automation",
-        description: "We created sales and service experiences supported by automation and AI to facilitate product querying, order capturing, and improve commercial follow-up.",
-        tags: ["Automation", "Lead Capture", "Retail"]
+        title: "Commercial Automation for Retail",
+        description: "Product queries, order capture, and commercial intelligence integrated through automation and AI. The sales team closed more deals without increasing the operational load.",
+        tags: ["More sales", "Automated capture", "AI for retail"]
       }
     ]
   },
   sectors: {
-    heading: "We work with companies that need to organize, automate, and grow",
+    heading: "We work with companies that already know the problem isn't technology — it's the operation.",
     items: [
-      "Restaurants and Gastronomic Businesses",
-      "Commerce and Retail",
-      "Tourism and Services",
-      "Operational and Logistics Companies",
-      "Commercial Teams",
-      "Businesses that serve via WhatsApp",
+      "Restaurants and gastronomic chains",
+      "Retail and consumer commerce",
+      "Tourism and service agencies",
+      "Logistics and distribution companies",
+      "Commercial teams and B2B sales",
+      "WhatsApp-centered businesses",
       "Companies that need custom software"
     ]
   },
   contact: {
-    heading: "Your operation doesn't need more disjointed tools. It needs order, automation, and a solution designed for your business.",
-    subheading: "Tell us what part of your operation takes the most time, control, or sales from you today. At Alliasoft, we help you turn that problem into a clear, functional, and scalable solution.",
+    heading: "How much is it costing your company to operate the way it does today?",
+    subheading: "That question has an answer — and we help you find it. Tell us what part of your operation costs you time, money, or control. No commitment. No pressure.",
     email: {
       title: "Email",
       value: "alliasoftsas@gmail.com",
@@ -170,43 +176,48 @@ export default {
     chat: {
       title: "WhatsApp",
       value: "+57 317 696 4215",
-      description: "Direct message 24/7"
+      description: "Direct response 24/7"
     },
     call: {
-      title: "Schedule",
-      value: "Diagnostic",
-      description: "Let's talk about your operation"
+      title: "Diagnostic",
+      value: "No Cost",
+      description: "Let's talk about your real operation"
     },
     form: {
       fullname: "Full name",
       fullname_placeholder: "Your name",
       email: "Email address",
       email_placeholder: "you@email.com",
-      service: "Service of interest",
-      message: "Message",
-      message_placeholder: "Tell us what slows down your operation today...",
-      submit: "Write to us on WhatsApp",
+      service: "How can we help you?",
+      message: "Tell us your problem",
+      message_placeholder: "Describe the issue that hurts most in your operation today...",
+      submit: "Talk to an expert now →",
+      submitted_title: "Message received!",
+      submitted_body: "We'll get back to you in less than 24 hours. Meanwhile, check how we've helped other companies in the cases section.",
+      trust1: "Secure data",
+      trust2: "Response in < 24h",
+      trust3: "No spam",
       services: {
-        landing: "Process Diagnostic",
-        hosting: "AI Automation",
-        chatbot: "Custom Development",
-        maintenance: "Other B2B Consulting"
+        landing: "I need an operational diagnostic",
+        hosting: "I want to automate processes with AI",
+        chatbot: "I need a custom platform or system",
+        maintenance: "I have another strategic query"
       }
     }
   },
   footer: {
-    description: "We design systems that organize, automate, and make your operation grow.",
-    quickLinks: "Quick links",
+    description: "We transform complex operations into systems that run themselves — so your team can focus on what matters.",
+    quickLinks: "Navigation",
     services: "Solutions",
     copyright: "© {year} Alliasoft. All rights reserved."
   },
   chat: {
-    title: "Alliasoft Bot",
-    welcome: "Hello!",
-    placeholder: "Type your question",
+    title: "Alliasoft",
+    welcome: "Hi! Which part of your operation can I help with?",
+    placeholder: "Type your question...",
     disclaimer: "By using this chatbot, you agree to the Terms and Conditions",
     poweredBy: "Powered by Alliasoft",
-    startChat: "Start Chat",
+    startChat: "Start conversation",
     cancel: "Cancel"
   }
 };

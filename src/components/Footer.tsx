@@ -69,11 +69,11 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
-        <div className="border-t border-black/[0.05] pt-8 flex flex-col md:flex-row items-center justify-between">
+        <div className="border-t border-black/[0.05] pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-400 text-sm font-medium">{t('footer.copyright', { year: currentYear })}</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-slate-400 hover:text-slate-600 text-sm font-medium transition-colors">Privacy Policy</a>
-            <a href="#" className="text-slate-400 hover:text-slate-600 text-sm font-medium transition-colors">Terms of Service</a>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-slate-400 text-sm font-medium">Disponibles para nuevos proyectos</span>
           </div>
         </div>
       </div>

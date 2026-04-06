@@ -51,7 +51,7 @@ const Header: React.FC = () => {
             </button>
             
             <a href="#contact" className="px-6 py-3 text-sm font-bold text-white bg-slate-900 rounded-full shadow-[0_4px_14px_rgba(15,23,42,0.15)] hover:shadow-[0_6px_20px_rgba(15,23,42,0.2)] hover:-translate-y-0.5 transition-all">
-              {t('nav.contact')}
+              {t('contact_btn.button')}
             </a>
           </div>
 

@@ -26,8 +26,10 @@ function App() {
     // Update page title
     const titleElement = document.querySelector('title');
     if (titleElement) {
-      titleElement.textContent = 'Alliasoft - ' + 
-        (i18n.language === 'es' ? 'Tu Socio Tecnológico' : 'Your Technology Partner');
+      titleElement.textContent = 'Alliasoft — ' + 
+        (i18n.language === 'es' 
+          ? 'Transformación Operativa con IA' 
+          : 'Operational Transformation with AI');
     }
   }, [i18n]);
 
