@@ -20,19 +20,19 @@ const Testimonial: React.FC<TestimonialProps> = ({ quote, name, position, isActi
       transition={{ duration: 0.5 }}
       className={`absolute top-0 left-0 right-0 ${isActive ? 'z-10' : 'z-0'}`}
     >
-      <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-xl shadow-lg p-8 relative">
-        <Quote className="w-12 h-12 text-blue-100 absolute top-4 left-4" />
+      <div className="bg-white border border-slate-100 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] p-10 relative">
+        <Quote className="w-12 h-12 text-blue-500/10 absolute top-6 left-6" />
         
-        <div className="relative z-10">
-          <p className="text-gray-300 text-lg italic mb-6 relative z-10">"{quote}"</p>
+        <div className="relative z-10 px-4 pt-2">
+          <p className="text-slate-700 text-xl md:text-2xl italic mb-10 leading-relaxed font-light">"{quote}"</p>
           
           <div className="flex items-center">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-teal-400 rounded-full flex items-center justify-center text-white font-bold">
+            <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 font-bold border border-blue-100 tracking-wider">
               {name.split(' ').map(part => part[0]).join('')}
             </div>
-            <div className="ml-4">
-              <h4 className="text-lg font-semibold text-gray-100">{name}</h4>
-              <p className="text-gray-400">{position}</p>
+            <div className="ml-4 text-left">
+              <h4 className="text-base font-bold text-slate-900">{name}</h4>
+              <p className="text-sm font-medium text-slate-500 uppercase tracking-wide">{position}</p>
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@ const Testimonials: React.FC = () => {
   }, [testimonials.length]);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     
     if (isAutoPlaying) {
       interval = setInterval(nextTestimonial, 5000);
@@ -94,8 +94,8 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-teal-50">
-      <div className="container mx-auto max-w-6xl">
+    <section className="py-24 px-4 bg-[#FAFAFA] border-b border-gray-100">
+      <div className="container mx-auto max-w-4xl">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
@@ -103,16 +103,16 @@ const Testimonials: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
             {t('testimonials.heading')}
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-slate-600 text-lg">
             {t('testimonials.subheading')}
           </p>
         </motion.div>
 
         <div className="relative">
-          <div className="relative h-[300px] md:h-[250px]">
+          <div className="relative h-[350px] md:h-[280px]">
             {testimonials.map((testimonial, index) => (
               <Testimonial
                 key={index}
@@ -125,15 +125,15 @@ const Testimonials: React.FC = () => {
             ))}
           </div>
           
-          <div className="flex justify-center mt-8 space-x-2">
+          <div className="flex justify-center mt-12 space-x-2">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => handleIndicatorClick(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-300 ${
                   activeIndex === index 
-                    ? 'bg-blue-600 w-6' 
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    ? 'bg-blue-600 w-8' 
+                    : 'bg-slate-300 w-2 hover:bg-slate-400'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />

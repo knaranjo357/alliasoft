@@ -4,8 +4,6 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Solutions from './components/Solutions';
-import Services from './components/Services';
-import Pricing from './components/Pricing';
 import WhyChooseUs from './components/WhyChooseUs';
 import Portfolio from './components/Portfolio';
 import Testimonials from './components/Testimonials';
@@ -33,14 +31,12 @@ function App() {
   }, [i18n]);
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100 font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans overflow-x-hidden antialiased">
       <Header />
-      <main className="relative bg-gray-950">
+      <main className="relative bg-[#FAFAFA]">
         <Hero />
         <Features />
         <Solutions />
-        <Services />
-        <Pricing />
         <WhyChooseUs />
         <Portfolio />
         <Testimonials />

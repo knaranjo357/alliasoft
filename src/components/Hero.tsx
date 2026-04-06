@@ -36,77 +36,45 @@ const Hero: React.FC = () => {
     <section 
       ref={ref}
       id="home" 
-      className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, rgba(3,7,18,1) 0%, rgba(15,23,42,1) 100%)",
-      }}
+      className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-[#FAFAFA]"
     >
       <motion.div 
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 pointer-events-none"
         style={{ y, opacity }}
       >
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[length:20px_20px]" />
-        
-        {/* Animated background shapes */}
-        {Array.from({ length: 20 }).map((_, index) => (
-          <motion.div 
-            key={index}
-            className="absolute bg-slate-900/40 backdrop-blur-md border border-slate-800/10 rounded-full animate-float"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ 
-              duration: 1,
-              delay: index * 0.1,
-              repeat: Infinity,
-              repeatType: "reverse",
-              repeatDelay: Math.random() * 2
-            }}
-            style={{
-              width: `${Math.random() * 300 + 50}px`,
-              height: `${Math.random() * 300 + 50}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${Math.random() * 10 + 10}s`,
-              transform: `translate(var(--mouse-x, 0), var(--mouse-y, 0))`,
-            }}
-          />
-        ))}
+        {/* Very subtle elegant gradient orb in the background */}
+        <div className="absolute top-[-10%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-gradient-to-br from-blue-100/40 to-purple-100/40 blur-3xl opacity-60 mix-blend-multiply" />
+        <div className="absolute bottom-[-10%] right-[10%] w-[40vw] h-[40vw] rounded-full bg-gradient-to-tl from-teal-100/40 to-blue-100/40 blur-3xl opacity-60 mix-blend-multiply" />
       </motion.div>
 
       <div className="container mx-auto px-4 z-10">
-        <div className="text-center">
+        <div className="text-center max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center justify-center mb-6 space-x-2"
+            className="flex items-center justify-center mb-8 space-x-2"
           >
-            <Sparkles className="w-6 h-6 text-yellow-300 animate-pulse" />
-            <h2 className="text-white text-2xl md:text-3xl font-light">
+            <span className="px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-semibold tracking-wide flex items-center shadow-sm">
+              <Sparkles className="w-4 h-4 mr-2" />
               {t('hero.title1')}
-            </h2>
-            <Sparkles className="w-6 h-6 text-yellow-300 animate-pulse" />
+            </span>
           </motion.div>
           
           <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ 
               duration: 0.8,
               delay: 0.2,
-              type: "spring",
-              stiffness: 100
             }}
-            className="space-y-2"
+            className="space-y-4 mb-8"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight animate-gradient-text bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-transparent">
-              {t('hero.title2')}
-            </h1>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight">
-              {t('hero.title3')}
-            </h1>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
+              {t('hero.title2')} <br className="hidden md:block" />
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-teal-500 bg-clip-text text-transparent">
+                {t('hero.title3')}
+              </span> <br className="hidden md:block" />
               {t('hero.title4')}
             </h1>
           </motion.div>
@@ -115,7 +83,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto mb-10"
+            className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
           >
             {t('hero.description')}
           </motion.p>
@@ -128,17 +96,17 @@ const Hero: React.FC = () => {
           >
             <motion.a 
               href="#contact" 
-              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-teal-500 text-white font-semibold rounded-lg shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(13,148,136,0.6)] transform hover:-translate-y-1 transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-slate-900 text-white font-medium rounded-xl shadow-[0_8px_20px_rgba(15,23,42,0.15)] hover:shadow-[0_8px_30px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all flex items-center"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               {t('hero.cta1')}
             </motion.a>
             <motion.a 
-              href="#services" 
-              className="px-8 py-3 bg-transparent border-2 border-slate-700 text-gray-300 font-medium rounded-lg hover:bg-slate-800 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              href="#portfolio" 
+              className="px-8 py-4 bg-white border border-slate-200 text-slate-700 font-medium rounded-xl shadow-sm hover:shadow-md hover:border-slate-300 transition-all"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               {t('hero.cta2')}
             </motion.a>
@@ -147,18 +115,20 @@ const Hero: React.FC = () => {
       </div>
       
       <motion.div 
-        className="absolute bottom-10 left-0 right-0 text-center"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        className="absolute bottom-8 left-0 right-0 text-center flex justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ 
-          duration: 0.6,
-          delay: 1,
-          repeat: Infinity,
-          repeatType: "reverse",
-          repeatDelay: 0.5
+          duration: 1,
+          delay: 1.5,
         }}
       >
-        <ChevronDown className="w-8 h-8 text-white mx-auto animate-bounce" />
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ChevronDown className="w-6 h-6 text-slate-400" />
+        </motion.div>
       </motion.div>
     </section>
   );

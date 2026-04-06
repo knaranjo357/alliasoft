@@ -8,11 +8,9 @@ export default {
         heading: ['Outfit', 'sans-serif'],
       },
       colors: {
-        background: '#030712',
-        foreground: '#f9fafb',
-        primary: '#38bdf8', // light blue
-        primaryDark: '#0284c7', // dark blue
-        accent: '#818cf8', // indigo
+        primary: '#2563eb', // blue-600
+        primaryDark: '#1d4ed8', // blue-700
+        accent: '#f59e0b', // amber-500
       }
     },
   },

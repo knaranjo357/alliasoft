@@ -12,82 +12,58 @@ export default {
     button: "Contact Us"
   },
   hero: {
-    title1: "World-Class Digital Innovation",
-    title2: "Your Technology",
-    title3: "Partner for Global",
-    title4: "Success",
-    description: "We transform your vision into digital reality with innovative technological solutions that drive your business towards the future.",
-    cta1: "Get Started Now",
-    cta2: "Explore Services"
+    title1: "High-Level Consulting & Design",
+    title2: "We Detect",
+    title3: "Bottlenecks in Your",
+    title4: "Workflows",
+    description: "We analyze your operation to find inefficiencies, automate processes, and redesign interfaces (UX/UI) so your platform not only works better but looks spectacular.",
+    cta1: "Schedule Audit",
+    cta2: "View Success Stories"
   },
   features: {
-    title: "Cutting-Edge Technology",
-    description: "Modern and optimized stack for maximum performance",
-    title2: "Measurable Results",
-    description2: "Solutions focused on growing your business",
-    title3: "Global Reach",
-    description3: "Digital presence optimized for international markets",
-    scroll: "Scroll for more"
+    title: "Workflow Audit",
+    description: "We find the invisible problems in your current operation.",
+    title2: "UX / UI Optimization",
+    description2: "We design incredibly aesthetic and functional interfaces.",
+    title3: "Agents & Automation",
+    description3: "We implement AI to streamline and reduce operational load.",
+    scroll: "Discover our methodology"
   },
   solutions: {
-    heading: "Transforming Your Digital Vision",
-    subheading: "Innovative Solutions for Modern Businesses",
-    description: "We deliver cutting-edge solutions that help your business thrive in the digital world. Experience the power of modern technology combined with expert support.",
-    cta: "Start Your Digital Transformation",
+    heading: "Impeccable Efficiency and Aesthetics",
+    subheading: "Why startups trust our consulting",
+    description: "Our team specializes in analyzing how your company works. We find problems, optimize processes, and deliver visually perfect platforms.",
+    cta: "Optimize your processes today",
     items: {
       performance: {
-        title: "Optimized Performance",
-        description: "Lightning-fast websites that keep your visitors engaged",
-        features: [
-          "Ultra-fast loading times",
-          "Improved SEO rankings",
-          "Higher user retention"
-        ]
+        title: "Deep Diagnostics",
+        description: "We map every interaction to find time or money leaks.",
+        features: ["UX Audit", "Performance review", "Funnel detection"]
       },
       design: {
-        title: "Professional Design",
-        description: "Stand out with a unique and powerful brand identity",
-        features: [
-          "Custom-tailored designs",
-          "Brand differentiation",
-          "Enhanced credibility"
-        ]
+        title: "High-End UI/UX Design",
+        description: "We believe that what is functional must also be visually beautiful.",
+        features: ["Apple/Stripe Minimalism", "Intuitive interfaces", "Design systems"]
       },
       control: {
-        title: "Complete Control",
-        description: "Full ownership and control of your digital assets",
-        features: [
-          "Secure domain management",
-          "Full asset ownership",
-          "Complete autonomy"
-        ]
+        title: "AI Automation",
+        description: "Bots and automated flows that work for you 24 hours a day.",
+        features: ["WhatsApp Agents", "CRM Connection", "24/7 Chatbots"]
       },
       experience: {
-        title: "Seamless Experience",
-        description: "Modern web applications with smooth navigation",
-        features: [
-          "Fluid transitions",
-          "Enhanced user experience",
-          "Higher engagement"
-        ]
+        title: "Custom Development",
+        description: "We don't adapt your business to software; we make the software adapt to you.",
+        features: ["Scalable platforms", "Modern technology (React)", "Clean architecture"]
       },
       support: {
-        title: "24/7 Support",
-        description: "Expert technical support whenever you need it",
-        features: [
-          "Instant response times",
-          "Professional expertise",
-          "Peace of mind"
-        ]
+        title: "Strategic Consulting",
+        description: "We accompany your team in the learning and adoption curve.",
+        features: ["Dedicated support", "Technical consulting", "Impact reports"]
       },
       investment: {
-        title: "Smart Investment",
-        description: "Maximum value for your technology investment",
-        features: [
-          "Competitive pricing",
-          "Guaranteed results",
-          "Optimized ROI"
-        ]
+        title: "Operational Architecture",
+        description: "We structure the foundations so your company can scale without friction.",
+        features: ["Structured growth", "Unified integrations", "Long-term vision"]
       }
     }
   },
@@ -217,31 +193,31 @@ export default {
     }
   },
   whyUs: {
-    heading: "Why Choose Alliasoft as Your Software Ally?",
-    subheading: "We understand there are many options, but this is where we make the difference.",
+    heading: "Why is Alliasoft different?",
+    subheading: "We don't build web pages; we design your company's machinery.",
     reason1: {
-      title: "Cutting-Edge Technology",
-      description: "We use modern technologies that ensure optimized loading and blazing speeds, improving SEO and conversions. No more unnecessary complete page reloads!"
+      title: "Obsession with Details (UI)",
+      description: "We know that visual appearance dictates trust. We design with a meticulous level of care so the platform screams 'Premium Quality' at first glance."
     },
     reason2: {
-      title: "You Have Control",
-      description: "Forget the fear of 'domain hijacking'. With Alliasoft, you own your digital assets. We advise you, but the ownership and control are yours."
+      title: "Workflow Analysts",
+      description: "Our engineers analyze how your business currently operates. If there's a repetitive manual process, we'll detect and automate it."
     },
     reason3: {
-      title: "Real Support, 24/7",
-      description: "We have agents ready to respond and solve your concerns 24/7. We don't leave you waiting days for a response. Your peace of mind is our priority."
+      title: "Adaptive Solutions",
+      description: "We understand that every business is a unique ecosystem. Our software architectures are born from listening to your problems, not selling pre-made templates."
     },
     reason4: {
-      title: "Unbeatable Prices",
-      description: "Being located in Colombia, we can offer you highly competitive rates for the US market without sacrificing quality or professionalism."
+      title: "Artificial Intelligence Agents",
+      description: "We are pioneers integrating networks like WhatsApp with robust CRMs to remove the heavy, repetitive load from your human talent."
     },
     reason5: {
-      title: "Allies, Not Just Providers",
-      description: "Our name says it all: Alliasoft. We want to be your long-term allies, understanding your needs and growing with you."
+      title: "Strategic Alignment",
+      description: "We consider ourselves allies. If we see something wrong in your operational scheme, we won't just program; we'll offer transparent consulting."
     },
     reason6: {
-      title: "SaaS Model and Scalable Solutions",
-      description: "We don't just offer one-time services. As a SaaS company, we also develop and offer more complex plans and custom solutions for clients with advanced needs."
+      title: "Performance Experts",
+      description: "We build ultra-fast and secure SaaS web applications. We make it fast so your users focus on their tasks and not on loading times."
     }
   },
   portfolio: {
@@ -298,8 +274,8 @@ export default {
     }
   },
   contact: {
-    heading: "Let's Talk About Your Project!",
-    subheading: "We're ready to be the software ally your business needs to succeed in the United States and beyond. Contact us today for a free consultation.",
+    heading: "Let's Start the Audit",
+    subheading: "Tell us about the biggest pain point in your corporate process today. Our consulting team will help you map it out and resolve it with high-level software.",
     email: {
       title: "Email",
       value: "alliasoft@gmail.com",
@@ -334,10 +310,10 @@ export default {
       message_placeholder: "Tell us more about your project...",
       submit: "Send Message",
       services: {
-        landing: "Landing Page",
-        hosting: "Hosting + Domain",
-        chatbot: "Chatbot Implementation",
-        maintenance: "Web Maintenance"
+        landing: "Process Audit",
+        hosting: "UX/UI Modernization",
+        chatbot: "Agent & AI Development",
+        maintenance: "Other B2B Consulting"
       }
     }
   },

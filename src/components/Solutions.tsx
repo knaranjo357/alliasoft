@@ -24,24 +24,24 @@ const SolutionItem: React.FC<SolutionItemProps> = ({ title, description, feature
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300"
+      className="relative bg-white rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-slate-100 overflow-hidden hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300"
     >
-      <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-blue-500 to-teal-500" />
+      <div className="absolute top-0 left-0 w-1.5 h-full bg-blue-500" />
       <div className="p-8">
-        <div className="flex items-start mb-6">
-          <div className="flex-shrink-0">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-teal-500 rounded-lg flex items-center justify-center text-white">
+        <div className="flex flex-col items-start mb-2">
+          <div className="flex-shrink-0 mb-4">
+            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 shadow-sm border border-blue-100/50">
               {icon}
             </div>
           </div>
-          <div className="ml-4">
-            <h3 className="text-xl font-bold text-gray-100 mb-2">{title}</h3>
-            <p className="text-gray-400 mb-4">{description}</p>
+          <div className="w-full">
+            <h3 className="text-xl font-bold text-slate-900 mb-2 tracking-tight">{title}</h3>
+            <p className="text-slate-600 mb-6 text-sm leading-relaxed">{description}</p>
             <div className="space-y-3">
               {features.map((feature, i) => (
                 <div key={i} className="flex items-start">
-                  <Star className="h-5 w-5 text-yellow-500 flex-shrink-0 mt-0.5" />
-                  <p className="ml-3 text-gray-300">{feature}</p>
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 mr-3 flex-shrink-0" />
+                  <p className="text-slate-700 text-sm font-medium">{feature}</p>
                 </div>
               ))}
             </div>
@@ -99,9 +99,8 @@ const Solutions: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-teal-50 relative overflow-hidden">
+    <section className="py-24 px-4 bg-[#FAFAFA] relative overflow-hidden border-b border-gray-100">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[length:20px_20px]" />
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -112,13 +111,13 @@ const Solutions: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-100 mb-6 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
             {t('solutions.heading')}
           </h2>
-          <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-6">
+          <h3 className="text-xl md:text-2xl font-medium text-blue-600 mb-6">
             {t('solutions.subheading')}
           </h3>
-          <p className="text-gray-400 text-lg leading-relaxed">
+          <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto">
             {t('solutions.description')}
           </p>
         </motion.div>
@@ -144,10 +143,10 @@ const Solutions: React.FC = () => {
         >
           <a
             href="#contact"
-            className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-medium rounded-lg shadow-lg hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-300"
+            className="inline-flex items-center px-8 py-4 bg-slate-900 text-white font-medium rounded-xl shadow-[0_4px_14px_0_rgba(15,23,42,0.39)] hover:shadow-[0_6px_20px_rgba(15,23,42,0.23)] hover:-translate-y-1 transition-all duration-300"
           >
             {t('solutions.cta')}
-            <Rocket className="w-5 h-5 ml-2 animate-pulse" />
+            <Rocket className="w-5 h-5 ml-2" />
           </a>
         </motion.div>
       </div>

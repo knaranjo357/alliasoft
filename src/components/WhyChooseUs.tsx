@@ -23,19 +23,13 @@ const ReasonCard: React.FC<ReasonCardProps> = ({ title, description, icon, index
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ scale: 1.05, y: -5 }}
-      className="relative bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl shadow-xl overflow-hidden group"
+      whileHover={{ scale: 1.02, y: -5 }}
+      className="relative bg-white border border-slate-100 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] overflow-hidden group hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300"
     >
-      {/* Animated gradient border */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ padding: '2px' }}>
-        <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl" />
-      </div>
 
       <div className="relative p-8">
         <motion.div 
-          className="w-16 h-16 bg-gradient-to-br from-blue-100 to-teal-100 rounded-2xl flex items-center justify-center mb-6 group-hover:shadow-lg transition-all duration-300"
-          whileHover={{ rotate: 360 }}
-          transition={{ duration: 0.5 }}
+          className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors duration-300"
         >
           <div className="text-blue-600">
             {icon}
@@ -43,7 +37,7 @@ const ReasonCard: React.FC<ReasonCardProps> = ({ title, description, icon, index
         </motion.div>
 
         <motion.h3 
-          className="text-xl font-bold text-gray-100 mb-4 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent"
+          className="text-xl font-bold text-slate-900 mb-3 tracking-tight"
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
           transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
@@ -52,17 +46,13 @@ const ReasonCard: React.FC<ReasonCardProps> = ({ title, description, icon, index
         </motion.h3>
 
         <motion.p 
-          className="text-gray-400 leading-relaxed"
+          className="text-slate-600 leading-relaxed text-[0.95rem]"
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
           transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
         >
           {description}
         </motion.p>
-
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-500/5 to-teal-500/5 rounded-bl-full transform group-hover:scale-150 transition-transform duration-500" />
-        <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-blue-500/5 to-teal-500/5 rounded-tr-full transform group-hover:scale-150 transition-transform duration-500" />
       </div>
     </motion.div>
   );
@@ -109,31 +99,7 @@ const WhyChooseUs: React.FC = () => {
   ];
 
   return (
-    <section id="why-us" className="py-20 px-4 bg-gradient-to-br from-blue-50 to-teal-50 relative overflow-hidden">
-      {/* Animated background pattern */}
-      <div className="absolute inset-0 bg-grid-white pointer-events-none" />
-      
-      {/* Floating decorative elements */}
-      {Array.from({ length: 3 }).map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute hidden md:block w-64 h-64 bg-gradient-to-br from-blue-500/5 to-teal-500/5 rounded-full"
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            delay: i * 2,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          style={{
-            top: `${20 + i * 30}%`,
-            left: `${10 + i * 30}%`,
-          }}
-        />
-      ))}
+    <section id="why-us" className="py-24 px-4 bg-white relative overflow-hidden border-b border-gray-100">
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
@@ -143,10 +109,10 @@ const WhyChooseUs: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-100 mb-6 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
             {t('whyUs.heading')}
           </h2>
-          <p className="text-gray-400 text-lg leading-relaxed">
+          <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto">
             {t('whyUs.subheading')}
           </p>
         </motion.div>
