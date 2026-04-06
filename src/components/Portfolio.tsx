@@ -31,9 +31,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, ima
       onMouseLeave={() => setIsHovered(false)}
     >
       <a href={url} target="_blank" rel="noopener noreferrer" className="block">
-        <div className="h-72 bg-gradient-to-br from-blue-400 to-teal-400 relative overflow-hidden">
+        <div className="h-72 bg-gradient-to-br from-slate-800 via-slate-900 to-black relative overflow-hidden border border-slate-700/50">
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-4xl font-bold text-white opacity-20">{title}</span>
+            <span className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent opacity-80 text-center px-4">{title}</span>
           </div>
         </div>
         
@@ -53,7 +53,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, ima
             {tags.map((tag, i) => (
               <span
                 key={i}
-                className="px-2 py-1 text-xs bg-white/20 text-white rounded-full"
+                className="px-2 py-1 text-xs bg-slate-900/40 backdrop-blur-md border border-slate-800/20 text-white rounded-full"
               >
                 {tag}
               </span>
@@ -111,7 +111,7 @@ const Portfolio: React.FC = () => {
   ];
 
   return (
-    <section id="portfolio" className="py-20 px-4 bg-white">
+    <section id="portfolio" className="py-20 px-4 bg-gray-950">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           ref={ref}
@@ -120,10 +120,10 @@ const Portfolio: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
             {t('portfolio.heading')}
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-400 text-lg">
             {t('portfolio.subheading')}
           </p>
         </motion.div>

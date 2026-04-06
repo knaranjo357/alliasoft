@@ -24,11 +24,11 @@ const ReasonCard: React.FC<ReasonCardProps> = ({ title, description, icon, index
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ scale: 1.05, y: -5 }}
-      className="relative bg-white rounded-2xl shadow-xl overflow-hidden group"
+      className="relative bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl shadow-xl overflow-hidden group"
     >
       {/* Animated gradient border */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ padding: '2px' }}>
-        <div className="absolute inset-0 bg-white rounded-2xl" />
+        <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl" />
       </div>
 
       <div className="relative p-8">
@@ -43,7 +43,7 @@ const ReasonCard: React.FC<ReasonCardProps> = ({ title, description, icon, index
         </motion.div>
 
         <motion.h3 
-          className="text-xl font-bold text-gray-900 mb-4 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent"
+          className="text-xl font-bold text-gray-100 mb-4 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent"
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
           transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
@@ -52,7 +52,7 @@ const ReasonCard: React.FC<ReasonCardProps> = ({ title, description, icon, index
         </motion.h3>
 
         <motion.p 
-          className="text-gray-600 leading-relaxed"
+          className="text-gray-400 leading-relaxed"
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
           transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
@@ -143,10 +143,10 @@ const WhyChooseUs: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-100 mb-6 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
             {t('whyUs.heading')}
           </h2>
-          <p className="text-gray-600 text-lg leading-relaxed">
+          <p className="text-gray-400 text-lg leading-relaxed">
             {t('whyUs.subheading')}
           </p>
         </motion.div>

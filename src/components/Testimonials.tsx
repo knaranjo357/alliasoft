@@ -20,19 +20,19 @@ const Testimonial: React.FC<TestimonialProps> = ({ quote, name, position, isActi
       transition={{ duration: 0.5 }}
       className={`absolute top-0 left-0 right-0 ${isActive ? 'z-10' : 'z-0'}`}
     >
-      <div className="bg-white rounded-xl shadow-lg p-8 relative">
+      <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-xl shadow-lg p-8 relative">
         <Quote className="w-12 h-12 text-blue-100 absolute top-4 left-4" />
         
         <div className="relative z-10">
-          <p className="text-gray-700 text-lg italic mb-6 relative z-10">"{quote}"</p>
+          <p className="text-gray-300 text-lg italic mb-6 relative z-10">"{quote}"</p>
           
           <div className="flex items-center">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-teal-400 rounded-full flex items-center justify-center text-white font-bold">
               {name.split(' ').map(part => part[0]).join('')}
             </div>
             <div className="ml-4">
-              <h4 className="text-lg font-semibold text-gray-900">{name}</h4>
-              <p className="text-gray-500">{position}</p>
+              <h4 className="text-lg font-semibold text-gray-100">{name}</h4>
+              <p className="text-gray-400">{position}</p>
             </div>
           </div>
         </div>
@@ -103,10 +103,10 @@ const Testimonials: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
             {t('testimonials.heading')}
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-400 text-lg">
             {t('testimonials.subheading')}
           </p>
         </motion.div>

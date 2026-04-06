@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
       id="home" 
       className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, rgba(37,99,235,0.9) 0%, rgba(13,148,136,0.9) 100%)",
+        background: "linear-gradient(135deg, rgba(3,7,18,1) 0%, rgba(15,23,42,1) 100%)",
       }}
     >
       <motion.div 
@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
         {Array.from({ length: 20 }).map((_, index) => (
           <motion.div 
             key={index}
-            className="absolute bg-white/10 rounded-full animate-float"
+            className="absolute bg-slate-900/40 backdrop-blur-md border border-slate-800/10 rounded-full animate-float"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ 
@@ -128,7 +128,7 @@ const Hero: React.FC = () => {
           >
             <motion.a 
               href="#contact" 
-              className="px-8 py-3 bg-white text-blue-600 font-medium rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all hover:scale-105"
+              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-teal-500 text-white font-semibold rounded-lg shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(13,148,136,0.6)] transform hover:-translate-y-1 transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -136,7 +136,7 @@ const Hero: React.FC = () => {
             </motion.a>
             <motion.a 
               href="#services" 
-              className="px-8 py-3 bg-transparent border-2 border-white text-white font-medium rounded-lg hover:bg-white/10 transition-colors"
+              className="px-8 py-3 bg-transparent border-2 border-slate-700 text-gray-300 font-medium rounded-lg hover:bg-slate-800 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

@@ -8,7 +8,7 @@ export default {
     contact: "Contact"
   },
   language: "ES",
-  contact: {
+  contact_btn: {
     button: "Contact Us"
   },
   hero: {
@@ -246,31 +246,31 @@ export default {
   },
   portfolio: {
     heading: "Our Portfolio",
-    subheading: "Explore some of our most outstanding projects and discover what we can do for your business.",
+    subheading: "Explore some of our most outstanding projects and discover what we can achieve for your business through technology and Artificial Intelligence.",
     project1: {
-      title: "CompuYa Store",
-      description: "Computer sales store with fluid user experience optimized for conversions.",
-      tags: ["E-commerce", "Responsive Design", "SEO Optimization"]
+      title: "Conversational Agent for Tourism",
+      description: "Implementation of an AI Agent via WhatsApp for a travel company. It manages tour sales, schedules itineraries, and intelligently transfers to human intervention when needed.",
+      tags: ["WhatsApp AI", "Tourism", "Omnichannel Chatbot"]
     },
     project2: {
-      title: "Kevin Naranjo Portfolio",
-      description: "Personal portfolio for an engineer with elegant and professional design.",
-      tags: ["Portfolio", "Personal Branding", "UX/UI"]
+      title: "Gastronomic Ecosystem and POS",
+      description: "Immersive development for a restaurant: WhatsApp Agent for order taking (with dynamic schedules) integrated into a web platform for management and thermal receipt printing at POS.",
+      tags: ["POS Systems", "AI Agent", "Web Automation"]
     },
     project3: {
-      title: "Gómez & Associates",
-      description: "Law firm with professional design focused on legal solutions for companies.",
-      tags: ["Legal Services", "Corporate Design", "Lead Generation"]
+      title: "Logistics Agent and Integrated CRM",
+      description: "Comprehensive solution for technical service. An AI agent coordinates schedules and dispatches, while sending real-time data to a custom CRM for the logistics team's control.",
+      tags: ["Custom CRM", "Logistics", "WhatsApp Bots"]
     },
     project4: {
-      title: "Casa Mateo",
-      description: "Colombian restaurant in Chicago with attractive design and online reservation functionality.",
-      tags: ["Restaurant", "Online Reservations", "Gastronomic Design"]
+      title: "International E-Commerce for Gamers",
+      description: "High-performance virtual store explicitly designed and implemented for the United States market, competing with a UX/UI oriented towards fast conversions.",
+      tags: ["E-commerce", "US Market", "React & Vite"]
     },
     project5: {
-      title: "Latinos Barber Shop",
-      description: "Barbershop in Chicago with appointment system and style gallery.",
-      tags: ["Barbershop", "Appointment System", "Modern Design"]
+      title: "AI-Powered Kids Fashion Store",
+      description: "Sales platform for children's clothing and fashion, accompanied by an automated agent that facilitates frictionless catalog exploration and 24/7 order capture.",
+      tags: ["Smart Retail", "24/7 Support", "Fashion & Tech"]
     }
   },
   testimonials: {

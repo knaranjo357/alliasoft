@@ -43,7 +43,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
     >
       {/* Animated gradient border */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-teal-500 opacity-0 hover:opacity-100 transition-opacity duration-300" style={{ padding: '2px' }}>
-        <div className="absolute inset-0 bg-white rounded-2xl" />
+        <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl" />
       </div>
 
       {popular && (
@@ -70,7 +70,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
             {index === 2 && '💬'}
             {index === 3 && '🛠️'}
           </div>
-          <h3 className="ml-3 text-xl font-semibold text-gray-900">{title}</h3>
+          <h3 className="ml-3 text-xl font-semibold text-gray-100">{title}</h3>
         </div>
         
         <div className="flex items-baseline mb-4">
@@ -78,11 +78,11 @@ const PricingCard: React.FC<PricingCardProps> = ({
             {price}
           </span>
           {period && (
-            <span className="ml-2 text-gray-500">{period}</span>
+            <span className="ml-2 text-gray-400">{period}</span>
           )}
         </div>
         
-        <p className="text-gray-600 mb-8 leading-relaxed">{description}</p>
+        <p className="text-gray-400 mb-8 leading-relaxed">{description}</p>
         
         <ul className="space-y-4 mb-8">
           {features.map((feature, i) => (
@@ -98,7 +98,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
                   <Check className="w-3 h-3 text-green-600" />
                 </div>
               </div>
-              <span className="ml-3 text-gray-700">{feature}</span>
+              <span className="ml-3 text-gray-300">{feature}</span>
             </motion.li>
           ))}
         </ul>
@@ -109,7 +109,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
           className={`w-full py-4 px-6 rounded-xl font-medium transition-all duration-300 ${
             popular
               ? 'bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white shadow-lg hover:shadow-xl'
-              : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+              : 'bg-slate-800/80 hover:bg-gray-200 text-gray-100'
           }`}
         >
           {cta}
@@ -199,13 +199,13 @@ const Pricing: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-100 mb-6 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
             {t('pricing.heading')}
           </h2>
           <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-6">
             {t('pricing.subheading')}
           </h3>
-          <p className="text-gray-600 text-lg leading-relaxed">
+          <p className="text-gray-400 text-lg leading-relaxed">
             {t('pricing.description')}
           </p>
         </motion.div>

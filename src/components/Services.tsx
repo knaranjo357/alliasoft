@@ -34,11 +34,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col h-full transform hover:scale-105 transition-all duration-300 relative group"
+      className="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl shadow-xl overflow-hidden flex flex-col h-full transform hover:scale-105 transition-all duration-300 relative group"
     >
       {/* Gradient Border */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ padding: '2px' }}>
-        <div className="absolute inset-0 bg-white rounded-2xl" />
+        <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl" />
       </div>
 
       <div className="relative">
@@ -46,7 +46,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         <div className="bg-gradient-to-r from-blue-600 to-teal-500 p-8 relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-white/[0.05]" />
           <motion.div 
-            className="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full"
+            className="absolute -right-4 -top-4 w-24 h-24 bg-slate-900/40 backdrop-blur-md border border-slate-800/10 rounded-full"
             animate={{
               scale: [1, 1.2, 1],
               rotate: [0, 90, 0],
@@ -59,7 +59,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           />
           
           <div className="flex items-center mb-4">
-            <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center text-white">
+            <div className="w-12 h-12 bg-slate-900/40 backdrop-blur-md border border-slate-800/20 rounded-lg flex items-center justify-center text-white">
               {icon}
             </div>
           </div>
@@ -70,7 +70,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       </div>
       
       <div className="p-8 flex-grow relative">
-        <p className="text-gray-600 mb-6 leading-relaxed">{description}</p>
+        <p className="text-gray-400 mb-6 leading-relaxed">{description}</p>
         
         <ul className="space-y-4 mb-8">
           {features.map((feature, i) => (
@@ -82,7 +82,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               transition={{ duration: 0.3, delay: 0.1 * i }}
             >
               <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-              <span className="ml-3 text-gray-700">{feature}</span>
+              <span className="ml-3 text-gray-300">{feature}</span>
             </motion.li>
           ))}
         </ul>
@@ -162,7 +162,7 @@ const Services: React.FC = () => {
           <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-6">
             {t('services.subheading')}
           </h3>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-400 text-lg">
             {t('services.description')}
           </p>
         </motion.div>

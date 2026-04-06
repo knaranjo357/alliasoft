@@ -34,7 +34,7 @@ const Header: React.FC = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+      isScrolled ? 'bg-gray-950/80 backdrop-blur-md shadow-[0_4_12px_rgba(0,0,0,0.5)] py-2' : 'bg-transparent py-4'
     }`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
@@ -50,8 +50,8 @@ const Header: React.FC = () => {
               <a 
                 key={item.key}
                 href={item.href} 
-                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
-                  isScrolled ? 'text-gray-800' : 'text-white'
+                className={`text-sm font-medium transition-colors hover:text-primary ${
+                  isScrolled ? 'text-gray-200' : 'text-white'
                 }`}
               >
                 {t(`nav.${item.key}`)}
@@ -62,7 +62,7 @@ const Header: React.FC = () => {
           <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={toggleLanguage}
-              className="flex items-center px-3 py-1 text-sm font-medium rounded-md transition-colors hover:bg-gray-100"
+              className="flex items-center px-3 py-1 text-sm font-medium rounded-md transition-colors hover:bg-slate-800/80"
             >
               <img 
                 src={i18n.language === 'en' 
@@ -101,7 +101,7 @@ const Header: React.FC = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`p-2 rounded-md ${
-                isScrolled ? 'text-gray-800' : 'text-white'
+                isScrolled ? 'text-gray-200' : 'text-white'
               }`}
             >
               {isMobileMenuOpen ? (
@@ -122,14 +122,14 @@ const Header: React.FC = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white"
+            className="md:hidden bg-slate-900/40 backdrop-blur-md border border-slate-800"
           >
             <div className="py-2 px-4 space-y-1">
               {navItems.map(item => (
                 <a
                   key={item.key}
                   href={item.href}
-                  className="block py-2 text-base font-medium text-gray-800 hover:text-blue-600"
+                  className="block py-2 text-base font-medium text-gray-200 hover:text-blue-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t(`nav.${item.key}`)}

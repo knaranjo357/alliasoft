@@ -72,7 +72,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 bg-white">
+    <section id="contact" className="py-20 px-4 bg-slate-900/40 backdrop-blur-md border border-slate-800">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           ref={ref}
@@ -81,10 +81,10 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
             {t('contact.heading')}
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-400 text-lg">
             {t('contact.subheading')}
           </p>
         </motion.div>
@@ -102,12 +102,12 @@ const Contact: React.FC = () => {
                     delay: index * 0.1,
                     ease: [0.22, 1, 0.36, 1]
                   }}
-                  className="bg-gray-50 p-6 rounded-lg transform hover:scale-105 transition-all duration-300"
+                  className="bg-slate-800/50 p-6 rounded-lg transform hover:scale-105 transition-all duration-300"
                 >
                   <div className="flex items-start">
                     <div className="flex-shrink-0">{method.icon}</div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-medium text-gray-900">{method.title}</h3>
+                      <h3 className="text-lg font-medium text-gray-100">{method.title}</h3>
                       {method.link ? (
                         <a 
                           href={method.link}
@@ -120,7 +120,7 @@ const Contact: React.FC = () => {
                       ) : (
                         <p className="text-blue-600 font-semibold">{method.value}</p>
                       )}
-                      <p className="text-gray-500 text-sm mt-1">{method.description}</p>
+                      <p className="text-gray-400 text-sm mt-1">{method.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -142,8 +142,8 @@ const Contact: React.FC = () => {
                   <CheckCircle className="w-8 h-8 text-green-500" />
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-lg font-medium text-gray-900">{t('contact.guarantee.title')}</h3>
-                  <p className="text-gray-600 mt-1">{t('contact.guarantee.description')}</p>
+                  <h3 className="text-lg font-medium text-gray-100">{t('contact.guarantee.title')}</h3>
+                  <p className="text-gray-400 mt-1">{t('contact.guarantee.description')}</p>
                 </div>
               </div>
             </motion.div>
@@ -157,20 +157,20 @@ const Contact: React.FC = () => {
               delay: 0.2,
               ease: [0.22, 1, 0.36, 1]
             }}
-            className="bg-white rounded-lg shadow-xl p-8"
+            className="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-lg shadow-xl p-8"
           >
             {isSubmitted ? (
               <div className="text-center py-12">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-6">
                   <CheckCircle className="w-8 h-8 text-green-500" />
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2">Thank you!</h3>
-                <p className="text-gray-600">Your message has been sent successfully. We'll get back to you shortly.</p>
+                <h3 className="text-2xl font-semibold text-gray-100 mb-2">Thank you!</h3>
+                <p className="text-gray-400">Your message has been sent successfully. We'll get back to you shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
                 <div className="mb-6">
-                  <label htmlFor="fullname" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="fullname" className="block text-sm font-medium text-gray-300 mb-2">
                     {t('contact.form.fullname')}
                   </label>
                   <input
@@ -186,7 +186,7 @@ const Contact: React.FC = () => {
                 </div>
                 
                 <div className="mb-6">
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                     {t('contact.form.email')}
                   </label>
                   <input
@@ -202,7 +202,7 @@ const Contact: React.FC = () => {
                 </div>
                 
                 <div className="mb-6">
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
                     {t('contact.form.service')}
                   </label>
                   <select
@@ -220,7 +220,7 @@ const Contact: React.FC = () => {
                 </div>
                 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                     {t('contact.form.message')}
                   </label>
                   <textarea

@@ -33,9 +33,9 @@ function App() {
   }, [i18n]);
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-gray-950 text-gray-100 font-sans overflow-x-hidden">
       <Header />
-      <main>
+      <main className="relative bg-gray-950">
         <Hero />
         <Features />
         <Solutions />

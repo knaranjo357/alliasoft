@@ -24,7 +24,7 @@ const SolutionItem: React.FC<SolutionItemProps> = ({ title, description, feature
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300"
+      className="relative bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300"
     >
       <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-blue-500 to-teal-500" />
       <div className="p-8">
@@ -35,13 +35,13 @@ const SolutionItem: React.FC<SolutionItemProps> = ({ title, description, feature
             </div>
           </div>
           <div className="ml-4">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
-            <p className="text-gray-600 mb-4">{description}</p>
+            <h3 className="text-xl font-bold text-gray-100 mb-2">{title}</h3>
+            <p className="text-gray-400 mb-4">{description}</p>
             <div className="space-y-3">
               {features.map((feature, i) => (
                 <div key={i} className="flex items-start">
                   <Star className="h-5 w-5 text-yellow-500 flex-shrink-0 mt-0.5" />
-                  <p className="ml-3 text-gray-700">{feature}</p>
+                  <p className="ml-3 text-gray-300">{feature}</p>
                 </div>
               ))}
             </div>
@@ -112,13 +112,13 @@ const Solutions: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-100 mb-6 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
             {t('solutions.heading')}
           </h2>
           <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-6">
             {t('solutions.subheading')}
           </h3>
-          <p className="text-gray-600 text-lg leading-relaxed">
+          <p className="text-gray-400 text-lg leading-relaxed">
             {t('solutions.description')}
           </p>
         </motion.div>

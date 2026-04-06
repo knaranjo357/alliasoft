@@ -25,7 +25,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, del
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
       whileHover={{ scale: 1.05, y: -5 }}
-      className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform"
+      className="bg-slate-900/40 backdrop-blur-md border border-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform"
     >
       <motion.div 
         className="bg-gradient-to-br from-blue-50 to-teal-50 p-4 rounded-full mb-6 w-16 h-16 flex items-center justify-center"
@@ -41,7 +41,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, del
         {title}
       </h3>
       
-      <p className="text-gray-600 leading-relaxed">
+      <p className="text-gray-400 leading-relaxed">
         {description}
       </p>
     </motion.div>
@@ -57,7 +57,7 @@ const Features: React.FC = () => {
   });
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section className="py-20 px-4 bg-gray-950 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-white pointer-events-none" />
       
       <div className="container mx-auto max-w-6xl relative">
@@ -87,7 +87,7 @@ const Features: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-          className="text-center mt-16 text-gray-500 flex items-center justify-center"
+          className="text-center mt-16 text-gray-400 flex items-center justify-center"
         >
           <motion.div
             animate={{ 

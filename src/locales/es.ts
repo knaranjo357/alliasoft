@@ -8,7 +8,7 @@ export default {
     contact: "Contacto"
   },
   language: "EN",
-  contact: {
+  contact_btn: {
     button: "Contáctanos"
   },
   hero: {
@@ -246,31 +246,31 @@ export default {
   },
   portfolio: {
     heading: "Nuestro Portafolio",
-    subheading: "Explora algunos de nuestros proyectos más destacados y descubre lo que podemos hacer por tu negocio.",
+    subheading: "Explora algunos de nuestros proyectos más destacados y descubre lo que podemos lograr por tu negocio mediante tecnología e Inteligencia Artificial.",
     project1: {
-      title: "CompuYa Store",
-      description: "Tienda de venta de computadores con experiencia de usuario fluida y optimizada para conversiones.",
-      tags: ["E-commerce", "Diseño Responsive", "Optimización SEO"]
+      title: "Agente Conversacional para Turismo",
+      description: "Implementación de un Agente IA por WhatsApp para empresa de viajes. Gestiona venta de tours, agendamiento de actividades y transfiere inteligentemente a intervención humana cuando es necesario.",
+      tags: ["WhatsApp IA", "Turismo", "Chatbot Omnicanal"]
     },
     project2: {
-      title: "Kevin Naranjo Portfolio",
-      description: "Portafolio personal para ingeniero con diseño elegante y profesional.",
-      tags: ["Portafolio", "Personal Branding", "UX/UI"]
+      title: "Ecosistema Gastronómico y Punto de Venta (POS)",
+      description: "Desarrollo inmersivo para restaurante: Agente de WhatsApp para toma de pedidos (con guardias por horarios) integrado a una plataforma web de gestión y facturación térmica en punto de venta.",
+      tags: ["Sistemas POS", "Agente IA", "Automatización Web"]
     },
     project3: {
-      title: "Gómez & Asociados",
-      description: "Firma de abogados con diseño profesional enfocado en soluciones legales para empresas.",
-      tags: ["Servicios Legales", "Diseño Corporativo", "Lead Generation"]
+      title: "Agente Logístico y CRM Integrado",
+      description: "Solución integral para servicio técnico. Un agente IA coordina agendas y despachos, mientras envía los datos en tiempo real al CRM (Gestión de Relaciones con el Cliente) para el control del equipo logístico.",
+      tags: ["CRM Desarrollo", "Logística", "WhatsApp Bots"]
     },
     project4: {
-      title: "Casa Mateo",
-      description: "Restaurante colombiano en Chicago con diseño atractivo y funcionalidades de reservas online.",
-      tags: ["Restaurante", "Reservas Online", "Diseño Gastronómico"]
+      title: "E-Commerce Internacional para Gamers",
+      description: "Tienda virtual de alto rendimiento diseñada e implementada explícitamente para el mercado de Estados Unidos, compitiendo con una UX/UI orientada a conversiones rápidas.",
+      tags: ["E-commerce", "Mercado USA", "React y Vite"]
     },
     project5: {
-      title: "Latinos Barber Shop",
-      description: "Barbería en Chicago con sistema de citas y galería de estilos.",
-      tags: ["Barbería", "Sistema de Citas", "Diseño Moderno"]
+      title: "Tienda de Moda Infantil Potenciada por IA",
+      description: "Plataforma de ventas para ropa y moda, acompañada de un agente automatizado que facilita la exploración de catálogos y captura de pedidos 24/7 sin fricción.",
+      tags: ["Retail Inteligente", "Atención 24/7", "Moda y Tech"]
     }
   },
   testimonials: {
