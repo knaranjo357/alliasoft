@@ -11,7 +11,7 @@ const ChatWidget: React.FC = () => {
       apiHost="https://proyecto-flowise.latiyp.easypanel.host"
       theme={{    
         button: {
-          backgroundColor: '#2563eb',
+          backgroundColor: '#0f172a',
           right: 20,
           bottom: 20,
           size: 48,
@@ -35,7 +35,7 @@ const ChatWidget: React.FC = () => {
           title: t('chat.disclaimer'),
           message: t('chat.disclaimer'),
           textColor: 'black',
-          buttonColor: '#2563eb',
+          buttonColor: '#0f172a',
           buttonText: t('chat.startChat'),
           buttonTextColor: 'white',
           blurredBackgroundColor: 'rgba(0, 0, 0, 0.4)',
@@ -68,7 +68,7 @@ const ChatWidget: React.FC = () => {
             avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png'
           },
           userMessage: {
-            backgroundColor: '#2563eb',
+            backgroundColor: '#0f172a',
             textColor: '#ffffff',
             showAvatar: true,
             avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png'
@@ -77,7 +77,7 @@ const ChatWidget: React.FC = () => {
             placeholder: t('chat.placeholder'),
             backgroundColor: '#ffffff',
             textColor: '#303235',
-            sendButtonColor: '#2563eb',
+            sendButtonColor: '#0f172a',
             maxChars: 500,
             maxCharsWarningMessage: 'Message is too long. Please keep it under 500 characters.',
             autoFocus: true,

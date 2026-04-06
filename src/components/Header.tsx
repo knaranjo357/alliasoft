@@ -15,10 +15,7 @@ const Header: React.FC = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -31,119 +28,60 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-gray-950/80 backdrop-blur-md shadow-[0_4_12px_rgba(0,0,0,0.5)] py-2' : 'bg-transparent py-4'
-    }`}>
-      <div className="container mx-auto px-4 md:px-6">
+    <header className="fixed top-0 left-0 right-0 z-50 pt-6 px-4 md:px-0 flex justify-center pointer-events-none">
+      <div className={`pointer-events-auto transition-all duration-500 ease-[0.22,1,0.36,1] w-full max-w-5xl rounded-[2rem] border ${isScrolled ? 'bg-white/80 backdrop-blur-2xl border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] py-3 px-6' : 'bg-transparent border-transparent py-4 px-6'}`}>
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center">
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
+            <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent tracking-tight">
               Alliasoft
             </span>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-8">
             {navItems.map(item => (
-              <a 
-                key={item.key}
-                href={item.href} 
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isScrolled ? 'text-gray-200' : 'text-white'
-                }`}
-              >
+              <a key={item.key} href={item.href} className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors tracking-wide">
                 {t(`nav.${item.key}`)}
               </a>
             ))}
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center px-3 py-1 text-sm font-medium rounded-md transition-colors hover:bg-slate-800/80"
-            >
-              <img 
-                src={i18n.language === 'en' 
-                  ? "https://flagcdn.com/w40/us.png"
-                  : "https://flagcdn.com/w40/es.png"
-                }
-                alt={i18n.language === 'en' ? "English" : "Español"}
-                className="w-6 h-4 mr-2"
-              />
-              <span>{t('language')}</span>
+            <button onClick={toggleLanguage} className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 transition-colors">
+              <img src={i18n.language === 'en' ? "https://flagcdn.com/w40/us.png" : "https://flagcdn.com/w40/es.png"} alt="Language" className="w-5 h-5 rounded-sm object-cover" />
             </button>
             
-            <a
-              href="#contact"
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
-            >
+            <a href="#contact" className="px-6 py-3 text-sm font-bold text-white bg-slate-900 rounded-full shadow-[0_4px_14px_rgba(15,23,42,0.15)] hover:shadow-[0_6px_20px_rgba(15,23,42,0.2)] hover:-translate-y-0.5 transition-all">
               {t('nav.contact')}
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center space-x-2">
-            <button
-              onClick={toggleLanguage}
-              className="p-2 rounded-md"
-            >
-              <img 
-                src={i18n.language === 'en' 
-                  ? "https://flagcdn.com/w40/us.png"
-                  : "https://flagcdn.com/w40/es.png"
-                }
-                alt={i18n.language === 'en' ? "English" : "Español"}
-                className="w-6 h-4"
-              />
+            <button onClick={toggleLanguage} className="p-2 rounded-full hover:bg-black/5">
+              <img src={i18n.language === 'en' ? "https://flagcdn.com/w40/us.png" : "https://flagcdn.com/w40/es.png"} alt="Language" className="w-5 h-5 rounded-sm object-cover" />
             </button>
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-md ${
-                isScrolled ? 'text-gray-200' : 'text-white'
-              }`}
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 text-slate-900 hover:bg-black/5 rounded-full">
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Navigation */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-slate-900/40 backdrop-blur-md border border-slate-800"
-          >
-            <div className="py-2 px-4 space-y-1">
-              {navItems.map(item => (
-                <a
-                  key={item.key}
-                  href={item.href}
-                  className="block py-2 text-base font-medium text-gray-200 hover:text-blue-600"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {t(`nav.${item.key}`)}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="md:hidden overflow-hidden mt-4 pt-4 border-t border-black/5">
+              <div className="flex flex-col space-y-4 pb-4">
+                {navItems.map(item => (
+                  <a key={item.key} href={item.href} className="text-base font-bold text-slate-700 hover:text-blue-600 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    {t(`nav.${item.key}`)}
+                  </a>
+                ))}
+                <a href="#contact" className="text-center text-base font-bold text-white bg-slate-900 rounded-full py-3 mt-2" onClick={() => setIsMobileMenuOpen(false)}>
+                  {t('nav.contact')}
                 </a>
-              ))}
-              <a
-                href="#contact"
-                className="block py-2 mt-2 text-center text-base font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t('nav.contact')}
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </header>
   );
 };
