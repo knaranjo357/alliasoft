@@ -72,7 +72,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 bg-slate-900/40 backdrop-blur-md border border-slate-800">
+    <section id="contact" className="py-24 px-4 bg-[#FAFAFA]">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           ref={ref}
@@ -81,10 +81,10 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
             {t('contact.heading')}
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
             {t('contact.subheading')}
           </p>
         </motion.div>
@@ -102,25 +102,25 @@ const Contact: React.FC = () => {
                     delay: index * 0.1,
                     ease: [0.22, 1, 0.36, 1]
                   }}
-                  className="bg-slate-800/50 p-6 rounded-lg transform hover:scale-105 transition-all duration-300"
+                  className="bg-white border border-slate-100 p-6 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] transform hover:scale-105 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300"
                 >
                   <div className="flex items-start">
-                    <div className="flex-shrink-0">{method.icon}</div>
+                    <div className="flex-shrink-0 bg-slate-50 p-3 rounded-xl border border-slate-100/50">{method.icon}</div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-medium text-gray-100">{method.title}</h3>
+                      <h3 className="text-base font-bold text-slate-900 mb-1">{method.title}</h3>
                       {method.link ? (
                         <a 
                           href={method.link}
                           target={method.link.startsWith('http') ? '_blank' : undefined}
                           rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                          className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+                          className="text-blue-600 font-medium hover:text-blue-700 transition-colors block text-sm"
                         >
                           {method.value}
                         </a>
                       ) : (
-                        <p className="text-blue-600 font-semibold">{method.value}</p>
+                        <p className="text-blue-600 font-medium text-sm block">{method.value}</p>
                       )}
-                      <p className="text-gray-400 text-sm mt-1">{method.description}</p>
+                      <p className="text-slate-500 text-xs mt-1 font-medium tracking-wide uppercase">{method.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -135,15 +135,15 @@ const Contact: React.FC = () => {
                 delay: 0.4,
                 ease: [0.22, 1, 0.36, 1]
               }}
-              className="bg-gradient-to-br from-blue-50 to-teal-50 p-6 rounded-lg"
+              className="bg-gradient-to-br from-blue-50/50 to-teal-50/50 p-8 rounded-2xl border border-blue-100/50 shadow-sm"
             >
               <div className="flex items-start">
                 <div className="flex-shrink-0">
-                  <CheckCircle className="w-8 h-8 text-green-500" />
+                  <CheckCircle className="w-8 h-8 text-blue-600" />
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-lg font-medium text-gray-100">{t('contact.guarantee.title')}</h3>
-                  <p className="text-gray-400 mt-1">{t('contact.guarantee.description')}</p>
+                  <h3 className="text-lg font-bold text-slate-900 tracking-tight">{t('contact.guarantee.title')}</h3>
+                  <p className="text-slate-600 mt-2 text-sm leading-relaxed">{t('contact.guarantee.description')}</p>
                 </div>
               </div>
             </motion.div>
@@ -157,20 +157,20 @@ const Contact: React.FC = () => {
               delay: 0.2,
               ease: [0.22, 1, 0.36, 1]
             }}
-            className="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-lg shadow-xl p-8"
+            className="bg-white border border-slate-100 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-10"
           >
             {isSubmitted ? (
               <div className="text-center py-12">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-6">
-                  <CheckCircle className="w-8 h-8 text-green-500" />
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-50 text-blue-600 mb-6 shadow-sm border border-blue-100">
+                  <CheckCircle className="w-10 h-10" />
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-100 mb-2">Thank you!</h3>
-                <p className="text-gray-400">Your message has been sent successfully. We'll get back to you shortly.</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2 tracking-tight">¡Gracias!</h3>
+                <p className="text-slate-600">Tu mensaje ha sido enviado. Te contactaremos pronto.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
                 <div className="mb-6">
-                  <label htmlFor="fullname" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="fullname" className="block text-sm font-semibold text-slate-700 mb-2">
                     {t('contact.form.fullname')}
                   </label>
                   <input
@@ -180,13 +180,13 @@ const Contact: React.FC = () => {
                     value={formState.fullname}
                     onChange={handleChange}
                     placeholder={t('contact.form.fullname_placeholder')}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
                     required
                   />
                 </div>
                 
                 <div className="mb-6">
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
                     {t('contact.form.email')}
                   </label>
                   <input
@@ -196,13 +196,13 @@ const Contact: React.FC = () => {
                     value={formState.email}
                     onChange={handleChange}
                     placeholder={t('contact.form.email_placeholder')}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
                     required
                   />
                 </div>
                 
                 <div className="mb-6">
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="service" className="block text-sm font-semibold text-slate-700 mb-2">
                     {t('contact.form.service')}
                   </label>
                   <select
@@ -210,7 +210,7 @@ const Contact: React.FC = () => {
                     name="service"
                     value={formState.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
                   >
                     <option value="landing">{t('contact.form.services.landing')}</option>
                     <option value="hosting">{t('contact.form.services.hosting')}</option>
@@ -219,8 +219,8 @@ const Contact: React.FC = () => {
                   </select>
                 </div>
                 
-                <div className="mb-6">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                <div className="mb-8">
+                  <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
                     {t('contact.form.message')}
                   </label>
                   <textarea
@@ -230,14 +230,14 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     placeholder={t('contact.form.message_placeholder')}
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
                     required
                   ></textarea>
                 </div>
                 
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                  className="w-full py-4 px-4 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded-xl shadow-[0_4px_14px_0_rgba(15,23,42,0.2)] hover:shadow-[0_6px_20px_rgba(15,23,42,0.23)] transform hover:-translate-y-1 transition-all duration-300"
                 >
                   {t('contact.form.submit')}
                 </button>

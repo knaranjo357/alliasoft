@@ -23,37 +23,33 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, ima
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative overflow-hidden rounded-xl shadow-lg group"
+      className="relative bg-white border border-slate-100 overflow-hidden rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] group hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 flex flex-col"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <a href={url} target="_blank" rel="noopener noreferrer" className="block">
-        <div className="h-72 bg-gradient-to-br from-slate-800 via-slate-900 to-black relative overflow-hidden border border-slate-700/50">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent opacity-80 text-center px-4">{title}</span>
+      <a href={url} target="_blank" rel="noopener noreferrer" className="block flex-1 flex flex-col">
+        <div className="h-56 bg-slate-50 relative overflow-hidden flex-shrink-0 group-hover:scale-105 transition-transform duration-500 ease-out">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-teal-50/50 flex items-center justify-center">
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-slate-400 bg-clip-text text-transparent opacity-60 text-center px-4 mix-blend-multiply">{title}</span>
           </div>
         </div>
         
-        <div
-          className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 flex flex-col justify-end transform transition-transform duration-300 ${
-            isHovered ? 'translate-y-0' : 'translate-y-20'
-          }`}
-        >
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="text-xl font-bold text-white">{title}</h3>
-            <ExternalLink className="w-5 h-5 text-white" />
+        <div className="p-8 flex flex-col flex-1 bg-white relative z-10">
+          <div className="flex items-start justify-between mb-3">
+            <h3 className="text-xl font-bold text-slate-900 tracking-tight pr-4">{title}</h3>
+            <ExternalLink className={`w-5 h-5 flex-shrink-0 transition-colors ${isHovered ? 'text-blue-600' : 'text-slate-300'}`} />
           </div>
-          <p className="text-white/90 mb-4 text-sm">
+          <p className="text-slate-600 mb-6 text-sm leading-relaxed flex-1">
             {description}
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mt-auto">
             {tags.map((tag, i) => (
               <span
                 key={i}
-                className="px-2 py-1 text-xs bg-slate-900/40 backdrop-blur-md border border-slate-800/20 text-white rounded-full"
+                className="px-2.5 py-1 text-[0.7rem] uppercase tracking-wider font-semibold bg-slate-50 border border-slate-200 text-slate-500 rounded-lg"
               >
                 {tag}
               </span>
@@ -111,7 +107,7 @@ const Portfolio: React.FC = () => {
   ];
 
   return (
-    <section id="portfolio" className="py-20 px-4 bg-gray-950">
+    <section id="portfolio" className="py-24 px-4 bg-white border-b border-gray-100">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           ref={ref}
@@ -120,10 +116,10 @@ const Portfolio: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
             {t('portfolio.heading')}
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
             {t('portfolio.subheading')}
           </p>
         </motion.div>
