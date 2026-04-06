@@ -40,10 +40,10 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-bold mb-6 tracking-tight">{t('footer.services')}</h3>
             <ul className="space-y-4">
-              {[1, 2, 3, 4].map((num) => (
-                <li key={num}>
-                  <a href="#services" className="text-slate-500 hover:text-blue-600 transition-colors text-[0.95rem] font-medium">
-                    {t(`services.service${num}.title`)}
+              {['performance', 'design', 'control', 'experience'].map((key) => (
+                <li key={key}>
+                  <a href="#solutions" className="text-slate-500 hover:text-blue-600 transition-colors text-[0.95rem] font-medium">
+                    {t(`solutions.items.${key}.title`)}
                   </a>
                 </li>
               ))}
@@ -60,9 +60,9 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li className="flex flex-col mt-4">
-                <span className="text-sm font-bold text-slate-900 mb-1">{t('contact.phone.title')}</span>
-                <a href={`tel:${t('contact.phone.value')}`} className="text-slate-500 hover:text-blue-600 transition-colors text-[0.95rem] font-medium">
-                  {t('contact.phone.value')}
+                <span className="text-sm font-bold text-slate-900 mb-1">{t('contact.chat.title')}</span>
+                <a href="https://wa.me/573176964215" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-blue-600 transition-colors text-[0.95rem] font-medium">
+                  {t('contact.chat.value')}
                 </a>
               </li>
             </ul>

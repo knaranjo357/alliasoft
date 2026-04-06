@@ -6,7 +6,8 @@ import Features from './components/Features';
 import Solutions from './components/Solutions';
 import WhyChooseUs from './components/WhyChooseUs';
 import Portfolio from './components/Portfolio';
-import Testimonials from './components/Testimonials';
+import Process from './components/Process';
+import Sectors from './components/Sectors';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
@@ -37,9 +38,10 @@ function App() {
         <Hero />
         <Features />
         <Solutions />
-        <WhyChooseUs />
+        <Process />
         <Portfolio />
-        <Testimonials />
+        <Sectors />
+        <WhyChooseUs />
         <Contact />
       </main>
       <Footer />

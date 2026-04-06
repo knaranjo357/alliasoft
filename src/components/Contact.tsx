@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MessageSquare, Clock, CheckCircle } from 'lucide-react';
+import { Mail, MessageSquare, PhoneCall, CheckCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const { t } = useTranslation();
@@ -19,16 +19,17 @@ const Contact: React.FC = () => {
 
   const contactMethods = [
     { icon: <Mail className="w-6 h-6 text-blue-600" />, title: t('contact.email.title'), value: t('contact.email.value'), description: t('contact.email.description'), link: `mailto:${t('contact.email.value')}` },
-    { icon: <Phone className="w-6 h-6 text-blue-600" />, title: t('contact.phone.title'), value: t('contact.phone.value'), description: t('contact.phone.description'), link: `https://wa.me/573001002352` },
-    { icon: <MessageSquare className="w-6 h-6 text-indigo-600" />, title: "WhatsApp", value: "+57 300 100 2352", description: "Mensaje directo 24/7", link: `https://wa.me/573001002352?text=${encodeURIComponent("Hola, me gustaría obtener más información sobre sus servicios.")}` },
-    { icon: <Clock className="w-6 h-6 text-slate-600" />, title: t('contact.response.title'), value: t('contact.response.value'), description: t('contact.response.description') },
+    { icon: <MessageSquare className="w-6 h-6 text-indigo-600" />, title: t('contact.chat.title'), value: t('contact.chat.value'), description: t('contact.chat.description'), link: `https://wa.me/573176964215` },
+    { icon: <PhoneCall className="w-6 h-6 text-teal-600" />, title: t('contact.call.title'), value: t('contact.call.value'), description: t('contact.call.description') },
   ];
 
   return (
     <section id="contact" className="py-32 px-6 bg-[#FAFAFA] shrink-0">
       <div className="container mx-auto max-w-7xl">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } }} className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-sm font-semibold tracking-wider text-blue-600 uppercase mb-4 block">Contact</span>
+          <span className="text-sm font-semibold tracking-wider text-blue-600 uppercase mb-4 block">
+            {t('nav.contact')}
+          </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight leading-tight">{t('contact.heading')}</h2>
           <p className="text-slate-500 text-lg md:text-xl leading-relaxed">{t('contact.subheading')}</p>
         </motion.div>
@@ -51,14 +52,6 @@ const Contact: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-            
-            <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7 } } }} className="mt-12 bg-white shadow-sm p-8 rounded-[2rem] border border-black/[0.03] flex items-start">
-              <CheckCircle className="w-8 h-8 text-blue-600 shrink-0" />
-              <div className="ml-5">
-                <h3 className="text-lg font-bold text-slate-900 tracking-tight">{t('contact.guarantee.title')}</h3>
-                <p className="text-slate-600 mt-2 text-[0.95rem] leading-relaxed">{t('contact.guarantee.description')}</p>
-              </div>
-            </motion.div>
           </motion.div>
           
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } }} className="lg:col-span-7 bg-white rounded-[2.5rem] border border-black/[0.03] shadow-[0_8px_40px_rgb(0,0,0,0.02)] p-8 md:p-12 relative overflow-hidden">
@@ -96,7 +89,8 @@ const Contact: React.FC = () => {
                   <textarea id="message" name="message" value={formState.message} onChange={handleChange} placeholder={t('contact.form.message_placeholder')} rows={4} className="w-full px-5 py-4 rounded-2xl border border-black/[0.05] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 shadow-inner resize-none" required></textarea>
                 </div>
                 
-                <button type="submit" className="w-full py-5 px-6 bg-slate-900 hover:bg-black text-white font-semibold rounded-2xl shadow-[0_8px_20px_rgba(15,23,42,0.15)] hover:shadow-[0_12px_28px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-300 mt-2 text-lg">
+                <button type="submit" className="w-full py-5 px-6 bg-slate-900 hover:bg-black text-white font-semibold rounded-2xl shadow-[0_8px_20px_rgba(15,23,42,0.15)] hover:shadow-[0_12px_28px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-300 mt-2 text-lg flex justify-center items-center gap-3">
+                  <MessageSquare className="w-5 h-5" />
                   {t('contact.form.submit')}
                 </button>
               </form>

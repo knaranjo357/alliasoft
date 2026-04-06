@@ -66,11 +66,11 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col sm:flex-row justify-center items-center gap-4"
+            className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6"
           >
             <motion.a 
               href="#contact" 
-              className="px-10 py-5 bg-slate-900 text-white font-semibold rounded-full shadow-[0_8px_20px_rgba(15,23,42,0.15)] hover:shadow-[0_12px_28px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all flex items-center text-lg"
+              className="px-10 py-5 bg-slate-900 text-white font-semibold rounded-full shadow-[0_8px_20px_rgba(15,23,42,0.15)] hover:shadow-[0_12px_28px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all flex items-center text-lg w-full sm:w-auto justify-center"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -78,13 +78,22 @@ const Hero: React.FC = () => {
             </motion.a>
             <motion.a 
               href="#portfolio" 
-              className="px-10 py-5 bg-white border border-black/[0.05] text-slate-700 font-semibold rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all text-lg"
+              className="px-10 py-5 bg-white border border-black/[0.05] text-slate-700 font-semibold rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all text-lg w-full sm:w-auto justify-center"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               {t('hero.cta2')}
             </motion.a>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="text-slate-500 text-sm font-medium tracking-wide max-w-lg mx-auto"
+          >
+            {t('hero.support')}
+          </motion.p>
         </div>
       </div>
       
