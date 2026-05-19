@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -13,11 +14,11 @@ const itemVariants = {
 
 // Gradient accents per project category
 const projectAccents = [
-  { from: 'from-teal-400', to: 'to-emerald-500', label: 'Turismo' },
-  { from: 'from-amber-400', to: 'to-orange-500', label: 'Gastronomía' },
-  { from: 'from-blue-500', to: 'to-indigo-600', label: 'Logística' },
-  { from: 'from-violet-500', to: 'to-purple-600', label: 'E-commerce' },
-  { from: 'from-rose-400', to: 'to-pink-600', label: 'Retail' },
+  { from: 'from-teal-400', to: 'to-emerald-500', label: 'Turismo', pattern: 'radial-gradient(circle at 20% 80%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)' },
+  { from: 'from-amber-400', to: 'to-orange-500', label: 'Producto Propio', pattern: 'linear-gradient(135deg, white 2px, transparent 2px), linear-gradient(-135deg, white 2px, transparent 2px)' },
+  { from: 'from-blue-500', to: 'to-indigo-600', label: 'Logística', pattern: 'radial-gradient(circle, white 1px, transparent 1px)' },
+  { from: 'from-violet-500', to: 'to-purple-600', label: 'E-commerce', pattern: 'linear-gradient(45deg, white 1px, transparent 1px)' },
+  { from: 'from-rose-400', to: 'to-pink-600', label: 'Retail', pattern: 'radial-gradient(circle at 30% 70%, white 1.5px, transparent 1.5px)' },
 ];
 
 const Portfolio: React.FC = () => {
@@ -28,7 +29,7 @@ const Portfolio: React.FC = () => {
 
   const staticData = [
     { url: '#project-1' },
-    { url: '#project-2' },
+    { url: 'https://alliafood.com' },
     { url: '#project-3' },
     { url: '#project-4' },
     { url: '#project-5' },
@@ -41,8 +42,12 @@ const Portfolio: React.FC = () => {
   }));
 
   return (
-    <section id="portfolio" className="py-32 px-6 bg-[#FAFAFA]">
-      <div className="container mx-auto max-w-7xl">
+    <section id="portfolio" className="py-32 px-6 bg-[#FAFAFA] relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute top-[5%] left-[-8%] w-[35vw] h-[35vw] rounded-full bg-gradient-to-br from-violet-100/40 to-purple-100/30 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[-5%] w-[30vw] h-[30vw] rounded-full bg-gradient-to-br from-amber-100/30 to-orange-100/20 blur-[80px] pointer-events-none" />
+
+      <div className="container mx-auto max-w-7xl relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -56,7 +61,7 @@ const Portfolio: React.FC = () => {
           <span className="text-sm font-semibold tracking-wider text-blue-600 uppercase mb-4 block">
             {t('nav.portfolio')}
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
             {t('portfolio.heading')}
           </h2>
           <p className="text-slate-500 text-lg md:text-xl leading-relaxed">
@@ -78,20 +83,19 @@ const Portfolio: React.FC = () => {
               rel="noopener noreferrer"
               key={index}
               variants={itemVariants}
-              className="group flex flex-col bg-white rounded-[2rem] border border-black/[0.03] overflow-hidden hover:shadow-[0_24px_48px_rgb(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-1.5"
+              className="group flex flex-col bg-white rounded-[2rem] border border-black/[0.03] overflow-hidden hover:shadow-[0_24px_64px_rgb(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2"
             >
               {/* Color band header */}
-              <div className="h-52 relative overflow-hidden shrink-0">
+              <div className="h-56 relative overflow-hidden shrink-0">
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${project.accent.from} ${project.accent.to} group-hover:scale-105 transition-transform duration-700 ease-[0.22,1,0.36,1]`}
+                  className={`absolute inset-0 bg-gradient-to-br ${project.accent.from} ${project.accent.to} group-hover:scale-110 transition-transform duration-700 ease-[0.22,1,0.36,1]`}
                 />
                 {/* Decorative pattern overlay */}
                 <div
-                  className="absolute inset-0 opacity-10"
+                  className="absolute inset-0 opacity-[0.08]"
                   style={{
-                    backgroundImage:
-                      'radial-gradient(circle at 20% 80%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)',
-                    backgroundSize: '24px 24px',
+                    backgroundImage: project.accent.pattern,
+                    backgroundSize: '28px 28px',
                   }}
                 />
                 {/* Category label */}
@@ -102,6 +106,10 @@ const Portfolio: React.FC = () => {
                   <span className="text-white text-2xl font-black tracking-tight leading-snug max-w-[85%] drop-shadow-sm">
                     {project.title}
                   </span>
+                </div>
+                {/* External link icon */}
+                <div className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                  <ExternalLink className="w-4 h-4 text-white" />
                 </div>
               </div>
 
@@ -114,7 +122,7 @@ const Portfolio: React.FC = () => {
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1.5 text-[0.75rem] font-bold bg-slate-50 border border-slate-100 text-slate-700 rounded-full tracking-wide"
+                      className="px-3 py-1.5 text-[0.75rem] font-bold bg-slate-50 border border-slate-100 text-slate-700 rounded-full tracking-wide group-hover:bg-blue-50 group-hover:text-blue-700 group-hover:border-blue-100 transition-colors duration-300"
                     >
                       {tag}
                     </span>

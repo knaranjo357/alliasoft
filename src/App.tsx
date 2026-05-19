@@ -10,7 +10,7 @@ import Process from './components/Process';
 import Sectors from './components/Sectors';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ChatWidget from './components/ChatWidget';
+
 
 function App() {
   const { i18n } = useTranslation();
@@ -26,10 +26,10 @@ function App() {
     // Update page title
     const titleElement = document.querySelector('title');
     if (titleElement) {
-      titleElement.textContent = 'Alliasoft — ' + 
+      titleElement.textContent = 'Alliasoft | ' + 
         (i18n.language === 'es' 
-          ? 'Transformación Operativa con IA' 
-          : 'Operational Transformation with AI');
+          ? 'Soluciones con IA para Empresas' 
+          : 'AI Solutions for Business');
     }
   }, [i18n]);
 
@@ -47,7 +47,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-      <ChatWidget />
+
     </div>
   );
 }

@@ -28,6 +28,7 @@ const Contact: React.FC = () => {
   const contactMethods = [
     {
       icon: <Mail className="w-6 h-6 text-blue-600" />,
+      bg: 'bg-blue-50 border-blue-100/50',
       title: t('contact.email.title'),
       value: t('contact.email.value'),
       description: t('contact.email.description'),
@@ -35,6 +36,7 @@ const Contact: React.FC = () => {
     },
     {
       icon: <MessageSquare className="w-6 h-6 text-emerald-600" />,
+      bg: 'bg-emerald-50 border-emerald-100/50',
       title: t('contact.chat.title'),
       value: t('contact.chat.value'),
       description: t('contact.chat.description'),
@@ -42,6 +44,7 @@ const Contact: React.FC = () => {
     },
     {
       icon: <PhoneCall className="w-6 h-6 text-violet-600" />,
+      bg: 'bg-violet-50 border-violet-100/50',
       title: t('contact.call.title'),
       value: t('contact.call.value'),
       description: t('contact.call.description'),
@@ -50,14 +53,18 @@ const Contact: React.FC = () => {
   ];
 
   const trustItems = [
-    { icon: <ShieldCheck className="w-3.5 h-3.5" />, label: t('contact.form.trust1') },
-    { icon: <Zap className="w-3.5 h-3.5" />, label: t('contact.form.trust2') },
-    { icon: <BellOff className="w-3.5 h-3.5" />, label: t('contact.form.trust3') },
+    { icon: <ShieldCheck className="w-4 h-4 text-emerald-500" />, label: t('contact.form.trust1') },
+    { icon: <Zap className="w-4 h-4 text-blue-500" />, label: t('contact.form.trust2') },
+    { icon: <BellOff className="w-4 h-4 text-slate-500" />, label: t('contact.form.trust3') },
   ];
 
   return (
-    <section id="contact" className="py-32 px-6 bg-[#FAFAFA] shrink-0">
-      <div className="container mx-auto max-w-7xl">
+    <section id="contact" className="py-32 px-6 bg-[#FAFAFA] relative overflow-hidden shrink-0">
+      {/* Background ambient lighting */}
+      <div className="absolute top-[10%] left-[-8%] w-[40vw] h-[40vw] rounded-full bg-gradient-to-br from-indigo-100/40 to-blue-100/20 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[5%] right-[-10%] w-[35vw] h-[35vw] rounded-full bg-gradient-to-br from-violet-100/35 to-pink-100/25 blur-[100px] pointer-events-none" />
+
+      <div className="container mx-auto max-w-7xl relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -71,7 +78,7 @@ const Contact: React.FC = () => {
           <span className="text-sm font-semibold tracking-wider text-blue-600 uppercase mb-4 block">
             {t('nav.contact')}
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
             {t('contact.heading')}
           </h2>
           <p className="text-slate-500 text-lg md:text-xl leading-relaxed">
@@ -98,7 +105,7 @@ const Contact: React.FC = () => {
                   }}
                   className="flex items-start group"
                 >
-                  <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shrink-0 border border-black/[0.04] group-hover:scale-110 shadow-[0_4px_24px_rgb(0,0,0,0.03)] transition-transform duration-500">
+                  <div className={`w-14 h-14 ${method.bg} rounded-2xl flex items-center justify-center shrink-0 border group-hover:scale-110 shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-500`}>
                     {method.icon}
                   </div>
                   <div className="ml-6">
@@ -131,7 +138,7 @@ const Contact: React.FC = () => {
               hidden: { opacity: 0, y: 30 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
             }}
-            className="lg:col-span-7 bg-white rounded-[2.5rem] border border-black/[0.03] shadow-[0_8px_40px_rgb(0,0,0,0.03)] p-8 md:p-12 relative overflow-hidden"
+            className="lg:col-span-7 bg-white rounded-[2.5rem] border border-black/[0.03] shadow-[0_12px_48px_rgba(0,0,0,0.03),0_0_0_1px_rgba(0,0,0,0.01)] p-8 md:p-12 relative overflow-hidden"
           >
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center h-full text-center py-20">
@@ -159,7 +166,7 @@ const Contact: React.FC = () => {
                       value={formState.fullname}
                       onChange={handleChange}
                       placeholder={t('contact.form.fullname_placeholder')}
-                      className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
+                      className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-300 placeholder:text-slate-400 font-medium"
                       required
                     />
                   </div>
@@ -174,7 +181,7 @@ const Contact: React.FC = () => {
                       value={formState.email}
                       onChange={handleChange}
                       placeholder={t('contact.form.email_placeholder')}
-                      className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
+                      className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-300 placeholder:text-slate-400 font-medium"
                       required
                     />
                   </div>
@@ -184,18 +191,25 @@ const Contact: React.FC = () => {
                   <label htmlFor="service" className="block text-sm font-bold text-slate-700 ml-1">
                     {t('contact.form.service')}
                   </label>
-                  <select
-                    id="service"
-                    name="service"
-                    value={formState.service}
-                    onChange={handleChange}
-                    className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all appearance-none cursor-pointer"
-                  >
-                    <option value="landing">{t('contact.form.services.landing')}</option>
-                    <option value="hosting">{t('contact.form.services.hosting')}</option>
-                    <option value="chatbot">{t('contact.form.services.chatbot')}</option>
-                    <option value="maintenance">{t('contact.form.services.maintenance')}</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      id="service"
+                      name="service"
+                      value={formState.service}
+                      onChange={handleChange}
+                      className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-300 appearance-none cursor-pointer font-medium"
+                    >
+                      <option value="landing">{t('contact.form.services.landing')}</option>
+                      <option value="hosting">{t('contact.form.services.hosting')}</option>
+                      <option value="chatbot">{t('contact.form.services.chatbot')}</option>
+                      <option value="maintenance">{t('contact.form.services.maintenance')}</option>
+                    </select>
+                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -209,7 +223,7 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     placeholder={t('contact.form.message_placeholder')}
                     rows={4}
-                    className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 resize-none"
+                    className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-300 placeholder:text-slate-400 resize-none font-medium"
                     required
                   />
                 </div>
@@ -217,29 +231,32 @@ const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-5 px-6 bg-slate-900 hover:bg-black text-white font-bold rounded-2xl shadow-[0_8px_24px_rgba(15,23,42,0.18)] hover:shadow-[0_14px_32px_rgba(15,23,42,0.28)] hover:-translate-y-0.5 transition-all duration-300 mt-2 text-lg flex justify-center items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="group relative w-full py-5 px-6 bg-slate-900 hover:bg-black text-white font-bold rounded-2xl shadow-[0_8px_24px_rgba(15,23,42,0.15)] hover:shadow-[0_16px_36px_rgba(15,23,42,0.28)] hover:-translate-y-0.5 transition-all duration-300 mt-2 text-lg flex justify-center items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed overflow-hidden"
                 >
-                  {isLoading ? (
-                    <span className="flex items-center gap-2">
-                      <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                      </svg>
-                      Enviando...
-                    </span>
-                  ) : (
-                    <>
-                      <MessageSquare className="w-5 h-5" />
-                      {t('contact.form.submit')}
-                    </>
-                  )}
+                  <span className="relative z-10 flex justify-center items-center gap-3">
+                    {isLoading ? (
+                      <span className="flex items-center gap-2">
+                        <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                        </svg>
+                        Enviando...
+                      </span>
+                    ) : (
+                      <>
+                        <MessageSquare className="w-5 h-5" />
+                        {t('contact.form.submit')}
+                      </>
+                    )}
+                  </span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
                 </button>
 
                 {/* Trust badge row */}
-                <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 pt-2">
+                <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 pt-2">
                   {trustItems.map((item, i) => (
-                    <span key={i} className="flex items-center gap-1.5 text-slate-400 text-xs font-semibold">
-                      <span className="text-slate-400">{item.icon}</span>
+                    <span key={i} className="flex items-center gap-2 text-slate-500 text-xs font-bold bg-slate-50 border border-slate-100 rounded-full px-3 py-1.5 shadow-[0_2px_8px_rgba(0,0,0,0.01)] hover:bg-white hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300">
+                      {item.icon}
                       {item.label}
                     </span>
                   ))}

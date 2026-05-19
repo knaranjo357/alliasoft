@@ -132,9 +132,9 @@ export default {
         tags: ["−85% response time", "24/7 Attention", "More sales, less load"]
       },
       {
-        title: "Full Operating System for Restaurant",
-        description: "Order taking, dispatch management, inventory control, and POS — all integrated. What used to require 3 tools and a lot of coordination now runs on one system designed for the real operation of the business.",
-        tags: ["One system", "Fewer errors", "Faster service"]
+        title: "AlliaFood — Full Platform for Restaurants",
+        description: "AlliaFood (alliafood.com) is our own product for the food industry. Order taking, dispatch management, inventory control, and POS — all integrated in one system designed for the real operation of the business. What used to require 3 tools and heavy coordination now runs on a platform that just works.",
+        tags: ["alliafood.com", "Alliasoft Product", "All-in-one"]
       },
       {
         title: "Logistics CRM with Real-Time Traceability",
@@ -156,7 +156,7 @@ export default {
   sectors: {
     heading: "We work with companies that already know the problem isn't technology — it's the operation.",
     items: [
-      "Restaurants and gastronomic chains",
+      "Restaurants and gastronomic chains (AlliaFood)",
       "Retail and consumer commerce",
       "Tourism and service agencies",
       "Logistics and distribution companies",

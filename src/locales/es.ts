@@ -132,9 +132,9 @@ export default {
         tags: ["−85% tiempo de respuesta", "Atención 24/7", "Más ventas, menos carga"]
       },
       {
-        title: "Sistema operativo completo para restaurante",
-        description: "Toma de pedidos, gestión de despacho, control de inventario y POS — todo integrado. Lo que antes requería 3 herramientas y mucha coordinación, ahora corre en un solo sistema diseñado para la operación real del negocio.",
-        tags: ["Un solo sistema", "Menos errores", "Mayor velocidad de atención"]
+        title: "AlliaFood — Plataforma integral para restaurantes",
+        description: "AlliaFood (alliafood.com) es nuestro producto propio para gastronomía. Toma de pedidos, gestión de despacho, control de inventario y POS — todo integrado en un solo sistema diseñado para la operación real del negocio. Lo que antes requería 3 herramientas y mucha coordinación, ahora corre en una plataforma que ya funciona.",
+        tags: ["alliafood.com", "Producto Alliasoft", "Todo en uno"]
       },
       {
         title: "CRM logístico con trazabilidad en tiempo real",
@@ -156,7 +156,7 @@ export default {
   sectors: {
     heading: "Trabajamos con empresas que ya saben que el problema no es la tecnología — es la operación.",
     items: [
-      "Restaurantes y cadenas gastronómicas",
+      "Restaurantes y cadenas gastronómicas (AlliaFood)",
       "Comercio minorista y retail",
       "Agencias de turismo y servicios",
       "Empresas de logística y distribución",

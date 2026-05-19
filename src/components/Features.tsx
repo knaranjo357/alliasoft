@@ -8,18 +8,21 @@ const Features: React.FC = () => {
   const items = t('features.items', { returnObjects: true }) as string[];
 
   return (
-    <section className="py-28 px-6 bg-slate-950 text-white relative overflow-hidden shrink-0">
-      {/* Subtle grid overlay */}
+    <section id="features" className="py-32 px-6 bg-slate-950 text-white relative overflow-hidden noise-overlay shrink-0">
+      {/* Grid overlay */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
         style={{
           backgroundImage:
             'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
+          backgroundSize: '44px 44px',
         }}
       />
-      {/* Glow accent */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60vw] h-[1px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+      {/* Top glow accent */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70vw] h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent z-10" />
+      {/* Ambient glow */}
+      <div className="absolute top-[-20%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-blue-500/[0.06] blur-[100px] pointer-events-none z-0" />
+      <div className="absolute bottom-[-15%] left-[-5%] w-[30vw] h-[30vw] rounded-full bg-teal-500/[0.05] blur-[80px] pointer-events-none z-0" />
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 items-start">
@@ -35,7 +38,7 @@ const Features: React.FC = () => {
             <span className="text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-6 block">
               Por qué Alliasoft
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-[1.1] text-white">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 leading-[1.1] text-white">
               {t('features.title')}
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed mb-8">
@@ -46,7 +49,7 @@ const Features: React.FC = () => {
               className="inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors group"
             >
               Hablar con un experto
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
             </a>
           </motion.div>
 
@@ -69,10 +72,10 @@ const Features: React.FC = () => {
                     hidden: { opacity: 0, x: 20 },
                     visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } },
                   }}
-                  className="flex items-center gap-5 rounded-2xl px-6 py-5 bg-white/[0.04] border border-white/[0.07] hover:bg-white/[0.08] hover:border-white/[0.12] transition-all duration-300 group cursor-default"
+                  className="flex items-center gap-5 rounded-2xl px-6 py-5 bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.07] hover:border-white/[0.14] transition-all duration-500 group cursor-default backdrop-blur-sm"
                 >
-                  <div className="w-8 h-8 rounded-full border-2 border-blue-500/40 bg-blue-500/10 flex items-center justify-center shrink-0 group-hover:border-blue-400/70 group-hover:bg-blue-500/20 transition-all duration-300">
-                    <span className="text-blue-400 text-xs font-bold">
+                  <div className="w-10 h-10 rounded-xl border-2 border-blue-500/30 bg-gradient-to-br from-blue-500/20 to-indigo-500/10 flex items-center justify-center shrink-0 group-hover:border-blue-400/60 group-hover:from-blue-500/30 group-hover:to-indigo-500/20 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-500">
+                    <span className="text-blue-400 text-xs font-bold group-hover:text-blue-300 transition-colors">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
