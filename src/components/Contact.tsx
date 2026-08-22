@@ -1,13 +1,113 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Mail, MessageSquare, PhoneCall, CheckCircle, ShieldCheck, Zap, BellOff } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Mail,
+  MessageCircle,
+  Calendar,
+  CheckCircle,
+  ShieldCheck,
+  Clock,
+  Send,
+  Sparkles,
+} from 'lucide-react';
 
-const Contact: React.FC = () => {
-  const { t } = useTranslation();
-  const [formState, setFormState] = useState({ fullname: '', email: '', service: 'landing', message: '' });
+/* ─── Types ─── */
+interface ContactProps {
+  quotePrefill?: { serviceTitle: string; selectedFeatures: string[] } | null;
+}
+
+/* ─── Animated floating input ─── */
+const FloatingInput: React.FC<{
+  label: string;
+  name: string;
+  type?: string;
+  value: string;
+  required?: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}> = ({ label, name, type = 'text', value, required, onChange }) => {
+  const [focused, setFocused] = useState(false);
+  const isActive = focused || value.length > 0;
+
+  return (
+    <div className="relative group">
+      <input
+        id={name === 'fullname' ? 'contact-name' : name}
+        aria-label={label}
+        type={type}
+        name={name}
+        required={required}
+        value={value}
+        onChange={onChange}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        className="peer w-full bg-white/[0.04] border border-white/10 rounded-2xl px-4 pt-6 pb-3 text-sm text-white placeholder-transparent
+                   focus:outline-none focus:border-blue-500/60 focus:bg-white/[0.06]
+                   focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15),0_0_20px_-5px_rgba(59,130,246,0.2)]
+                   transition-all duration-300"
+        placeholder={label}
+      />
+      <label
+        className={`absolute left-4 transition-all duration-300 pointer-events-none
+          ${isActive
+            ? 'top-2 text-[10px] font-bold tracking-widest uppercase text-blue-400'
+            : 'top-1/2 -translate-y-1/2 text-sm text-slate-500'
+          }`}
+      >
+        {label}
+      </label>
+      {/* Bottom gradient line on focus */}
+      <div
+        className={`absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 transition-all duration-500
+          ${focused ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}
+      />
+    </div>
+  );
+};
+
+/* ─── Confetti particle ─── */
+const ConfettiParticle: React.FC<{ delay: number; color: string }> = ({ delay, color }) => (
+  <motion.div
+    className="absolute w-2 h-2 rounded-full"
+    style={{ background: color }}
+    initial={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+    animate={{
+      opacity: [1, 1, 0],
+      scale: [0, 1.2, 0.6],
+      x: (Math.random() - 0.5) * 200,
+      y: (Math.random() - 0.5) * 200 - 60,
+    }}
+    transition={{ duration: 1.2, delay, ease: 'easeOut' }}
+  />
+);
+
+/* ─── Main Contact Component ─── */
+const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
+  const { t, i18n } = useTranslation();
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const [formState, setFormState] = useState({
+    fullname: '',
+    email: '',
+    service: 'landing',
+    message: '',
+  });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [messageFocused, setMessageFocused] = useState(false);
+
+  useEffect(() => {
+    if (quotePrefill) {
+      const summaryMsg =
+        '[' + t('contact.form.quotePrefix') + ']: ' + quotePrefill.serviceTitle + '\n' +
+        t('contact.form.features') + ': ' +
+        (
+          quotePrefill.selectedFeatures.length > 0
+            ? quotePrefill.selectedFeatures.join(', ')
+            : t('contact.form.standardDiagnostic')
+        );
+      setFormState((prev) => ({ ...prev, message: summaryMsg }));
+    }
+  }, [quotePrefill, t]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -17,252 +117,395 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsSubmitted(true);
-      setFormState({ fullname: '', email: '', service: 'landing', message: '' });
-    }, 1000);
+    const url = `https://wa.me/573176964215?text=${encodeURIComponent(
+      t('contact.form.whatsappIntro')
+    )}`;
+    const popup = window.open(url, '_blank');
+    if (popup) {
+      popup.opener = null;
+    } else {
+      window.location.assign(url);
+    }
+    setIsSubmitted(true);
   };
 
+  /* ─── Contact method cards data ─── */
   const contactMethods = [
     {
-      icon: <Mail className="w-6 h-6 text-blue-600" />,
-      bg: 'bg-blue-50 border-blue-100/50',
+      icon: <Mail className="w-5 h-5" />,
+      iconColor: 'text-blue-400',
+      glowColor: 'group-hover:shadow-blue-500/20',
+      iconBg: 'bg-blue-500/15 border-blue-500/30',
+      cardClass: 'glass-card-blue hover-glow-blue',
       title: t('contact.email.title'),
       value: t('contact.email.value'),
-      description: t('contact.email.description'),
       link: `mailto:${t('contact.email.value')}`,
     },
     {
-      icon: <MessageSquare className="w-6 h-6 text-emerald-600" />,
-      bg: 'bg-emerald-50 border-emerald-100/50',
+      icon: <MessageCircle className="w-5 h-5" />,
+      iconColor: 'text-emerald-400',
+      glowColor: 'group-hover:shadow-emerald-500/20',
+      iconBg: 'bg-emerald-500/15 border-emerald-500/30',
+      cardClass: 'glass-card hover-glow-teal',
       title: t('contact.chat.title'),
       value: t('contact.chat.value'),
-      description: t('contact.chat.description'),
-      link: `https://wa.me/573176964215`,
+      link: 'https://wa.me/573176964215',
     },
     {
-      icon: <PhoneCall className="w-6 h-6 text-violet-600" />,
-      bg: 'bg-violet-50 border-violet-100/50',
+      icon: <Calendar className="w-5 h-5" />,
+      iconColor: 'text-purple-400',
+      glowColor: 'group-hover:shadow-purple-500/20',
+      iconBg: 'bg-purple-500/15 border-purple-500/30',
+      cardClass: 'glass-card-purple hover-glow-purple',
       title: t('contact.call.title'),
       value: t('contact.call.value'),
-      description: t('contact.call.description'),
-      link: undefined,
+      link: '#contact-form',
     },
   ];
 
-  const trustItems = [
-    { icon: <ShieldCheck className="w-4 h-4 text-emerald-500" />, label: t('contact.form.trust1') },
-    { icon: <Zap className="w-4 h-4 text-blue-500" />, label: t('contact.form.trust2') },
-    { icon: <BellOff className="w-4 h-4 text-slate-500" />, label: t('contact.form.trust3') },
+  /* ─── Confetti colors ─── */
+  const confettiColors = [
+    '#3b82f6', '#8b5cf6', '#06b6d4', '#10b981',
+    '#f59e0b', '#ec4899', '#6366f1', '#14b8a6',
   ];
 
-  return (
-    <section id="contact" className="py-32 px-6 bg-[#FAFAFA] relative overflow-hidden shrink-0">
-      {/* Background ambient lighting */}
-      <div className="absolute top-[10%] left-[-8%] w-[40vw] h-[40vw] rounded-full bg-gradient-to-br from-indigo-100/40 to-blue-100/20 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[5%] right-[-10%] w-[35vw] h-[35vw] rounded-full bg-gradient-to-br from-violet-100/35 to-pink-100/25 blur-[100px] pointer-events-none" />
+  /* ─── Trust badges ─── */
+  const trustBadges = [
+    { icon: <ShieldCheck className="w-4 h-4 text-emerald-400" />, label: 'Datos 100% seguros' },
+    { icon: <Clock className="w-4 h-4 text-blue-400" />, label: 'Respuesta en < 2 horas' },
+  ];
 
-      <div className="container mx-auto max-w-7xl relative z-10">
+  const localizedTrustBadges = i18n.isInitialized
+    ? [
+        { icon: <ShieldCheck className="w-4 h-4 text-emerald-400" />, label: t('contact.form.trust1') },
+        { icon: <Clock className="w-4 h-4 text-blue-400" />, label: t('contact.form.trust2') },
+      ]
+    : trustBadges;
+  const messageIsActive = messageFocused || formState.message.length > 0;
+
+  return (
+    <section
+      id="contact"
+      className="relative py-28 px-6 text-white overflow-hidden"
+      style={{
+        background: 'linear-gradient(180deg, #030712 0%, #0c1631 50%, #030712 100%)',
+      }}
+    >
+      {/* ─── Radial glow center ─── */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(59,130,246,0.08) 0%, rgba(99,102,241,0.04) 40%, transparent 80%)',
+        }}
+      />
+
+      {/* ─── Top gradient divider line ─── */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/25 to-transparent" />
+
+      {/* ─── Floating orb decorations ─── */}
+      <div className="absolute top-32 left-[10%] w-72 h-72 bg-blue-600/[0.06] rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-20 right-[10%] w-64 h-64 bg-indigo-600/[0.06] rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="container mx-auto max-w-6xl relative z-10">
+        {/* ─── Header ─── */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
-          }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-2xl mb-20"
         >
-          <span className="text-sm font-semibold tracking-wider text-blue-600 uppercase mb-4 block">
-            {t('nav.contact')}
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
-            {t('contact.heading')}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 mb-6"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+            <span className="text-blue-400 text-xs font-bold tracking-widest uppercase">
+              {t('nav.contact')}
+            </span>
+          </motion.div>
+
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-5">
+            <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+              {t('contact.heading')}
+            </span>
           </h2>
-          <p className="text-slate-500 text-lg md:text-xl leading-relaxed">
+
+          <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-xl">
             {t('contact.subheading')}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-          {/* Contact methods */}
-          <motion.div
-            className="lg:col-span-5 flex flex-col justify-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}
-          >
-            <div className="space-y-8">
-              {contactMethods.map((method, index) => (
-                <motion.div
-                  key={index}
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+        {/* ─── 2-Column Layout ─── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          {/* ─── Left Column: Contact method cards ─── */}
+          <div className="lg:col-span-5 space-y-4">
+            {contactMethods.map((method, index) => (
+              <motion.a
+                key={index}
+                href={method.link}
+                target={method.link?.startsWith('http') ? '_blank' : undefined}
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.12 }}
+                className={`group relative block p-5 rounded-2xl ${method.cardClass} cursor-pointer`}
+              >
+                {/* Animated border gradient on hover */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(135deg, transparent 30%, rgba(59,130,246,0.1) 50%, transparent 70%)',
                   }}
-                  className="flex items-start group"
-                >
-                  <div className={`w-14 h-14 ${method.bg} rounded-2xl flex items-center justify-center shrink-0 border group-hover:scale-110 shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-500`}>
+                />
+
+                <div className="relative flex items-center gap-4">
+                  <div className={`p-3 rounded-xl border ${method.iconBg} ${method.iconColor} shrink-0 transition-transform duration-300 group-hover:scale-110`}>
                     {method.icon}
                   </div>
-                  <div className="ml-6">
-                    <h3 className="text-lg font-bold text-slate-900 tracking-tight">{method.title}</h3>
-                    {method.link ? (
-                      <a
-                        href={method.link}
-                        target={method.link.startsWith('http') ? '_blank' : undefined}
-                        rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="text-slate-600 hover:text-blue-600 transition-colors font-semibold text-[1.05rem] mt-1 block"
-                      >
-                        {method.value}
-                      </a>
-                    ) : (
-                      <p className="text-slate-600 font-semibold text-[1.05rem] mt-1 block">{method.value}</p>
-                    )}
-                    <p className="text-slate-400 text-sm mt-1">{method.description}</p>
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-1">
+                      {method.title}
+                    </p>
+                    <p className="text-base font-bold text-white truncate">{method.value}</p>
                   </div>
-                </motion.div>
+                  <div className="ml-auto opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
+                    <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </motion.a>
+            ))}
+
+            {/* ─── Trust badges (below contact cards) ─── */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex items-center gap-6 pt-4 pl-1"
+            >
+              {localizedTrustBadges.map((badge, idx) => (
+                <div key={idx} className="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                  {badge.icon}
+                  <span>{badge.label}</span>
+                </div>
               ))}
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
-          {/* Form */}
+          {/* ─── Right Column: Form ─── */}
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
-            }}
-            className="lg:col-span-7 bg-white rounded-[2.5rem] border border-black/[0.03] shadow-[0_12px_48px_rgba(0,0,0,0.03),0_0_0_1px_rgba(0,0,0,0.01)] p-8 md:p-12 relative overflow-hidden"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="lg:col-span-7 relative"
           >
-            {isSubmitted ? (
-              <div className="flex flex-col items-center justify-center h-full text-center py-20">
-                <div className="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-500 mb-8 border-[6px] border-white shadow-lg">
-                  <CheckCircle className="w-11 h-11" />
-                </div>
-                <h3 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">
-                  {t('contact.form.submitted_title')}
-                </h3>
-                <p className="text-slate-500 text-lg leading-relaxed max-w-md mx-auto">
-                  {t('contact.form.submitted_body')}
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="fullname" className="block text-sm font-bold text-slate-700 ml-1">
-                      {t('contact.form.fullname')}
-                    </label>
-                    <input
-                      type="text"
-                      id="fullname"
-                      name="fullname"
-                      value={formState.fullname}
-                      onChange={handleChange}
-                      placeholder={t('contact.form.fullname_placeholder')}
-                      className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-300 placeholder:text-slate-400 font-medium"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="block text-sm font-bold text-slate-700 ml-1">
-                      {t('contact.form.email')}
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                      placeholder={t('contact.form.email_placeholder')}
-                      className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-300 placeholder:text-slate-400 font-medium"
-                      required
-                    />
-                  </div>
-                </div>
+            {/* Animated border gradient wrapper */}
+            <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-blue-500/20 via-transparent to-indigo-500/20 opacity-60 pointer-events-none" />
 
-                <div className="space-y-2">
-                  <label htmlFor="service" className="block text-sm font-bold text-slate-700 ml-1">
-                    {t('contact.form.service')}
-                  </label>
-                  <div className="relative">
-                    <select
-                      id="service"
-                      name="service"
-                      value={formState.service}
-                      onChange={handleChange}
-                      className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-300 appearance-none cursor-pointer font-medium"
+            <div className="glass-card rounded-3xl p-6 sm:p-10 relative">
+              {/* Inner subtle top glow */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
+
+              <AnimatePresence mode="wait">
+                {isSubmitted ? (
+                  /* ─── Success State ─── */
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-center py-16 relative"
+                  >
+                    {/* Confetti particles */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      {confettiColors.map((color, i) => (
+                        <ConfettiParticle key={i} delay={i * 0.06} color={color} />
+                      ))}
+                      {confettiColors.map((color, i) => (
+                        <ConfettiParticle key={`b-${i}`} delay={0.1 + i * 0.07} color={color} />
+                      ))}
+                    </div>
+
+                    {/* Check icon */}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: 'spring', stiffness: 200, damping: 12, delay: 0.2 }}
+                      className="relative mx-auto w-20 h-20 mb-6"
                     >
-                      <option value="landing">{t('contact.form.services.landing')}</option>
-                      <option value="hosting">{t('contact.form.services.hosting')}</option>
-                      <option value="chatbot">{t('contact.form.services.chatbot')}</option>
-                      <option value="maintenance">{t('contact.form.services.maintenance')}</option>
-                    </select>
-                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                      <div className="absolute inset-0 rounded-full bg-emerald-500/20 animate-ping" />
+                      <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-[0_0_40px_rgba(16,185,129,0.4)]">
+                        <CheckCircle className="w-10 h-10 text-white" />
+                      </div>
+                    </motion.div>
+
+                    <motion.h3
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="text-2xl font-bold text-white mb-3"
+                    >
+                      {t('contact.form.sent_title')}
+                    </motion.h3>
+
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.55 }}
+                      className="text-slate-400 text-sm max-w-sm mx-auto leading-relaxed mb-6"
+                    >
+                      {t('contact.form.sent_body')}
+                    </motion.p>
+
+                    <motion.button
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.7 }}
+                      onClick={() => setIsSubmitted(false)}
+                      className="px-6 py-2.5 rounded-full bg-white/[0.06] border border-white/10 hover:bg-white/10 text-xs font-bold text-slate-300 transition-all duration-300"
+                    >
+                      {t('contact.form.sendAnother')}
+                    </motion.button>
+                  </motion.div>
+                ) : (
+                  /* ─── Form ─── */
+                  <motion.form
+                    key="form"
+                    ref={formRef}
+                    id="contact-form"
+                    onSubmit={handleSubmit}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="space-y-5"
+                  >
+                    {/* Name & Email row */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <FloatingInput
+                        label={t('contact.form.fullname')}
+                        name="fullname"
+                        value={formState.fullname}
+                        required
+                        onChange={handleChange}
+                      />
+                      <FloatingInput
+                        label={t('contact.form.email')}
+                        name="email"
+                        type="email"
+                        value={formState.email}
+                        required
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    {/* Service select */}
+                    <div className="relative group">
+                      <label className="absolute top-2 left-4 text-[10px] font-bold tracking-widest uppercase text-blue-400 pointer-events-none z-10">
+                        {t('contact.form.service')}
+                      </label>
+                      <select
+                        id="contact-service"
+                        aria-label={t('contact.form.service')}
+                        name="service"
+                        value={formState.service}
+                        onChange={handleChange}
+                        className="w-full bg-white/[0.04] border border-white/10 rounded-2xl px-4 pt-6 pb-3 text-sm text-white appearance-none
+                                   focus:outline-none focus:border-blue-500/60 focus:bg-white/[0.06]
+                                   focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15),0_0_20px_-5px_rgba(59,130,246,0.2)]
+                                   transition-all duration-300 cursor-pointer"
+                      >
+                        <option value="landing" className="bg-slate-900">{t('contact.form.services.landing')}</option>
+                        <option value="hosting" className="bg-slate-900">{t('contact.form.services.hosting')}</option>
+                        <option value="chatbot" className="bg-slate-900">{t('contact.form.services.chatbot')}</option>
+                        <option value="maintenance" className="bg-slate-900">{t('contact.form.services.maintenance')}</option>
+                      </select>
+                      {/* Dropdown arrow */}
+                      <svg className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </div>
-                  </div>
-                </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="message" className="block text-sm font-bold text-slate-700 ml-1">
-                    {t('contact.form.message')}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formState.message}
-                    onChange={handleChange}
-                    placeholder={t('contact.form.message_placeholder')}
-                    rows={4}
-                    className="w-full px-5 py-4 rounded-2xl border border-black/[0.06] bg-[#FAFAFA] text-slate-900 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-300 placeholder:text-slate-400 resize-none font-medium"
-                    required
-                  />
-                </div>
+                    {/* Message textarea */}
+                    <div className="relative group">
+                      <textarea
+                        id="contact-message"
+                        aria-label={t('contact.form.message')}
+                        name="message"
+                        rows={4}
+                        required
+                        value={formState.message}
+                        onChange={handleChange}
+                        onFocus={() => setMessageFocused(true)}
+                        onBlur={() => setMessageFocused(false)}
+                        placeholder={t('contact.form.message')}
+                        className="peer w-full bg-white/[0.04] border border-white/10 rounded-2xl px-4 pt-7 pb-3 text-sm text-white placeholder-transparent resize-none
+                                   focus:outline-none focus:border-blue-500/60 focus:bg-white/[0.06]
+                                   focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15),0_0_20px_-5px_rgba(59,130,246,0.2)]
+                                   transition-all duration-300"
+                      />
+                      <label
+                        className={`absolute left-4 transition-all duration-300 pointer-events-none
+                          ${messageIsActive
+                            ? 'top-2 text-[10px] font-bold tracking-widest uppercase text-blue-400'
+                            : 'top-5 text-sm text-slate-500'
+                          }`}
+                      >
+                        {t('contact.form.message')}
+                      </label>
+                      <div
+                        className={`absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 transition-all duration-500
+                          ${messageFocused ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}
+                      />
+                    </div>
 
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="group relative w-full py-5 px-6 bg-slate-900 hover:bg-black text-white font-bold rounded-2xl shadow-[0_8px_24px_rgba(15,23,42,0.15)] hover:shadow-[0_16px_36px_rgba(15,23,42,0.28)] hover:-translate-y-0.5 transition-all duration-300 mt-2 text-lg flex justify-center items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed overflow-hidden"
-                >
-                  <span className="relative z-10 flex justify-center items-center gap-3">
-                    {isLoading ? (
-                      <span className="flex items-center gap-2">
-                        <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                        </svg>
-                        Enviando...
+                    {/* Submit button with shimmer */}
+                    <button
+                      type="submit"
+                      className="group/btn relative w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500
+                                 text-white font-bold text-sm overflow-hidden
+                                 shadow-[0_0_30px_-5px_rgba(59,130,246,0.5)]
+                                 hover:shadow-[0_0_50px_-5px_rgba(59,130,246,0.6)]
+                                 active:scale-[0.98]
+                                 disabled:opacity-70 disabled:cursor-not-allowed
+                                 transition-all duration-300"
+                    >
+                      {/* Shimmer overlay */}
+                      <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500">
+                        <div
+                          className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000 ease-in-out"
+                          style={{
+                            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)',
+                          }}
+                        />
+                      </div>
+
+                      <span className="relative flex items-center justify-center gap-2.5">
+                        <Send className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
+                        <span>{t('contact.form.submit')}</span>
                       </span>
-                    ) : (
-                      <>
-                        <MessageSquare className="w-5 h-5" />
-                        {t('contact.form.submit')}
-                      </>
-                    )}
-                  </span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
-                </button>
+                    </button>
 
-                {/* Trust badge row */}
-                <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 pt-2">
-                  {trustItems.map((item, i) => (
-                    <span key={i} className="flex items-center gap-2 text-slate-500 text-xs font-bold bg-slate-50 border border-slate-100 rounded-full px-3 py-1.5 shadow-[0_2px_8px_rgba(0,0,0,0.01)] hover:bg-white hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300">
-                      {item.icon}
-                      {item.label}
-                    </span>
-                  ))}
-                </div>
-              </form>
-            )}
+                    {/* Trust badges below form */}
+                    <div className="flex items-center justify-center gap-6 pt-2">
+                      {localizedTrustBadges.map((badge, idx) => (
+                        <div key={idx} className="flex items-center gap-1.5 text-[11px] text-slate-500 font-medium">
+                          {badge.icon}
+                          <span>{badge.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.form>
+                )}
+              </AnimatePresence>
+            </div>
           </motion.div>
         </div>
       </div>

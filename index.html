@@ -1,69 +1,166 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <!-- Identidad y SEO Básico -->
-    <title>Alliasoft | Soluciones con IA para Empresas</title>
-    <meta name="description" content="Alliasoft transforma tu visión en realidad digital. Desarrollamos agentes de IA, plataformas web avanzadas y aplicaciones personalizadas.">
-    <meta name="keywords" content="Alliasoft, Inteligencia Artificial, Agentes WhatsApp, Desarrollo Web, Software, Tecnología, Soluciones Digitales, AlliaFood, restaurantes">
-    <meta name="author" content="Alliasoft">
-    
-    <!-- Metadatos de Vista y Configuración -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alliasoft | IA, automatización y software a medida en Colombia</title>
+    <meta name="description" content="Alliasoft desarrolla agentes de IA, automatizaciones, AlliaFood y software a medida para empresas en Colombia y Latinoamérica." />
+    <meta name="keywords" content="Alliasoft, inteligencia artificial Colombia, agentes de IA Colombia, automatización empresarial, software a medida Colombia, AlliaFood" />
+    <meta name="author" content="Alliasoft S.A.S." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="theme-color" content="#030712" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="geo.region" content="CO-SAN" />
+    <meta name="geo.placename" content="Bucaramanga" />
+
     <link rel="icon" type="image/png" href="/images/logo.png" />
-    <link rel="canonical" href="https://alliasoft.com" />
-    
-    <!-- Open Graph / Meta -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://alliasoft.com/">
-    <meta property="og:title" content="Alliasoft | Soluciones con IA para Empresas">
-    <meta property="og:description" content="Transformación operativa con IA. Automatización, agentes conversacionales y plataformas a medida para tu negocio.">
-    <meta property="og:image" content="/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://alliasoft.com/">
-    <meta property="twitter:title" content="Alliasoft | Soluciones con IA para Empresas">
-    <meta property="twitter:description" content="Transformación operativa con IA. Automatización, agentes conversacionales y plataformas a medida para tu negocio.">
-    <meta property="twitter:image" content="/og-image.jpg">
+    <link rel="preload" href="/images/logo.png" as="image" type="image/png" fetchpriority="high" />
+    <link rel="canonical" href="https://alliasoft.com/" />
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem('alliasoft-theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersLight ? 'light' : 'dark');
+      })();
+    </script>
 
-    <!-- Fuentes Modernas: Outfit & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Alliasoft AI" />
+    <meta property="og:url" content="https://alliasoft.com/" />
+    <meta property="og:title" content="Alliasoft | IA, automatización y software a medida en Colombia" />
+    <meta property="og:description" content="Agentes de IA, automatización, AlliaFood y software a medida desde Bucaramanga para empresas en Colombia y Latinoamérica." />
+    <meta property="og:image" content="https://alliasoft.com/og.png" />
+    <meta property="og:image:width" content="1536" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:alt" content="Alliasoft: inteligencia artificial y software a medida desde Bucaramanga" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Alliasoft | IA, automatización y software a medida en Colombia" />
+    <meta name="twitter:description" content="Agentes de IA, automatización, AlliaFood y software a medida desde Bucaramanga para Colombia y Latinoamérica." />
+    <meta name="twitter:image" content="https://alliasoft.com/og.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://alliasoft.com/#organization",
+            "name": "Alliasoft S.A.S.",
+            "alternateName": "Alliasoft",
+            "url": "https://alliasoft.com",
+            "logo": "https://alliasoft.com/images/logo.png",
+            "email": "alliasoftsas@gmail.com",
+            "telephone": "+573176964215",
+            "description": "Empresa de inteligencia artificial, automatización y desarrollo de software a medida en Bucaramanga, Colombia.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Bucaramanga",
+              "addressRegion": "Santander",
+              "addressCountry": "CO"
+            },
+            "areaServed": ["Bucaramanga", "Colombia", "Latinoamérica"],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+573176964215",
+              "contactType": "sales",
+              "availableLanguage": ["Spanish", "English"],
+              "url": "https://wa.me/573176964215"
+            },
+            "knowsAbout": [
+              "Agentes de inteligencia artificial",
+              "Automatización empresarial",
+              "Desarrollo de software a medida",
+              "Integraciones de sistemas",
+              "Software para restaurantes"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://alliasoft.com/#service",
+            "name": "Alliasoft — IA y software a medida",
+            "url": "https://alliasoft.com/",
+            "telephone": "+573176964215",
+            "parentOrganization": { "@id": "https://alliasoft.com/#organization" },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Bucaramanga",
+              "addressRegion": "Santander",
+              "addressCountry": "CO"
+            },
+            "areaServed": ["Colombia", "Latinoamérica"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicios Alliasoft",
+              "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Agentes de inteligencia artificial" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Software a medida" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatización e integraciones" } }
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://alliasoft.com/#website",
+            "url": "https://alliasoft.com",
+            "name": "Alliasoft AI",
+            "publisher": {
+              "@id": "https://alliasoft.com/#organization"
+            },
+            "inLanguage": ["es", "en"]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "AlliaFood",
+            "url": "https://alliafood.com",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "description": "Plataforma integral para restaurantes y cadenas gastronómicas: pedidos, inventario, cocina y POS."
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://alliasoft.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿Alliasoft está en Bucaramanga?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Sí. Alliasoft desarrolla tecnología desde Bucaramanga, Colombia, y trabaja de forma virtual con empresas en Colombia y Latinoamérica." }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué es AlliaFood?",
+                "acceptedAnswer": { "@type": "Answer", "text": "AlliaFood es un producto de Alliasoft para restaurantes que integra POS, pedidos, comandas de cocina, inventario y domicilios." }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cómo contactar a Alliasoft?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Puedes contactar al equipo de Alliasoft por WhatsApp en el +57 317 696 4215 o por correo en alliasoftsas@gmail.com." }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
-  <body class="bg-gray-950 text-gray-100 antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+  <body class="bg-slate-950 text-slate-100 antialiased">
     <div id="root">
-      <!-- Pre-rendered SEO content — hidden once React hydrates -->
-      <div id="seo-fallback">
-        <h1>Alliasoft — Transformación Operativa con Inteligencia Artificial</h1>
-        <p>Alliasoft analiza lo que frena a tu negocio — procesos repetitivos, información dispersa, cuellos de botella — y construye la solución exacta: automatización, agentes IA, plataformas web e integraciones que tu equipo adopta desde el primer día.</p>
-
-        <h2>Nuestras Soluciones</h2>
-        <p>Ofrecemos seis áreas clave donde convertimos el caos operativo en ventaja competitiva: radiografía de operación, automatización con agentes IA, plataformas y sistemas a medida, integración total de canales, interfaces que la gente usa, y acompañamiento como aliado estratégico.</p>
-
-        <h2>AlliaFood — Plataforma para Restaurantes</h2>
-        <p>AlliaFood es un producto de Alliasoft diseñado específicamente para restaurantes y cadenas gastronómicas. Gestión de pedidos, despacho, inventario y POS integrados en un solo sistema. Conoce más en <a href="https://alliafood.com">alliafood.com</a>.</p>
-
-        <h2>Casos de Éxito</h2>
-        <p>Más de 40 proyectos entregados en 3 países con un 98% de adopción en los primeros 30 días. Hemos ayudado a empresas de turismo, gastronomía, logística, e-commerce y retail a transformar sus operaciones.</p>
-
-        <h2>Sectores que Atendemos</h2>
+      <div id="seo-fallback" class="sr-only">
+        <h1>Alliasoft — inteligencia artificial, automatización y software a medida en Colombia</h1>
+        <p>El equipo Alliasoft desarrolla agentes de IA, automatizaciones y plataformas a medida para empresas en Colombia y Latinoamérica.</p>
+        <h2>Soluciones de inteligencia artificial y desarrollo de software</h2>
         <ul>
-          <li>Restaurantes y cadenas gastronómicas</li>
-          <li>Comercio minorista y retail</li>
-          <li>Agencias de turismo y servicios</li>
-          <li>Empresas de logística y distribución</li>
-          <li>Equipos comerciales y ventas B2B</li>
-          <li>Negocios centrados en WhatsApp</li>
-          <li>Empresas que necesitan software propio</li>
+          <li>Agentes conversacionales para WhatsApp y web</li>
+          <li>Automatización de procesos e integraciones ERP y CRM</li>
+          <li>Software empresarial y plataformas a medida</li>
+          <li>AlliaFood para restaurantes y cadenas gastronómicas</li>
         </ul>
-
-        <h2>Contacto</h2>
-        <p>¿Cuánto le está costando a tu empresa operar como opera hoy? Escríbenos a alliasoftsas@gmail.com o comunícate por WhatsApp al +57 317 696 4215. Diagnóstico sin costo.</p>
+        <h2>Contacto directo</h2>
+        <p>Habla con el equipo por WhatsApp al +57 317 696 4215 para contar tu problemática y continuar, cuando sea útil, en una reunión virtual.</p>
       </div>
     </div>
+    <noscript>Alliasoft necesita JavaScript para mostrar la experiencia completa. También puedes escribir a alliasoftsas@gmail.com.</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

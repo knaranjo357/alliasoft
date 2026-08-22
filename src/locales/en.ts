@@ -1,223 +1,441 @@
 export default {
+  seo: {
+    title: "Alliasoft | AI and custom software from Bucaramanga",
+    description: "Alliasoft builds AI agents, automation, AlliaFood, and custom software from Bucaramanga for companies across Colombia and Latin America."
+  },
+  accessibility: {
+    skipToContent: "Skip to main content",
+    home: "Go to Alliasoft home",
+    primaryNav: "Primary navigation",
+    mobileNav: "Mobile navigation",
+    changeLanguage: "Change language",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    previous: "Previous",
+    next: "Next"
+  },
   nav: {
     home: "Home",
+    demo: "AI Playground",
     services: "Solutions",
     process: "Methodology",
-    whyUs: "Why Us",
-    portfolio: "Cases",
-    sectors: "Sectors",
+    portfolio: "Case Studies",
+    tech: "Tech Stack",
+    roi: "ROI Calculator",
+    sectors: "Industries",
+    whyUs: "Why Alliasoft",
+    faq: "FAQ",
     contact: "Contact"
   },
   language: "ES",
   contact_btn: {
-    button: "Schedule Diagnostic"
+    button: "Talk to the team",
+    short: "Direct contact"
   },
   hero: {
-    badge: "Operational Transformation with AI",
-    title_line1: "Your business runs.",
-    title_line2: "We make it run",
-    title_highlight: "without friction.",
-    description: "We analyze what's holding your business back — repetitive processes, scattered information, bottlenecks — and build the exact solution: automation, AI agents, web platforms and integrations your team actually adopts from day one.",
-    support: "No friction. No templates. No generic solutions.",
-    cta1: "See If It Applies →",
-    cta2: "Real Success Cases",
+    statusBadge: "Bucaramanga, Colombia · Serving Latin America",
+    badge: "Applied AI · Custom software",
+    title_line1: "We turn complex processes into",
+    title_line2: "AI Agents & Custom Software that",
+    title_highlight: "technology your team actually uses.",
+    description: "The Alliasoft team designs AI agents, automation, and custom platforms that connect information, reduce manual work, and create new sales opportunities.",
+    support: "Solutions built around your operation",
+    cta1: "Tell us about your problem",
+    cta2: "Explore solutions",
     stat1_value: "+40",
-    stat1_label: "projects delivered",
-    stat2_value: "3",
-    stat2_label: "countries of impact",
+    stat1_label: "Team in Bucaramanga",
+    stat2_value: "85%",
+    stat2_label: "Virtual meetings",
     stat3_value: "98%",
-    stat3_label: "adoption in 30 days"
+    stat3_label: "Human guidance",
+    preview: {
+      engine: "Team capabilities",
+      live: "AVAILABLE",
+      line1: "Tell us about the operational challenge. A team member can learn about your case and continue with you in a virtual meeting.",
+      line2: "Quote created and payment link sent in 0.8 seconds.",
+      line3: "Booking synchronized and guide notified automatically.",
+      leads: "Leads / month",
+      savings: "Estimated savings",
+      quoteCta: "Try the interactive estimator",
+      responseBadge: "85% less time",
+      availability: "From conversation to a clear path",
+      scroll: "See how we work",
+      aiAgents: "AI agents",
+      customSoftware: "Custom software",
+      integrations: "Automation and integrations"
+    }
   },
   features: {
-    title: "We design solutions people actually use — because they start from understanding how your business operates.",
-    description: "Technology nobody adopts is wasted technology. Every solution we build starts with a real operational diagnostic, not a product demo.",
+    title: "We build tools people actually use — born from real operational diagnostics.",
+    description: "Generic software nobody adopts is wasted budget. Every line of code we write solves a concrete financial or operational bottleneck.",
     items: [
-      "Process and bottleneck diagnostic",
-      "AI agents for service and operations",
-      "Custom web platforms and internal systems",
-      "Channel integration: WhatsApp, CRM, ERP",
-      "Hands-on support until it actually works"
+      "Deep diagnostic of bottlenecks and financial leaks",
+      "Conversational AI agents trained on your proprietary data",
+      "Custom web platforms built for your real workflow",
+      "Native integration with WhatsApp Business API, CRM, ERP, and Billing",
+      "Onboarding and hands-on support until total team adoption"
     ]
   },
   solutions: {
-    heading: "Six areas where we turn operational chaos into competitive advantage.",
-    subheading: "",
-    description: "Every solution starts from a diagnostic. Every line of code solves a real problem. We don't sell packages — we build what your operation needs, and nothing more.",
-    cta: "Schedule Diagnostic",
+    heading: "Six strategic areas where we turn friction into profitability.",
+    description: "We don't sell generic packages or useless subscriptions. We diagnose your operation and build the exact architecture your business needs to scale.",
+    cta: "Request Free Diagnostic →",
     items: {
       performance: {
-        title: "X-Ray of Your Operation",
-        description: "We map every process, every tool, and every point where time or money is lost. Before writing a single line of code, we know exactly what to build — and what not to."
+        title: "Operational X-Ray & Audit",
+        description: "We map every process, tool, and point where time or money is lost. You'll know exactly what to automate for maximum ROI."
       },
       design: {
-        title: "Automation with AI Agents",
-        description: "Your clients can't wait. Your teams neither. We design agents that handle, quote, classify and escalate requests — with the precision of a person and the speed of a machine."
+        title: "Conversational AI Agents",
+        description: "Intelligent agents that serve on WhatsApp and Web 24/7, quote products, qualify leads, and close sales with human warmth and machine speed."
       },
       control: {
-        title: "Custom Platforms and Systems",
-        description: "Your business is unique. Your software should be too. We build dashboards, CRMs, portals and internal systems your team adopts in days, not months."
+        title: "Custom Platforms & CRMs",
+        description: "Clean, powerful interfaces your team learns in minutes. Full control over orders, clients, inventory, and real-time finances."
       },
       experience: {
-        title: "Total Channel Integration",
-        description: "WhatsApp, email, ERP, CRM, billing, inventory — all connected. Information that flows on its own, without copy-pasting. Without your team losing the thread."
+        title: "Total Ecosystem Integration",
+        description: "WhatsApp, email, ERP, CRM, electronic billing, and inventory connected together. Data flows automatically without copy-pasting."
       },
       support: {
-        title: "Interfaces People Actually Use",
-        description: "A good system nobody understands is useless. We design clear, fast experiences built for the user to understand, act, and return without friction."
+        title: "High-Speed UX/UI Interfaces",
+        description: "We design ultra-intuitive digital products. Zero learning friction, sub-second load times, and flawless experience on mobile and desktop."
       },
       investment: {
-        title: "Ally, Not Vendor",
-        description: "We don't deliver and disappear. We accompany adoption, measure results, and evolve the solution with you. Your growth is ours."
+        title: "Long-Term Strategic Partner",
+        description: "We don't deliver and disappear. We accompany adoption, measure savings KPIs, and evolve software alongside your growth."
       }
     }
   },
   whyUs: {
-    heading: "Why Alliasoft is different",
-    subheading: "We don't start with technology. We start by understanding what hurts your operation — and why what you have today isn't enough.",
+    heading: "Why leading companies choose Alliasoft",
+    subheading: "The difference between a traditional software vendor and a strategic AI partner.",
     reasons: [
       {
-        title: "We think operations, not screens",
-        description: "We analyze how information moves, where time is lost, and what tasks should stop being manual. The screen is the consequence, not the starting point."
+        title: "We focus on operational impact, not just pretty screens",
+        description: "We analyze how resources and data move in your company. The interface is the result of understanding how to make your business more profitable."
       },
       {
-        title: "We build on your reality, not templates",
-        description: "We don't force your business to adapt to a template. We design a solution that responds to how you work — even if it's complex, irregular, or unique."
+        title: "Zero templates: Tailored to your reality",
+        description: "We don't force your company into rigid software. We build adaptable systems that respond to your unique business rules."
       },
       {
-        title: "We unite strategy, design, and code",
-        description: "We don't just build tools: we help you decide what's worth automating, what to simplify, and what should scale first."
+        title: "We merge business strategy, design, and clean code",
+        description: "We are not isolated programmers. We help you decide what to automate first to maximize profit margins."
       },
       {
-        title: "We apply AI where it truly adds value",
-        description: "We use artificial intelligence to reduce operational load, speed up responses, and improve the customer experience — without complicating the team or adding technical debt."
+        title: "AI applied with real business purpose",
+        description: "We implement artificial intelligence to cut costs and multiply team output without unnecessary complexity."
       },
       {
-        title: "We work with you as an ally, not a vendor",
-        description: "We get involved in understanding the context, propose real improvements, and accompany implementation so the result actually works in practice, not just in the demo."
+        title: "Ongoing guidance & guaranteed adoption",
+        description: "We stay by your side during launch and initial operational weeks until certifying your team uses the system frictionlessly."
       }
     ]
   },
   process: {
-    heading: "A method that eliminates the risk of building the wrong thing.",
+    heading: "A proven methodology that eliminates blind investment risk.",
     steps: [
       {
-        title: "We listen before we propose",
-        description: "We immerse ourselves in your operation: team interviews, flow analysis, review of current tools. We understand the business before proposing any solution."
+        title: "1. Diagnostic & Operational Immersion",
+        description: "We analyze your current flows, interview key staff, and pinpoint exactly where time or money is leaking."
       },
       {
-        title: "We diagnose with precision",
-        description: "We identify which processes block growth, which tasks consume time without generating value, and where risk of error exists. Then we prioritize what can have the most impact — with data, not intuition."
+        title: "2. Architecture Design & ROI Roadmap",
+        description: "We architect the solution focusing on the fastest payback, setting clear weekly deliverables."
       },
       {
-        title: "We design the right solution, not the most expensive",
-        description: "We propose the exact architecture that solves the problem — without unnecessary features that inflate development costs. Every design decision has an operational reason behind it."
+        title: "3. Agile Development & AI Training",
+        description: "We build modules and train AI models using clean, secure, high-speed code."
       },
       {
-        title: "We build and integrate without interruption",
-        description: "We develop in stages, test with real users, and connect with tools your team already uses. No chaos. No downtime. No empty promises."
+        title: "4. Live Integration & Testing",
+        description: "We connect with your current ecosystem (WhatsApp, ERP, CRM) without disrupting normal operations."
       },
       {
-        title: "We measure, adjust, and scale together",
-        description: "Launch is the beginning, not the end. We measure real results, adjust what's needed, and build the next improvement — so the solution keeps growing with your business."
+        title: "5. Launch & Guaranteed Adoption",
+        description: "We train your team, monitor 24/7 metrics, and keep the solution evolving."
       }
     ]
   },
   portfolio: {
-    heading: "Results that are measured, not promised.",
-    subheading: "Real cases of companies that went from operational chaos to systems that run themselves.",
+    heading: "Real Results in Real Companies",
+    subheading: "Case studies of businesses that moved from manual chaos to high-performance automated systems.",
     projects: [
       {
-        title: "24/7 AI Attention Agent for Tourism",
-        description: "The team was manually answering 200+ daily WhatsApp inquiries. We designed an AI agent that quotes, filters, and qualifies clients — reducing response time from hours to seconds and freeing the team to close sales.",
-        tags: ["−85% response time", "24/7 Attention", "More sales, less load"]
+        title: "24/7 AI Sales & Booking Agent for Tourism",
+        description: "Automated responses for 200+ daily WhatsApp inquiries. Instant quotes, lead qualification, and integration with tour booking system.",
+        tags: ["−85% Response Time", "24/7 Attention", "WhatsApp API", "3.2x Conversion"]
       },
       {
-        title: "AlliaFood — Full Platform for Restaurants",
-        description: "AlliaFood (alliafood.com) is our own product for the food industry. Order taking, dispatch management, inventory control, and POS — all integrated in one system designed for the real operation of the business. What used to require 3 tools and heavy coordination now runs on a platform that just works.",
-        tags: ["alliafood.com", "Alliasoft Product", "All-in-one"]
+        title: "AlliaFood — Complete Gastronomy Operating System",
+        description: "AlliaFood (alliafood.com) is our proprietary software for restaurants: POS, kitchen displays, real-time inventory, and delivery module integrated.",
+        tags: ["alliafood.com", "POS & Inventory", "Alliasoft Product", "100% Control"]
       },
       {
-        title: "Logistics CRM with Real-Time Traceability",
-        description: "Schedule coordination, request centralization, and dispatch traceability in one platform. The operational team went from using spreadsheets to having total visibility over every movement.",
-        tags: ["Total visibility", "Less manual work", "Custom CRM"]
+        title: "Logistics CRM & Fleet Traceability",
+        description: "Centralized platform for dispatch coordination, route assignment, and automated customer alerts.",
+        tags: ["Total Visibility", "Fewer Manual Errors", "Custom CRM"]
       },
       {
-        title: "High-Performance International E-commerce",
-        description: "Store built for demanding markets — speed, conversion, and shopping experience as priorities. Launched to compete in the US with a structure that scales without requiring constant technical support.",
-        tags: ["Conversion optimized", "US Market", "Scales effortlessly"]
+        title: "High-Conversion International E-commerce",
+        description: "Web architecture optimized to scale in the US market with ultra-fast checkout and automated inventory sync.",
+        tags: ["US Market", "High Conversion", "Sub-Second Load"]
       },
       {
-        title: "Commercial Automation for Retail",
-        description: "Product queries, order capture, and commercial intelligence integrated through automation and AI. The sales team closed more deals without increasing the operational load.",
-        tags: ["More sales", "Automated capture", "AI for retail"]
+        title: "Commercial Automation & Retail Order Capture",
+        description: "Intelligent system for field reps capturing orders, checking stock, and issuing instant invoicing.",
+        tags: ["B2B Sales", "Instant Invoicing", "No Paperwork"]
       }
     ]
   },
   sectors: {
-    heading: "We work with companies that already know the problem isn't technology — it's the operation.",
+    heading: "Optimizing operations in high-demand sectors.",
     items: [
-      "Restaurants and gastronomic chains (AlliaFood)",
-      "Retail and consumer commerce",
-      "Tourism and service agencies",
-      "Logistics and distribution companies",
-      "Commercial teams and B2B sales",
-      "WhatsApp-centered businesses",
-      "Companies that need custom software"
+      "Restaurants & Gastronomic Chains (AlliaFood Platform)",
+      "Retail, Wholesale & Consumer Commerce",
+      "Tourism Agencies & Experience Operators",
+      "Logistics, Freight & Distribution Companies",
+      "B2B Commercial Teams & Sales Forces",
+      "WhatsApp & Social Media Driven Businesses",
+      "Companies Requiring Proprietary & Secure Software"
     ]
   },
   contact: {
-    heading: "How much is it costing your company to operate the way it does today?",
-    subheading: "That question has an answer — and we help you find it. Tell us what part of your operation costs you time, money, or control. No commitment. No pressure.",
+    heading: "How much money is your business losing each month to manual work?",
+    subheading: "Let's talk about your real operation. We help you identify exactly what to automate to free your team and multiply margins.",
     email: {
       title: "Email",
       value: "alliasoftsas@gmail.com",
-      description: "Write to us anytime"
+      description: "Response within 12 hours"
     },
     chat: {
-      title: "WhatsApp",
+      title: "Official WhatsApp",
       value: "+57 317 696 4215",
-      description: "Direct response 24/7"
+      description: "Direct response via official channel"
     },
     call: {
-      title: "Diagnostic",
-      value: "No Cost",
-      description: "Let's talk about your real operation"
+      title: "Operational Diagnostic",
+      value: "100% Free",
+      description: "20-minute strategic session"
     },
     form: {
-      fullname: "Full name",
-      fullname_placeholder: "Your name",
-      email: "Email address",
-      email_placeholder: "you@email.com",
-      service: "How can we help you?",
-      message: "Tell us your problem",
-      message_placeholder: "Describe the issue that hurts most in your operation today...",
-      submit: "Talk to an expert now →",
-      submitted_title: "Message received!",
-      submitted_body: "We'll get back to you in less than 24 hours. Meanwhile, check how we've helped other companies in the cases section.",
-      trust1: "Secure data",
-      trust2: "Response in < 24h",
-      trust3: "No spam",
+      fullname: "Full Name",
+      fullname_placeholder: "e.g. John Miller",
+      email: "Business Email",
+      email_placeholder: "john@yourcompany.com",
+      service: "What is your main priority?",
+      message: "Tell us about your current operation",
+      message_placeholder: "Describe the manual tasks or bottlenecks costing your team the most time or money today...",
+      submit: "Request Strategic Diagnostic Now →",
+      submitted_title: "Request Received Successfully!",
+      submitted_body: "A senior Alliasoft consultant will review your details and reach out within 24 hours.",
+      whatsappIntro: "Hi Alliasoft, I would like to request a free diagnostic for my company.",
+      sent_title: "Your conversation is ready",
+      sent_body: "We opened the official WhatsApp channel. Tell us the essentials of your operation there and a specialist will continue with you.",
+      sendAnother: "Return to the form",
+      quotePrefix: "Requested estimate",
+      features: "Features",
+      standardDiagnostic: "Standard operational diagnostic",
+      trust1: "100% Confidential Information",
+      trust2: "Response in < 24 Hours",
+      trust3: "No Obligation or Spam",
       services: {
-        landing: "I need an operational diagnostic",
-        hosting: "I want to automate processes with AI",
-        chatbot: "I need a custom platform or system",
+        landing: "I need a complete operational diagnostic",
+        hosting: "I want to implement WhatsApp AI Agents",
+        chatbot: "I need Custom Software or CRM",
         maintenance: "I have another strategic query"
       }
     }
   },
   footer: {
-    description: "We transform complex operations into systems that run themselves — so your team can focus on what matters.",
+    description: "We transform complex operations into automated high-performance systems — so your team can focus on growing the business.",
     quickLinks: "Navigation",
+    whatsapp: "Chat on WhatsApp",
+    quote: "Estimate a project",
+    contactTitle: "Direct contact",
+    contactBody: "We serve companies in Colombia, Latin America, and the United States. The initial diagnostic is free.",
+    backToTop: "Back to top",
     services: "Solutions",
-    copyright: "© {year} Alliasoft. All rights reserved."
+    copyright: "© {year} Alliasoft S.A.S. All rights reserved."
   },
   chat: {
-    title: "Alliasoft",
-    welcome: "Hi! Which part of your operation can I help with?",
-    placeholder: "Type your question...",
-    disclaimer: "By using this chatbot, you agree to the Terms and Conditions",
-    poweredBy: "Powered by Alliasoft",
+    title: "Alliasoft AI Assistant",
+    welcome: "Hi! I am the Alliasoft Assistant. Which part of your operation would you like to automate today?",
+    placeholder: "Type your query...",
+    disclaimer: "By using this chatbot you agree to our Terms & Privacy Policy",
+    poweredBy: "Powered by Alliasoft AI Engine",
     startChat: "Start conversation",
-    cancel: "Cancel"
+    cancel: "Cancel",
+    starterPrompts: [
+      "Which process should I automate first?",
+      "I want a quote for an AI agent"
+    ],
+    error: "We could not reply. Please try again in a moment.",
+    tooLong: "The message is too long. Please use no more than 500 characters.",
+    sources: "Sources:"
+  },
+  aiPlayground: {
+    tag: "LIVE INTERACTIVE DEMO",
+    heading: "Experience the Power of Our AI Agents",
+    subheading: "Select a simulation to watch our agents serve, quote, and process data in real time.",
+    tabs: {
+      whatsapp: "WhatsApp Sales & Quoting",
+      leads: "B2B Sales Lead Qualification",
+      extraction: "Invoice & PDF Data Extraction"
+    },
+    scenarios: {
+      whatsapp: {
+        title: "Automated Quoting & Booking on WhatsApp",
+        subtitle: "From initial text to logged booking in 15 seconds.",
+        userMsg: "Hi! I want a quote for a VIP tour for 4 people this Saturday in Medellín.",
+        agentThinking: "Checking guide availability -> Calculating group rate -> Generating payment link...",
+        agentReply: "Hi! Gladly. The VIP Medellín Tour for 4 people this Saturday includes private transport and bilingual guide for $120 USD total. Shall I reserve the 9:00 AM slot for you?",
+        metrics: [
+          { label: "Response Time", value: "< 1.5 sec" },
+          { label: "Customer Satisfaction", value: "99.4%" },
+          { label: "Direct Conversion", value: "68%" }
+        ]
+      },
+      leads: {
+        title: "B2B Lead Qualification & Booking",
+        subtitle: "Filters prospect budget before routing to your sales team.",
+        userMsg: "I need custom software to manage my 8 restaurant locations.",
+        agentThinking: "Identified: Gastronomy Sector | Size: 8 venues | Suggested Solution: AlliaFood POS + CRM",
+        agentReply: "Excellent. Our AlliaFood platform integrates inventory, kitchen orders, and POS for your 8 locations. I prepared a preliminary proposal for your volume. Shall we book a 15-min demo today at 3:00 PM?",
+        metrics: [
+          { label: "Cold Lead Filtering", value: "100%" },
+          { label: "Effective Meetings", value: "+3.5x" },
+          { label: "Sales Time Saved", value: "75%" }
+        ]
+      },
+      extraction: {
+        title: "Automated Document Processing",
+        subtitle: "Converts photos or invoice PDFs into structured system data.",
+        userMsg: "[Attaches supplier invoice PDF with 35 inventory items]",
+        agentThinking: "OCR scanning document -> Extracting 35 items and totals -> Syncing with ERP...",
+        agentReply: "Invoice #F-9042 processed successfully. 35 products logged to central inventory and accounts payable created in accounting system.",
+        metrics: [
+          { label: "Error Rate", value: "0.0%" },
+          { label: "Processing Time", value: "1.8 sec" },
+          { label: "Workload Saved", value: "45 min / doc" }
+        ]
+      }
+    },
+    tryPrompt: "Re-run simulation",
+    quoteTrigger: "I want this agent in my company →"
+  },
+  roiCalculator: {
+    tag: "FINANCIAL IMPACT CALCULATOR",
+    heading: "Calculate Your Business Savings",
+    subheading: "Discover exactly how much money and time you can recover monthly by automating manual tasks.",
+    teamSize: "Members in your operational/sales team:",
+    hoursPerWeek: "Weekly hours per person spent on manual tasks:",
+    hourlyRate: "Average cost per labor hour (USD):",
+    resultsTitle: "Projected ROI with Alliasoft:",
+    monthlyHoursSaved: "Hours Saved / Month",
+    monthlyMoneySaved: "Monthly Savings (USD)",
+    annualSavings: "Projected Annual Savings",
+    paybackPeriod: "Payback Period (ROI)",
+    paybackValue: "< 45 Days",
+    cta: "Get Custom Automation Plan →"
+  },
+  techStack: {
+    tag: "WORLD-CLASS ARCHITECTURE",
+    heading: "Robust & Secure Tech Stack",
+    subheading: "We build on modern, scalable infrastructures to guarantee 99.9% uptime.",
+    categories: {
+      ai: "AI Models & LLMs",
+      automation: "Agents & Connectors",
+      backend: "Cloud & Infrastructure",
+      frontend: "Web & Mobile Platforms"
+    }
+  },
+  beforeAfter: {
+    tag: "RADICAL TRANSFORMATION",
+    heading: "Operational Comparison: Before vs. After",
+    subheading: "Discover the tangible difference experienced by companies implementing Alliasoft.",
+    beforeTitle: "🔴 Traditional Operation (Slow & Costly)",
+    afterTitle: "🟢 Alliasoft Operation (Automated)",
+    items: [
+      {
+        before: "Manual WhatsApp replies taking 3+ hours to send out",
+        after: "Instant 24/7 support with qualified AI agents quoting and booking"
+      },
+      {
+        before: "Information scattered across spreadsheets, paper, and chaotic chats",
+        after: "Centralized real-time dashboard with full process traceability"
+      },
+      {
+        before: "Sales reps losing 60% of their day on administrative typing",
+        after: "Sales reps 100% focused on closing highly qualified leads"
+      },
+      {
+        before: "Rigid generic software your team rejects and abandons",
+        after: "Custom systems built for your workflow with guaranteed adoption"
+      }
+    ]
+  },
+  quoteModal: {
+    title: "Interactive Alliasoft Estimator",
+    subtitle: "Design your custom solution and calculate estimated delivery time",
+    shortLabel: "Estimator",
+    back: "Back",
+    next: "Next",
+    modulesLabel: "Selected modules",
+    standardDiagnostic: "Standard diagnostic",
+    summaryNote: "We will use this summary to prepare your diagnostic. You can complete your details in the next step.",
+    step1: "1. Solution Type",
+    step2: "2. Modules & Features",
+    step3: "3. Summary & Submit",
+    selectService: "Select primary goal:",
+    services: [
+      { id: "ai_agent", title: "WhatsApp / Web AI Agent", desc: "24/7 service, automated quotes, and scheduling" },
+      { id: "custom_platform", title: "Custom Platform / CRM", desc: "Software designed exactly for your processes" },
+      { id: "alliafood", title: "AlliaFood Gastronomy", desc: "POS, kitchen, inventory, and delivery for restaurants" },
+      { id: "automation", title: "ERP / API Integration", desc: "Connect WhatsApp, billing, and databases" }
+    ],
+    featuresTitle: "Select key features:",
+    featuresList: [
+      "Official WhatsApp Business API Integration",
+      "Two-way connection with current CRM / ERP",
+      "Intelligent document processing (OCR + AI)",
+      "Real-time analytics dashboard",
+      "Automatic multilingual support (ES / EN)",
+      "Hands-on training with guaranteed adoption"
+    ],
+    summaryTitle: "Summary of proposed solution:",
+    estTime: "Estimated delivery time:",
+    estTimeVal: "2 to 4 weeks",
+    sendQuoteBtn: "Submit Quote & Request Diagnostic →",
+    closeBtn: "Close"
+  },
+  faq: {
+    tag: "FREQUENTLY ASKED QUESTIONS",
+    heading: "Clear Answers Before You Start",
+    subheading: "Total transparency regarding timelines, data security, and adoption guarantees.",
+    searchPlaceholder: "Search a query (e.g. timeline, security, WhatsApp)...",
+    items: [
+      {
+        q: "How long does it take to implement a solution with Alliasoft?",
+        a: "Most of our automations and AI agents are operational within 2 to 3 weeks. Complex custom development projects take between 4 to 6 weeks with weekly functional deliveries."
+      },
+      {
+        q: "Are my data and client information safe?",
+        a: "Totally. We implement bank-grade encryption (AES-256), SSL/HTTPS protocols, and comply with data privacy standards. Your corporate data is never used to train public models."
+      },
+      {
+        q: "Do I need to replace my existing software or ERP?",
+        a: "No. At Alliasoft we build connectors that integrate into your existing infrastructure (WhatsApp, Google Workspace, SAP, Shopify, HubSpot, SQL databases, or custom CRMs)."
+      },
+      {
+        q: "How do you ensure my team will actually adopt the system?",
+        a: "We design the solution based on how your team operates day to day, without forcing strange workflows. We also provide hands-on training and ongoing support until reaching 98% adoption."
+      },
+      {
+        q: "Do you offer post-launch technical support and maintenance?",
+        a: "Yes. We provide post-launch onboarding, 24/7 proactive monitoring, and maintenance plans to evolve software as your business grows."
+      }
+    ]
   }
 };

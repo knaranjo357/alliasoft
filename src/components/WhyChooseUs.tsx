@@ -3,88 +3,199 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Network, LineChart, Cpu, Lightbulb, Users } from 'lucide-react';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-};
-
-const WhyChooseUs: React.FC = () => {
-  const { t } = useTranslation();
-  const reasons = t('whyUs.reasons', { returnObjects: true }) as { title: string; description: string }[];
-  
-  const iconMeta = [
-    { icon: <LineChart className="w-6 h-6" />, bg: 'bg-blue-50 text-blue-600', hoverBg: 'group-hover:bg-blue-100/80', glow: 'group-hover:shadow-blue-500/10' },
-    { icon: <Network className="w-6 h-6" />, bg: 'bg-indigo-50 text-indigo-600', hoverBg: 'group-hover:bg-indigo-100/80', glow: 'group-hover:shadow-indigo-500/10' },
-    { icon: <Lightbulb className="w-6 h-6" />, bg: 'bg-amber-50 text-amber-600', hoverBg: 'group-hover:bg-amber-100/80', glow: 'group-hover:shadow-amber-500/10' },
-    { icon: <Cpu className="w-6 h-6" />, bg: 'bg-teal-50 text-teal-600', hoverBg: 'group-hover:bg-teal-100/80', glow: 'group-hover:shadow-teal-500/10' },
-    { icon: <Users className="w-6 h-6" />, bg: 'bg-rose-50 text-rose-600', hoverBg: 'group-hover:bg-rose-100/80', glow: 'group-hover:shadow-rose-500/10' },
+/* ─── Mini Bar Chart Visualization for the Hero Card ─── */
+const MiniBarChart: React.FC = () => {
+  const bars = [
+    { height: '45%', color: 'bg-blue-500/70', delay: 0.3 },
+    { height: '70%', color: 'bg-blue-400/80', delay: 0.45 },
+    { height: '55%', color: 'bg-blue-500/60', delay: 0.6 },
+    { height: '90%', color: 'bg-blue-300/90', delay: 0.75 },
+    { height: '65%', color: 'bg-blue-400/70', delay: 0.9 },
+    { height: '80%', color: 'bg-blue-300/80', delay: 1.05 },
   ];
 
   return (
-    <section id="why-us" className="py-32 px-6 bg-[#FAFAFA] relative overflow-hidden">
-      {/* Background ambient light */}
-      <div className="absolute top-[15%] left-[-5%] w-[35vw] h-[35vw] rounded-full bg-gradient-to-br from-indigo-100/30 to-blue-100/20 blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-[10%] right-[-8%] w-[40vw] h-[40vw] rounded-full bg-gradient-to-br from-violet-100/30 to-pink-100/20 blur-[100px] pointer-events-none" />
-
-      <div className="container mx-auto max-w-7xl relative z-10">
+    <div className="flex items-end gap-1.5 h-20 mt-5 px-1">
+      {bars.map((bar, i) => (
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
-          }}
+          key={i}
+          className={`w-3 rounded-t-sm ${bar.color}`}
+          initial={{ height: 0 }}
+          whileInView={{ height: bar.height }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: bar.delay, ease: 'easeOut' }}
+        />
+      ))}
+      <div className="ml-3 flex flex-col justify-end pb-1">
+        <span className="text-2xl font-extrabold text-white leading-none">+97%</span>
+        <span className="text-[10px] text-blue-300/70 font-medium tracking-wide uppercase">Efficiency</span>
+      </div>
+    </div>
+  );
+};
+
+/* ─── Card Configuration ─── */
+interface CardConfig {
+  icon: React.ReactNode;
+  glassClass: string;
+  glowClass: string;
+  gridSpan: string;
+  iconBg: string;
+  numberColor: string;
+  isHero?: boolean;
+}
+
+const cardConfigs: CardConfig[] = [
+  {
+    icon: <LineChart className="w-7 h-7 text-blue-400" />,
+    glassClass: 'glass-card-blue',
+    glowClass: 'hover-glow-blue',
+    gridSpan: 'md:col-span-2 md:row-span-2',
+    iconBg: 'bg-blue-500/15 border-blue-500/30',
+    numberColor: 'text-blue-500/15',
+    isHero: true,
+  },
+  {
+    icon: <Network className="w-6 h-6 text-teal-400" />,
+    glassClass: 'glass-card-teal',
+    glowClass: 'hover-glow-teal',
+    gridSpan: 'md:col-span-1',
+    iconBg: 'bg-teal-500/15 border-teal-500/30',
+    numberColor: 'text-teal-500/15',
+  },
+  {
+    icon: <Lightbulb className="w-6 h-6 text-purple-400" />,
+    glassClass: 'glass-card-purple',
+    glowClass: 'hover-glow-purple',
+    gridSpan: 'md:col-span-1',
+    iconBg: 'bg-purple-500/15 border-purple-500/30',
+    numberColor: 'text-purple-500/15',
+  },
+  {
+    icon: <Cpu className="w-6 h-6 text-amber-400" />,
+    glassClass: 'glass-card-amber',
+    glowClass: 'hover-glow-amber',
+    gridSpan: 'md:col-span-2',
+    iconBg: 'bg-amber-500/15 border-amber-500/30',
+    numberColor: 'text-amber-500/15',
+  },
+  {
+    icon: <Users className="w-6 h-6 text-indigo-400" />,
+    glassClass: 'glass-card',
+    glowClass: 'hover-glow-indigo',
+    gridSpan: 'md:col-span-1',
+    iconBg: 'bg-indigo-500/15 border-indigo-500/30',
+    numberColor: 'text-indigo-500/15',
+  },
+];
+
+/* ─── Component ─── */
+const WhyChooseUs: React.FC = () => {
+  const { t } = useTranslation();
+  const reasons = t('whyUs.reasons', { returnObjects: true }) as {
+    title: string;
+    description: string;
+  }[];
+
+  return (
+    <section
+      id="why-us"
+      className="relative py-28 px-6 text-white overflow-hidden bg-gradient-to-b from-[#030a1c] via-[#071025] to-[#050d1f]"
+    >
+      {/* ── Ambient Orbs ── */}
+      <div className="absolute top-1/4 -left-32 w-[420px] h-[420px] rounded-full bg-blue-600/[0.06] blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-[380px] h-[380px] rounded-full bg-amber-500/[0.05] blur-[110px] pointer-events-none" />
+
+      <div className="container mx-auto max-w-6xl relative z-10">
+        {/* ── Header ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="text-sm font-semibold tracking-wider text-blue-600 uppercase mb-4 block">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold tracking-widest uppercase mb-5">
             {t('nav.whyUs')}
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight mt-1 mb-5 bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent leading-[1.15]">
             {t('whyUs.heading')}
           </h2>
-          <p className="text-slate-500 text-lg md:text-xl leading-relaxed">
+          <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
             {t('whyUs.subheading')}
           </p>
         </motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={containerVariants}
-        >
+        {/* ── Bento Grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-auto">
           {reasons.slice(0, 5).map((reason, index) => {
-            const meta = iconMeta[index] || iconMeta[0];
+            const cfg = cardConfigs[index];
+
             return (
               <motion.div
                 key={index}
-                variants={itemVariants}
-                className={`group p-8 md:p-10 rounded-[2rem] bg-white border border-black/[0.03] shadow-[0_4px_24px_rgb(0,0,0,0.02)] hover:shadow-[0_24px_64px_rgb(0,0,0,0.08)] ${meta.glow} transition-all duration-500 relative overflow-hidden hover:-translate-y-2`}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                whileHover={{ y: -8 }}
+                className={`
+                  ${cfg.glassClass} ${cfg.glowClass} ${cfg.gridSpan}
+                  rounded-3xl p-8 relative overflow-hidden group cursor-default
+                  ${cfg.isHero ? 'md:p-10' : ''}
+                `}
               >
-                {/* Watermark number */}
-                <span className="absolute top-3 right-6 text-[5.5rem] font-black text-slate-900/[0.03] leading-none select-none pointer-events-none tabular-nums group-hover:text-slate-900/[0.05] transition-all duration-500">
+                {/* Watermark Number */}
+                <span
+                  className={`absolute top-4 right-6 font-black select-none font-mono pointer-events-none ${cfg.numberColor} ${
+                    cfg.isHero ? 'text-[5.5rem] -top-2 right-5' : 'text-6xl'
+                  }`}
+                >
                   {String(index + 1).padStart(2, '0')}
                 </span>
 
-                <div className={`w-14 h-14 ${meta.bg} ${meta.hoverBg} rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 ease-out relative z-10 group-hover:scale-110 group-hover:rotate-3 shadow-[0_4px_12px_rgba(0,0,0,0.02)] group-hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)]`}>
-                  {meta.icon}
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight leading-snug relative z-10 group-hover:text-blue-900 transition-colors duration-300">
+                {/* Icon Box */}
+                <motion.div
+                  className={`w-13 h-13 rounded-2xl border flex items-center justify-center mb-6 ${cfg.iconBg} ${
+                    cfg.isHero ? 'w-14 h-14' : 'w-12 h-12'
+                  }`}
+                  whileHover={{ scale: 1.15, rotate: 3 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                >
+                  {cfg.icon}
+                </motion.div>
+
+                {/* Title */}
+                <h3
+                  className={`font-bold text-white mb-3 leading-snug ${
+                    cfg.isHero ? 'text-2xl md:text-[1.65rem]' : 'text-xl'
+                  }`}
+                >
                   {reason.title}
                 </h3>
-                <p className="text-slate-500 leading-relaxed text-[1.02rem] relative z-10">
+
+                {/* Description */}
+                <p
+                  className={`text-slate-400 leading-relaxed ${
+                    cfg.isHero ? 'text-[0.94rem] max-w-md' : 'text-sm'
+                  }`}
+                >
                   {reason.description}
                 </p>
+
+                {/* Hero Card — Mini Bar Chart */}
+                {cfg.isHero && <MiniBarChart />}
+
+                {/* Subtle inner light on hover */}
+                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-white/[0.03] to-transparent" />
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

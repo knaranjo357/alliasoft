@@ -1,93 +1,297 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { Search, Bot, Layout, Share2, HeartHandshake, Sparkles, ArrowUpRight, ShieldCheck, Zap } from 'lucide-react';
+
+const cardConfigs = [
+  {
+    icon: Search,
+    number: '01',
+    spanClass: 'col-span-12 lg:col-span-7',
+    gradientBg: 'from-cyan-950/30 via-slate-900/60 to-slate-950/80',
+    borderColor: 'border-cyan-500/20 hover:border-cyan-400/50',
+    glowColor: 'group-hover:shadow-[0_0_35px_rgba(6,182,212,0.15)]',
+    badgeBg: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30',
+    iconRing: 'bg-cyan-500/15 text-cyan-400 border-cyan-400/30 group-hover:bg-cyan-500/25 group-hover:scale-110',
+    accentText: 'text-cyan-400',
+    pillText: 'Diagnóstico Operativo',
+    illustration: 'radar',
+  },
+  {
+    icon: Bot,
+    number: '02',
+    spanClass: 'col-span-12 lg:col-span-5',
+    gradientBg: 'from-purple-950/30 via-slate-900/60 to-slate-950/80',
+    borderColor: 'border-purple-500/20 hover:border-purple-400/50',
+    glowColor: 'group-hover:shadow-[0_0_35px_rgba(168,85,247,0.15)]',
+    badgeBg: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
+    iconRing: 'bg-purple-500/15 text-purple-400 border-purple-400/30 group-hover:bg-purple-500/25 group-hover:scale-110',
+    accentText: 'text-purple-400',
+    pillText: 'IA Generativa Corporativa',
+    illustration: 'bot-wave',
+  },
+  {
+    icon: Layout,
+    number: '03',
+    spanClass: 'col-span-12 md:col-span-6 lg:col-span-4',
+    gradientBg: 'from-blue-950/30 via-slate-900/60 to-slate-950/80',
+    borderColor: 'border-blue-500/20 hover:border-blue-400/50',
+    glowColor: 'group-hover:shadow-[0_0_35px_rgba(59,130,246,0.15)]',
+    badgeBg: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
+    iconRing: 'bg-blue-500/15 text-blue-400 border-blue-400/30 group-hover:bg-blue-500/25 group-hover:scale-110',
+    accentText: 'text-blue-400',
+    pillText: 'Sistemas a Medida',
+    illustration: 'layout-grid',
+  },
+  {
+    icon: Share2,
+    number: '04',
+    spanClass: 'col-span-12 md:col-span-6 lg:col-span-4',
+    gradientBg: 'from-emerald-950/30 via-slate-900/60 to-slate-950/80',
+    borderColor: 'border-emerald-500/20 hover:border-emerald-400/50',
+    glowColor: 'group-hover:shadow-[0_0_35px_rgba(16,185,129,0.15)]',
+    badgeBg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
+    iconRing: 'bg-emerald-500/15 text-emerald-400 border-emerald-400/30 group-hover:bg-emerald-500/25 group-hover:scale-110',
+    accentText: 'text-emerald-400',
+    pillText: 'Integración Ecosistema',
+    illustration: 'network',
+  },
+  {
+    icon: HeartHandshake,
+    number: '05',
+    spanClass: 'col-span-12 lg:col-span-4',
+    gradientBg: 'from-rose-950/30 via-slate-900/60 to-slate-950/80',
+    borderColor: 'border-rose-500/20 hover:border-rose-400/50',
+    glowColor: 'group-hover:shadow-[0_0_35px_rgba(244,63,94,0.15)]',
+    badgeBg: 'bg-rose-500/10 text-rose-400 border-rose-500/30',
+    iconRing: 'bg-rose-500/15 text-rose-400 border-rose-400/30 group-hover:bg-rose-500/25 group-hover:scale-110',
+    accentText: 'text-rose-400',
+    pillText: 'Acompañamiento Total',
+    illustration: 'handshake',
+  },
+];
 
 const Features: React.FC = () => {
   const { t } = useTranslation();
-  const items = t('features.items', { returnObjects: true }) as string[];
+  const rawItems = t('features.items', { returnObjects: true });
+  const items = Array.isArray(rawItems) ? (rawItems as string[]) : [];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 25, scale: 0.97 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
 
   return (
-    <section id="features" className="py-32 px-6 bg-slate-950 text-white relative overflow-hidden noise-overlay shrink-0">
-      {/* Grid overlay */}
+    <section
+      id="features"
+      className="py-32 px-6 bg-gradient-to-b from-[#060b18] via-[#0b132b] to-[#080c1d] text-white relative overflow-hidden noise-overlay shrink-0"
+    >
+      {/* Background Mesh Light Orbs */}
+      <div className="absolute top-[-10%] left-[-5%] w-[45vw] h-[45vw] rounded-full bg-indigo-600/10 blur-[130px] pointer-events-none z-0" />
+      <div className="absolute bottom-[-10%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[30vw] rounded-full bg-blue-600/[0.04] blur-[150px] pointer-events-none z-0" />
+
+      {/* Grid pattern overlay */}
       <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
+        className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
         style={{
           backgroundImage:
-            'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)',
-          backgroundSize: '44px 44px',
+            'linear-gradient(to right, #38bdf8 1px, transparent 1px), linear-gradient(to bottom, #38bdf8 1px, transparent 1px)',
+          backgroundSize: '56px 56px',
         }}
       />
-      {/* Top glow accent */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70vw] h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent z-10" />
-      {/* Ambient glow */}
-      <div className="absolute top-[-20%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-blue-500/[0.06] blur-[100px] pointer-events-none z-0" />
-      <div className="absolute bottom-[-15%] left-[-5%] w-[30vw] h-[30vw] rounded-full bg-teal-500/[0.05] blur-[80px] pointer-events-none z-0" />
 
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 items-start">
+      {/* Top glowing edge line */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent z-10" />
 
-          {/* Left: copy */}
-          <motion.div
-            className="flex-1 lg:sticky lg:top-32"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-6 block">
-              Por qué Alliasoft
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 leading-[1.1] text-white">
-              {t('features.title')}
-            </h2>
-            <p className="text-slate-400 text-lg leading-relaxed mb-8">
-              {t('features.description')}
-            </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors group"
-            >
-              Hablar con un experto
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
-            </a>
-          </motion.div>
+      {/* Floating Decorative Accent Badge */}
+      <motion.div
+        animate={{
+          y: [0, -14, 0],
+          rotate: [0, 4, -4, 0],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className="hidden xl:flex absolute top-24 right-12 z-20 items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md shadow-2xl pointer-events-none"
+      >
+        <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-cyan-400 to-indigo-500 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+          <Zap className="w-4 h-4 text-white" />
+        </div>
+        <div>
+          <div className="text-[11px] font-bold tracking-wider text-slate-300 uppercase">Impacto Medible</div>
+          <div className="text-xs font-semibold text-cyan-400">100% Adopción Garantizada</div>
+        </div>
+      </motion.div>
 
-          {/* Right: items */}
-          <motion.div
-            className="flex-1 w-full"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-            }}
-          >
-            <div className="flex flex-col gap-3">
-              {items.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={{
-                    hidden: { opacity: 0, x: 20 },
-                    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-                  }}
-                  className="flex items-center gap-5 rounded-2xl px-6 py-5 bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.07] hover:border-white/[0.14] transition-all duration-500 group cursor-default backdrop-blur-sm"
-                >
-                  <div className="w-10 h-10 rounded-xl border-2 border-blue-500/30 bg-gradient-to-br from-blue-500/20 to-indigo-500/10 flex items-center justify-center shrink-0 group-hover:border-blue-400/60 group-hover:from-blue-500/30 group-hover:to-indigo-500/20 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-500">
-                    <span className="text-blue-400 text-xs font-bold group-hover:text-blue-300 transition-colors">
-                      {String(index + 1).padStart(2, '0')}
+      <div className="container mx-auto max-w-7xl relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-3xl mx-auto mb-20"
+        >
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Por Qué Alliasoft</span>
+          </div>
+
+          <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-6 leading-[1.15] bg-gradient-to-r from-white via-slate-100 to-indigo-200 bg-clip-text text-transparent">
+            {t('features.title')}
+          </h2>
+
+          <p className="text-slate-400 text-base md:text-lg leading-relaxed">
+            {t('features.description')}
+          </p>
+        </motion.div>
+
+        {/* Bento Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 md:grid-cols-12 gap-6"
+        >
+          {cardConfigs.map((config, index) => {
+            const itemText = items[index] || '';
+            const IconComponent = config.icon;
+
+            return (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                className={`${config.spanClass} group relative rounded-3xl p-8 bg-gradient-to-b ${config.gradientBg} border ${config.borderColor} ${config.glowColor} backdrop-blur-xl transition-all duration-500 flex flex-col justify-between overflow-hidden cursor-default`}
+              >
+                {/* Background Card Ambient Glow */}
+                <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 rounded-full bg-white/[0.02] group-hover:bg-white/[0.05] transition-colors duration-500 blur-2xl pointer-events-none" />
+
+                {/* Card Top Bar: Badge Number + Category Pill */}
+                <div className="flex items-center justify-between gap-4 mb-8 z-10">
+                  <div className="flex items-center gap-3">
+                    {/* Icon Ring */}
+                    <div
+                      className={`w-12 h-12 rounded-2xl border flex items-center justify-center transition-all duration-500 shadow-lg ${config.iconRing}`}
+                    >
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+
+                    {/* Category Tag */}
+                    <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${config.badgeBg}`}>
+                      {config.pillText}
                     </span>
                   </div>
-                  <span className="text-slate-200 font-semibold text-[1.05rem] tracking-tight group-hover:text-white transition-colors duration-300">
-                    {item}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
 
-        </div>
+                  {/* Number Badge */}
+                  <span className="text-2xl font-black tracking-tighter text-slate-500 group-hover:text-white transition-colors duration-300">
+                    {config.number}
+                  </span>
+                </div>
+
+                {/* Card Main Title */}
+                <div className="z-10 mb-8">
+                  <h3 className="text-xl md:text-2xl font-bold text-white leading-snug tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                    {itemText}
+                  </h3>
+                </div>
+
+                {/* Graphic Pattern / Visual Graphic per Card */}
+                <div className="relative z-10 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                  {/* Card Illustration Graphic */}
+                  {config.illustration === 'radar' && (
+                    <div className="w-full flex items-center justify-between gap-3 text-xs text-slate-400">
+                      <div className="flex items-center gap-2">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                        </span>
+                        <span className="font-mono text-[11px] text-cyan-300">Escaneo de Fugas: Activo</span>
+                      </div>
+                      <div className="hidden sm:flex items-center gap-2 font-mono text-[10px] text-slate-500">
+                        <span>ROI 4.5x</span>
+                        <span>•</span>
+                        <span>100% Audit</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {config.illustration === 'bot-wave' && (
+                    <div className="w-full flex items-center justify-between gap-3 text-xs text-slate-400">
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-1 items-end h-4">
+                          <span className="w-1 bg-purple-400 animate-pulse h-2 rounded-full"></span>
+                          <span className="w-1 bg-purple-400 animate-pulse h-4 rounded-full delay-100"></span>
+                          <span className="w-1 bg-purple-400 animate-pulse h-3 rounded-full delay-200"></span>
+                          <span className="w-1 bg-purple-400 animate-pulse h-1 rounded-full delay-150"></span>
+                        </div>
+                        <span className="font-mono text-[11px] text-purple-300">LLM Corporativo 24/7</span>
+                      </div>
+                      <span className="text-[10px] text-purple-400 font-semibold px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20">
+                        Entrenado con tus datos
+                      </span>
+                    </div>
+                  )}
+
+                  {config.illustration === 'layout-grid' && (
+                    <div className="w-full flex items-center justify-between text-xs text-slate-400">
+                      <div className="flex items-center gap-1.5 text-blue-300 font-mono text-[11px]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                        <span>Flujo Personalizado</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <div className="w-6 h-1.5 rounded-full bg-blue-500/30 group-hover:bg-blue-400/60 transition-colors" />
+                        <div className="w-3 h-1.5 rounded-full bg-blue-500/20" />
+                        <div className="w-2 h-1.5 rounded-full bg-blue-500/20" />
+                      </div>
+                    </div>
+                  )}
+
+                  {config.illustration === 'network' && (
+                    <div className="w-full flex items-center justify-between text-xs text-slate-400">
+                      <div className="flex items-center gap-2 font-mono text-[11px] text-emerald-300">
+                        <Share2 className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>API & WhatsApp & ERP</span>
+                      </div>
+                      <span className="text-[10px] font-mono text-emerald-400">Sync 0ms</span>
+                    </div>
+                  )}
+
+                  {config.illustration === 'handshake' && (
+                    <div className="w-full flex items-center justify-between text-xs text-slate-400">
+                      <div className="flex items-center gap-2 font-mono text-[11px] text-rose-300">
+                        <ShieldCheck className="w-3.5 h-3.5 text-rose-400" />
+                        <span>Adopción Garantizada</span>
+                      </div>
+                      <span className="text-[10px] font-bold text-rose-400">Presencial + Virtual</span>
+                    </div>
+                  )}
+
+                  <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 shrink-0 ml-2" />
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );

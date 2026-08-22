@@ -1,135 +1,111 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle2, Layers, FileCheck, Code, Rocket, Activity } from 'lucide-react';
 
-interface StepCardProps {
-  title: string;
-  description: string;
-  index: number;
-}
-
-const stepGradients = [
-  'from-blue-500 to-indigo-500',
-  'from-violet-500 to-purple-500',
-  'from-teal-500 to-emerald-500',
-  'from-amber-500 to-orange-500',
-  'from-rose-500 to-pink-500',
+const stepIcons = [
+  <Layers className="w-5 h-5 text-blue-400" />,
+  <Activity className="w-5 h-5 text-indigo-400" />,
+  <FileCheck className="w-5 h-5 text-purple-400" />,
+  <Code className="w-5 h-5 text-emerald-400" />,
+  <Rocket className="w-5 h-5 text-teal-400" />,
 ];
 
-const StepCard: React.FC<StepCardProps> = ({ title, description, index }) => (
-  <div className="w-full bg-white p-8 rounded-3xl border border-black/[0.04] shadow-[0_4px_24px_rgb(0,0,0,0.02)] hover:shadow-[0_16px_48px_rgb(0,0,0,0.07)] transition-all duration-500 relative overflow-hidden group hover:-translate-y-1">
-    {/* Top gradient accent */}
-    <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${stepGradients[index]} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-    {/* Watermark */}
-    <span className="absolute -bottom-3 -right-2 text-[6rem] font-black text-slate-900/[0.03] leading-none select-none pointer-events-none tabular-nums group-hover:text-slate-900/[0.05] transition-all duration-500">
-      {index + 1}
-    </span>
-    <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight leading-snug relative z-10">
-      {title}
-    </h3>
-    <p className="text-slate-500 leading-relaxed text-[1.02rem] relative z-10">
-      {description}
-    </p>
-  </div>
-);
+const stepDeliverables = [
+  ['Entrevistas con equipo clave', 'Mapa de procesos actuales', 'Matriz de dolor operativo'],
+  ['Priorización por retorno ROI', 'Identificación de cuellos de botella', 'Definición de KPIs de éxito'],
+  ['Arquitectura de software', 'Wireframes de experiencia', 'Propuesta técnica y tiempos'],
+  ['Desarrollo modular continuo', 'Integración con APIs / WhatsApp', 'Pruebas con usuarios reales'],
+  ['Capacitación del personal', 'Monitoreo proactivo 24/7', 'Evolución y optimización continua'],
+];
 
 const Process: React.FC = () => {
   const { t } = useTranslation();
+  const [activeStep, setActiveStep] = useState<number>(0);
+
   const steps = t('process.steps', { returnObjects: true }) as { title: string; description: string }[];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.18 } },
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-  };
-
   return (
-    <section id="process" className="py-32 px-6 bg-white relative overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute top-[20%] left-[-10%] w-[30vw] h-[30vw] rounded-full bg-gradient-to-br from-blue-50/60 to-indigo-50/40 blur-[80px] pointer-events-none" />
-      <div className="absolute bottom-[10%] right-[-5%] w-[25vw] h-[25vw] rounded-full bg-gradient-to-br from-teal-50/50 to-emerald-50/30 blur-[60px] pointer-events-none" />
-
-      <div className="container mx-auto max-w-5xl relative z-10">
-
-        {/* Section header */}
+    <section id="process" className="py-24 px-6 bg-slate-950 text-white relative overflow-hidden">
+      <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center max-w-3xl mx-auto mb-24"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-sm font-semibold tracking-wider text-blue-600 uppercase mb-4 block">
-            {t('nav.process')}
+          <span className="px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold tracking-widest uppercase mb-4 inline-block">
+            METODOLOGÍA ALLIASOFT
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mt-3 mb-4 bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
             {t('process.heading')}
           </h2>
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical center line — desktop only, with gradient */}
-          <div className="hidden md:block absolute left-1/2 -translate-x-px top-7 bottom-7 w-px bg-gradient-to-b from-blue-200/0 via-blue-300/40 to-blue-200/0 z-0" />
-
-          <motion.div
-            className="flex flex-col gap-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-            variants={containerVariants}
-          >
-            {steps.map((step, index) => {
-              const isEven = index % 2 === 0;
-              const gradient = stepGradients[index] || stepGradients[0];
-              return (
-                <motion.div key={index} variants={itemVariants}>
-
-                  {/* ── MOBILE layout: left number + right card ── */}
-                  <div className="flex items-start gap-5 md:hidden">
-                    <div className={`w-12 h-12 shrink-0 mt-1 rounded-full bg-gradient-to-br ${gradient} text-white font-black text-sm flex items-center justify-center shadow-[0_0_0_5px_white,0_4px_16px_rgba(0,0,0,0.1)] tabular-nums z-10`}>
-                      {String(index + 1).padStart(2, '0')}
-                    </div>
-                    <div className="flex-1">
-                      <StepCard title={step.title} description={step.description} index={index} />
-                    </div>
+        {/* Timeline Bar */}
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-12">
+          {steps.map((step, idx) => {
+            const isActive = activeStep === idx;
+            return (
+              <button
+                key={idx}
+                onClick={() => setActiveStep(idx)}
+                className={`p-4 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between ${
+                  isActive
+                    ? 'bg-blue-600/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)] scale-105'
+                    : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-bold font-mono text-blue-400">FASE 0{idx + 1}</span>
+                  <div className="w-7 h-7 rounded-lg bg-slate-950 flex items-center justify-center">
+                    {stepIcons[idx]}
                   </div>
-
-                  {/* ── DESKTOP layout: 3-column grid ── */}
-                  <div className="hidden md:grid grid-cols-[1fr_72px_1fr] items-center gap-0">
-                    {/* Left cell */}
-                    <div className="flex justify-end pr-6">
-                      {isEven
-                        ? <StepCard title={step.title} description={step.description} index={index} />
-                        : null
-                      }
-                    </div>
-
-                    {/* Center bubble */}
-                    <div className="flex justify-center z-10">
-                      <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${gradient} text-white font-black text-base flex items-center justify-center shadow-[0_0_0_6px_white,0_4px_20px_rgba(0,0,0,0.1)] tabular-nums`}>
-                        {String(index + 1).padStart(2, '0')}
-                      </div>
-                    </div>
-
-                    {/* Right cell */}
-                    <div className="flex justify-start pl-6">
-                      {!isEven
-                        ? <StepCard title={step.title} description={step.description} index={index} />
-                        : null
-                      }
-                    </div>
-                  </div>
-
-                </motion.div>
-              );
-            })}
-          </motion.div>
+                </div>
+                <h4 className="text-xs sm:text-sm font-bold line-clamp-2">{step.title}</h4>
+              </button>
+            );
+          })}
         </div>
 
+        {/* Active Step Showcase Panel */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeStep}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 md:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          >
+            <div className="lg:col-span-7 space-y-4">
+              <span className="text-xs font-bold font-mono uppercase tracking-widest text-blue-400 block">
+                Fase 0{activeStep + 1} de 05
+              </span>
+              <h3 className="text-2xl md:text-3xl font-extrabold text-white">
+                {steps[activeStep].title}
+              </h3>
+              <p className="text-slate-300 text-base leading-relaxed">
+                {steps[activeStep].description}
+              </p>
+            </div>
+
+            <div className="lg:col-span-5 bg-slate-950/80 border border-slate-800 p-6 rounded-2xl space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Entregables Clave de la Fase:
+              </h4>
+              <div className="space-y-2.5">
+                {stepDeliverables[activeStep]?.map((deliv, i) => (
+                  <div key={i} className="flex items-center gap-2 text-xs text-slate-300 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                    <span>{deliv}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

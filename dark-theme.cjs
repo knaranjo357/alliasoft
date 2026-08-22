@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const dir = 'C:/Users/KevinAlejandroNaranj/OneDrive - XACTUS S.A.S/Info PC/Documentos/ALLIASOFT/8) ALLIASOFT PAGINA WEB/alliasoft/src/components';
+const dir = path.join(__dirname, 'src', 'components');
 
 function processDirectory(directory) {
   const files = fs.readdirSync(directory);

@@ -1,121 +1,208 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onOpenQuote?: (serviceId?: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
   const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'es' : 'en';
     i18n.changeLanguage(newLang);
     document.documentElement.lang = newLang;
   };
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+
+      // Section highlight
+      const sections = ['home', 'demo', 'solutions', 'process', 'portfolio', 'roi', 'faq', 'contact'];
+      for (const sec of sections) {
+        const el = document.getElementById(sec);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 200 && rect.bottom >= 200) {
+            setActiveSection(sec);
+            break;
+          }
+        }
+      }
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { key: 'home', href: '#home' },
-    { key: 'whyUs', href: '#why-us' },
-    { key: 'portfolio', href: '#portfolio' },
-    { key: 'contact', href: '#contact' }
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closeMobileMenu();
+    };
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+    window.addEventListener('keydown', handleEscape);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, [isMobileMenuOpen]);
+
+  const navItems: Array<{ key: string; href: string; id: string; label?: string }> = [
+    { key: 'demo', href: '#demo', id: 'demo' },
+    { key: 'services', href: '#solutions', id: 'solutions' },
+    { key: 'portfolio', href: '#portfolio', id: 'portfolio' },
+    { key: 'process', href: '#process', id: 'process' },
+    { key: 'roi', href: '#roi', id: 'roi' },
+    { key: 'faq', href: '#faq', id: 'faq' },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-6 px-4 md:px-0 flex justify-center pointer-events-none">
-      <div className={`pointer-events-auto transition-all duration-500 ease-[0.22,1,0.36,1] w-full max-w-5xl rounded-[2rem] border ${
-        isScrolled 
-          ? 'bg-white/70 backdrop-blur-xl border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.02)] py-3 px-8' 
-          : 'bg-transparent border-transparent py-5 px-8'
-      }`}>
+    <header className="fixed top-0 left-0 right-0 z-50 pt-4 px-4 md:px-0 flex justify-center pointer-events-none">
+      <div
+        className={`pointer-events-auto transition-all duration-500 ease-[0.22,1,0.36,1] w-full max-w-6xl rounded-[2rem] border ${
+          isScrolled
+            ? 'bg-slate-950/85 backdrop-blur-xl border-slate-800/80 shadow-[0_10px_40px_rgba(0,0,0,0.5)] py-3 px-6 md:px-8'
+            : 'bg-slate-950/50 backdrop-blur-md border-slate-800/40 py-4 px-6 md:px-8'
+        }`}
+      >
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center group">
-            <span className="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-slate-950 via-slate-800 to-blue-600 bg-clip-text text-transparent tracking-tight group-hover:opacity-90 transition-opacity">
-              Alliasoft
+          {/* Logo */}
+          <a href="#home" className="flex items-center gap-2.5 group" aria-label={t('accessibility.home')}>
+            <img
+              src="/images/logo.png"
+              alt=""
+              width="36"
+              height="36"
+              className="w-9 h-9 rounded-xl object-cover ring-1 ring-white/10 shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform"
+            />
+            <span className="text-xl md:text-2xl font-extrabold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+              Alliasoft <span className="text-blue-500 text-xs font-mono font-normal">AI</span>
             </span>
           </a>
 
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map(item => (
-              <a 
-                key={item.key} 
-                href={item.href} 
-                className="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors tracking-wide relative group py-2"
-              >
-                {t(`nav.${item.key}`)}
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-500 transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
+          {/* Desktop Nav */}
+          <nav className="hidden xl:flex items-center space-x-6" aria-label={t('accessibility.primaryNav')}>
+            {navItems.map((item) => {
+              const label = item.label || t(`nav.${item.key}`);
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  className={`text-xs font-bold transition-all tracking-wide relative py-1.5 ${
+                    isActive ? 'text-blue-400 font-extrabold' : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeNavTab"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-500 to-teal-400 rounded-full"
+                    />
+                  )}
+                </a>
+              );
+            })}
           </nav>
 
-          <div className="hidden md:flex items-center space-x-4">
-            <button 
-              onClick={toggleLanguage} 
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200/80 text-xs font-bold text-slate-700 transition-colors border border-black/[0.04]"
+          {/* Right Actions */}
+          <div className="hidden xl:flex items-center space-x-3">
+            <button
+              onClick={toggleLanguage}
+              aria-label={t('accessibility.changeLanguage')}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900 hover:bg-slate-800 text-xs font-bold text-slate-300 transition-colors border border-slate-800"
             >
-              <Globe className="w-3.5 h-3.5 text-slate-500" />
-              <span>{i18n.language === 'en' ? 'EN' : 'ES'}</span>
+              <Globe className="w-3.5 h-3.5 text-blue-400" />
+              <span>{i18n.language === 'es' ? 'EN' : 'ES'}</span>
             </button>
-            
-            <a 
-              href="#contact" 
-              className="group relative px-6 py-3 text-sm font-bold text-white bg-slate-900 rounded-full shadow-[0_4px_14px_rgba(15,23,42,0.15)] hover:shadow-[0_8px_24px_rgba(15,23,42,0.25)] hover:-translate-y-0.5 transition-all duration-300 overflow-hidden"
+
+            {onOpenQuote && (
+              <button
+                onClick={() => onOpenQuote()}
+                className="px-4 py-2 text-xs font-bold text-slate-200 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white rounded-full transition-all flex items-center gap-1.5"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                {t('quoteModal.shortLabel')}
+              </button>
+            )}
+
+            <a
+              href="#contact"
+              className="group relative px-5 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_25px_rgba(37,99,235,0.6)] transition-all overflow-hidden flex items-center gap-1.5"
             >
               <span className="relative z-10">{t('contact_btn.button')}</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
             </a>
           </div>
 
-          <div className="flex md:hidden items-center space-x-2">
-            <button 
-              onClick={toggleLanguage} 
-              className="p-2 rounded-full hover:bg-black/5 flex items-center justify-center"
+          {/* Mobile Buttons */}
+          <div className="flex xl:hidden items-center space-x-2">
+            <button
+              onClick={toggleLanguage}
+              aria-label={t('accessibility.changeLanguage')}
+              className="p-2 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs font-bold"
             >
-              <Globe className="w-5 h-5 text-slate-700" />
+              {i18n.language === 'es' ? 'EN' : 'ES'}
             </button>
-            <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-              className="p-2 text-slate-900 hover:bg-black/5 rounded-full transition-colors"
+
+            {onOpenQuote && (
+              <button
+                onClick={() => onOpenQuote()}
+                aria-label={t('quoteModal.shortLabel')}
+                className="p-2 rounded-full bg-slate-900 border border-slate-800 text-amber-400"
+              >
+                <Sparkles className="w-4 h-4" />
+              </button>
+            )}
+
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? t('accessibility.closeMenu') : t('accessibility.openMenu')}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
+              className="p-2 text-white bg-slate-900 border border-slate-800 rounded-full transition-colors"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
+        {/* Mobile Menu Drawer */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div 
-              initial={{ opacity: 0, height: 0 }} 
-              animate={{ opacity: 1, height: 'auto' }} 
-              exit={{ opacity: 0, height: 0 }} 
-              transition={{ duration: 0.3, ease: 'easeInOut' }} 
-              className="md:hidden overflow-hidden mt-4 pt-4 border-t border-black/5"
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              id="mobile-navigation"
+              className="xl:hidden overflow-hidden mt-4 pt-4 border-t border-slate-800"
             >
-              <div className="flex flex-col space-y-4 pb-4">
-                {navItems.map(item => (
-                  <a 
-                    key={item.key} 
-                    href={item.href} 
-                    className="text-base font-bold text-slate-700 hover:text-blue-600 transition-colors" 
-                    onClick={() => setIsMobileMenuOpen(false)}
+              <nav className="flex flex-col space-y-3 pb-4" aria-label={t('accessibility.mobileNav')}>
+                {navItems.map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    className="text-sm font-bold text-slate-300 hover:text-blue-400 transition-colors py-1"
+                    onClick={closeMobileMenu}
                   >
-                    {t(`nav.${item.key}`)}
+                    {item.label || t(`nav.${item.key}`)}
                   </a>
                 ))}
-                <a 
-                  href="#contact" 
-                  className="text-center text-base font-bold text-white bg-slate-900 rounded-full py-3 mt-2 block shadow-md" 
-                  onClick={() => setIsMobileMenuOpen(false)}
+                <a
+                  href="#contact"
+                  className="text-center text-xs font-bold text-white bg-blue-600 rounded-full py-3 mt-2 block shadow-md"
+                  onClick={closeMobileMenu}
                 >
-                  {t('nav.contact')}
+                  {t('contact_btn.button')}
                 </a>
-              </div>
+              </nav>
             </motion.div>
           )}
         </AnimatePresence>

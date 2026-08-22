@@ -16,12 +16,13 @@ i18n
         translation: esTranslation
       }
     },
-    fallbackLng: 'en',
+    fallbackLng: 'es',
+    supportedLngs: ['es', 'en'],
     interpolation: {
       escapeValue: false
     },
     detection: {
-      order: ['navigator', 'localStorage', 'htmlTag'],
+      order: ['localStorage', 'htmlTag'],
       caches: ['localStorage']
     }
   });
