@@ -3,37 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ChevronDown, Zap, Sparkles, Play, ShieldCheck, ArrowRight, Activity, TrendingUp, Globe, Terminal } from 'lucide-react';
 
-/* ── CountUp ── */
-interface CountUpProps { end: string; duration?: number }
-const CountUp: React.FC<CountUpProps> = ({ end, duration = 1.8 }) => {
-  const [display, setDisplay] = useState('0');
-  const ref = useRef<HTMLSpanElement>(null);
-  const started = useRef(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !started.current) {
-        started.current = true;
-        const isPercent = end.includes('%');
-        const hasPlus = end.includes('+');
-        const numeric = parseFloat(end.replace(/[^0-9.]/g, ''));
-        const startTime = performance.now();
-        const step = (now: number) => {
-          const elapsed = (now - startTime) / 1000;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = Math.round(eased * numeric);
-          setDisplay(`${hasPlus ? '+' : ''}${current}${isPercent ? '%' : ''}`);
-          if (progress < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-      }
-    }, { threshold: 0.5 });
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [end, duration]);
-  return <span ref={ref}>{display}</span>;
-};
-
 /* ── Typewriter Effect for Terminal ── */
 const TypewriterLine: React.FC<{ text: string; delay: number; color: string; prefix: string; prefixColor: string }> = ({ text, delay, color, prefix, prefixColor }) => {
   const [displayed, setDisplayed] = useState('');
@@ -102,11 +71,6 @@ interface HeroProps { onOpenQuote?: () => void }
 
 const Hero: React.FC<HeroProps> = ({ onOpenQuote }) => {
   const { t } = useTranslation();
-  const stats = [
-    { value: t('hero.stat1_value'), label: t('hero.stat1_label') },
-    { value: t('hero.stat2_value'), label: t('hero.stat2_label') },
-    { value: t('hero.stat3_value'), label: t('hero.stat3_label') },
-  ];
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden text-white">
@@ -194,19 +158,6 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuote }) => {
               <span>{t('hero.support')}</span>
             </motion.p>
 
-            {/* Stats Bar */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.55 }}
-              className="inline-flex flex-col sm:flex-row items-center gap-0 bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl shadow-2xl overflow-hidden">
-              {stats.map((stat, i) => (
-                <div key={i} className={`flex flex-col items-center px-8 py-4 ${i < stats.length - 1 ? 'border-b sm:border-b-0 sm:border-r border-white/[0.06]' : ''}`}>
-                  <span className="text-2xl sm:text-3xl font-extrabold tracking-tight font-mono bg-gradient-to-b from-white to-slate-300 bg-clip-text text-transparent">
-                    <CountUp end={stat.value} />
-                  </span>
-                  <span className="text-slate-500 text-[10px] font-bold tracking-[0.15em] uppercase mt-1">{stat.label}</span>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           {/* ── Right Column: 3D Tilt Interactive Terminal ── */}

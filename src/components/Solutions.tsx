@@ -43,7 +43,7 @@ const solutionList: SolutionItem[] = [
     features: [
       'Auditoría de cuellos de botella operativos',
       'Mapeo de arquitectura de información',
-      'Matriz de impacto ROI previo a código',
+      'Matriz de impacto y prioridad antes de desarrollar',
     ],
   },
   {
@@ -103,7 +103,7 @@ const solutionList: SolutionItem[] = [
     features: [
       'UX pensada para cero fricción de aprendizaje',
       'Diseño responsive adaptado a móvil y tablet',
-      'Velocidad de carga sub-segundo',
+      'Optimización de rendimiento y accesibilidad',
     ],
   },
   {
@@ -118,14 +118,23 @@ const solutionList: SolutionItem[] = [
     features: [
       'Monitoreo proactivo post-lanzamiento',
       'Iteración mensual según métricas de uso',
-      'Garantía de adopción por parte del equipo',
+      'Acompañamiento y medición de uso del equipo',
     ],
   },
 ];
 
 const Solutions: React.FC<SolutionsProps> = ({ onOpenQuote }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [selectedSolution, setSelectedSolution] = useState<string | null>(null);
+  const isEnglish = i18n.resolvedLanguage === 'en';
+  const englishFeatures: Record<SolutionItem['key'], string[]> = {
+    performance: ['Operational bottleneck review', 'Information architecture mapping', 'Impact and priority matrix before development'],
+    design: ['Agents grounded in company documentation', 'WhatsApp Business API integration', 'Human handoff with contextual alerts'],
+    control: ['Custom CRM and dashboard development', 'Role-based permissions', 'Operational analytics panels'],
+    experience: ['Two-way ERP and WhatsApp connections', 'Inventory synchronization', 'Alerts and collection workflows'],
+    support: ['UX designed around real user workflows', 'Responsive mobile and tablet design', 'Performance and accessibility optimization'],
+    investment: ['Post-launch monitoring', 'Iteration using agreed usage indicators', 'Team support and usage measurement'],
+  };
 
   const toggleSolution = (key: string) => {
     setSelectedSolution((prev) => (prev === key ? null : key));
@@ -189,12 +198,12 @@ const Solutions: React.FC<SolutionsProps> = ({ onOpenQuote }) => {
             {/* Sub-card highlights summary */}
             <div className="pt-6 grid grid-cols-2 gap-4 border-t border-slate-800/80 mt-8">
               <div className="p-4 rounded-2xl bg-slate-900/40 border border-slate-800/60 backdrop-blur-sm">
-                <span className="text-2xl font-extrabold text-blue-400 block">100%</span>
-                <span className="text-xs text-slate-400">Desarrollo a medida & ágil</span>
+                <span className="text-lg font-extrabold text-blue-400 block">A medida</span>
+                <span className="text-xs text-slate-400">Alcance definido con tu equipo</span>
               </div>
               <div className="p-4 rounded-2xl bg-slate-900/40 border border-slate-800/60 backdrop-blur-sm">
-                <span className="text-2xl font-extrabold text-emerald-400 block">+85%</span>
-                <span className="text-xs text-slate-400">Eficiencia operativa</span>
+                <span className="text-lg font-extrabold text-emerald-400 block">Por etapas</span>
+                <span className="text-xs text-slate-400">Avances funcionales y validables</span>
               </div>
             </div>
           </motion.div>
@@ -204,6 +213,7 @@ const Solutions: React.FC<SolutionsProps> = ({ onOpenQuote }) => {
             {solutionList.map((sol, index) => {
               const isSelected = selectedSolution === sol.key;
               const IconComponent = sol.icon;
+              const displayFeatures = isEnglish ? englishFeatures[sol.key] : sol.features;
 
               return (
                 <motion.div
@@ -252,10 +262,10 @@ const Solutions: React.FC<SolutionsProps> = ({ onOpenQuote }) => {
                       >
                         <div className="pt-5 mt-5 border-t border-slate-800/80 space-y-3">
                           <span className="text-xs font-semibold tracking-wider text-slate-400 uppercase block mb-2">
-                            Funcionalidades Clave
+                            {isEnglish ? 'Key capabilities' : 'Funcionalidades clave'}
                           </span>
                           <div className="grid grid-cols-1 sm:grid-cols-1 gap-2.5">
-                            {sol.features.map((feat, i) => (
+                            {displayFeatures.map((feat, i) => (
                               <div
                                 key={i}
                                 className="flex items-center gap-3 p-2.5 rounded-xl bg-slate-950/50 border border-slate-800/50 text-sm text-slate-200"
@@ -278,7 +288,7 @@ const Solutions: React.FC<SolutionsProps> = ({ onOpenQuote }) => {
                               }}
                               className={`px-4 py-2 rounded-xl text-xs font-bold border transition-colors flex items-center gap-1.5 ${sol.accentBadge} hover:brightness-125`}
                             >
-                              <span>Solicitar esta solución</span>
+                              <span>{isEnglish ? 'Discuss this solution' : 'Conversar sobre esta solución'}</span>
                               <ChevronRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -290,7 +300,9 @@ const Solutions: React.FC<SolutionsProps> = ({ onOpenQuote }) => {
                   {/* Toggle Indicator Footer Line */}
                   <div className="mt-4 pt-3 border-t border-slate-800/40 flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-slate-200 transition-colors">
                     <span className="flex items-center gap-1.5">
-                      {isSelected ? 'Ocultar detalles' : 'Ver funcionalidades'}
+                      {isSelected
+                        ? (isEnglish ? 'Hide details' : 'Ocultar detalles')
+                        : (isEnglish ? 'View capabilities' : 'Ver funcionalidades')}
                     </span>
                     <div
                       className={`w-6 h-6 rounded-full bg-slate-800/60 flex items-center justify-center transition-transform duration-300 ${

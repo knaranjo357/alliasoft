@@ -185,6 +185,10 @@ html[data-theme='light'] textarea::placeholder {
   color: #64748b !important;
 }
 
+html[data-theme='light'] .floating-field-input::placeholder {
+  color: transparent !important;
+}
+
 html[data-theme='light'] option {
   background: #ffffff !important;
   color: #0f172a !important;

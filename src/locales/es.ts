@@ -1,7 +1,7 @@
 export default {
   seo: {
-    title: "Alliasoft | IA, automatización y software a medida en Colombia",
-    description: "Alliasoft desarrolla agentes de IA, automatizaciones, AlliaFood y software a medida para empresas en Colombia y Latinoamérica."
+    title: "Alliasoft | IA y software a medida en Colombia",
+    description: "Alliasoft crea agentes de IA, automatización y software a medida para empresas en Colombia. Integramos WhatsApp, CRM, ERP y procesos críticos."
   },
   accessibility: {
     skipToContent: "Saltar al contenido principal",
@@ -19,7 +19,7 @@ export default {
     demo: "Playground IA",
     services: "Soluciones",
     process: "Metodología",
-    portfolio: "Casos de Éxito",
+    portfolio: "Experiencia",
     tech: "Tecnología",
     roi: "Calculadora ROI",
     sectors: "Sectores",
@@ -42,12 +42,6 @@ export default {
     support: "Soluciones construidas alrededor de tu operación",
     cta1: "Contarles mi problemática",
     cta2: "Ver soluciones",
-    stat1_value: "+40",
-    stat1_label: "Equipo en Bucaramanga",
-    stat2_value: "85%",
-    stat2_label: "Reuniones virtuales",
-    stat3_value: "98%",
-    stat3_label: "Acompañamiento humano",
     preview: {
       engine: "Capacidades del equipo",
       live: "DISPONIBLES",
@@ -73,25 +67,25 @@ export default {
       "Agentes de IA conversacionales entrenados con tus datos corporativos",
       "Sistemas y plataformas web customizados para tu flujo real",
       "Integración nativa con WhatsApp Business API, CRM, ERP y Facturación",
-      "Acompañamiento presencial y virtual hasta garantizar la adopción total"
+      "Acompañamiento presencial y virtual para facilitar la adopción del equipo"
     ]
   },
   solutions: {
-    heading: "Seis áreas estratégicas donde transformamos la fricción en rentabilidad.",
-    description: "No vendemos paquetes genéricos ni suscripciones inútiles. Diagnosticamos tu operación y construimos la arquitectura exacta que tu negocio necesita para escalar.",
-    cta: "Solicitar Diagnóstico Sin Costo →",
+    heading: "Seis formas de resolver fricciones concretas de tu operación.",
+    description: "Primero entendemos el proceso, los usuarios y las integraciones. Después proponemos un alcance por etapas, con entregables que tu equipo puede revisar.",
+    cta: "Conversar sobre mi operación →",
     items: {
       performance: {
         title: "Radiografía & Auditoría Operativa",
-        description: "Mapeamos cada proceso, herramienta y punto donde se pierden horas o dinero. Sabrás exactamente qué automatizar para obtener el mayor retorno de inversión."
+        description: "Mapeamos procesos, herramientas y puntos de fricción para priorizar qué conviene automatizar y qué debe seguir en manos del equipo."
       },
       design: {
         title: "Agentes Conversacionales con IA",
-        description: "Agentes inteligentes que atienden en WhatsApp y Web 24/7, cotizan productos, califican prospectos y cierran ventas con la calidez de una persona y la velocidad de un algoritmo."
+        description: "Agentes para WhatsApp y web que pueden orientar, cotizar y calificar oportunidades según reglas definidas, con transferencia clara a una persona."
       },
       control: {
         title: "Plataformas & CRMs a Medida",
-        description: "Interfaces limpias y potentes que tu equipo aprende a usar en minutos. Control total sobre pedidos, clientes, inventarios y finanzas en tiempo real."
+        description: "Interfaces para pedidos, clientes, inventarios y seguimiento operativo, diseñadas alrededor del flujo real de las personas que las usan."
       },
       experience: {
         title: "Integración Total de Ecosistemas",
@@ -99,11 +93,11 @@ export default {
       },
       support: {
         title: "Interfaces de Alta Velocidad (UX/UI)",
-        description: "Diseñamos productos digitales ultra intuitivos. Cero fricción de aprendizaje, carga sub-segundo y experiencia impecable en móviles y computadoras."
+        description: "Diseñamos productos digitales rápidos, accesibles y fáciles de aprender, con validación en móviles y computadores antes del lanzamiento."
       },
       investment: {
         title: "Aliado Tecnológico de Largo Plazo",
-        description: "No entregamos el proyecto y desaparecemos. Acompañamos la adopción, medimos los KPIs de ahorro y evolucionamos el software a la par de tu crecimiento."
+        description: "Acompañamos la puesta en marcha, revisamos indicadores acordados y proponemos mejoras a partir del uso real de la solución."
       }
     }
   },
@@ -128,8 +122,8 @@ export default {
         description: "Implementamos inteligencia artificial para reducir costes y multiplicar la capacidad de tu equipo, sin complejidad innecesaria."
       },
       {
-        title: "Acompañamiento continuo y garantía de adopción",
-        description: "Permanecemos a tu lado durante el lanzamiento y las primeras semanas operativas hasta certificar que tu equipo utiliza el sistema sin fricción."
+        title: "Acompañamiento continuo y medición de adopción",
+        description: "Permanecemos durante el lanzamiento, medimos el uso con indicadores acordados y ajustamos los puntos que generan fricción al equipo."
       }
     ]
   },
@@ -138,7 +132,7 @@ export default {
     steps: [
       {
         title: "1. Diagnóstico e Inmersión Operativa",
-        description: "Analizamos tus flujos actuales, entrevistamos al equipo clave y detectamos exactamente dónde se pierde tiempo o dinero."
+        description: "Analizamos tus flujos actuales, conversamos con el equipo clave e identificamos dónde se concentra la mayor fricción operativa."
       },
       {
         title: "2. Diseño de Arquitectura & ROI",
@@ -153,39 +147,60 @@ export default {
         description: "Conectamos con tu ecosistema actual (WhatsApp, ERP, CRM) sin interrumpir la operación normal de la empresa."
       },
       {
-        title: "5. Lanzamiento & Adopción Garantizada",
-        description: "Capacitamos a tu equipo, monitoreamos las métricas 24/7 y mantenemos la solución evolucionando."
+        title: "5. Lanzamiento & Acompañamiento",
+        description: "Capacitamos a tu equipo, revisamos los indicadores acordados y priorizamos mejoras a partir del uso real."
       }
     ]
   },
   portfolio: {
-    heading: "Resultados Reales en Empresas Reales",
-    subheading: "Casos de éxito de negocios que pasaron del caos de tareas manuales a sistemas automatizados de alto rendimiento.",
+    heading: "Historias de equipos que ya trabajan con nuestras soluciones",
+    subheading: "Estos proyectos están en uso. Contamos el problema y la transformación sin revelar ventas, volúmenes de pedidos ni información operativa reservada.",
+    proofNote: "AlliaFood y los proyectos web para clientes en Estados Unidos pueden visitarse públicamente. Los demás casos pueden ampliarse con demostraciones y referencias autorizadas durante una conversación comercial.",
     projects: [
       {
-        title: "Agente IA 24/7 de Reservas & Ventas para Turismo",
-        description: "Atención automática a más de 200 consultas diarias por WhatsApp. Cotización en tiempo real, filtro de prospectos e integración con agenda de tours.",
-        tags: ["−85% Tiempo Respuesta", "Atención 24/7", "WhatsApp API", "3.2x Conversión"]
+        title: "Luis Res — una operación gastronómica que creció con AlliaFood",
+        description: "Desde junio de 2025, Luis Res gestiona con AlliaFood la atención por WhatsApp y la organización de sus pedidos. La solución se adaptó a su menú y a la forma real en que trabaja el restaurante, evitando que la operación dependa de transcribir conversaciones.",
+        tags: ["Cliente desde junio de 2025", "AlliaFood", "WhatsApp", "Pedidos organizados"]
       },
       {
-        title: "AlliaFood — Sistema Operativo Completo para Gastronomía",
-        description: "AlliaFood (alliafood.com) es nuestro software propio para restaurantes: POS, comandas de cocina, inventario en tiempo real y módulo de domicilios integrados.",
-        tags: ["alliafood.com", "POS & Inventario", "Producto Alliasoft", "100% Control"]
+        title: "Mary Comidas Rápidas — atención y pedidos en un solo flujo",
+        description: "Mary Comidas Rápidas incorporó AlliaFood para conectar la conversación con sus clientes y el trabajo del equipo. El menú, la recepción del pedido y su seguimiento dejan de vivir en herramientas separadas.",
+        tags: ["Operación activa", "AlliaFood", "Menú digital", "Seguimiento de pedidos"]
       },
       {
-        title: "CRM Logístico & Trazabilidad de Flotas",
-        description: "Plataforma centralizada para coordinación de despachos, asignación de rutas y comunicación con clientes finales mediante alertas automatizadas.",
-        tags: ["Visibilidad Total", "Menos Errores Manuales", "CRM a Medida"]
+        title: "Lorena — ventas de tours atendidas automáticamente en Medellín",
+        description: "El agente de Lorena conversa con viajeros, consulta la información de los tours, orienta la compra y organiza reservas durante el día. Cuando aparece una situación especial, transfiere el contexto para que una persona pueda continuar.",
+        tags: ["Operación activa", "Turismo", "Reservas", "Escalamiento humano"]
       },
       {
-        title: "Plataforma E-commerce Internacional de Alta Conversión",
-        description: "Arquitectura web optimizada para escalar en el mercado norteamericano (EE.UU.) con checkout ultrarrápido y sincronización automatizada de inventarios.",
-        tags: ["Mercado EE.UU.", "Alta Conversión", "Carga Sub-segundo"]
+        title: "Nikolai — tours privados para viajeros en varios idiomas",
+        description: "Para Nikolai construimos una atención enfocada en tours privados en Medellín. El agente acompaña consultas de clientes que hablan inglés y francés, explica alternativas y recopila los datos necesarios antes de confirmar cada experiencia.",
+        tags: ["Operación activa", "Inglés y francés", "Tours privados", "Atención personalizada"]
       },
       {
-        title: "Automatización Comercial & Captura de Pedidos Retail",
-        description: "Sistema inteligente para vendedores de campo que captura pedidos, valida inventario y genera facturación de manera inmediata.",
-        tags: ["Ventas B2B", "Facturación Instantánea", "Sin Papeleo"]
+        title: "Wiltech — un centro de reparaciones conectado de principio a fin",
+        description: "Wiltech necesitaba algo completamente a la medida: atención de mensajes en redes sociales, agendamiento de citas, automatizaciones internas, apoyo de IA para el diagnóstico y coordinación de envíos con Servientrega. La solución reúne esas piezas alrededor del proceso real de reparación.",
+        tags: ["Operación a medida", "Citas", "IA de diagnóstico", "Servientrega"]
+      },
+      {
+        title: "Koni's Games & More — presencia digital para un cliente en Estados Unidos",
+        description: "Desarrollamos su sitio web como una vitrina pública clara para la operación, con navegación adaptable a dispositivos móviles y un canal directo para que sus clientes conozcan el negocio.",
+        tags: ["Cliente en EE. UU.", "Desarrollo web", "Diseño adaptable", "Sitio público"]
+      },
+      {
+        title: "JFP Trailer Rentals — sitio web para su operación de alquiler",
+        description: "Construimos una presencia digital enfocada en presentar el servicio de alquiler de tráileres y facilitar que una persona interesada encuentre la información esencial y dé el siguiente paso.",
+        tags: ["Cliente en EE. UU.", "Alquiler de tráileres", "Desarrollo web", "Captación"]
+      },
+      {
+        title: "JFP Contracting — web corporativa para sus servicios",
+        description: "Desarrollamos el sitio corporativo de JFP Contracting para comunicar su oferta, respaldar su presencia comercial y ofrecer un punto de contacto disponible desde cualquier dispositivo.",
+        tags: ["Cliente en EE. UU.", "Sitio corporativo", "Servicios", "Diseño adaptable"]
+      },
+      {
+        title: "LM Jet Ski Rentals — experiencia web para alquiler de motos acuáticas",
+        description: "Creamos la experiencia web de la operación y la preparamos para publicarse en su dominio comercial, con una presentación visual alineada al servicio y rutas claras de contacto.",
+        tags: ["Cliente en EE. UU.", "Alquiler acuático", "Desarrollo web", "Conversión"]
       }
     ]
   },
@@ -202,44 +217,51 @@ export default {
     ]
   },
   contact: {
-    heading: "¿Cuánto dinero pierde tu empresa cada mes por operar manualmente?",
-    subheading: "Hablemos de la realidad de tu negocio. Te ayudamos a identificar exactamente qué automatizar para liberar a tu equipo y multiplicar tu margen.",
+    heading: "Cuéntanos qué proceso está frenando hoy a tu equipo",
+    subheading: "No necesitas una especificación técnica. Describe la tarea manual, la información dispersa o el cuello de botella y revisaremos contigo una ruta realista.",
     email: {
       title: "Correo Electrónico",
       value: "alliasoftsas@gmail.com",
-      description: "Respuesta en menos de 12 horas"
+      description: "Respuesta en un día hábil"
     },
     chat: {
       title: "WhatsApp Oficial",
       value: "+57 317 696 4215",
-      description: "Atención inmediata por canal oficial"
+      description: "Contacto directo por canal oficial"
     },
     call: {
       title: "Diagnóstico Operativo",
-      value: "100% Gratuito",
-      description: "Sesión estratégica de 20 minutos"
+      value: "Conversación inicial",
+      description: "Revisión del reto sin compromiso"
     },
     form: {
       fullname: "Nombre Completo",
       fullname_placeholder: "Ej. Carlos Mendoza",
       email: "Correo Empresarial",
       email_placeholder: "carlos@tuempresa.com",
+      phone: "WhatsApp o teléfono",
+      company: "Empresa (opcional)",
       service: "¿Cuál es tu prioridad principal?",
       message: "Cuéntanos sobre tu operación actual",
       message_placeholder: "Describe las tareas manuales o cuellos de botella que más tiempo o dinero le quitan a tu equipo hoy...",
-      submit: "Solicitar Diagnóstico Estratégico Ahora →",
+      submit: "Continuar la conversación en WhatsApp →",
+      saving: "Guardando tu solicitud...",
       submitted_title: "¡Solicitud Recibida con Éxito!",
-      submitted_body: "Un consultor senior de Alliasoft revisará tus requerimientos y se pondrá en contacto en menos de 24 horas.",
-      whatsappIntro: "Hola Alliasoft, quiero solicitar un diagnóstico gratuito para mi empresa.",
+      submitted_body: "El equipo de Alliasoft revisará el contexto que compartiste y responderá en un día hábil.",
+      whatsappIntro: "Hola Alliasoft, quiero conversar sobre una solución para mi empresa.",
       sent_title: "Tu conversación está lista",
-      sent_body: "Abrimos el canal oficial de WhatsApp. Cuéntanos allí lo esencial de tu operación y un especialista continuará contigo.",
+      sent_body: "Abrimos WhatsApp con el resumen completo que escribiste. Solo falta que revises y envíes el mensaje.",
       sendAnother: "Volver al formulario",
       quotePrefix: "Cotización solicitada",
       features: "Funcionalidades",
       standardDiagnostic: "Diagnóstico operativo estándar",
-      trust1: "Información 100% Confidencial",
-      trust2: "Respuesta en < 24 Horas",
+      trust1: "Envío directo a WhatsApp",
+      trust2: "Respuesta en un día hábil",
       trust3: "Sin Compromiso ni Spam",
+      consentPrefix: "Autorizo a Alliasoft para tratar mis datos con el fin de atender esta solicitud, contactarme y realizar seguimiento, conforme al",
+      privacyNotice: "Aviso de Privacidad",
+      and: "y la",
+      privacyPolicy: "Política de Tratamiento de Datos",
       services: {
         landing: "Necesito un diagnóstico operativo completo",
         hosting: "Quiero implementar Agentes de IA en WhatsApp",
@@ -256,8 +278,10 @@ export default {
     contactTitle: "Contacto directo",
     contactBody: "Atendemos empresas en Colombia, Latinoamérica y Estados Unidos. El diagnóstico inicial no tiene costo.",
     backToTop: "Volver arriba",
+    privacyNotice: "Aviso de privacidad",
+    privacyPolicy: "Tratamiento de datos",
     services: "Soluciones",
-    copyright: "© {year} Alliasoft S.A.S. Todos los derechos reservados."
+    copyright: "© {{year}} Alliasoft S.A.S. Todos los derechos reservados."
   },
   chat: {
     title: "Alliasoft AI Assistant",
@@ -276,9 +300,11 @@ export default {
     sources: "Fuentes:"
   },
   aiPlayground: {
-    tag: "DEMO INTERACTIVA EN VIVO",
-    heading: "Prueba la Potencia de Nuestros Agentes de IA",
-    subheading: "Selecciona una simulación para observar cómo nuestros agentes atienden, cotizan y procesan información en tiempo real.",
+    tag: "SIMULACIÓN INTERACTIVA",
+    heading: "Explora cómo puede funcionar un agente de IA",
+    subheading: "Selecciona un escenario para entender el flujo de conversación, las reglas y la integración que tendría que construirse.",
+    disclaimer: "Ejemplo ilustrativo: no usa datos reales ni representa tiempos o resultados garantizados. El comportamiento final depende de tus sistemas, información y reglas de negocio.",
+    flowTitle: "Componentes del flujo",
     tabs: {
       whatsapp: "Ventas & Cotización WhatsApp",
       leads: "Calificación Comercial B2B",
@@ -287,14 +313,14 @@ export default {
     scenarios: {
       whatsapp: {
         title: "Cotización & Reserva Automatizada en WhatsApp",
-        subtitle: "De mensaje inicial a venta registrada en 15 segundos.",
+        subtitle: "Ejemplo de una consulta conectada con disponibilidad y precios.",
         userMsg: "¡Hola! Quiero cotizar un tour VIP para 4 personas este sábado en Medellín.",
         agentThinking: "Buscando disponibilidad de guías -> Calculando tarifa de grupo -> Generando link de pago...",
         agentReply: "¡Hola! Con gusto. El Tour VIP Medellín para 4 personas este sábado incluye transporte privado y guía bilingüe por $120 USD en total. ¿Deseas asegurar el cupo de las 9:00 AM?",
         metrics: [
-          { label: "Tiempo de Respuesta", value: "< 1.5 seg" },
-          { label: "Satisfacción del Cliente", value: "99.4%" },
-          { label: "Conversión Directa", value: "68%" }
+          { label: "Disponibilidad", value: "Consulta" },
+          { label: "Precio", value: "Reglas" },
+          { label: "Siguiente paso", value: "Confirmación" }
         ]
       },
       leads: {
@@ -304,9 +330,9 @@ export default {
         agentThinking: "Identificado: Sector Gastronomía | Tamaño: 8 sedes | Solución sugerida: AlliaFood POS + CRM",
         agentReply: "Excelente. Nuestra plataforma AlliaFood integra inventario, comandas y POS para tus 8 sedes. Preparé una propuesta preliminar para tu volumen. ¿Agendamos una demo de 15 min hoy a las 3:00 PM?",
         metrics: [
-          { label: "Filtrado de Leads Fríos", value: "100%" },
-          { label: "Reuniones Efectivas", value: "+3.5x" },
-          { label: "Ahorro de Tiempo Ventas", value: "75%" }
+          { label: "Datos de empresa", value: "Captura" },
+          { label: "Criterios comerciales", value: "Validación" },
+          { label: "Entrega al equipo", value: "Contexto" }
         ]
       },
       extraction: {
@@ -316,9 +342,9 @@ export default {
         agentThinking: "OCR escaneando documento -> Extrayendo 35 productos y totales -> Sincronizando con ERP...",
         agentReply: "Factura #F-9042 procesada correctamente. 35 productos ingresados al inventario central y cuenta por pagar generada en el sistema contable.",
         metrics: [
-          { label: "Margen de Error", value: "0.0%" },
-          { label: "Tiempo Procesamiento", value: "1.8 seg" },
-          { label: "Ahorro de Trabajo", value: "45 min / doc" }
+          { label: "Documento", value: "Lectura OCR" },
+          { label: "Campos", value: "Extracción" },
+          { label: "Antes de guardar", value: "Validación" }
         ]
       }
     },
@@ -327,18 +353,19 @@ export default {
   },
   roiCalculator: {
     tag: "CALCULADORA DE IMPACTO FINANCIERO",
-    heading: "Calcula el Ahorro Real de Tu Empresa",
-    subheading: "Descubre exactamente cuánto dinero y cuántas horas puedes recuperar al mes automatizando tareas repetitivas.",
+    heading: "Construye un escenario de ahorro para tu empresa",
+    subheading: "Ajusta los supuestos para dimensionar una oportunidad. El resultado es una estimación inicial, no una promesa de ahorro.",
     teamSize: "Integrantes en tu equipo operativo / comercial:",
     hoursPerWeek: "Horas semanales por persona dedicadas a tareas manuales:",
     hourlyRate: "Costo promedio por hora laboral (USD):",
-    resultsTitle: "Retorno de Inversión Proyectado con Alliasoft:",
-    monthlyHoursSaved: "Horas Recuperadas / Mes",
-    monthlyMoneySaved: "Ahorro Mensual (USD)",
-    annualSavings: "Ahorro Proyectado al Año",
-    paybackPeriod: "Período de Recuperación (ROI)",
-    paybackValue: "< 45 Días",
-    cta: "Obtener Plan de Automatización Personalizado →"
+    automationShare: "Porcentaje del trabajo manual que podría automatizarse:",
+    assumptionNote: "Estimación matemática basada únicamente en los valores que seleccionas. El diagnóstico valida qué tareas son automatizables y cuánto cuestan las alternativas.",
+    resultsTitle: "Escenario estimado con tus supuestos:",
+    monthlyHoursSaved: "Horas potenciales recuperadas / mes",
+    monthlyMoneySaved: "Valor potencial mensual (USD)",
+    annualSavings: "Valor potencial anual",
+    baselineHours: "Horas manuales actuales / mes",
+    cta: "Validar este escenario con el equipo →"
   },
   techStack: {
     tag: "ARQUITECTURA DE CLASE MUNDIAL",
@@ -372,7 +399,7 @@ export default {
       },
       {
         before: "Programas genéricos rígidos que el equipo rechaza y abandona",
-        after: "Sistemas hechos a la medida de tu flujo de trabajo con adopción garantizada"
+        after: "Sistemas hechos a la medida, acompañados con capacitación y medición de uso"
       }
     ]
   },
@@ -402,27 +429,27 @@ export default {
       "Procesamiento inteligente de documentos (OCR + IA)",
       "Dashboard de analítica en tiempo real",
       "Soporte multilingüe automático (ES / EN)",
-      "Capacitación presencial / virtual con garantía de adopción"
+      "Capacitación presencial / virtual y seguimiento de adopción"
     ],
     summaryTitle: "Resumen de tu solución propuesta:",
     estTime: "Tiempo estimado de implementación:",
-    estTimeVal: "2 a 4 semanas",
+    estTimeVal: "Se define al revisar alcance e integraciones",
     sendQuoteBtn: "Enviar Cotización & Solicitar Diagnóstico →",
     closeBtn: "Cerrar"
   },
   faq: {
     tag: "PREGUNTAS FRECUENTES",
     heading: "Respuestas Claras Antes de Empezar",
-    subheading: "Transparencia total sobre plazos, seguridad de datos y garantías de adopción.",
+    subheading: "Respuestas honestas sobre alcance, plazos, seguridad de datos y acompañamiento.",
     searchPlaceholder: "Buscar una duda (ej. tiempo, seguridad, WhatsApp)...",
     items: [
       {
         q: "¿Cuánto tiempo toma implementar una solución con Alliasoft?",
-        a: "La mayoría de nuestras automatizaciones y agentes de IA están operativos en 2 a 3 semanas. Los proyectos de desarrollo a medida más complejos toman entre 4 y 6 semanas con entregables funcionales cada semana."
+        a: "El plazo se define después de entender el alcance, las integraciones y el estado de los datos. Una automatización acotada puede resolverse por etapas; una plataforma a medida requiere más descubrimiento, construcción y pruebas. La propuesta incluye hitos y entregables claros."
       },
       {
         q: "¿La información y los datos de mis clientes están seguros?",
-        a: "Totalmente. Implementamos encriptación de grado bancario (AES-256), protocolos SSL/HTTPS y cumplimos con la normativa de protección de datos. Tus datos corporativos nunca se utilizan para entrenar modelos públicos."
+        a: "La arquitectura de seguridad se define según la información, los proveedores y el nivel de riesgo del proyecto. Aplicamos conexiones cifradas, control de acceso y manejo mínimo de datos; antes de implementar documentamos dónde se procesa la información y qué terceros participan."
       },
       {
         q: "¿Debo reemplazar mi software o ERP actual?",
@@ -430,11 +457,11 @@ export default {
       },
       {
         q: "¿Cómo aseguran que mi equipo realmente adopte el sistema?",
-        a: "Diseñamos la solución partiendo de cómo opera tu equipo en el día a día, no imponiendo flujos extraños. Además, entregamos capacitaciones personalizadas y soporte continuo hasta alcanzar el 98% de adopción."
+        a: "Involucramos a las personas que usarán la solución, probamos con casos reales y acompañamos la capacitación. La adopción no se promete como un porcentaje fijo: se mide con indicadores acordados y se mejora a partir de la retroalimentación del equipo."
       },
       {
         q: "¿Ofrecen soporte técnico y mantenimiento post-lanzamiento?",
-        a: "Sí. Brindamos acompañamiento post-lanzamiento, monitoreo proactivo 24/7 y planes de mantenimiento para evolucionar el software según las nuevas necesidades de tu empresa."
+        a: "Sí. Definimos el acompañamiento, los horarios de atención y los niveles de servicio según la criticidad de la solución. También podemos acordar mantenimiento evolutivo para nuevas necesidades."
       }
     ]
   }

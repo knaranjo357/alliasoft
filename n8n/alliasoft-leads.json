@@ -1,0 +1,133 @@
+{
+  "name": "Alliasoft Web - Captura de leads",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "alliasoft/webpage",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-720, -160],
+      "id": "e6cb2fd1-7f2a-49aa-a821-d611414d38a1",
+      "name": "GET Estado",
+      "webhookId": "ee755552-5078-4439-976c-dfe48ae025ad"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ok: true, service: 'alliasoft-webpage', accepts: ['POST'] } }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [-464, -160],
+      "id": "2a3704dc-d059-41ee-841d-69be7b770893",
+      "name": "Responder estado"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "alliasoft/webpage",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-720, 144],
+      "id": "998392e7-a03b-4ab5-95ea-6a14f2046612",
+      "name": "POST Lead",
+      "webhookId": "208f6225-6585-4850-94e1-ce7aecdc0c9b",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REEMPLAZAR_CREDENCIAL_HEADER",
+          "name": "Alliasoft Webhook Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body ?? $json;\nconst clean = (value, max = 4000) => typeof value === 'string' ? value.trim().slice(0, max) : '';\nconst lead = {\n  lead_id: clean(body.lead_id, 120) || `lead-${Date.now()}`,\n  created_at: clean(body.created_at, 80) || new Date().toISOString(),\n  status: 'Nuevo',\n  source: clean(body.source, 120) || 'alliasoft_webpage',\n  locale: clean(body.locale, 10) || 'es',\n  full_name: clean(body.full_name, 160),\n  email: clean(body.email, 200),\n  phone: clean(body.phone, 80),\n  company: clean(body.company, 200),\n  service: clean(body.service, 240),\n  message: clean(body.message),\n  page_url: clean(body.page_url, 1000),\n  referrer: clean(body.referrer, 1000),\n  utm_source: clean(body.utm_source, 200),\n  utm_medium: clean(body.utm_medium, 200),\n  utm_campaign: clean(body.utm_campaign, 200),\n  utm_content: clean(body.utm_content, 200),\n  utm_term: clean(body.utm_term, 200),\n  consent: body.consent === true ? 'SI' : 'NO',\n  consent_at: clean(body.consent_at, 80),\n  whatsapp_opened: body.whatsapp_opened === true ? 'SI' : 'NO',\n  user_agent: clean(body.user_agent, 500),\n  assigned_to: '',\n  next_follow_up: '',\n  last_contact_at: '',\n  notes: ''\n};\nif (!lead.full_name || !lead.email || !lead.phone || !lead.message || lead.consent !== 'SI') {\n  throw new Error('Faltan campos requeridos o consentimiento');\n}\nreturn [{ json: lead }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-464, 144],
+      "id": "69fbe0ba-e3dc-43d5-882a-e82634979e39",
+      "name": "Normalizar lead"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "REEMPLAZAR_GOOGLE_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": ["lead_id"],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [-208, 144],
+      "id": "c9bb540a-c9f5-4fb4-aa45-c0d07e341acb",
+      "name": "Guardar o actualizar Lead",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ok: true, lead_id: $('Normalizar lead').first().json.lead_id, saved_at: $now.toISO() } }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [48, 144],
+      "id": "13bb1614-425e-4c49-a608-96714aa6ad76",
+      "name": "Responder lead guardado"
+    },
+    {
+      "parameters": {
+        "content": "## Configuración\n1. Crea la hoja `Leads` con los encabezados del documento incluido.\n2. En `POST Lead`, selecciona una credencial Header Auth con nombre `X-Alliasoft-Webhook-Token`.\n3. Abre `Guardar o actualizar Lead`.\n4. Selecciona tu credencial de Google, el archivo y la hoja `Leads`.\n5. Vuelve a seleccionar `lead_id` como columna de coincidencia si n8n lo solicita.\n6. Activa el flujo.",
+        "height": 272,
+        "width": 432
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-720, 352],
+      "id": "f92ad0dc-17fa-461e-8e90-dd986d0bcae8",
+      "name": "Instrucciones"
+    }
+  ],
+  "connections": {
+    "GET Estado": { "main": [[{ "node": "Responder estado", "type": "main", "index": 0 }]] },
+    "POST Lead": { "main": [[{ "node": "Normalizar lead", "type": "main", "index": 0 }]] },
+    "Normalizar lead": { "main": [[{ "node": "Guardar o actualizar Lead", "type": "main", "index": 0 }]] },
+    "Guardar o actualizar Lead": { "main": [[{ "node": "Responder lead guardado", "type": "main", "index": 0 }]] }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "45724b62-2151-445c-b19e-113756700da2",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": []
+}

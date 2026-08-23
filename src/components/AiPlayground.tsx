@@ -55,6 +55,9 @@ const AiPlayground: React.FC<{ onOpenQuote?: (serviceId?: string) => void }> = (
             {t('aiPlayground.heading')}
           </h2>
           <p className="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto">{t('aiPlayground.subheading')}</p>
+          <p className="mt-5 rounded-2xl border border-amber-400/20 bg-amber-400/[0.06] px-5 py-3 text-sm leading-6 text-amber-100/80">
+            {t('aiPlayground.disclaimer')}
+          </p>
         </motion.div>
 
         {/* Tabs */}
@@ -132,7 +135,7 @@ const AiPlayground: React.FC<{ onOpenQuote?: (serviceId?: string) => void }> = (
                     <div className="bg-white/[0.04] border border-white/[0.08] text-slate-200 p-4 rounded-[1.25rem] rounded-tl-md max-w-[88%] text-sm shadow-xl">
                       <p className="leading-relaxed">{sc.agentReply}</p>
                       <span className="text-[10px] text-slate-500 mt-2 font-mono flex items-center gap-1.5 pt-2 border-t border-white/[0.05]">
-                        <CheckCircle className="w-3 h-3 text-emerald-400" /> AlliaEngine v4.2 • 10:42 AM
+                        <CheckCircle className="w-3 h-3 text-emerald-400" /> Alliasoft · {t('aiPlayground.tag')}
                       </span>
                     </div>
                   </motion.div>
@@ -144,7 +147,7 @@ const AiPlayground: React.FC<{ onOpenQuote?: (serviceId?: string) => void }> = (
             <div className="lg:col-span-5 p-6 md:p-8 flex flex-col justify-between bg-gradient-to-b from-transparent to-blue-950/20">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-slate-500">Métricas de Rendimiento</span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-slate-500">{t('aiPlayground.flowTitle')}</span>
                   <Sparkles className="w-4 h-4 text-blue-400 animate-pulse" />
                 </div>
                 <h3 className="text-2xl font-extrabold text-white mb-1.5 tracking-tight">{sc.title}</h3>

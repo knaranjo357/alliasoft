@@ -65,10 +65,10 @@ const LeanHeader: React.FC = () => {
         }`}
       >
         <div className="flex h-16 items-center justify-between gap-4">
-          <a href="#home" className="flex min-w-0 items-center gap-2.5" aria-label={t('accessibility.home')}>
+          <a href="/" className="flex min-w-0 items-center gap-2.5" aria-label={t('accessibility.home')}>
             <img
               src="/images/logo.png"
-              alt=""
+              alt="Logo de Alliasoft"
               width="40"
               height="40"
               decoding="async"

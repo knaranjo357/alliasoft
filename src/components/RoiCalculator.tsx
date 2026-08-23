@@ -4,14 +4,16 @@ import { motion } from 'framer-motion';
 import { Calculator, Clock, DollarSign, TrendingUp, ShieldCheck, ArrowRight } from 'lucide-react';
 
 const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [teamSize, setTeamSize] = useState<number>(5);
   const [hoursPerWeek, setHoursPerWeek] = useState<number>(12);
   const [hourlyRate, setHourlyRate] = useState<number>(18);
+  const [automationShare, setAutomationShare] = useState<number>(50);
+  const isEnglish = i18n.resolvedLanguage === 'en';
 
   // Calculations
   const monthlyManualHours = teamSize * hoursPerWeek * 4.33;
-  const monthlyHoursSaved = Math.round(monthlyManualHours * 0.75); // 75% average efficiency gain
+  const monthlyHoursSaved = Math.round(monthlyManualHours * (automationShare / 100));
   const monthlyMoneySaved = Math.round(monthlyHoursSaved * hourlyRate);
   const annualSavings = Math.round(monthlyMoneySaved * 12);
 
@@ -58,7 +60,7 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
                     {t('roiCalculator.teamSize')}
                   </label>
                   <span className="text-lg font-extrabold text-teal-400 font-mono bg-teal-950/60 border border-teal-800/60 px-3 py-1 rounded-lg">
-                    {teamSize} personas
+                    {teamSize} {isEnglish ? 'people' : 'personas'}
                   </span>
                 </div>
                 <input
@@ -83,7 +85,7 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
                     {t('roiCalculator.hoursPerWeek')}
                   </label>
                   <span className="text-lg font-extrabold text-blue-400 font-mono bg-blue-950/60 border border-blue-800/60 px-3 py-1 rounded-lg">
-                    {hoursPerWeek} hrs / sem
+                    {hoursPerWeek} {isEnglish ? 'hrs / week' : 'hrs / sem'}
                   </span>
                 </div>
                 <input
@@ -126,11 +128,37 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
                   <span>$100+</span>
                 </div>
               </div>
+
+              {/* Control 4: Share of manual work that could be automated */}
+              <div>
+                <div className="flex justify-between items-center mb-3">
+                  <label className="text-sm font-semibold text-slate-300">
+                    {t('roiCalculator.automationShare')}
+                  </label>
+                  <span className="text-lg font-extrabold text-amber-300 font-mono bg-amber-950/50 border border-amber-800/50 px-3 py-1 rounded-lg">
+                    {automationShare}%
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="10"
+                  max="80"
+                  step="5"
+                  value={automationShare}
+                  onChange={(e) => setAutomationShare(Number(e.target.value))}
+                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-300"
+                />
+                <div className="flex justify-between text-[11px] text-slate-500 mt-1 font-mono">
+                  <span>10%</span>
+                  <span>45%</span>
+                  <span>80%</span>
+                </div>
+              </div>
             </div>
 
             <div className="mt-8 pt-6 border-t border-slate-800 text-xs text-slate-400 flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Basado en promedios reales de adopción operativa (−75% tareas repetitivas)</span>
+              <span>{t('roiCalculator.assumptionNote')}</span>
             </div>
           </motion.div>
 
@@ -185,10 +213,10 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
                 <div className="bg-slate-900/90 border border-slate-800 p-5 rounded-2xl">
                   <div className="flex items-center gap-2 text-slate-400 text-xs font-medium mb-1">
                     <ShieldCheck className="w-4 h-4 text-amber-400" />
-                    <span>{t('roiCalculator.paybackPeriod')}</span>
+                    <span>{t('roiCalculator.baselineHours')}</span>
                   </div>
                   <span className="text-2xl md:text-3xl font-extrabold text-amber-400 font-mono tracking-tight">
-                    {t('roiCalculator.paybackValue')}
+                    {Math.round(monthlyManualHours).toLocaleString()} <span className="text-sm font-normal text-slate-400">hrs</span>
                   </span>
                 </div>
               </div>

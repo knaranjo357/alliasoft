@@ -82,41 +82,46 @@ const categoryThemes: Record<
 
 const projectMeta = [
   {
-    url: 'https://wa.me/573176964215?text=Hola%20quiero%20demo%20de%20agente%20turismo',
-    category: 'ai',
-    industry: 'Tourism & Travel',
+    url: 'https://alliafood.com',
+    category: 'product',
   },
   {
     url: 'https://alliafood.com',
     category: 'product',
-    industry: 'Gastronomy & Food',
+  },
+  {
+    url: 'https://wa.me/573176964215?text=Hola%20Alliasoft%2C%20quiero%20conocer%20el%20caso%20de%20automatizaci%C3%B3n%20para%20tours.',
+    category: 'ai',
+  },
+  {
+    url: 'https://wa.me/573176964215?text=Hola%20Alliasoft%2C%20quiero%20conocer%20el%20caso%20de%20tours%20privados%20multiling%C3%BCes.',
+    category: 'ai',
   },
   {
     url: '#contact',
     category: 'crm',
-    industry: 'Logistics & Fleet',
   },
   {
-    url: '#contact',
+    url: 'https://konisgamesandmore.com/',
     category: 'ecommerce',
-    industry: 'International Commerce',
   },
   {
-    url: '#contact',
-    category: 'retail',
-    industry: 'Retail & B2B',
+    url: 'https://www.jfptrailerrentals.com/',
+    category: 'ecommerce',
+  },
+  {
+    url: 'https://jfpcontracting.com/',
+    category: 'ecommerce',
+  },
+  {
+    url: 'https://lmjetskirentals.com/',
+    category: 'ecommerce',
   },
 ];
 
 /* ─── Filter Definitions ───────────────────────────────────────── */
 
-const filters = [
-  { id: 'all', label: 'Todos los Casos', color: 'all' as const },
-  { id: 'ai', label: 'IA & WhatsApp', color: 'ai' as const },
-  { id: 'product', label: 'AlliaFood (Producto)', color: 'product' as const },
-  { id: 'crm', label: 'Logística & CRM', color: 'crm' as const },
-  { id: 'ecommerce', label: 'E-commerce', color: 'ecommerce' as const },
-];
+const filterIds = ['all', 'product', 'ai', 'crm', 'ecommerce'] as const;
 
 /* ─── Shimmer Keyframes (injected once) ────────────────────────── */
 
@@ -130,8 +135,16 @@ const shimmerStyle = `
 /* ─── Component ────────────────────────────────────────────────── */
 
 const Portfolio: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const isEnglish = i18n.resolvedLanguage === 'en';
+  const filterLabels = isEnglish
+    ? ['All stories', 'AlliaFood', 'AI & WhatsApp', 'Custom operations', 'Web projects in the US']
+    : ['Todas las historias', 'AlliaFood', 'IA & WhatsApp', 'Operación a medida', 'Web para EE. UU.'];
+  const industryLabels = isEnglish
+    ? ['Gastronomy', 'Fast food', 'Tourism', 'Private tourism', 'Repair center', 'Entertainment', 'Trailer rentals', 'Contracting', 'Watercraft rentals']
+    : ['Gastronomía', 'Comidas rápidas', 'Turismo', 'Turismo privado', 'Centro de reparaciones', 'Entretenimiento', 'Alquiler de tráileres', 'Contratación', 'Alquiler acuático'];
+  const filters = filterIds.map((id, index) => ({ id, label: filterLabels[index] }));
 
   // Pull translated project data
   const projectsData = t('portfolio.projects', {
@@ -143,7 +156,7 @@ const Portfolio: React.FC = () => {
     ...proj,
     url: projectMeta[i]?.url || '#',
     category: projectMeta[i]?.category || 'ai',
-    industry: projectMeta[i]?.industry || '',
+    industry: industryLabels[i] || '',
     theme: categoryThemes[projectMeta[i]?.category || 'ai'],
   }));
 
@@ -197,6 +210,10 @@ const Portfolio: React.FC = () => {
             </p>
           </motion.div>
 
+          <p className="mx-auto mb-10 max-w-3xl rounded-2xl border border-cyan-400/15 bg-cyan-400/[0.05] px-5 py-4 text-center text-sm leading-6 text-slate-300">
+            {t('portfolio.proofNote')}
+          </p>
+
           {/* ── Filter Pills ── */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -246,10 +263,12 @@ const Portfolio: React.FC = () => {
                   <Inbox className="w-9 h-9 text-slate-500" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-300 mb-2">
-                  No hay proyectos en esta categoría
+                  {isEnglish ? 'No work in this category' : 'No hay experiencia en esta categoría'}
                 </h3>
                 <p className="text-slate-500 text-sm max-w-sm">
-                  Selecciona otra categoría o vuelve a "Todos los Casos" para ver todos los proyectos.
+                  {isEnglish
+                    ? 'Choose another category or return to “All work”.'
+                    : 'Selecciona otra categoría o vuelve a “Toda la experiencia”.'}
                 </p>
               </motion.div>
             ) : (
@@ -278,6 +297,14 @@ const Portfolio: React.FC = () => {
                         ease: [0.25, 0.46, 0.45, 0.94],
                       }}
                       onClick={() => handleCardClick(project.url)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          handleCardClick(project.url);
+                        }
+                      }}
+                      role="link"
+                      tabIndex={0}
                       className={`
                         break-inside-avoid group cursor-pointer
                         rounded-2xl overflow-hidden

@@ -56,11 +56,12 @@ function getCategoryForIndex(idx: number): Exclude<Category, 'all'> {
 }
 
 const Faq: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeCategory, setActiveCategory] = useState<Category>('all');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const isEnglish = i18n.resolvedLanguage === 'en';
 
   const items = t('faq.items', { returnObjects: true }) as FaqItem[];
 
@@ -79,10 +80,12 @@ const Faq: React.FC = () => {
   }, [items, searchQuery, activeCategory]);
 
   const categories: { key: Category; label: string; icon?: React.ElementType }[] = [
-    { key: 'all', label: 'Todos' },
+    { key: 'all', label: isEnglish ? 'All' : 'Todas' },
     ...Object.entries(categoryConfig).map(([key, val]) => ({
       key: key as Category,
-      label: val.label,
+      label: isEnglish
+        ? ({ general: 'General', tecnico: 'Technical', planes: 'Plans & Pricing' } as Record<string, string>)[key]
+        : val.label,
       icon: val.icon,
     })),
   ];
@@ -289,7 +292,9 @@ const Faq: React.FC = () => {
             className="text-center py-16"
           >
             <Search className="w-10 h-10 text-slate-600 mx-auto mb-4" />
-            <p className="text-slate-500 text-sm">No se encontraron preguntas que coincidan.</p>
+            <p className="text-slate-500 text-sm">
+              {isEnglish ? 'No matching questions were found.' : 'No se encontraron preguntas que coincidan.'}
+            </p>
           </motion.div>
         )}
 
@@ -309,17 +314,19 @@ const Faq: React.FC = () => {
                 <MessageCircle className="w-6 h-6 text-emerald-400" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
-                ¿Aún tienes preguntas?
+                {isEnglish ? 'Still have questions?' : '¿Aún tienes preguntas?'}
               </h3>
               <p className="text-slate-400 text-sm mb-6 max-w-xs mx-auto">
-                Nuestro equipo está disponible para ayudarte con cualquier duda sobre nuestras soluciones.
+                {isEnglish
+                  ? 'Our team is available to discuss any questions about the solutions.'
+                  : 'Nuestro equipo está disponible para conversar sobre cualquier duda de las soluciones.'}
               </p>
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-sm font-bold shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 hover:scale-[1.03] transition-all duration-300"
               >
                 <MessageCircle className="w-4 h-4" />
-                Chatea con nuestro equipo
+                {isEnglish ? 'Talk to our team' : 'Hablar con el equipo'}
               </a>
             </div>
           </div>

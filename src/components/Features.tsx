@@ -72,9 +72,13 @@ const cardConfigs = [
 ];
 
 const Features: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const rawItems = t('features.items', { returnObjects: true });
   const items = Array.isArray(rawItems) ? (rawItems as string[]) : [];
+  const isEnglish = i18n.resolvedLanguage === 'en';
+  const pillLabels = isEnglish
+    ? ['Operational discovery', 'Business AI', 'Custom systems', 'System integration', 'Team enablement']
+    : cardConfigs.map((card) => card.pillText);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -137,8 +141,12 @@ const Features: React.FC = () => {
           <Zap className="w-4 h-4 text-white" />
         </div>
         <div>
-          <div className="text-[11px] font-bold tracking-wider text-slate-300 uppercase">Impacto Medible</div>
-          <div className="text-xs font-semibold text-cyan-400">100% Adopción Garantizada</div>
+          <div className="text-[11px] font-bold tracking-wider text-slate-300 uppercase">
+            {isEnglish ? 'Decisions with context' : 'Decisiones con contexto'}
+          </div>
+          <div className="text-xs font-semibold text-cyan-400">
+            {isEnglish ? 'We understand the process first' : 'Primero entendemos el proceso'}
+          </div>
         </div>
       </motion.div>
 
@@ -153,7 +161,7 @@ const Features: React.FC = () => {
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Por Qué Alliasoft</span>
+            <span>{isEnglish ? 'How we add value' : 'Cómo aportamos valor'}</span>
           </div>
 
           <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-6 leading-[1.15] bg-gradient-to-r from-white via-slate-100 to-indigo-200 bg-clip-text text-transparent">
@@ -198,7 +206,7 @@ const Features: React.FC = () => {
 
                     {/* Category Tag */}
                     <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${config.badgeBg}`}>
-                      {config.pillText}
+                      {pillLabels[index]}
                     </span>
                   </div>
 
@@ -225,12 +233,14 @@ const Features: React.FC = () => {
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
                         </span>
-                        <span className="font-mono text-[11px] text-cyan-300">Escaneo de Fugas: Activo</span>
+                        <span className="font-mono text-[11px] text-cyan-300">
+                          {isEnglish ? 'Process review: active' : 'Revisión del proceso: activa'}
+                        </span>
                       </div>
                       <div className="hidden sm:flex items-center gap-2 font-mono text-[10px] text-slate-500">
-                        <span>ROI 4.5x</span>
+                        <span>{isEnglish ? 'Process map' : 'Mapa de proceso'}</span>
                         <span>•</span>
-                        <span>100% Audit</span>
+                        <span>{isEnglish ? 'Clear priorities' : 'Prioridades claras'}</span>
                       </div>
                     </div>
                   )}
@@ -244,7 +254,9 @@ const Features: React.FC = () => {
                           <span className="w-1 bg-purple-400 animate-pulse h-3 rounded-full delay-200"></span>
                           <span className="w-1 bg-purple-400 animate-pulse h-1 rounded-full delay-150"></span>
                         </div>
-                        <span className="font-mono text-[11px] text-purple-300">LLM Corporativo 24/7</span>
+                        <span className="font-mono text-[11px] text-purple-300">
+                          {isEnglish ? 'AI grounded in company context' : 'IA con contexto corporativo'}
+                        </span>
                       </div>
                       <span className="text-[10px] text-purple-400 font-semibold px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20">
                         Entrenado con tus datos
@@ -256,7 +268,7 @@ const Features: React.FC = () => {
                     <div className="w-full flex items-center justify-between text-xs text-slate-400">
                       <div className="flex items-center gap-1.5 text-blue-300 font-mono text-[11px]">
                         <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                        <span>Flujo Personalizado</span>
+                        <span>{isEnglish ? 'Custom workflow' : 'Flujo personalizado'}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <div className="w-6 h-1.5 rounded-full bg-blue-500/30 group-hover:bg-blue-400/60 transition-colors" />
@@ -272,7 +284,9 @@ const Features: React.FC = () => {
                         <Share2 className="w-3.5 h-3.5 text-emerald-400" />
                         <span>API & WhatsApp & ERP</span>
                       </div>
-                      <span className="text-[10px] font-mono text-emerald-400">Sync 0ms</span>
+                      <span className="text-[10px] font-mono text-emerald-400">
+                        {isEnglish ? 'Validated sync' : 'Sincronización validada'}
+                      </span>
                     </div>
                   )}
 
@@ -280,9 +294,11 @@ const Features: React.FC = () => {
                     <div className="w-full flex items-center justify-between text-xs text-slate-400">
                       <div className="flex items-center gap-2 font-mono text-[11px] text-rose-300">
                         <ShieldCheck className="w-3.5 h-3.5 text-rose-400" />
-                        <span>Adopción Garantizada</span>
+                        <span>{isEnglish ? 'Adoption support' : 'Acompañamiento de adopción'}</span>
                       </div>
-                      <span className="text-[10px] font-bold text-rose-400">Presencial + Virtual</span>
+                      <span className="text-[10px] font-bold text-rose-400">
+                        {isEnglish ? 'On-site + remote' : 'Presencial + virtual'}
+                      </span>
                     </div>
                   )}
 

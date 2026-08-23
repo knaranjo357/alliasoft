@@ -3,12 +3,10 @@ import { useTranslation } from 'react-i18next';
 import {
   ArrowRight,
   Bot,
-  Check,
   MapPin,
   MessageCircle,
   MonitorSmartphone,
   UtensilsCrossed,
-  Video,
   Workflow,
 } from 'lucide-react';
 
@@ -71,18 +69,6 @@ const LeanHero: React.FC = () => {
             </a>
           </div>
 
-          <div className="mt-8 grid max-w-2xl gap-3 text-sm text-slate-300 sm:grid-cols-3">
-            {[
-              { icon: MapPin, label: t('hero.stat1_label') },
-              { icon: Video, label: t('hero.stat2_label') },
-              { icon: Check, label: t('hero.stat3_label') },
-            ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2">
-                <Icon className="h-4 w-4 shrink-0 text-cyan-300" aria-hidden="true" />
-                <span>{label}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="relative">

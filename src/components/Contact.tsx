@@ -10,11 +10,70 @@ import {
   Clock,
   Send,
   Sparkles,
+  Loader2,
 } from 'lucide-react';
+import BookingScheduler from './BookingScheduler';
 
 /* ─── Types ─── */
 interface ContactProps {
   quotePrefill?: { serviceTitle: string; selectedFeatures: string[] } | null;
+}
+
+type LeadPayload = {
+  lead_id: string;
+  created_at: string;
+  source: string;
+  locale: string;
+  full_name: string;
+  email: string;
+  phone: string;
+  company: string;
+  service: string;
+  message: string;
+  page_url: string;
+  referrer: string;
+  utm_source: string;
+  utm_medium: string;
+  utm_campaign: string;
+  utm_content: string;
+  utm_term: string;
+  consent: boolean;
+  consent_at: string;
+  whatsapp_opened: boolean;
+};
+
+const PENDING_LEADS_KEY = 'alliasoft-pending-leads';
+
+function getPendingLeads(): LeadPayload[] {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(PENDING_LEADS_KEY) || '[]');
+    return Array.isArray(parsed) ? parsed.slice(-5) : [];
+  } catch {
+    return [];
+  }
+}
+
+function setPendingLeads(leads: LeadPayload[]) {
+  localStorage.setItem(PENDING_LEADS_KEY, JSON.stringify(leads.slice(-5)));
+}
+
+async function sendLead(payload: LeadPayload) {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 8000);
+  try {
+    const response = await fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+      keepalive: true,
+    });
+    return response.ok;
+  } catch {
+    return false;
+  } finally {
+    window.clearTimeout(timeout);
+  }
 }
 
 /* ─── Animated floating input ─── */
@@ -41,13 +100,14 @@ const FloatingInput: React.FC<{
         onChange={onChange}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className="peer w-full bg-white/[0.04] border border-white/10 rounded-2xl px-4 pt-6 pb-3 text-sm text-white placeholder-transparent
+        className="floating-field-input peer w-full bg-white/[0.04] border border-white/10 rounded-2xl px-4 pt-6 pb-3 text-sm text-white placeholder-transparent
                    focus:outline-none focus:border-blue-500/60 focus:bg-white/[0.06]
                    focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15),0_0_20px_-5px_rgba(59,130,246,0.2)]
                    transition-all duration-300"
         placeholder={label}
       />
       <label
+        htmlFor={name === 'fullname' ? 'contact-name' : name}
         className={`absolute left-4 transition-all duration-300 pointer-events-none
           ${isActive
             ? 'top-2 text-[10px] font-bold tracking-widest uppercase text-blue-400'
@@ -89,11 +149,28 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
   const [formState, setFormState] = useState({
     fullname: '',
     email: '',
+    phone: '',
+    company: '',
     service: 'landing',
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [consentAccepted, setConsentAccepted] = useState(false);
   const [messageFocused, setMessageFocused] = useState(false);
+
+  useEffect(() => {
+    const pendingLeads = getPendingLeads();
+    if (pendingLeads.length === 0) return;
+
+    void (async () => {
+      const remaining: LeadPayload[] = [];
+      for (const lead of pendingLeads) {
+        if (!(await sendLead(lead))) remaining.push(lead);
+      }
+      setPendingLeads(remaining);
+    })();
+  }, []);
 
   useEffect(() => {
     if (quotePrefill) {
@@ -115,18 +192,65 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const url = `https://wa.me/573176964215?text=${encodeURIComponent(
-      t('contact.form.whatsappIntro')
-    )}`;
+    if (isSaving || !consentAccepted) return;
+
+    setIsSaving(true);
+    const serviceLabel = t(`contact.form.services.${formState.service}`);
+    const whatsappMessage = [
+      t('contact.form.whatsappIntro'),
+      '',
+      `${t('contact.form.fullname')}: ${formState.fullname.trim()}`,
+      `${t('contact.form.email')}: ${formState.email.trim()}`,
+      `${t('contact.form.phone')}: ${formState.phone.trim()}`,
+      `${t('contact.form.company')}: ${formState.company.trim() || '-'}`,
+      `${t('contact.form.service')}: ${serviceLabel}`,
+      `${t('contact.form.message')}:`,
+      formState.message.trim(),
+    ].join('\n');
+    const url = `https://wa.me/573176964215?text=${encodeURIComponent(whatsappMessage)}`;
+
+    const query = new URLSearchParams(window.location.search);
+    const now = new Date().toISOString();
+    const lead: LeadPayload = {
+      lead_id: window.crypto?.randomUUID?.() || `lead-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+      created_at: now,
+      source: 'alliasoft_webpage',
+      locale: i18n.resolvedLanguage === 'en' ? 'en' : 'es',
+      full_name: formState.fullname.trim(),
+      email: formState.email.trim(),
+      phone: formState.phone.trim(),
+      company: formState.company.trim(),
+      service: serviceLabel,
+      message: formState.message.trim(),
+      page_url: window.location.href,
+      referrer: document.referrer,
+      utm_source: query.get('utm_source') || '',
+      utm_medium: query.get('utm_medium') || '',
+      utm_campaign: query.get('utm_campaign') || '',
+      utm_content: query.get('utm_content') || '',
+      utm_term: query.get('utm_term') || '',
+      consent: true,
+      consent_at: now,
+      whatsapp_opened: true,
+    };
+
+    const pending = getPendingLeads().filter((item) => item.lead_id !== lead.lead_id);
+    setPendingLeads([...pending, lead]);
     const popup = window.open(url, '_blank');
     if (popup) {
       popup.opener = null;
     } else {
       window.location.assign(url);
     }
+
+    const saved = await sendLead(lead);
+    if (saved) {
+      setPendingLeads(getPendingLeads().filter((item) => item.lead_id !== lead.lead_id));
+    }
     setIsSubmitted(true);
+    setIsSaving(false);
   };
 
   /* ─── Contact method cards data ─── */
@@ -159,7 +283,7 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
       cardClass: 'glass-card-purple hover-glow-purple',
       title: t('contact.call.title'),
       value: t('contact.call.value'),
-      link: '#contact-form',
+      link: '#booking',
     },
   ];
 
@@ -171,8 +295,8 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
 
   /* ─── Trust badges ─── */
   const trustBadges = [
-    { icon: <ShieldCheck className="w-4 h-4 text-emerald-400" />, label: 'Datos 100% seguros' },
-    { icon: <Clock className="w-4 h-4 text-blue-400" />, label: 'Respuesta en < 2 horas' },
+    { icon: <ShieldCheck className="w-4 h-4 text-emerald-400" />, label: 'Tus datos viajan directo a WhatsApp' },
+    { icon: <Clock className="w-4 h-4 text-blue-400" />, label: 'Respuesta en un día hábil' },
   ];
 
   const localizedTrustBadges = i18n.isInitialized
@@ -404,6 +528,20 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
                         required
                         onChange={handleChange}
                       />
+                      <FloatingInput
+                        label={t('contact.form.phone')}
+                        name="phone"
+                        type="tel"
+                        value={formState.phone}
+                        required
+                        onChange={handleChange}
+                      />
+                      <FloatingInput
+                        label={t('contact.form.company')}
+                        name="company"
+                        value={formState.company}
+                        onChange={handleChange}
+                      />
                     </div>
 
                     {/* Service select */}
@@ -446,12 +584,13 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
                         onFocus={() => setMessageFocused(true)}
                         onBlur={() => setMessageFocused(false)}
                         placeholder={t('contact.form.message')}
-                        className="peer w-full bg-white/[0.04] border border-white/10 rounded-2xl px-4 pt-7 pb-3 text-sm text-white placeholder-transparent resize-none
+                        className="floating-field-input peer w-full bg-white/[0.04] border border-white/10 rounded-2xl px-4 pt-7 pb-3 text-sm text-white placeholder-transparent resize-none
                                    focus:outline-none focus:border-blue-500/60 focus:bg-white/[0.06]
                                    focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15),0_0_20px_-5px_rgba(59,130,246,0.2)]
                                    transition-all duration-300"
                       />
                       <label
+                        htmlFor="contact-message"
                         className={`absolute left-4 transition-all duration-300 pointer-events-none
                           ${messageIsActive
                             ? 'top-2 text-[10px] font-bold tracking-widest uppercase text-blue-400'
@@ -466,9 +605,30 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
                       />
                     </div>
 
+                    <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.025] p-4 text-xs leading-5 text-slate-400">
+                      <input
+                        type="checkbox"
+                        checked={consentAccepted}
+                        onChange={(event) => setConsentAccepted(event.target.checked)}
+                        required
+                        className="mt-0.5 h-4 w-4 shrink-0 accent-blue-500"
+                      />
+                      <span>
+                        {t('contact.form.consentPrefix')}{' '}
+                        <a className="font-bold text-blue-300 underline underline-offset-2" href="/privacy-notice.html" target="_blank" rel="noreferrer">
+                          {t('contact.form.privacyNotice')}
+                        </a>{' '}
+                        {t('contact.form.and')}{' '}
+                        <a className="font-bold text-blue-300 underline underline-offset-2" href="/privacy.html" target="_blank" rel="noreferrer">
+                          {t('contact.form.privacyPolicy')}
+                        </a>.
+                      </span>
+                    </label>
+
                     {/* Submit button with shimmer */}
                     <button
                       type="submit"
+                      disabled={isSaving || !consentAccepted}
                       className="group/btn relative w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500
                                  text-white font-bold text-sm overflow-hidden
                                  shadow-[0_0_30px_-5px_rgba(59,130,246,0.5)]
@@ -488,8 +648,12 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
                       </div>
 
                       <span className="relative flex items-center justify-center gap-2.5">
-                        <Send className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
-                        <span>{t('contact.form.submit')}</span>
+                        {isSaving ? (
+                          <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                        ) : (
+                          <Send className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
+                        )}
+                        <span>{isSaving ? t('contact.form.saving') : t('contact.form.submit')}</span>
                       </span>
                     </button>
 
@@ -508,6 +672,7 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
             </div>
           </motion.div>
         </div>
+        <BookingScheduler />
       </div>
     </section>
   );

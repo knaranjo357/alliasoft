@@ -1,0 +1,97 @@
+{
+  "name": "Alliasoft Web - Disponibilidad de agenda",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "alliasoft/webpage/availability",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-560, 64],
+      "id": "376e528c-a200-4ba2-a6f6-0c4d66285ad1",
+      "name": "GET Disponibilidad",
+      "webhookId": "9976190d-77b8-441a-b287-f1e0eb44082f",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REEMPLAZAR_CREDENCIAL_HEADER",
+          "name": "Alliasoft Webhook Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "primary",
+          "mode": "id"
+        },
+        "returnAll": true,
+        "timeMin": "={{ $now.setZone('America/Bogota').toISO() }}",
+        "timeMax": "={{ $now.setZone('America/Bogota').plus({ days: 14 }).endOf('day').toISO() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [-304, 64],
+      "id": "1e5c54df-510d-4869-adc9-22d453b1f085",
+      "name": "Leer eventos próximos",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "jsCode": "const events = $input.all().map(item => item.json).filter(event => event.id);\nconst getTime = (value) => value ? new Date(value).getTime() : NaN;\nconst busy = events.map(event => ({\n  start: getTime(event.start?.dateTime ?? event.start?.date ?? event.start),\n  end: getTime(event.end?.dateTime ?? event.end?.date ?? event.end)\n})).filter(range => Number.isFinite(range.start) && Number.isFinite(range.end));\nconst now = Date.now();\nconst bogotaNow = new Date(now - 5 * 60 * 60 * 1000);\nconst base = new Date(Date.UTC(bogotaNow.getUTCFullYear(), bogotaNow.getUTCMonth(), bogotaNow.getUTCDate()));\nconst formatter = new Intl.DateTimeFormat('es-CO', {\n  timeZone: 'America/Bogota', weekday: 'short', day: '2-digit', month: 'short', hour: 'numeric', minute: '2-digit'\n});\nconst slots = [];\nfor (let dayOffset = 0; dayOffset < 14; dayOffset++) {\n  const day = new Date(base.getTime() + dayOffset * 86400000);\n  const weekday = day.getUTCDay();\n  if (weekday === 0 || weekday === 6) continue;\n  for (let hour = 9; hour < 17; hour++) {\n    for (const minute of [0, 30]) {\n      const start = new Date(Date.UTC(day.getUTCFullYear(), day.getUTCMonth(), day.getUTCDate(), hour + 5, minute));\n      const end = new Date(start.getTime() + 30 * 60000);\n      if (start.getTime() < now + 2 * 60 * 60 * 1000) continue;\n      const overlaps = busy.some(range => start.getTime() < range.end && end.getTime() > range.start);\n      if (!overlaps) slots.push({ start: start.toISOString(), end: end.toISOString(), label: formatter.format(start) });\n    }\n  }\n}\nreturn [{ json: { ok: true, timezone: 'America/Bogota', duration_minutes: 30, slots: slots.slice(0, 24) } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-48, 64],
+      "id": "7b7e3ac9-0235-41ae-8884-e2422ec216f9",
+      "name": "Crear espacios libres"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [208, 64],
+      "id": "90f086d8-e38d-445a-9379-8f590ed8e585",
+      "name": "Responder horarios"
+    },
+    {
+      "parameters": {
+        "content": "## Horarios publicados\n- Zona: America/Bogota.\n- Lunes a viernes, 9:00 a. m. a 5:00 p. m.\n- Duración: 30 minutos.\n- Ventana: próximos 14 días.\n- Anticipación mínima: 2 horas.\n\nSelecciona la credencial Header Auth en el Webhook y la credencial/calendario comercial en `Leer eventos próximos`. Puedes modificar las reglas en `Crear espacios libres`.",
+        "height": 304,
+        "width": 432
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-560, 288],
+      "id": "a1d85bb8-5544-4478-93ed-9e224bd3623c",
+      "name": "Instrucciones"
+    }
+  ],
+  "connections": {
+    "GET Disponibilidad": { "main": [[{ "node": "Leer eventos próximos", "type": "main", "index": 0 }]] },
+    "Leer eventos próximos": { "main": [[{ "node": "Crear espacios libres", "type": "main", "index": 0 }]] },
+    "Crear espacios libres": { "main": [[{ "node": "Responder horarios", "type": "main", "index": 0 }]] }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Bogota"
+  },
+  "versionId": "c805a351-0ed9-420f-8df2-6b3d33dcd70c",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": []
+}

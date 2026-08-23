@@ -20,7 +20,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuote }) => {
             <a href="#home" className="inline-flex items-center gap-3 group" aria-label={t('accessibility.home')}>
               <img
                 src="/images/logo.png"
-                alt=""
+                alt="Alliasoft"
                 width="40"
                 height="40"
                 className="h-10 w-10 rounded-xl object-cover ring-1 ring-white/10 shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform"
@@ -105,7 +105,17 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuote }) => {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/[0.06] pt-7 text-xs text-slate-500 sm:flex-row">
-          <p>{t('footer.copyright', { year: currentYear })}</p>
+          <div className="flex flex-col items-center gap-2 sm:items-start">
+            <p>{t('footer.copyright', { year: currentYear })}</p>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:justify-start">
+              <a className="transition hover:text-white" href="/privacy-notice.html">
+                {t('footer.privacyNotice')}
+              </a>
+              <a className="transition hover:text-white" href="/privacy.html">
+                {t('footer.privacyPolicy')}
+              </a>
+            </div>
+          </div>
           <motion.a
             href="#home"
             whileHover={{ y: -2 }}

@@ -1,0 +1,235 @@
+{
+  "name": "Alliasoft Web - Reservar reunión y Google Meet",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "alliasoft/webpage/booking",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-832, 64],
+      "id": "91523614-57ce-43b3-8ae4-a475852c66e0",
+      "name": "POST Reservar",
+      "webhookId": "60796d49-54df-4b98-9787-ad84eedf151f",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REEMPLAZAR_CREDENCIAL_HEADER",
+          "name": "Alliasoft Webhook Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body ?? $json;\nconst clean = (value, max = 3000) => typeof value === 'string' ? value.trim().slice(0, max) : '';\nconst start = new Date(clean(body.start, 80));\nconst end = new Date(clean(body.end, 80));\nconst duration = (end.getTime() - start.getTime()) / 60000;\nconst localStart = new Date(start.getTime() - 5 * 60 * 60 * 1000);\nconst weekday = localStart.getUTCDay();\nconst minutes = localStart.getUTCHours() * 60 + localStart.getUTCMinutes();\nconst booking = {\n  lead_id: clean(body.lead_id, 120) || `booking-${Date.now()}`,\n  full_name: clean(body.full_name, 160),\n  email: clean(body.email, 200),\n  phone: clean(body.phone, 80),\n  company: clean(body.company, 200),\n  service: clean(body.service, 240) || 'Reunión de diagnóstico',\n  message: clean(body.message),\n  start: start.toISOString(),\n  end: end.toISOString(),\n  timezone: 'America/Bogota',\n  consent: body.consent === true ? 'SI' : 'NO',\n  consent_at: clean(body.consent_at, 80) || new Date().toISOString()\n};\nconst validEmail = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(booking.email);\nconst allowedTime = weekday >= 1 && weekday <= 5 && minutes >= 540 && minutes < 1020;\nif (!booking.full_name || !validEmail || !booking.phone || booking.consent !== 'SI' || !Number.isFinite(start.getTime()) || !Number.isFinite(end.getTime()) || duration !== 30 || start.getTime() <= Date.now() || !allowedTime) {\n  throw new Error('Datos de reserva inválidos');\n}\nreturn [{ json: booking }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-576, 64],
+      "id": "0c397138-0074-4d4f-80c2-f789a0f54a25",
+      "name": "Validar reserva"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "primary",
+          "mode": "id"
+        },
+        "returnAll": true,
+        "timeMin": "={{ $json.start }}",
+        "timeMax": "={{ $json.end }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [-320, 64],
+      "id": "d3cfe1f4-f8c4-49b1-b9a6-c0954bebc734",
+      "name": "Buscar eventos del horario",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "jsCode": "const booking = $('Validar reserva').first().json;\nconst requestedStart = new Date(booking.start).getTime();\nconst requestedEnd = new Date(booking.end).getTime();\nconst events = $input.all().map(item => item.json).filter(event => event.id);\nconst conflicts = events.filter(event => {\n  const eventStart = new Date(event.start?.dateTime ?? event.start?.date ?? event.start).getTime();\n  const eventEnd = new Date(event.end?.dateTime ?? event.end?.date ?? event.end).getTime();\n  return Number.isFinite(eventStart) && Number.isFinite(eventEnd) && requestedStart < eventEnd && requestedEnd > eventStart;\n});\nreturn [{ json: { ...booking, availability: conflicts.length === 0 ? 'available' : 'busy' } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-64, 64],
+      "id": "583ebf22-b1d2-4f37-bcff-ab73250ac1f9",
+      "name": "Confirmar espacio libre"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d8997033-fe5a-4dca-869a-13aa20c9fefd",
+              "leftValue": "={{ $json.availability }}",
+              "rightValue": "available",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [192, 64],
+      "id": "bb2dcf7d-c33b-424e-9435-c22788247ad6",
+      "name": "¿Sigue disponible?"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "primary",
+          "mode": "id"
+        },
+        "start": "={{ $json.start }}",
+        "end": "={{ $json.end }}",
+        "useDefaultReminders": true,
+        "additionalFields": {
+          "attendees": ["={{ $json.email }}"],
+          "conferenceDataUi": {
+            "conferenceDataValues": {
+              "conferenceSolution": "hangoutsMeet",
+              "requestId": "={{ $json.lead_id }}"
+            }
+          },
+          "description": "={{ 'Solicitud desde alliasoft.com\\n\\nEmpresa: ' + ($json.company || 'No indicada') + '\\nTeléfono: ' + $json.phone + '\\nTema: ' + ($json.message || 'Diagnóstico inicial') }}",
+          "summary": "={{ 'Diagnóstico Alliasoft — ' + $json.full_name }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [448, -48],
+      "id": "9e4490cb-ea3d-4df6-a4f8-8639273ed24e",
+      "name": "Crear evento y Meet",
+      "retryOnFail": true,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "jsCode": "const booking = $('Validar reserva').first().json;\nconst event = $json;\nreturn [{ json: {\n  booking_id: event.id || booking.lead_id,\n  created_at: new Date().toISOString(),\n  lead_id: booking.lead_id,\n  status: 'Confirmada',\n  start: booking.start,\n  end: booking.end,\n  timezone: booking.timezone,\n  full_name: booking.full_name,\n  email: booking.email,\n  phone: booking.phone,\n  company: booking.company,\n  service: booking.service,\n  message: booking.message,\n  calendar_event_id: event.id || '',\n  calendar_url: event.htmlLink || '',\n  meet_url: event.hangoutLink || '',\n  consent: booking.consent,\n  consent_at: booking.consent_at,\n  notes: ''\n} }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [704, -48],
+      "id": "8ecefcad-281f-40d1-a7ed-7a4ff8bb94bb",
+      "name": "Preparar registro de Agenda"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "REEMPLAZAR_GOOGLE_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Agenda",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [960, -48],
+      "id": "a552ab12-2b18-463c-b946-276a3e439e24",
+      "name": "Guardar reserva en Agenda",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 3000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ok: true, booking_id: $('Crear evento y Meet').first().json.id, calendar_url: $('Crear evento y Meet').first().json.htmlLink || '', meet_url: $('Crear evento y Meet').first().json.hangoutLink || '' } }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [1216, -48],
+      "id": "12319d23-04bc-49db-99d0-a745a41c0572",
+      "name": "Responder confirmación"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ok: false, error: 'slot_unavailable' } }}",
+        "options": {
+          "responseCode": 409
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [448, 176],
+      "id": "275dfc26-c68d-4864-b3a0-a2299948b272",
+      "name": "Responder horario ocupado"
+    },
+    {
+      "parameters": {
+        "content": "## Antes de activar\n1. Selecciona la credencial Header Auth en el Webhook.\n2. Selecciona la misma credencial y calendario en los dos nodos de Google Calendar.\n3. En `Crear evento y Meet`, confirma que Conference Data esté en Google Meet.\n4. Selecciona tu archivo y la hoja `Agenda` en Google Sheets.\n5. Haz una reserva de prueba con tu correo.\n\nEl flujo vuelve a revisar el espacio justo antes de crear el evento y responde 409 si ya se ocupó.",
+        "height": 304,
+        "width": 432
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-832, 336],
+      "id": "c4281208-3947-4d55-aa6f-27a5bbb50e3b",
+      "name": "Instrucciones"
+    }
+  ],
+  "connections": {
+    "POST Reservar": { "main": [[{ "node": "Validar reserva", "type": "main", "index": 0 }]] },
+    "Validar reserva": { "main": [[{ "node": "Buscar eventos del horario", "type": "main", "index": 0 }]] },
+    "Buscar eventos del horario": { "main": [[{ "node": "Confirmar espacio libre", "type": "main", "index": 0 }]] },
+    "Confirmar espacio libre": { "main": [[{ "node": "¿Sigue disponible?", "type": "main", "index": 0 }]] },
+    "¿Sigue disponible?": {
+      "main": [
+        [{ "node": "Crear evento y Meet", "type": "main", "index": 0 }],
+        [{ "node": "Responder horario ocupado", "type": "main", "index": 0 }]
+      ]
+    },
+    "Crear evento y Meet": { "main": [[{ "node": "Preparar registro de Agenda", "type": "main", "index": 0 }]] },
+    "Preparar registro de Agenda": { "main": [[{ "node": "Guardar reserva en Agenda", "type": "main", "index": 0 }]] },
+    "Guardar reserva en Agenda": { "main": [[{ "node": "Responder confirmación", "type": "main", "index": 0 }]] }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Bogota"
+  },
+  "versionId": "ad134d6c-c3f6-41d5-85d8-30a141cf186e",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": []
+}

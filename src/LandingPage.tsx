@@ -177,11 +177,11 @@ const LandingPage: React.FC = () => {
   useEffect(() => {
     const isEnglish = language === 'en';
     const title = isEnglish
-      ? 'Alliasoft | AI and custom software from Bucaramanga'
-      : 'Alliasoft | IA, automatización y software a medida en Colombia';
+      ? 'Alliasoft | AI & Custom Software in Colombia'
+      : 'Alliasoft | IA y software a medida en Colombia';
     const description = isEnglish
-      ? 'Alliasoft builds AI agents, automation, AlliaFood, and custom software from Bucaramanga for companies across Colombia and Latin America.'
-      : 'Alliasoft desarrolla agentes de IA, automatizaciones, AlliaFood y software a medida para empresas en Colombia y Latinoamérica.';
+      ? 'Alliasoft builds AI agents, automation, and custom software for companies in Colombia. We integrate WhatsApp, CRM, ERP, and critical workflows.'
+      : 'Alliasoft crea agentes de IA, automatización y software a medida para empresas en Colombia. Integramos WhatsApp, CRM, ERP y procesos críticos.';
     document.documentElement.lang = language;
     document.title = title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', description);
