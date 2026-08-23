@@ -1,15 +1,22 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { ArrowUp, Mail, MessageSquare, Sparkles } from 'lucide-react';
+import { ArrowUp, Mail, MessageSquare, Share2, Sparkles } from 'lucide-react';
 
 interface FooterProps {
   onOpenQuote?: () => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onOpenQuote }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const currentYear = new Date().getFullYear();
+  const isEnglish = i18n.resolvedLanguage === 'en';
+  const encodedSiteUrl = encodeURIComponent('https://alliasoft.com/');
+  const encodedShareText = encodeURIComponent(
+    isEnglish
+      ? 'Artificial intelligence, automation, and custom software for companies'
+      : 'Inteligencia artificial, automatización y software a medida para empresas',
+  );
 
   return (
     <footer className="relative overflow-hidden border-t border-white/[0.06] bg-[#02050b] text-white">
@@ -114,6 +121,17 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuote }) => {
               <a className="transition hover:text-white" href="/privacy.html">
                 {t('footer.privacyPolicy')}
               </a>
+            </div>
+            <div className="mt-7 border-t border-white/[0.06] pt-5">
+              <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-400">
+                <Share2 className="h-4 w-4" aria-hidden="true" />
+                {isEnglish ? 'Share Alliasoft' : 'Compartir Alliasoft'}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs font-semibold text-slate-300">
+                <a className="transition hover:text-white" href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedSiteUrl}`} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a className="transition hover:text-white" href={`https://twitter.com/intent/tweet?url=${encodedSiteUrl}&text=${encodedShareText}`} target="_blank" rel="noopener noreferrer">X</a>
+                <a className="transition hover:text-white" href={`https://www.facebook.com/sharer/sharer.php?u=${encodedSiteUrl}`} target="_blank" rel="noopener noreferrer">Facebook</a>
+              </div>
             </div>
           </div>
           <motion.a
