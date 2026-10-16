@@ -1,8 +1,11 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { MotionConfig } from 'framer-motion';
 import LeanHeader from './components/LeanHeader';
 import LeanHero from './components/LeanHero';
 import SeoOverview from './components/SeoOverview';
+import Ecosystem from './components/Ecosystem';
+import './styles/studio.css';
 
 const Features = lazy(() => import('./components/Features'));
 const AiPlayground = lazy(() => import('./components/AiPlayground'));
@@ -53,11 +56,13 @@ const PerformanceLanding: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#030712] text-slate-100 selection:bg-cyan-300 selection:text-slate-950">
+    <MotionConfig reducedMotion="user">
+    <div className="premium-site">
       <a href="#main-content" className="skip-link">{t('accessibility.skipToContent')}</a>
       <LeanHeader />
       <main id="main-content">
         <LeanHero />
+        <Ecosystem />
         <SeoOverview />
         <Suspense fallback={<div className="min-h-[41rem]" aria-hidden="true" />}><Features /></Suspense>
         <Suspense fallback={<div className="min-h-[47rem]" aria-hidden="true" />}><AiPlayground onOpenQuote={openQuote} /></Suspense>
@@ -87,6 +92,7 @@ const PerformanceLanding: React.FC = () => {
         </Suspense>
       ) : null}
     </div>
+    </MotionConfig>
   );
 };
 

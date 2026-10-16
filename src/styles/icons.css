@@ -1,0 +1,36 @@
+/* Alliasoft icon family: accent colour, hover motion and placement fixes. */
+.premium-site { --allia-icon-accent: var(--studio-accent); }
+
+.allia-icon { flex-shrink: 0; overflow: visible; }
+.allia-icon-accent {
+  color: var(--allia-icon-accent, currentColor);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform .5s cubic-bezier(.2, .9, .25, 1.25), color .25s;
+}
+.allia-icon-accent [pathLength] { stroke-dasharray: 1; stroke-dashoffset: 0; }
+
+/* Sparks turn a quarter, nodes grow, accent lines are traced again. */
+.allia-icon:is(.allia-icon-agent, .allia-icon-handoff, .allia-icon-ai-core, .allia-icon-multi-device, .allia-icon-spark) { --allia-accent-turn: 90deg; }
+:is(a, button, summary, article, .solution-entry, .editorial-service, .editorial-capability, .studio-roi-metric, .evo-capability-control, .ecosystem-food, .studio-faq-contact):hover .allia-icon-accent {
+  transform: scale(1.16) rotate(var(--allia-accent-turn, 0deg));
+}
+:is(a, button, article, .solution-entry, .editorial-service, .editorial-capability, .studio-roi-metric):hover .allia-icon-accent [pathLength] {
+  animation: allia-icon-trace .7s cubic-bezier(.65, 0, .35, 1) both;
+}
+@keyframes allia-icon-trace { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes allia-icon-pop {
+  0% { transform: scale(.4) rotate(calc(var(--allia-accent-turn, 0deg) * -1)); opacity: 0; }
+  60% { opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* The large phase symbol introduces its accent each time the phase changes. */
+.premium-site .editorial-phase-display .allia-icon-accent { animation: allia-icon-pop .7s .1s cubic-bezier(.2, .9, .25, 1.2) both; }
+
+/* Surfaces painted with the accent keep a single-colour icon. */
+.premium-site :is(.studio-button-primary, .studio-demo-avatar, .studio-interactive-action, .studio-chat-launch-icon, .studio-chat-send, .studio-footer-primary, .studio-mobile-contact, button[type='submit']) { --allia-icon-accent: currentColor; }
+
+@media (prefers-reduced-motion: reduce) {
+  .allia-icon-accent, .allia-icon-accent * { transition: none !important; animation: none !important; }
+}

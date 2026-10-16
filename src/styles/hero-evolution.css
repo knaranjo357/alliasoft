@@ -1,0 +1,135 @@
+.premium-site .studio-hero.hero-evolution { padding-top: 139px; }
+.premium-site .hero-evolution .studio-hero-grid { grid-template-columns: 1.03fr 1fr; gap: clamp(36px, 5vw, 78px); padding-top: 50px; padding-bottom: 54px; }
+.premium-site .hero-evolution .studio-hero-copy { position: relative; z-index: 1; }
+.premium-site .studio-hero.hero-evolution h1 { max-width: 640px; font-size: clamp(48px, 5.15vw, 76px); line-height: 1.055; letter-spacing: -.065em; font-weight: 500; }
+.premium-site .studio-hero.hero-evolution h1 > span { display: inline; color: var(--studio-accent); }
+.premium-site .hero-evolution .studio-hero-description { margin-top: 28px; max-width: 490px; font-size: 14px; line-height: 1.9; }
+.premium-site .hero-evolution .studio-hero-actions { gap: 19px; margin-top: 30px; }
+.premium-site .hero-evolution .studio-hero-process { margin-top: 28px; }
+.premium-site .hero-evolution .studio-button-primary { box-shadow: 0 7px 30px color-mix(in srgb, var(--studio-accent) 7%, transparent); }
+.premium-site .evo-architecture { min-width: 0; position: relative; align-self: center; }
+.premium-site .evo-architecture-topline { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--studio-muted); font: 9px var(--font-mono); letter-spacing: .04em; }
+.premium-site .evo-architecture-topline > span:last-child { display: flex; align-items: center; gap: 9px; color: var(--studio-accent); font-size: 8px; letter-spacing: .08em; }
+.premium-site .evo-architecture-scene { position: relative; margin: 5px -32px -6px; color: var(--studio-accent); }
+.premium-site .evo-architecture-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.premium-site .evo-floor-grid { stroke: var(--studio-accent); stroke-width: .65; opacity: .09; }
+.premium-site .evo-foundation-outline { stroke: var(--studio-accent); stroke-width: .7; stroke-dasharray: 2 7; opacity: .26; }
+.premium-site .evo-circuit-paths { stroke: var(--studio-accent); stroke-width: 1.3; }
+.premium-site .evo-circuit-paths > circle { fill: var(--studio-bg); stroke-opacity: .45; }
+.premium-site .evo-route { opacity: .15; transition: opacity .35s; }
+.premium-site .evo-route.is-selected { opacity: .9; stroke-dasharray: 5 9; animation: evo-signal 22s linear infinite; }
+.premium-site .evo-stack-layer { stroke: color-mix(in srgb, var(--studio-accent) 24%, var(--studio-line)); stroke-width: 1; transform-origin: 300px 250px; transition: transform .45s ease, stroke .45s; }
+.premium-site .evo-stack-layer.is-selected { stroke: var(--studio-accent); transform: translateY(-7px); }
+.premium-site .evo-layer-side { fill: var(--studio-surface); }
+.premium-site .evo-layer-face { fill: var(--studio-surface-raised); }
+.premium-site .evo-layer-shadow { fill: var(--studio-bg); stroke: none; opacity: .7; }
+.premium-site .evo-layer-trace { opacity: .35; }
+.premium-site .evo-layer-detail { stroke: var(--studio-accent); opacity: .26; }
+.premium-site .evo-layer-logo { stroke: var(--studio-accent); stroke-width: 2.5; stroke-linejoin: round; fill: color-mix(in srgb, var(--studio-accent) 12%, transparent); }
+.premium-site .evo-layer-glow { stroke: var(--studio-accent); stroke-width: 3; opacity: 0; transition: opacity .45s; }
+.premium-site .evo-stack-layer.is-selected .evo-layer-glow { opacity: .65; }
+.premium-site .evo-stack-layer.is-selected .evo-layer-face { fill: color-mix(in srgb, var(--studio-accent) 9%, var(--studio-surface)); }
+.premium-site .evo-stack-layer.is-selected .evo-layer-detail { opacity: .65; }
+.premium-site .evo-architecture-guides { stroke: var(--studio-accent); stroke-width: .6; stroke-opacity: .25; }
+.premium-site .evo-architecture-guides circle { fill: var(--studio-accent); fill-opacity: .4; stroke: none; }
+.premium-site .evo-architecture-guides text { fill: var(--studio-muted); stroke: none; font: 8px var(--font-mono); letter-spacing: 1px; transition: fill .3s; }
+.premium-site .evo-architecture-guides text.is-selected { fill: var(--studio-accent); }
+.premium-site .evo-satellite { stroke: var(--studio-accent); stroke-opacity: .4; stroke-width: .8; fill: var(--studio-surface); }
+.premium-site .evo-satellite circle { fill: var(--studio-accent); stroke: none; }
+.premium-site .evo-diagram-wordmark { fill: var(--studio-text); font-family: var(--font-sans); font-size: 17px; font-weight: 650; letter-spacing: -.6px; }
+.premium-site .evo-drawing-index { position: absolute; left: 35px; bottom: 23px; color: var(--studio-muted); font: 8px var(--font-mono); letter-spacing: .05em; }
+.premium-site .evo-capability-controls { display: grid; grid-template-columns: .85fr 1fr 1.35fr; gap: 8px; margin-top: 18px; }
+.premium-site .evo-capability-control { display: flex; align-items: center; justify-content: flex-start; min-height: 58px; gap: 9px; padding: 12px 10px; border: 1px solid var(--studio-line); border-radius: 5px; text-align: left; color: var(--studio-muted); background: transparent; transition: background .2s, border-color .2s, color .2s; }
+.premium-site .evo-capability-control > svg { flex: 0 0 auto; }
+.premium-site .evo-capability-control > span:not(.evo-control-index) { font-size: 9px; font-weight: 600; line-height: 1.5; }
+.premium-site .evo-control-index { align-self: flex-start; margin-left: auto; font: 7px var(--font-mono); opacity: .6; }
+.premium-site .evo-capability-control:hover { border-color: color-mix(in srgb, var(--studio-accent) 50%, transparent); color: var(--studio-text); }
+.premium-site .evo-capability-control.is-selected { background: color-mix(in srgb, var(--studio-accent) 7%, var(--studio-bg)); border-color: color-mix(in srgb, var(--studio-accent) 45%, transparent); color: var(--studio-accent); }
+.premium-site .evo-capability-detail { display: flex; align-items: flex-start; gap: 13px; min-height: 98px; padding: 20px 0 0; }
+.premium-site .evo-capability-detail > span { color: var(--studio-accent); flex-shrink: 0; padding-top: 3px; font: 9px var(--font-mono); }
+.premium-site .evo-capability-detail p { color: var(--studio-muted); font-size: 11px; line-height: 1.85; }
+.premium-site .evo-capability-detail > a { display: grid; place-items: center; flex: 0 0 32px; min-height: 32px; color: var(--studio-accent); transition: transform .2s; }
+.premium-site .evo-capability-detail > a:hover { transform: translate(2px,-2px); }
+.premium-site .evo-hero-bridge { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; border-top: 1px solid var(--studio-line); padding: 28px 0 32px; }
+.premium-site .evo-conversation { display: flex; align-items: flex-start; gap: 14px; max-width: 530px; }
+.premium-site .evo-conversation > svg { flex-shrink: 0; color: var(--studio-accent); margin-top: 2px; }
+.premium-site .evo-conversation > svg:last-child { margin-left: auto; }
+.premium-site .evo-conversation strong { display: block; color: var(--studio-text); font-size: 11px; font-weight: 600; }
+.premium-site .evo-conversation div > span { display: block; margin-top: 7px; color: var(--studio-muted); font-size: 10px; line-height: 1.85; }
+.premium-site .evo-conversation:hover strong { color: var(--studio-accent); }
+.premium-site .evo-ecosystem-link { align-self: center; padding-left: 40px; border-left: 1px solid var(--studio-line); }
+.premium-site .evo-ecosystem-link > span { display: block; margin-bottom: 13px; color: var(--studio-muted); font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }
+.premium-site .evo-ecosystem-link > a { display: flex; align-items: center; flex-wrap: wrap; gap: 17px; width: fit-content; min-height: 24px; color: var(--studio-text); }
+.premium-site .evo-ecosystem-link a > span { font-size: 16px; font-weight: 600; letter-spacing: -.6px; transition: color .2s; }
+.premium-site .evo-ecosystem-link i { font-style: normal; color: var(--studio-muted); font-size: 10px; opacity: .55; }
+.premium-site .evo-ecosystem-link svg { margin-left: 4px; color: var(--studio-accent); transition: transform .2s; }
+.premium-site .evo-ecosystem-link a:hover > span { color: var(--studio-accent); }
+.premium-site .evo-ecosystem-link a:hover svg { transform: translate(2px,-2px); }
+html[data-theme='light'] .premium-site main section.studio-hero.hero-evolution { background: var(--studio-bg) !important; }
+
+@keyframes evo-signal { to { stroke-dashoffset: -280; } }
+
+@media (min-width: 1440px) {
+  .premium-site .hero-evolution .studio-hero-grid { padding-block: 68px; }
+  .premium-site .evo-architecture-scene { margin-inline: -45px; }
+}
+@media (max-width: 1150px) {
+  .premium-site .hero-evolution .studio-hero-grid { gap: 38px; grid-template-columns: 1.05fr 1fr; }
+  .premium-site .studio-hero.hero-evolution h1 { font-size: clamp(45px, 5.4vw, 62px); }
+  .premium-site .evo-architecture-scene { margin-inline: -19px; }
+  .premium-site .evo-control-index { display: none; }
+  .premium-site .evo-capability-controls { gap: 6px; }
+  .premium-site .evo-capability-control { gap: 7px; padding-inline: 9px; }
+  .premium-site .evo-capability-control > span:not(.evo-control-index) { font-size: 8px; }
+  .premium-site .evo-hero-bridge { gap: 35px; }
+  .premium-site .evo-ecosystem-link { padding-left: 28px; }
+  .premium-site .evo-ecosystem-link > a { gap: 12px; }
+  .premium-site .evo-ecosystem-link a > span { font-size: 14px; }
+}
+@media (max-width: 900px) {
+  .premium-site .hero-evolution .studio-hero-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+  .premium-site .studio-hero.hero-evolution h1 { font-size: 45px; }
+  .premium-site .evo-architecture-topline { font-size: 8px; gap: 12px; }
+  .premium-site .evo-architecture-topline > span:last-child { font-size: 7px; }
+  .premium-site .evo-capability-controls { grid-template-columns: repeat(3, 1fr); }
+  .premium-site .evo-capability-control { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .premium-site .evo-capability-detail { min-height: 130px; }
+  .premium-site .evo-ecosystem-link > a { gap: 8px; }
+  .premium-site .evo-ecosystem-link a > span { font-size: 12px; }
+}
+@media (max-width: 900px) {
+  .premium-site .studio-hero.hero-evolution { padding-top: 113px; }
+  .premium-site .hero-evolution .studio-hero-grid { grid-template-columns: 1fr; gap: 42px; padding-top: 33px; padding-bottom: 23px; }
+  .premium-site .studio-hero.hero-evolution h1 { max-width: 570px; font-size: clamp(41px, 9.7vw, 60px); line-height: 1.08; letter-spacing: -.06em; }
+  .premium-site .hero-evolution .studio-hero-description { max-width: 520px; font-size: 13px; line-height: 1.9; margin-top: 24px; }
+  .premium-site .hero-evolution .studio-hero-actions { margin-top: 26px; gap: 19px; }
+  .premium-site .hero-evolution .studio-hero-process { margin-top: 23px; }
+  .premium-site .evo-architecture { width: 100%; max-width: 540px; margin-inline: auto; }
+  .premium-site .evo-architecture-topline { padding-top: 20px; border-top: 1px solid var(--studio-line); font-size: 8px; }
+  .premium-site .evo-architecture-scene { margin: 8px -10px -1px; }
+  .premium-site .evo-drawing-index { left: 20px; bottom: 14px; font-size: 7px; }
+  .premium-site .evo-capability-controls { margin-top: 20px; grid-template-columns: .9fr 1fr 1.35fr; }
+  .premium-site .evo-capability-control { min-height: 76px; padding: 11px 10px; }
+  .premium-site .evo-capability-control > span:not(.evo-control-index) { font-size: 9px; }
+  .premium-site .evo-capability-detail { min-height: 108px; padding-top: 18px; gap: 11px; }
+  .premium-site .evo-capability-detail p { font-size: 10px; }
+  .premium-site .evo-capability-detail > a { flex-basis: 24px; }
+  .premium-site .evo-hero-bridge { grid-template-columns: 1fr; gap: 25px; padding: 26px 0 32px; }
+  .premium-site .evo-conversation { max-width: 520px; gap: 12px; }
+  .premium-site .evo-conversation div > span { font-size: 10px; }
+  .premium-site .evo-ecosystem-link { border-left: 0; border-top: 1px solid var(--studio-line); padding: 23px 0 0; }
+  .premium-site .evo-ecosystem-link > a { min-height: 36px; gap: 14px; }
+  .premium-site .evo-ecosystem-link a > span { font-size: 15px; }
+  .premium-site .evo-ecosystem-link > span { margin-bottom: 9px; }
+}
+@media (max-width: 380px) {
+  .premium-site .studio-hero.hero-evolution h1 { font-size: 41px; }
+  .premium-site .evo-ecosystem-link > a { gap: 11px; }
+  .premium-site .evo-ecosystem-link a > span { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-site .hero-evolution *,
+  .premium-site .hero-evolution *::before,
+  .premium-site .hero-evolution *::after { animation: none !important; transition-duration: 0s !important; }
+  .premium-site .evo-stack-layer.is-selected { transform: none; }
+}

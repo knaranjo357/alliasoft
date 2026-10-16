@@ -1,6 +1,7 @@
 import React, { FormEvent, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Bot, ExternalLink, Loader2, MessageCircle, Send, X } from 'lucide-react';
+import { ExternalLink, Loader2, Send, X } from 'lucide-react';
+import { AgentIcon } from './icons/AlliaIcons';
 
 type ChatMessage = {
   role: 'user' | 'assistant';
@@ -10,12 +11,20 @@ type ChatMessage = {
 const WHATSAPP_URL =
   'https://wa.me/573176964215?text=Hola%20Alliasoft%2C%20vengo%20desde%20el%20asistente%20web%20y%20quiero%20hablar%20con%20el%20equipo.';
 
+function MessageContent({ content }: { content: string }) {
+  return <>{content.split(/(https?:\/\/[^\s<>]+)/g).map((part, index) => {
+    if (!/^https?:\/\//.test(part)) return part;
+    const href = part.replace(/[.,;!?)]+$/, '');
+    return <React.Fragment key={index}><a href={href} target="_blank" rel="noopener noreferrer" className="break-words underline decoration-current underline-offset-4">{href}</a>{part.slice(href.length)}</React.Fragment>;
+  })}</>;
+}
+
 const copy = {
   es: {
     title: 'Asistente Alliasoft',
     status: 'IA para orientarte, equipo humano para continuar',
     welcome:
-      '¡Hola! Puedo contarte cómo Alliasoft aborda agentes de IA, software a medida, automatizaciones y AlliaFood. ¿Qué problema quieres resolver?',
+      '¡Hola! Puedo orientarte sobre nuestras soluciones de IA y software, y nuestro ecosistema: AlliaFood, AlliaEdu y AlliaMoney. ¿Qué te gustaría conocer?',
     placeholder: 'Escribe tu pregunta…',
     open: 'Pregúntale a Alliasoft',
     close: 'Cerrar asistente',
@@ -29,7 +38,7 @@ const copy = {
     title: 'Alliasoft Assistant',
     status: 'AI guidance, human team for the next step',
     welcome:
-      'Hi! I can explain how Alliasoft approaches AI agents, custom software, automation, and AlliaFood. What problem would you like to solve?',
+      'Hi! I can guide you through our AI and software solutions and our ecosystem: AlliaFood, AlliaEdu, and AlliaMoney. What would you like to know?',
     placeholder: 'Type your question…',
     open: 'Ask Alliasoft',
     close: 'Close assistant',
@@ -44,6 +53,24 @@ const copy = {
 function getLocalAnswer(message: string, language: 'es' | 'en') {
   const normalized = message.toLocaleLowerCase();
   const isEnglish = language === 'en';
+
+  if (normalized.includes('alliaedu') || normalized.includes('icfes')) {
+    return isEnglish
+      ? 'AlliaEdu is our ICFES preparation platform. Explore it at https://alliaedu.com/ and visit its educational YouTube channel at https://www.youtube.com/@AlliaEdu.'
+      : 'AlliaEdu es nuestra plataforma de preparación para el ICFES. Conócela en https://alliaedu.com/ y visita su canal educativo de YouTube en https://www.youtube.com/@AlliaEdu.';
+  }
+
+  if (normalized.includes('alliamoney') || normalized.includes('tiktok')) {
+    return isEnglish
+      ? 'AlliaMoney is our finance channel on TikTok. You can find it at https://www.tiktok.com/@alliamoney.'
+      : 'AlliaMoney es nuestro canal de finanzas en TikTok. Puedes encontrarlo en https://www.tiktok.com/@alliamoney.';
+  }
+
+  if (normalized.includes('ecosistema') || normalized.includes('ecosystem')) {
+    return isEnglish
+      ? 'The Alliasoft ecosystem includes AlliaFood for restaurant operations (https://alliafood.com/), AlliaEdu for ICFES preparation (https://alliaedu.com/ and https://www.youtube.com/@AlliaEdu), and AlliaMoney, our finance channel on TikTok (https://www.tiktok.com/@alliamoney).'
+      : 'El ecosistema Alliasoft incluye AlliaFood para la operación de restaurantes (https://alliafood.com/), AlliaEdu para prepararte para el ICFES (https://alliaedu.com/ y https://www.youtube.com/@AlliaEdu), y AlliaMoney, nuestro canal de finanzas en TikTok (https://www.tiktok.com/@alliamoney).';
+  }
 
   if (/^(hola|holi|buenas|buenos días|buenas tardes|buenas noches|hello|hi|hey)[!. ]*$/.test(normalized)) {
     return isEnglish
@@ -145,16 +172,16 @@ const SmartChatWidget: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-[70] sm:bottom-6 sm:right-6">
+    <div className="studio-interactive-widget fixed bottom-4 right-4 z-[70] sm:bottom-6 sm:right-6">
       {isOpen ? (
         <section
           aria-label={text.title}
-          className="flex h-[min(620px,calc(100vh-2rem))] w-[min(390px,calc(100vw-2rem))] flex-col overflow-hidden rounded-3xl border border-white/10 bg-slate-950 shadow-2xl shadow-black/60"
+          className="studio-chat-panel flex h-[min(620px,calc(100vh-2rem))] w-[min(390px,calc(100vw-2rem))] flex-col overflow-hidden rounded-3xl border border-white/10 bg-slate-950 shadow-2xl shadow-black/60"
         >
           <header className="flex items-center justify-between border-b border-white/[0.08] bg-slate-900 px-4 py-3.5">
             <div className="flex min-w-0 items-center gap-3">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-cyan-400/10 text-cyan-300">
-                <Bot className="h-5 w-5" aria-hidden="true" />
+                <AgentIcon className="h-5 w-5" />
               </span>
               <div className="min-w-0">
                 <h2 className="truncate text-sm font-extrabold text-white">{text.title}</h2>
@@ -177,11 +204,11 @@ const SmartChatWidget: React.FC = () => {
                 key={`${message.role}-${index}`}
                 className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-6 ${
                   message.role === 'user'
-                    ? 'ml-auto rounded-br-md bg-blue-600 text-white'
+                    ? 'studio-chat-user ml-auto rounded-br-md bg-blue-600 text-white'
                     : 'rounded-bl-md border border-white/[0.07] bg-white/[0.05] text-slate-200'
                 }`}
               >
-                {message.content}
+                <MessageContent content={message.content} />
               </div>
             ))}
             {isLoading ? (
@@ -223,7 +250,7 @@ const SmartChatWidget: React.FC = () => {
                 type="submit"
                 disabled={!input.trim() || isLoading}
                 aria-label={text.send}
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-cyan-300 text-slate-950 transition hover:bg-cyan-200 disabled:cursor-not-allowed disabled:opacity-40"
+                className="studio-chat-send grid h-11 w-11 shrink-0 place-items-center rounded-full bg-cyan-300 text-slate-950 transition hover:bg-cyan-200 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <Send className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -243,12 +270,12 @@ const SmartChatWidget: React.FC = () => {
         <button
           type="button"
           onClick={openChat}
-          className="group flex items-center gap-3 rounded-full border border-white/10 bg-slate-900 px-3 py-3 text-white shadow-2xl shadow-black/40 transition hover:-translate-y-0.5 hover:border-cyan-300/30 sm:pl-5"
+          className="studio-chat-launcher group flex items-center gap-3 rounded-full border border-white/10 bg-slate-900 px-3 py-3 text-white shadow-2xl shadow-black/40 transition hover:-translate-y-0.5 hover:border-cyan-300/30 sm:pl-5"
           aria-label={text.open}
         >
           <span className="hidden text-sm font-extrabold sm:block">{text.open}</span>
-          <span className="grid h-11 w-11 place-items-center rounded-full bg-cyan-300 text-slate-950 transition group-hover:bg-cyan-200">
-            <MessageCircle className="h-5 w-5" aria-hidden="true" />
+          <span className="studio-chat-launch-icon grid h-11 w-11 place-items-center rounded-full bg-cyan-300 text-slate-950 transition group-hover:bg-cyan-200">
+            <AgentIcon className="h-5 w-5" />
           </span>
         </button>
       )}

@@ -70,14 +70,14 @@ html[data-theme='light'] #root {
   color: #0f172a;
 }
 
-html[data-theme='light'] header > div {
+html[data-theme='light'] header:not(.studio-header) > div {
   border-color: rgba(148, 163, 184, 0.35) !important;
   background: rgba(255, 255, 255, 0.94) !important;
   box-shadow: 0 14px 40px rgba(15, 23, 42, 0.1) !important;
 }
 
-html[data-theme='light'] main section,
-html[data-theme='light'] footer {
+html[data-theme='light'] main section:not([class*='studio']):not([class*='editorial']):not([class*='showcase']),
+html[data-theme='light'] footer:not([class*='studio']) {
   border-color: rgba(148, 163, 184, 0.25) !important;
   background-color: #f8fafc !important;
   background-image: none !important;

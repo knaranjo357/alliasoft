@@ -1,0 +1,214 @@
+/* Preserve the interactive tools while sharing the studio's restrained palette. */
+.premium-site :is(.studio-interactive, .studio-interactive-widget) [class*='shadow'] {
+  box-shadow: none !important;
+}
+.premium-site :is(.studio-interactive, .studio-interactive-widget) [class*='bg-gradient-'] {
+  background-image: none !important;
+}
+.premium-site :is(.studio-interactive, .studio-interactive-widget) :is([class*='border-white'], [class*='border-slate'], [class*='border-blue'], [class*='border-teal'], [class*='border-emerald'], [class*='border-indigo'], [class*='border-purple'], [class*='border-amber'], [class*='border-cyan']) {
+  border-color: var(--studio-line) !important;
+}
+.premium-site :is(.studio-interactive, .studio-interactive-widget) :is([class*='bg-slate'], [class*='bg-white/']) {
+  background-color: var(--studio-surface-raised) !important;
+}
+.premium-site :is(.studio-interactive, .studio-interactive-widget) :is([class*='bg-blue'], [class*='bg-teal'], [class*='bg-emerald'], [class*='bg-indigo'], [class*='bg-purple'], [class*='bg-amber'], [class*='bg-cyan'], [class*='bg-violet']) {
+  background-color: color-mix(in srgb, var(--studio-accent) 9%, var(--studio-bg)) !important;
+}
+.premium-site :is(.studio-interactive, .studio-interactive-widget) :is([class*='text-blue'], [class*='text-teal'], [class*='text-emerald'], [class*='text-indigo'], [class*='text-purple'], [class*='text-amber'], [class*='text-cyan'], [class*='text-violet']) {
+  color: var(--studio-accent) !important;
+}
+.premium-site :is(.studio-interactive, .studio-interactive-widget) :is(.text-white, .text-slate-100, .text-slate-200, .text-slate-300) {
+  color: var(--studio-text) !important;
+}
+.premium-site :is(.studio-interactive, .studio-interactive-widget) :is(.text-slate-400, .text-slate-500, .text-slate-600) {
+  color: var(--studio-muted) !important;
+}
+.premium-site :is(.studio-interactive, .studio-interactive-widget) :is(.rounded-2xl, .rounded-3xl, [class*='rounded-[']) {
+  border-radius: 8px;
+}
+.premium-site :is(.studio-interactive, .studio-interactive-widget) :is(.font-extrabold, .font-black) {
+  font-weight: 600;
+}
+.premium-site .studio-interactive .absolute[class*='blur-'] { display: none; }
+.premium-site .studio-interactive .studio-interactive-tag {
+  padding-inline: 0;
+  background: transparent !important;
+  border: 0;
+  border-radius: 0;
+  color: var(--studio-accent) !important;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+.premium-site .studio-interactive .studio-interactive-action,
+.premium-site .studio-interactive-widget :is(.studio-chat-send, .studio-chat-launch-icon) {
+  background: var(--studio-accent) !important;
+  color: var(--studio-accent-ink) !important;
+  border: 1px solid var(--studio-accent) !important;
+  border-radius: 6px;
+  box-shadow: none !important;
+  font-weight: 600;
+}
+.premium-site .studio-interactive .studio-interactive-action :is(span, svg),
+.premium-site .studio-interactive-widget :is(.studio-chat-send, .studio-chat-launch-icon) svg {
+  color: inherit !important;
+}
+.premium-site .studio-interactive .studio-interactive-action:hover,
+.premium-site .studio-interactive-widget .studio-chat-send:hover { filter: brightness(1.08); }
+.premium-site .studio-interactive .studio-interactive-panel {
+  border: 1px solid var(--studio-line) !important;
+  border-radius: 8px;
+  background: var(--studio-surface) !important;
+  box-shadow: none !important;
+}
+
+/* Demo: one unified work surface, quiet user messages and clear selected tabs. */
+.premium-site .studio-interactive .studio-demo-disclaimer {
+  border: 0;
+  border-left: 2px solid var(--studio-line);
+  border-radius: 0;
+  background: transparent !important;
+  color: var(--studio-muted) !important;
+  font-size: 12px;
+  text-align: left;
+}
+.premium-site .studio-interactive .studio-demo-tab {
+  min-height: 46px;
+  padding-inline: 18px;
+  border: 1px solid var(--studio-line);
+  border-radius: 6px;
+  background: transparent !important;
+  color: var(--studio-muted) !important;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: none !important;
+}
+.premium-site .studio-interactive .studio-demo-tab[aria-pressed='true'] {
+  border-color: var(--studio-accent) !important;
+  background: color-mix(in srgb, var(--studio-accent) 8%, var(--studio-bg)) !important;
+  color: var(--studio-accent) !important;
+}
+.premium-site .studio-interactive .studio-demo-panel {
+  padding: 0;
+  border: 1px solid var(--studio-line);
+  border-radius: 8px;
+  background: var(--studio-bg) !important;
+  overflow: hidden;
+}
+.premium-site .studio-interactive .studio-demo-inner { background: var(--studio-bg) !important; border-radius: 0; }
+.premium-site .studio-interactive .studio-demo-metrics { border-left: 1px solid var(--studio-line); background: var(--studio-surface); }
+.premium-site .studio-interactive .studio-demo-avatar { background: var(--studio-accent) !important; border-radius: 8px; }
+.premium-site .studio-interactive .studio-demo-avatar svg { color: var(--studio-accent-ink) !important; }
+.premium-site .studio-interactive .studio-demo-user { border: 1px solid color-mix(in srgb, var(--studio-accent) 22%, transparent); background: color-mix(in srgb, var(--studio-accent) 9%, var(--studio-bg)) !important; color: var(--studio-text) !important; }
+.premium-site .studio-interactive .studio-demo-user > span { color: var(--studio-muted) !important; }
+
+/* Calculator: consistent controls, generous values and quiet separators. */
+.premium-site .studio-interactive .studio-roi-inputs label { max-width: 62%; font-size: 12px; line-height: 1.6; font-weight: 500; }
+.premium-site .studio-interactive .studio-roi-inputs label + span {
+  padding: 3px 0 3px 12px;
+  border: 0;
+  border-radius: 0;
+  color: var(--studio-accent) !important;
+  background: transparent !important;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: right;
+  white-space: nowrap;
+}
+.premium-site .studio-interactive input[type='range'] {
+  height: 5px;
+  appearance: auto;
+  accent-color: var(--studio-accent);
+  background: var(--studio-line) !important;
+  border: 0;
+  border-radius: 3px;
+}
+.premium-site .studio-interactive .studio-roi-results { background: var(--studio-surface-raised) !important; }
+.premium-site .studio-interactive .studio-roi-metric {
+  padding: 22px 18px;
+  border: 0;
+  border-top: 1px solid var(--studio-line) !important;
+  border-radius: 0;
+  background: transparent !important;
+}
+.premium-site .studio-interactive .studio-roi-metric > div { min-height: 38px; align-items: flex-start; font-size: 11px; line-height: 1.5; }
+.premium-site .studio-interactive .studio-roi-metric svg { flex-shrink: 0; }
+.premium-site .studio-interactive .studio-roi-metric > span { font-family: var(--font-sans) !important; font-weight: 500; letter-spacing: -0.04em; color: var(--studio-text) !important; }
+.premium-site .studio-interactive .studio-roi-metric:nth-child(2) > span,
+.premium-site .studio-interactive .studio-roi-metric:nth-child(3) > span { color: var(--studio-accent) !important; }
+
+/* Contact keeps existing validation and delivery behavior. */
+.premium-site .studio-interactive .studio-contact-method {
+  min-width: 0;
+  max-width: 100%;
+  border: 1px solid var(--studio-line) !important;
+  border-radius: 8px;
+  background: var(--studio-bg) !important;
+  box-shadow: none !important;
+  transition: border-color 180ms;
+}
+.premium-site .studio-interactive .studio-contact-method > .relative { min-width: 0; }
+.premium-site .studio-interactive .studio-contact-method .min-w-0 { flex: 1 1 0%; }
+.premium-site .studio-interactive .studio-contact-method .ml-auto { flex: 0 0 auto; }
+.premium-site .studio-interactive .studio-contact-method:hover { border-color: var(--studio-accent) !important; transform: none; }
+.premium-site .studio-interactive .studio-contact-method > .absolute,
+.premium-site .studio-interactive .studio-contact-form > .absolute { display: none; }
+.premium-site .studio-interactive .studio-contact-method .rounded-xl { border-radius: 6px; border: 0; }
+.premium-site .studio-interactive .studio-contact-method .text-base { font-size: 14px; font-weight: 500; }
+.premium-site .studio-interactive .studio-contact-form { background: var(--studio-bg) !important; }
+.premium-site .studio-interactive :is(input:not([type='range']):not([type='checkbox']), textarea, select) {
+  border: 1px solid var(--studio-line) !important;
+  border-radius: 6px;
+  background: var(--studio-surface) !important;
+  color: var(--studio-text) !important;
+  box-shadow: none !important;
+}
+.premium-site .studio-interactive :is(input:not([type='range']), textarea, select):focus {
+  border-color: var(--studio-accent) !important;
+  outline: 0;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--studio-accent) 10%, transparent) !important;
+}
+.premium-site .studio-interactive .floating-field-input::placeholder { color: transparent !important; }
+.premium-site .studio-interactive input[type='checkbox'] { accent-color: var(--studio-accent); }
+.premium-site .studio-interactive option { background: var(--studio-surface) !important; color: var(--studio-text) !important; }
+.premium-site .studio-interactive .studio-contact-form label > span a { font-weight: 500; }
+.premium-site .studio-interactive #booking :is(button, a).text-slate-950 { background: var(--studio-accent) !important; color: var(--studio-accent-ink) !important; border-color: var(--studio-accent) !important; }
+
+/* The assistant matches the site in either theme. */
+.premium-site .studio-interactive-widget .studio-chat-panel {
+  background: var(--studio-bg) !important;
+  border-color: var(--studio-line) !important;
+  border-radius: 10px;
+  box-shadow: 0 20px 70px #00000030 !important;
+}
+.premium-site .studio-interactive-widget .studio-chat-panel > header,
+.premium-site .studio-interactive-widget .studio-chat-panel > div:last-child { background: var(--studio-surface) !important; border-color: var(--studio-line) !important; }
+.premium-site .studio-interactive-widget .studio-chat-panel > header > div { background: transparent !important; box-shadow: none !important; }
+.premium-site .studio-interactive-widget .studio-chat-user { background: color-mix(in srgb, var(--studio-accent) 13%, var(--studio-bg)) !important; color: var(--studio-text) !important; }
+.premium-site .studio-interactive-widget .studio-chat-panel button.rounded-full,
+.premium-site .studio-interactive-widget .studio-chat-panel input { border-radius: 6px; }
+.premium-site .studio-interactive-widget input { background: var(--studio-bg) !important; color: var(--studio-text) !important; border-color: var(--studio-line) !important; }
+.premium-site .studio-interactive-widget input:focus { border-color: var(--studio-accent) !important; }
+.premium-site .studio-interactive-widget input::placeholder { color: var(--studio-muted) !important; }
+.premium-site .studio-interactive-widget .studio-chat-launcher { padding: 8px; gap: 16px; border-radius: 8px; border-color: var(--studio-line) !important; background: var(--studio-surface) !important; color: var(--studio-text) !important; box-shadow: 0 8px 30px #00000020 !important; }
+.premium-site .studio-interactive-widget .studio-chat-launcher > span:first-child { padding-left: 10px; font-size: 11px; font-weight: 600; }
+.premium-site .studio-interactive-widget .studio-chat-launch-icon { width: 38px; height: 38px; }
+
+@media (max-width: 1023px) {
+  .premium-site .studio-interactive .studio-demo-metrics { border-top: 1px solid var(--studio-line); border-left: 0; }
+}
+@media (max-width: 520px) {
+  .premium-site .studio-interactive .studio-demo-tab { min-height: 44px; padding-inline: 12px; font-size: 11px; }
+  .premium-site .studio-interactive .studio-demo-inner > div { padding: 20px 16px; }
+  .premium-site .studio-interactive .studio-demo-inner > div:first-child > div:first-child { flex-wrap: wrap; gap: 15px; }
+  .premium-site .studio-interactive .studio-roi-inputs label { font-size: 11px; }
+  .premium-site .studio-interactive .studio-roi-inputs label + span { font-size: 13px; }
+  .premium-site .studio-interactive .studio-contact-method { padding: 18px 14px; }
+  .premium-site .studio-interactive .studio-contact-method .text-base { font-size: 12px; }
+  .premium-site .studio-interactive .studio-contact-method .p-3 { padding: 10px; }
+  .premium-site .studio-interactive .studio-contact-form .gap-6 { gap: 14px; align-items: flex-start; }
+  .premium-site .studio-interactive .studio-contact-form .gap-6 > div { min-width: 0; }
+  .premium-site .studio-interactive .studio-contact-form .gap-6 svg { flex-shrink: 0; }
+  .premium-site .studio-interactive-widget .studio-chat-launcher { padding: 5px; }
+  .premium-site .studio-interactive-widget .studio-chat-panel { max-height: calc(100dvh - 32px); }
+}

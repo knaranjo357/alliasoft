@@ -1,6 +1,8 @@
 import React from 'react';
-import { ArrowRight, Bot, Code2, Route, Workflow } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { CodeWindowIcon, HandoffIcon, IntegrationIcon, RouteIcon } from './icons/AlliaIcons';
 import { useTranslation } from 'react-i18next';
+import '../styles/editorial.css';
 
 const content = {
   es: {
@@ -67,7 +69,7 @@ const content = {
   },
 } as const;
 
-const icons = [Bot, Code2, Workflow, Route] as const;
+const icons = [HandoffIcon, CodeWindowIcon, IntegrationIcon, RouteIcon] as const;
 
 const SeoOverview: React.FC = () => {
   const { i18n } = useTranslation();
@@ -77,54 +79,52 @@ const SeoOverview: React.FC = () => {
     <section
       id="services-overview"
       aria-labelledby="services-overview-title"
-      className="relative overflow-hidden border-y border-white/[0.06] bg-slate-950 px-6 py-20 text-white sm:py-24"
+      className="editorial-section editorial-overview"
     >
-      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(8,145,178,0.12),transparent_42%)]" />
-      <div className="relative mx-auto max-w-6xl">
-        <div className="max-w-3xl">
-          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-cyan-300">{copy.eyebrow}</p>
-          <h2 id="services-overview-title" className="mt-4 text-balance text-3xl font-extrabold tracking-tight sm:text-5xl">
-            {copy.title}
-          </h2>
-          <p className="mt-6 text-pretty text-base leading-8 text-slate-300 sm:text-lg">{copy.introduction}</p>
+      <div className="editorial-container">
+        <div className="editorial-kicker"><span aria-hidden="true">01 /</span><p>{copy.eyebrow}</p></div>
+        <div className="editorial-intro">
+          <h2 id="services-overview-title" className="editorial-title">{copy.title}</h2>
+          <div className="editorial-intro-note"><span className="editorial-mark" aria-hidden="true">↗</span><p>{copy.introduction}</p></div>
         </div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
+        <div className="editorial-services">
           {copy.cards.map((card, index) => {
             const Icon = icons[index];
             return (
-              <article key={card.title} className="rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6 sm:p-7">
-                <div className="grid h-11 w-11 place-items-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-300">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
+              <article key={card.title} className="editorial-service">
+                <div className="editorial-service-meta">
+                  <span aria-hidden="true">0{index + 1}</span>
+                  <Icon size={22} strokeWidth={1.4} aria-hidden="true" />
                 </div>
-                <h3 className="mt-5 text-xl font-extrabold text-white">{card.title}</h3>
-                <p className="mt-3 leading-7 text-slate-300">{card.text}</p>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
               </article>
             );
           })}
         </div>
 
-        <div className="mt-8 flex flex-col gap-5 rounded-3xl border border-blue-400/15 bg-blue-500/[0.06] p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
-          <p className="max-w-2xl leading-7 text-slate-300">
+        <div className="editorial-product-strip">
+          <p>
             {copy.productPrefix}{' '}
-            <a className="font-extrabold text-cyan-300 underline decoration-cyan-300/40 underline-offset-4 hover:text-cyan-200" href="https://alliafood.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://alliafood.com" target="_blank" rel="noopener noreferrer">
               {copy.productLink}
             </a>{' '}
             {copy.productSuffix}
           </p>
-          <div className="flex flex-wrap gap-3">
-            <a className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 px-5 text-sm font-bold text-white hover:border-white/30 hover:bg-white/[0.05]" href="#process">
-              {copy.method}<ArrowRight className="h-4 w-4" aria-hidden="true" />
+          <div className="editorial-strip-links">
+            <a href="#process">
+              {copy.method}<ArrowRight size={16} aria-hidden="true" />
             </a>
-            <a className="inline-flex min-h-11 items-center gap-2 rounded-full bg-cyan-300 px-5 text-sm font-extrabold text-slate-950 hover:bg-cyan-200" href="#portfolio">
-              {copy.experience}<ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <a href="#portfolio">
+              {copy.experience}<ArrowRight size={16} aria-hidden="true" />
             </a>
           </div>
         </div>
 
-        <p className="mt-6 text-sm leading-6 text-slate-400">
+        <p className="editorial-legal">
           {copy.legalPrefix}{' '}
-          <a className="font-bold text-slate-200 underline underline-offset-4 hover:text-white" href="/privacy.html">
+          <a href="/privacy.html">
             {copy.privacy}
           </a>.
         </p>

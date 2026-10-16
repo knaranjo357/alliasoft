@@ -8,7 +8,9 @@
     <meta name="author" content="Alliasoft S.A.S." />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <meta name="theme-color" content="#030712" />
+    <meta name="theme-color" content="#080c12" />
+    <meta name="application-name" content="Alliasoft" />
+    <meta name="apple-mobile-web-app-title" content="Alliasoft" />
     <meta name="color-scheme" content="dark light" />
     <meta name="geo.region" content="CO-SAN" />
     <meta name="geo.placename" content="Bucaramanga" />
@@ -29,11 +31,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png" />
     <link rel="preload" href="/images/logo.png" as="image" type="image/png" fetchpriority="high" />
     <link rel="canonical" href="https://alliasoft.com/" />
+    <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
     <script>
       (() => {
-        const savedTheme = localStorage.getItem('alliasoft-theme');
+        let savedTheme;
+        try { savedTheme = localStorage.getItem('alliasoft-theme'); } catch { /* Use the system preference when storage is unavailable. */ }
         const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-        document.documentElement.dataset.theme = savedTheme || (prefersLight ? 'light' : 'dark');
+        const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : (prefersLight ? 'light' : 'dark');
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#080c12' : '#f4f5ef';
       })();
     </script>
 
@@ -42,9 +48,10 @@
     <meta property="og:url" content="https://alliasoft.com/" />
     <meta property="og:title" content="Alliasoft | IA y software a medida en Colombia" />
     <meta property="og:description" content="Alliasoft crea agentes de IA, automatización y software a medida para empresas en Colombia. Integramos WhatsApp, CRM, ERP y procesos críticos." />
-    <meta property="og:image" content="https://alliasoft.com/og.png" />
-    <meta property="og:image:width" content="1536" />
-    <meta property="og:image:height" content="1024" />
+    <meta property="og:image" content="https://alliasoft.com/og.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Alliasoft: inteligencia artificial y software a medida desde Bucaramanga" />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:locale:alternate" content="en_US" />
@@ -52,7 +59,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Alliasoft | IA y software a medida en Colombia" />
     <meta name="twitter:description" content="Alliasoft crea agentes de IA, automatización y software a medida para empresas en Colombia. Integramos WhatsApp, CRM, ERP y procesos críticos." />
-    <meta name="twitter:image" content="https://alliasoft.com/og.png" />
+    <meta name="twitter:image" content="https://alliasoft.com/og.jpg" />
     <meta name="twitter:image:alt" content="Alliasoft: inteligencia artificial y software a medida desde Bucaramanga" />
 
     <script type="application/ld+json">
@@ -69,6 +76,11 @@
             "email": "alliasoftsas@gmail.com",
             "telephone": "+573176964215",
             "description": "Empresa de inteligencia artificial, automatización y desarrollo de software a medida en Bucaramanga, Colombia.",
+            "brand": [
+              { "@type": "Brand", "name": "AlliaFood", "url": "https://alliafood.com" },
+              { "@type": "Brand", "name": "AlliaEdu", "url": "https://alliaedu.com/", "sameAs": ["https://www.youtube.com/@AlliaEdu"], "description": "Plataforma de preparación para el ICFES y canal educativo en YouTube." },
+              { "@type": "Brand", "name": "AlliaMoney", "url": "https://www.tiktok.com/@alliamoney", "description": "Canal de finanzas en TikTok." }
+            ],
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Bucaramanga",
@@ -96,6 +108,8 @@
             "@id": "https://alliasoft.com/#service",
             "name": "Alliasoft — IA y software a medida",
             "url": "https://alliasoft.com/",
+            "image": "https://alliasoft.com/og.jpg",
+            "email": "alliasoftsas@gmail.com",
             "telephone": "+573176964215",
             "parentOrganization": { "@id": "https://alliasoft.com/#organization" },
             "address": {
@@ -111,7 +125,9 @@
               "itemListElement": [
                 { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Agentes de inteligencia artificial" } },
                 { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Software a medida" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatización e integraciones" } }
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatización e integraciones" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diseño y desarrollo web" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Software para restaurantes", "brand": { "@type": "Brand", "name": "AlliaFood" } } }
               ]
             }
           },
@@ -124,6 +140,18 @@
               "@id": "https://alliasoft.com/#organization"
             },
             "inLanguage": ["es", "en"]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://alliasoft.com/#webpage",
+            "url": "https://alliasoft.com/",
+            "name": "Alliasoft | IA y software a medida en Colombia",
+            "description": "Alliasoft crea agentes de IA, automatización y software a medida para empresas en Colombia. Integramos WhatsApp, CRM, ERP y procesos críticos.",
+            "isPartOf": { "@id": "https://alliasoft.com/#website" },
+            "about": { "@id": "https://alliasoft.com/#organization" },
+            "primaryImageOfPage": { "@type": "ImageObject", "url": "https://alliasoft.com/og.jpg", "width": 1200, "height": 630 },
+            "inLanguage": "es-CO",
+            "dateModified": "2026-10-15"
           },
           {
             "@type": "SoftwareApplication",
@@ -139,18 +167,28 @@
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "¿Alliasoft está en Bucaramanga?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Sí. Alliasoft desarrolla tecnología desde Bucaramanga, Colombia, y trabaja de forma virtual con empresas en Colombia y Latinoamérica." }
+                "name": "¿Cuánto tiempo toma implementar una solución con Alliasoft?",
+                "acceptedAnswer": { "@type": "Answer", "text": "El plazo se define después de entender el alcance, las integraciones y el estado de los datos. Una automatización acotada puede resolverse por etapas; una plataforma a medida requiere más descubrimiento, construcción y pruebas. La propuesta incluye hitos y entregables claros." }
               },
               {
                 "@type": "Question",
-                "name": "¿Qué es AlliaFood?",
-                "acceptedAnswer": { "@type": "Answer", "text": "AlliaFood es un producto de Alliasoft para restaurantes que integra POS, pedidos, comandas de cocina, inventario y domicilios." }
+                "name": "¿La información y los datos de mis clientes están seguros?",
+                "acceptedAnswer": { "@type": "Answer", "text": "La arquitectura de seguridad se define según la información, los proveedores y el nivel de riesgo del proyecto. Aplicamos conexiones cifradas, control de acceso y manejo mínimo de datos; antes de implementar documentamos dónde se procesa la información y qué terceros participan." }
               },
               {
                 "@type": "Question",
-                "name": "¿Cómo contactar a Alliasoft?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Puedes contactar al equipo de Alliasoft por WhatsApp en el +57 317 696 4215 o por correo en alliasoftsas@gmail.com." }
+                "name": "¿Debo reemplazar mi software o ERP actual?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. En Alliasoft construimos conectores que se integran a la infraestructura que ya utilizas (WhatsApp, Google Workspace, SAP, Shopify, HubSpot, bases de datos SQL o CRMs propietarios)." }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cómo aseguran que mi equipo realmente adopte el sistema?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Involucramos a las personas que usarán la solución, probamos con casos reales y acompañamos la capacitación. La adopción no se promete como un porcentaje fijo: se mide con indicadores acordados y se mejora a partir de la retroalimentación del equipo." }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Ofrecen soporte técnico y mantenimiento post-lanzamiento?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Sí. Definimos el acompañamiento, los horarios de atención y los niveles de servicio según la criticidad de la solución. También podemos acordar mantenimiento evolutivo para nuevas necesidades." }
               }
             ]
           }
@@ -167,6 +205,7 @@
           <h1>Inteligencia artificial, automatización y software a medida para empresas</h1>
           <p>Alliasoft diseña soluciones tecnológicas alrededor de procesos empresariales reales. La <strong>inteligencia artificial, la automatización y el software a medida</strong> generan valor cuando responden a una necesidad concreta de las empresas. Ayudamos a equipos que necesitan conectar información, reducir tareas manuales, mejorar la atención comercial o construir una plataforma que se adapte a su forma de trabajar. Desarrollamos desde Bucaramanga y colaboramos de forma virtual con empresas en Colombia y Latinoamérica.</p>
           <nav aria-label="Navegación principal">
+            <a href="#ecosystem">Ecosistema Alliasoft</a>
             <a href="#agentes-ia">Agentes de IA</a>
             <a href="#software-medida">Software a medida</a>
             <a href="#integraciones">Integraciones</a>
@@ -181,6 +220,15 @@
         </header>
 
         <main>
+          <section id="ecosystem">
+            <h2>El ecosistema Alliasoft: software, educación y contenido financiero</h2>
+            <h3>AlliaEdu: preparación para el ICFES</h3>
+            <p><a href="https://alliaedu.com/" rel="noopener noreferrer">AlliaEdu</a> es nuestra plataforma de preparación para el ICFES. También puedes conocer su <a href="https://www.youtube.com/@AlliaEdu" rel="noopener noreferrer">canal educativo en YouTube</a>.</p>
+            <h3>AlliaMoney: finanzas en TikTok</h3>
+            <p><a href="https://www.tiktok.com/@alliamoney" rel="noopener noreferrer">AlliaMoney</a> es nuestro canal de finanzas en TikTok, un espacio para contenido financiero y conversaciones sobre el dinero.</p>
+            <h3>AlliaFood: software gastronómico</h3>
+            <p><a href="https://alliafood.com" rel="noopener noreferrer">AlliaFood</a> conecta POS, pedidos, cocina e inventario para la operación de restaurantes.</p>
+          </section>
           <section id="agentes-ia">
             <h2>Agentes de IA para WhatsApp y canales web</h2>
             <p>Un agente de inteligencia artificial puede orientar clientes, responder preguntas frecuentes, consultar reglas de negocio, preparar cotizaciones y recopilar la información necesaria antes de transferir una conversación al equipo humano. Cada implementación depende de la calidad de los datos, las integraciones disponibles y las decisiones que la empresa quiera automatizar. Por eso no ofrecemos un bot genérico: definimos el alcance, los límites y los casos que siempre deben ser revisados por una persona.</p>

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Check, ArrowRight, ArrowLeft, Sparkles, Send, Clock } from 'lucide-react';
+import { X, Check, ArrowRight, ArrowLeft, Send } from 'lucide-react';
+import { SparkIcon, StopwatchIcon } from './icons/AlliaIcons';
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -93,7 +94,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({
           <div className="flex items-center justify-between pb-4 border-b border-slate-800">
             <div className="flex items-center gap-2">
               <span className="w-8 h-8 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
-                <Sparkles className="w-4 h-4" />
+                <SparkIcon className="w-4 h-4" />
               </span>
               <div>
                 <h3 id="quote-modal-title" className="font-bold text-lg text-white">{t('quoteModal.title')}</h3>
@@ -213,7 +214,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({
 
                 <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono">
                   <span className="text-slate-400 flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-blue-400" />
+                    <StopwatchIcon className="w-3.5 h-3.5 text-blue-400" />
                     {t('quoteModal.estTime')}
                   </span>
                   <span className="text-emerald-400 font-bold">{t('quoteModal.estTimeVal')}</span>

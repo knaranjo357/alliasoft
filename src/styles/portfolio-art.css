@@ -1,0 +1,205 @@
+/* Representative project concepts. These are illustrations, not client screenshots. */
+.premium-site .portfolio-case .portfolio-case-art.portfolio-concept {
+  --concept-ink: #263b2a;
+  --concept-paper: #faf9f1;
+  --concept-accent: #415f36;
+  --concept-soft: #dbe6cb;
+  container-type: inline-size;
+  height: 330px;
+  padding: 24px 27px;
+  background: #d0dbbc;
+  color: var(--concept-ink);
+  background-image: radial-gradient(ellipse at 20% 80%, #e4e9d5 0, transparent 65%);
+}
+.premium-site .portfolio-case-featured .portfolio-case-art.portfolio-concept { min-height: 515px; height: auto; }
+.premium-site .portfolio-concept .portfolio-art-topline { position: absolute; inset: 24px 27px auto; z-index: 5; font-size: 9px; opacity: .8; }
+.premium-site .portfolio-concept-caption { position: absolute; inset: auto 27px 22px; display: flex; justify-content: space-between; gap: 15px; font: 400 8px/1.4 var(--font-mono); letter-spacing: .09em; text-transform: uppercase; opacity: .65; }
+.premium-site .case-concept-stage { position: absolute; width: 89%; max-width: 480px; aspect-ratio: 1.47; left: 50%; top: 50%; transform: translate(-50%, -48%); }
+.premium-site .concept-browser-chrome { height: 11%; min-height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; border-bottom: 1px solid rgb(0 0 0 / .08); font: 500 clamp(5px, 1.6cqw, 8px)/1 var(--font-mono); }
+.premium-site .concept-browser-chrome > span:first-child { display: flex; gap: 3px; }
+.premium-site .concept-browser-chrome > span:first-child i { display: block; width: 4px; height: 4px; border: 1px solid currentColor; border-radius: 50%; opacity: .3; }
+.premium-site .concept-browser-chrome b { font-weight: 500; opacity: .65; max-width: 75%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+.premium-site .concept-copy-lines { display: flex; flex-direction: column; gap: 5px; }
+.premium-site .concept-copy-lines i { display: block; width: 88%; height: 4px; border-radius: 3px; background: currentColor; opacity: .2; }
+.premium-site .concept-copy-lines i:nth-child(2) { width: 55%; opacity: .09; }
+
+/* AlliaFood: menu, a physical order ticket, and the connected messaging channel. */
+.premium-site .food-brand-ghost { position: absolute; top: -7%; left: 2%; font-size: clamp(40px, 12.5cqw, 76px); font-weight: 600; line-height: 1; letter-spacing: -.085em; color: #789565; opacity: .17; }
+.premium-site .food-order-window { position: absolute; left: 4%; top: 9%; width: 67%; height: 78%; border: 1px solid rgb(54 71 42 / .15); border-radius: 9px; background: var(--concept-paper); box-shadow: 0 22px 45px -18px rgb(36 59 24 / .45), 0 2px 5px rgb(36 59 24 / .05); transform: rotate(-5deg); transition: transform .6s; overflow: hidden; }
+.premium-site .food-menu-header { display: flex; justify-content: space-between; align-items: center; margin: 5% 7% 4%; font-size: clamp(12px, 3.8cqw, 21px); letter-spacing: -.04em; font-weight: 500; }
+.premium-site .food-menu-list { display: flex; gap: 5%; margin: 0 7%; }
+.premium-site .food-menu-dish { position: relative; width: 30%; min-width: 0; padding-bottom: 8px; }
+.premium-site .food-dish-illustration { position: relative; aspect-ratio: 1.1; border-radius: 6px; background: #e9e5da; overflow: hidden; margin-bottom: 6px; }
+.premium-site .food-dish-illustration::before { content: ''; position: absolute; inset: 11%; border-radius: 50%; background: #faf8ec; box-shadow: 1px 2px 4px rgb(0 0 0 / .12), inset 0 0 0 4px #f4f0e3; }
+.premium-site .food-dish-illustration i { position: absolute; border-radius: 48% 50% 40% 55%; background: #729453; width: 33%; height: 31%; left: 21%; top: 24%; transform: rotate(-25deg); box-shadow: 1px 2px 2px rgb(50 52 18 / .12); }
+.premium-site .food-dish-illustration i:nth-child(2) { left: 42%; top: 42%; background: #b9c380; transform: rotate(50deg); }
+.premium-site .food-dish-illustration i:nth-child(3) { width: 29%; height: 30%; left: 46%; top: 24%; background: #bd7750; transform: rotate(20deg); }
+.premium-site .food-dish-illustration.dish-1 { background: #e2e6dc; }
+.premium-site .food-dish-illustration.dish-1 i { border-radius: 40%; background: #d09a54; height: 20%; width: 45%; left: 27%; top: 28%; }
+.premium-site .food-dish-illustration.dish-1 i:nth-child(2) { top: 43%; background: #6c824b; }
+.premium-site .food-dish-illustration.dish-1 i:nth-child(3) { top: 51%; background: #a66b43; }
+.premium-site .food-dish-illustration.dish-2 { background: #e7ddc8; }
+.premium-site .food-dish-illustration.dish-2 i { background: #caac71; border-radius: 30%; }
+.premium-site .food-dish-illustration.dish-2 i:nth-child(2) { background: #788b4e; }
+.premium-site .food-dish-add { position: absolute; right: 0; bottom: 0; display: grid; place-items: center; width: 15px; height: 15px; background: var(--concept-ink); color: var(--concept-paper); border-radius: 50%; font-size: 11px; }
+.premium-site .food-menu-action { position: absolute; bottom: 6%; left: 7%; right: 7%; display: flex; justify-content: space-between; align-items: center; padding: 2.5% 5%; background: var(--concept-ink); border-radius: 4px; color: var(--concept-paper); font-size: clamp(5px, 1.55cqw, 9px); }
+.premium-site .food-order-ticket { position: absolute; right: 3%; top: 19%; width: 28%; height: 68%; padding: 5% 4% 3%; display: flex; align-items: center; flex-direction: column; justify-content: space-between; gap: 4%; background: #fbf8eb; box-shadow: 0 14px 30px -12px rgb(48 55 22 / .35); transform: rotate(9deg); transition: transform .6s; }
+.premium-site .food-order-ticket > svg { width: clamp(12px, 4cqw, 20px); height: clamp(12px, 4cqw, 20px); }
+.premium-site .food-order-ticket::after { content: ''; position: absolute; inset: auto 0 -5px; height: 6px; background: linear-gradient(135deg, #fbf8eb 25%, transparent 25%) -6px 0, linear-gradient(225deg, #fbf8eb 25%, transparent 25%) -6px 0; background-size: 10px 10px; }
+.premium-site .food-order-ticket > strong { font: 500 clamp(6px, 1.8cqw, 10px)/1 var(--font-mono); letter-spacing: .19em; }
+.premium-site .food-ticket-rule { width: 100%; border-top: 1px dashed rgb(38 59 42 / .22); }
+.premium-site .food-ticket-item { width: 100%; display: flex; justify-content: space-between; gap: 10px; }
+.premium-site .food-ticket-item i { height: 3px; width: 60%; background: rgb(38 59 42 / .2); }
+.premium-site .food-ticket-item i:nth-child(2) { width: 18%; }
+.premium-site .food-ticket-check { display: grid; place-items: center; height: 24px; width: 24px; border-radius: 50%; background: #e1e7cf; color: #415f36; }
+.premium-site .food-ticket-barcode { width: 80%; height: 17px; background: repeating-linear-gradient(90deg, #40513b 0 1px, transparent 1px 3px, #40513b 3px 5px, transparent 5px 8px); opacity: .65; }
+.premium-site .food-message { position: absolute; z-index: 2; bottom: 0; left: 13%; display: flex; align-items: center; gap: 10px; min-width: 59%; padding: 3% 4%; border: 1px solid rgb(36 59 24 / .1); border-radius: 7px; background: #f8faf2; box-shadow: 0 10px 22px -13px rgb(36 59 24 / .35); transform: rotate(2deg); }
+.premium-site .food-message > svg:first-child { color: #54844b; flex-shrink: 0; }
+.premium-site .food-message > svg:last-child { margin-left: auto; color: #54844b; }
+.premium-site .food-message strong { display: block; font-size: clamp(7px, 2cqw, 11px); font-weight: 600; }
+.premium-site .food-message span { display: block; font-size: clamp(5px, 1.4cqw, 8px); opacity: .6; margin-top: 2px; }
+.premium-site .food-scene-1 .food-order-window { transform: rotate(4deg); }
+.premium-site .food-scene-1 .food-order-ticket { transform: rotate(-7deg); }
+.premium-site .portfolio-case:hover .food-order-window { transform: rotate(-2deg) translateY(-3px); }
+.premium-site .portfolio-case:hover .food-order-ticket { transform: rotate(5deg) translateY(2px); }
+
+/* Tourism: topographic route and a reservation card. */
+.premium-site .portfolio-case .portfolio-case-art.portfolio-concept-ai { --concept-ink: #1e4e50; --concept-accent: #377b77; background: #bfdbd3; background-image: radial-gradient(ellipse at 0% 100%, #dbeae0 0, transparent 70%); }
+.premium-site .travel-map { position: absolute; left: 3%; top: 5%; width: 81%; height: 87%; border: 1px solid rgb(30 78 80 / .14); border-radius: 5px; background: #edf1e3; transform: rotate(-6deg); box-shadow: 0 18px 35px -20px rgb(27 71 66 / .4); overflow: hidden; transition: transform .6s; }
+.premium-site .travel-map > svg { width: 100%; height: 100%; }
+.premium-site .map-contour { stroke: #aebc9f; stroke-width: .7; opacity: .7; }
+.premium-site .map-river { stroke: #c5dcd9; stroke-width: 16; }
+.premium-site .map-route { stroke: #3d7770; stroke-width: 2.5; stroke-dasharray: 5 6; }
+.premium-site .map-pin-halo { fill: #497a65; fill-opacity: .15; }
+.premium-site .map-pin-point { fill: #3d7770; stroke: #edf1e3; stroke-width: 2; }
+.premium-site .travel-map-city { position: absolute; top: 12%; left: 8%; font-size: clamp(17px, 5.2cqw, 29px); font-weight: 500; letter-spacing: -.055em; }
+.premium-site .travel-compass { position: absolute; left: 8%; bottom: 11%; font: 400 7px/1 var(--font-mono); display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.premium-site .travel-compass span { font-size: 26px; line-height: 1; }
+.premium-site .travel-reservation { position: absolute; right: 0; top: 29%; width: 49%; padding: 5% 5% 4%; background: #fcfaf0; transform: rotate(7deg); box-shadow: 0 14px 30px -14px rgb(27 71 66 / .4); transition: transform .6s; }
+.premium-site .travel-reservation::before { content: ''; position: absolute; left: -5px; bottom: 25%; height: 10px; width: 10px; border-radius: 50%; background: #c9dfd6; }
+.premium-site .travel-reservation::after { content: ''; position: absolute; right: -5px; bottom: 25%; height: 10px; width: 10px; border-radius: 50%; background: #c1dcd3; }
+.premium-site .travel-ticket-heading { display: flex; align-items: center; gap: 8px; margin-bottom: 12%; }
+.premium-site .travel-ticket-heading > svg { flex-shrink: 0; }
+.premium-site .travel-ticket-heading > span { font-size: clamp(5px, 1.6cqw, 9px); opacity: .7; }
+.premium-site .travel-reservation > strong { font-size: clamp(20px, 6.5cqw, 36px); line-height: 1; font-weight: 500; letter-spacing: -.045em; }
+.premium-site .travel-ticket-route { display: flex; align-items: center; gap: 8px; margin: 12% 0; }
+.premium-site .travel-ticket-route > span { font: 500 clamp(5px, 1.65cqw, 9px)/1 var(--font-mono); letter-spacing: .11em; }
+.premium-site .travel-ticket-route i { flex: 1; height: 1px; background: currentColor; opacity: .2; }
+.premium-site .travel-ticket-bottom { display: flex; align-items: center; justify-content: space-between; border-top: 1px dashed rgb(30 78 80 / .25); padding-top: 12%; font-size: clamp(6px, 1.9cqw, 10px); }
+.premium-site .travel-ticket-code { width: 30%; height: 17px; background: repeating-linear-gradient(90deg, #42635c 0 1px, transparent 1px 3px, #42635c 3px 6px, transparent 6px 8px); opacity: .75; }
+.premium-site .travel-chat { position: absolute; bottom: -2%; left: 11%; display: flex; align-items: center; gap: 9px; padding: 3% 4%; background: #254f4b; color: #f4f8ec; border-radius: 5px; box-shadow: 0 7px 15px -10px #254f4b; font-size: clamp(6px, 1.85cqw, 10px); }
+.premium-site .travel-scene-3 .travel-map { transform: rotate(4deg); }
+.premium-site .travel-scene-3 .travel-reservation { transform: rotate(-4deg); }
+.premium-site .portfolio-case:hover .travel-map { transform: rotate(-3deg); }
+.premium-site .portfolio-case:hover .travel-reservation { transform: rotate(3deg) translateY(-4px); }
+
+/* Custom operation: four connected stages around the repair workflow. */
+.premium-site .portfolio-case .portfolio-case-art.portfolio-concept-crm { --concept-ink: #314e63; --concept-accent: #5a7b99; background: #cad8e1; background-image: radial-gradient(ellipse at 20% 100%, #e6eaf0 0, transparent 70%); }
+.premium-site .operations-board { position: absolute; width: 86%; height: 85%; left: 0; top: 6%; border: 1px solid #c4cdd4; border-radius: 8px; background: #f4f6f5; box-shadow: 0 18px 35px -17px rgb(38 63 86 / .3); transform: rotate(-4deg); overflow: hidden; }
+.premium-site .operations-board-heading { margin: 6% 6% 0; display: flex; align-items: center; gap: 10px; font-size: clamp(9px, 2.9cqw, 16px); font-weight: 500; letter-spacing: -.03em; }
+.premium-site .operations-board-heading > i { width: 5px; height: 5px; border-radius: 50%; background: #85a992; }
+.premium-site .operations-diagram { position: relative; width: 88%; height: 61%; margin: 0 auto; }
+.premium-site .operations-connectors { width: 100%; height: 100%; }
+.premium-site .operations-connectors path { stroke: #8ea3ad; stroke-width: 1.3; }
+.premium-site .operations-connectors circle { fill: #dee7ec; stroke: #b4c4cd; }
+.premium-site .operations-hub { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #547383; }
+.premium-site .operations-node { position: absolute; width: 29%; height: 32%; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 4%; border: 1px solid #d3dfe3; border-radius: 5px; background: #f9faf7; font-size: clamp(5px, 1.55cqw, 9px); box-shadow: 0 3px 7px -5px #314e63; }
+.premium-site .operations-node svg { width: 16px; flex-shrink: 0; }
+.premium-site .operations-node-0 { top: 7%; left: 3%; }
+.premium-site .operations-node-1 { top: 7%; right: 3%; }
+.premium-site .operations-node-2 { bottom: 7%; left: 3%; }
+.premium-site .operations-node-3 { bottom: 7%; right: 3%; }
+.premium-site .operations-bottom-track { margin: 0 6%; display: flex; gap: 5px; }
+.premium-site .operations-bottom-track i { flex: 1; height: 4px; border-radius: 3px; background: #d1dfdb; }
+.premium-site .operations-bottom-track i:nth-child(n + 4) { background: #e5e8e7; }
+.premium-site .operations-device { position: absolute; width: 23%; height: 64%; right: 1%; top: 22%; padding: 10% 3% 4%; background: #f6f8f4; border: 4px solid #354e5b; border-radius: 15px; box-shadow: 0 15px 25px -13px rgb(38 63 86 / .5); transform: rotate(10deg); transition: transform .6s; }
+.premium-site .operations-device-speaker { position: absolute; top: 4%; left: 33%; height: 3px; width: 34%; border-radius: 3px; background: #354e5b; }
+.premium-site .operations-device-check { display: grid; place-items: center; width: 30px; height: 30px; background: #dce9df; border-radius: 50%; color: #5c8569; margin: 0 auto 20%; }
+.premium-site .operations-device-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 20%; }
+.premium-site .operations-device-grid i { aspect-ratio: 1.3; background: #e1e8e9; border-radius: 3px; }
+.premium-site .operations-device > span { display: block; position: absolute; bottom: 4%; left: 35%; width: 30%; height: 3px; background: #b4bdbe; border-radius: 4px; }
+.premium-site .operations-caption { position: absolute; bottom: -1%; left: 9%; display: flex; align-items: center; gap: 20px; padding: 3% 4%; background: #334f62; color: #f2f5f2; border-radius: 5px; font-size: clamp(6px, 1.8cqw, 10px); }
+.premium-site .portfolio-case:hover .operations-device { transform: rotate(5deg) translateY(-4px); }
+
+/* US web projects: an editorial desktop window and its mobile counterpart. */
+.premium-site .portfolio-case .portfolio-case-art.portfolio-concept-ecommerce { --concept-ink: #514b3e; --concept-accent: #947750; --concept-soft: #e8e1d1; background: #dfdacd; background-image: radial-gradient(ellipse at 30% 80%, #f1eee5 0, transparent 65%); }
+.premium-site .website-desktop { position: absolute; top: 5%; left: 1%; width: 86%; height: 84%; background: #fbfaf5; border: 1px solid rgb(81 75 62 / .15); border-radius: 7px; box-shadow: 0 19px 40px -20px rgb(81 75 62 / .45); transform: rotate(-5deg); overflow: hidden; transition: transform .6s; }
+.premium-site .website-navigation { height: 14%; margin: 0 6%; display: flex; align-items: center; gap: 7px; }
+.premium-site .website-navigation > strong { margin-right: auto; max-width: 62%; color: var(--concept-ink); font-size: clamp(5px, 1.8cqw, 10px); font-weight: 600; line-height: 1.2; letter-spacing: -.03em; }
+.premium-site .website-navigation > span { height: 2px; width: 8%; background: var(--concept-ink); opacity: .2; }
+.premium-site .website-navigation > i { height: 11px; width: 17%; background: var(--concept-ink); border-radius: 1px; }
+.premium-site .website-hero { height: 45%; background: var(--concept-soft); margin: 0 6%; padding: 5%; display: flex; align-items: center; gap: 8%; }
+.premium-site .website-hero-copy { width: 37%; flex-shrink: 0; }
+.premium-site .website-hero-copy > i { display: block; width: 95%; height: 6px; margin-bottom: 4px; border-radius: 1px; background: var(--concept-ink); opacity: .8; }
+.premium-site .website-hero-copy > i:nth-child(2) { width: 80%; }
+.premium-site .website-hero-copy > i:nth-child(3) { width: 64%; }
+.premium-site .website-hero-copy > span { display: block; height: 3px; width: 80%; background: var(--concept-ink); opacity: .2; margin: 10px 0; }
+.premium-site .website-hero-copy > b { display: grid; place-items: center; width: 24px; height: 12px; background: var(--concept-ink); color: var(--concept-soft); font-size: 8px; font-weight: 400; }
+.premium-site .website-industry-drawing { width: 100%; height: 100%; overflow: visible; stroke: var(--concept-ink); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.premium-site .web-drawing-fill { fill: var(--concept-soft); }
+.premium-site .web-drawing-detail { stroke: var(--concept-accent); }
+.premium-site .website-grid-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6%; height: 15%; margin: 5% 6% 0; }
+.premium-site .website-grid-preview > div { border: 1px solid rgb(81 75 62 / .12); background: linear-gradient(115deg, var(--concept-soft) 40%, transparent 40%); }
+.premium-site .website-mobile { position: absolute; width: 23%; height: 68%; right: 0; bottom: 4%; background: #fafaf4; border: 4px solid var(--concept-ink); border-radius: 14px; padding: 11% 3% 4%; transform: rotate(8deg); box-shadow: 0 15px 30px -15px rgb(81 75 62 / .5); transition: transform .6s; }
+.premium-site .website-mobile-camera { position: absolute; top: 4%; left: 36%; width: 28%; height: 3px; background: var(--concept-ink); border-radius: 3px; }
+.premium-site .website-mobile-brand { position: absolute; top: 15%; left: 15%; width: 60%; height: 5px; background: var(--concept-ink); opacity: .7; border-radius: 1px; }
+.premium-site .website-mobile > .website-industry-drawing { height: 43%; background: var(--concept-soft); margin-bottom: 18%; }
+.premium-site .website-mobile .concept-copy-lines { gap: 4px; }
+.premium-site .website-mobile .concept-copy-lines i { height: 3px; }
+.premium-site .website-mobile-action { display: block; height: 8px; margin-top: 15%; width: 100%; border-radius: 2px; background: var(--concept-ink); opacity: .85; }
+.premium-site .website-mobile > i { position: absolute; bottom: 4%; width: 28%; height: 2px; left: 36%; background: var(--concept-ink); opacity: .3; }
+.premium-site .website-responsive-label { display: flex; align-items: center; gap: 8px; position: absolute; left: 10%; bottom: -2%; padding: 3% 4%; background: #fbfaf5; color: var(--concept-ink); border: 1px solid rgb(81 75 62 / .13); border-radius: 5px; font-size: clamp(6px, 1.8cqw, 10px); box-shadow: 0 8px 15px -12px rgb(81 75 62 / .3); }
+.premium-site .website-scene-5 { --concept-ink: #4b3c62; --concept-accent: #8672a1; --concept-soft: #e7dff1; }
+.premium-site .website-scene-7 { --concept-ink: #53594a; --concept-accent: #7b8a69; --concept-soft: #e2e5d8; }
+.premium-site .website-scene-8 { --concept-ink: #285769; --concept-accent: #65a4b1; --concept-soft: #d5e8e8; }
+.premium-site .portfolio-case:hover .website-desktop { transform: rotate(-2deg) translateY(-2px); }
+.premium-site .portfolio-case:hover .website-mobile { transform: rotate(5deg) translateY(-5px); }
+
+@media (min-width: 1101px) {
+  .premium-site .portfolio-case-featured .case-concept-stage { width: 88%; max-width: 510px; }
+  .premium-site .portfolio-case-featured .portfolio-concept-caption { inset-inline: 34px; bottom: 28px; }
+  .premium-site .portfolio-case-featured .portfolio-art-topline { inset: 30px 34px auto; }
+}
+@media (max-width: 1000px) and (min-width: 768px) {
+  .premium-site .portfolio-case .portfolio-case-art.portfolio-concept { height: 280px; }
+  .premium-site .portfolio-case-featured .portfolio-case-art.portfolio-concept { height: auto; }
+  .premium-site .portfolio-concept .portfolio-art-topline { font-size: 8px; }
+}
+@media (max-width: 767px) {
+  .premium-site .portfolio-case .portfolio-case-art.portfolio-concept,
+  .premium-site .portfolio-case-featured .portfolio-case-art.portfolio-concept { height: 330px; min-height: 0; }
+  .premium-site .case-concept-stage { width: 86%; max-width: 390px; }
+  .premium-site .portfolio-concept .portfolio-art-topline { inset-inline: 23px; }
+  .premium-site .portfolio-concept-caption { inset-inline: 23px; }
+}
+@media (max-width: 420px) {
+  .premium-site .portfolio-case .portfolio-case-art.portfolio-concept,
+  .premium-site .portfolio-case-featured .portfolio-case-art.portfolio-concept { height: 284px; }
+  .premium-site .case-concept-stage { width: 90%; }
+  .premium-site .portfolio-concept .portfolio-art-topline { font-size: 7px; inset: 22px 20px auto; }
+  .premium-site .portfolio-concept-caption { inset: auto 20px 21px; font-size: 7px; }
+  .premium-site .concept-browser-chrome { min-height: 17px; }
+  .premium-site .food-menu-dish .concept-copy-lines { gap: 3px; }
+  .premium-site .food-menu-dish .concept-copy-lines i { height: 3px; }
+  .premium-site .food-ticket-check { width: 19px; height: 19px; }
+  .premium-site .food-order-ticket { gap: 4%; }
+  .premium-site .food-ticket-barcode { height: 12px; }
+  .premium-site .operations-device,
+  .premium-site .website-mobile { border-width: 3px; border-radius: 10px; }
+  .premium-site .operations-node { gap: 3px; }
+  .premium-site .operations-node svg { width: 12px; }
+  .premium-site .operations-device-check { width: 22px; height: 22px; }
+  .premium-site .operations-device-check > svg { width: 15px; }
+  .premium-site .operations-hub > svg { width: 18px; }
+  .premium-site .website-hero-copy > i { height: 4px; margin-bottom: 3px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-site .portfolio-case:hover .food-order-window,
+  .premium-site .portfolio-case:hover .food-order-ticket,
+  .premium-site .portfolio-case:hover .travel-map,
+  .premium-site .portfolio-case:hover .travel-reservation,
+  .premium-site .portfolio-case:hover .operations-device,
+  .premium-site .portfolio-case:hover .website-desktop,
+  .premium-site .portfolio-case:hover .website-mobile { transform: none; }
+}
+

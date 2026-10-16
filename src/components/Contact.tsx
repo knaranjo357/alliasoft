@@ -1,17 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Mail,
-  MessageCircle,
-  Calendar,
-  CheckCircle,
-  ShieldCheck,
-  Clock,
-  Send,
-  Sparkles,
-  Loader2,
-} from 'lucide-react';
+import { CheckCircle, Send, Loader2 } from 'lucide-react';
+import { CalendarIcon, MailIcon, ShieldIcon, SparkIcon, StopwatchIcon, WhatsAppIcon } from './icons/AlliaIcons';
 import BookingScheduler from './BookingScheduler';
 
 /* ─── Types ─── */
@@ -256,7 +247,7 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
   /* ─── Contact method cards data ─── */
   const contactMethods = [
     {
-      icon: <Mail className="w-5 h-5" />,
+      icon: <MailIcon className="w-5 h-5" />,
       iconColor: 'text-blue-400',
       glowColor: 'group-hover:shadow-blue-500/20',
       iconBg: 'bg-blue-500/15 border-blue-500/30',
@@ -266,7 +257,7 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
       link: `mailto:${t('contact.email.value')}`,
     },
     {
-      icon: <MessageCircle className="w-5 h-5" />,
+      icon: <WhatsAppIcon className="w-5 h-5" />,
       iconColor: 'text-emerald-400',
       glowColor: 'group-hover:shadow-emerald-500/20',
       iconBg: 'bg-emerald-500/15 border-emerald-500/30',
@@ -276,7 +267,7 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
       link: 'https://wa.me/573176964215',
     },
     {
-      icon: <Calendar className="w-5 h-5" />,
+      icon: <CalendarIcon className="w-5 h-5" />,
       iconColor: 'text-purple-400',
       glowColor: 'group-hover:shadow-purple-500/20',
       iconBg: 'bg-purple-500/15 border-purple-500/30',
@@ -289,20 +280,20 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
 
   /* ─── Confetti colors ─── */
   const confettiColors = [
-    '#3b82f6', '#8b5cf6', '#06b6d4', '#10b981',
-    '#f59e0b', '#ec4899', '#6366f1', '#14b8a6',
+    '#b6efc2', '#eff1e9', '#89bda0', '#b6efc2',
+    '#eff1e9', '#89bda0', '#b6efc2', '#89bda0',
   ];
 
   /* ─── Trust badges ─── */
   const trustBadges = [
-    { icon: <ShieldCheck className="w-4 h-4 text-emerald-400" />, label: 'Tus datos viajan directo a WhatsApp' },
-    { icon: <Clock className="w-4 h-4 text-blue-400" />, label: 'Respuesta en un día hábil' },
+    { icon: <ShieldIcon className="w-4 h-4 text-emerald-400" />, label: 'Tus datos viajan directo a WhatsApp' },
+    { icon: <StopwatchIcon className="w-4 h-4 text-blue-400" />, label: 'Respuesta en un día hábil' },
   ];
 
   const localizedTrustBadges = i18n.isInitialized
     ? [
-        { icon: <ShieldCheck className="w-4 h-4 text-emerald-400" />, label: t('contact.form.trust1') },
-        { icon: <Clock className="w-4 h-4 text-blue-400" />, label: t('contact.form.trust2') },
+        { icon: <ShieldIcon className="w-4 h-4 text-emerald-400" />, label: t('contact.form.trust1') },
+        { icon: <StopwatchIcon className="w-4 h-4 text-blue-400" />, label: t('contact.form.trust2') },
       ]
     : trustBadges;
   const messageIsActive = messageFocused || formState.message.length > 0;
@@ -310,7 +301,7 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
   return (
     <section
       id="contact"
-      className="relative py-28 px-6 text-white overflow-hidden"
+      className="studio-interactive relative py-28 px-6 text-white overflow-hidden"
       style={{
         background: 'linear-gradient(180deg, #030712 0%, #0c1631 50%, #030712 100%)',
       }}
@@ -344,9 +335,9 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 mb-6"
+            className="studio-interactive-tag inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 mb-6"
           >
-            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+            <SparkIcon className="w-3.5 h-3.5 text-blue-400" />
             <span className="text-blue-400 text-xs font-bold tracking-widest uppercase">
               {t('nav.contact')}
             </span>
@@ -377,7 +368,7 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.12 }}
-                className={`group relative block p-5 rounded-2xl ${method.cardClass} cursor-pointer`}
+                className={`studio-contact-method group relative block p-5 rounded-2xl ${method.cardClass} cursor-pointer`}
               >
                 {/* Animated border gradient on hover */}
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
@@ -433,7 +424,7 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
             {/* Animated border gradient wrapper */}
             <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-blue-500/20 via-transparent to-indigo-500/20 opacity-60 pointer-events-none" />
 
-            <div className="glass-card rounded-3xl p-6 sm:p-10 relative">
+            <div className="studio-contact-form studio-interactive-panel glass-card rounded-3xl p-6 sm:p-10 relative">
               {/* Inner subtle top glow */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
 
@@ -629,7 +620,7 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
                     <button
                       type="submit"
                       disabled={isSaving || !consentAccepted}
-                      className="group/btn relative w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500
+                      className="studio-interactive-action group/btn relative w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500
                                  text-white font-bold text-sm overflow-hidden
                                  shadow-[0_0_30px_-5px_rgba(59,130,246,0.5)]
                                  hover:shadow-[0_0_50px_-5px_rgba(59,130,246,0.6)]
