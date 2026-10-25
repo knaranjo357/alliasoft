@@ -7,30 +7,31 @@
   font-display: swap;
 }
 
+/* Accent is the blue of the "A" in the Alliasoft logo (#0a98d7), tuned per scheme for contrast. */
 :root {
-  --studio-bg: #080c12;
-  --studio-surface: #10161d;
-  --studio-surface-raised: #182129;
-  --studio-text: #eff1e9;
-  --studio-muted: #9ba7ac;
+  --studio-bg: #070b14;
+  --studio-surface: #0e1520;
+  --studio-surface-raised: #16202d;
+  --studio-text: #eef3f8;
+  --studio-muted: #9aa8b6;
   --studio-line: #ffffff1c;
-  --studio-accent: #b6efc2;
-  --studio-accent-ink: #102719;
-  --studio-header: #080c12ed;
+  --studio-accent: #1aa6e3;
+  --studio-accent-ink: #03131f;
+  --studio-header: #070b14ed;
   --font-sans: 'Manrope', 'Segoe UI', sans-serif;
   --scroll-padding: 100px;
 }
 
 html[data-theme='light'] {
-  --studio-bg: #f4f5ef;
-  --studio-surface: #e9ede5;
+  --studio-bg: #f3f6f9;
+  --studio-surface: #e7edf3;
   --studio-surface-raised: #fff;
-  --studio-text: #18241f;
-  --studio-muted: #56635d;
-  --studio-line: #142c2226;
-  --studio-accent: #286840;
+  --studio-text: #0f1d2b;
+  --studio-muted: #4f5d6b;
+  --studio-line: #0f2a4426;
+  --studio-accent: #0a72c0;
   --studio-accent-ink: #fff;
-  --studio-header: #f4f5efed;
+  --studio-header: #f3f6f9ed;
 }
 
 html:has(.premium-site), body:has(.premium-site), html[data-theme='light'] body:has(.premium-site), html[data-theme='light'] #root:has(.premium-site) { background: var(--studio-bg); color: var(--studio-text); }

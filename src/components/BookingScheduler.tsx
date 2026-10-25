@@ -147,11 +147,11 @@ const BookingScheduler: React.FC = () => {
           <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-5 sm:p-6">
             {result?.ok ? (
               <div className="py-6 text-center">
-                <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-300" aria-hidden="true" />
+                <CheckCircle2 className="mx-auto h-12 w-12 text-sky-300" aria-hidden="true" />
                 <h4 className="mt-4 text-xl font-extrabold text-white">{text.success}</h4>
                 <p className="mt-2 text-sm leading-6 text-slate-400">{text.successBody}</p>
                 {result.meet_url ? (
-                  <a href={result.meet_url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-full bg-emerald-400 px-5 py-3 text-sm font-extrabold text-slate-950">
+                  <a href={result.meet_url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-full bg-sky-400 px-5 py-3 text-sm font-extrabold text-slate-950">
                     <Video className="h-4 w-4" aria-hidden="true" />
                     {text.meet}
                     <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
@@ -171,7 +171,7 @@ const BookingScheduler: React.FC = () => {
                     <RefreshCw className="h-4 w-4" aria-hidden="true" />
                     {text.retry}
                   </button>
-                  <a href="https://wa.me/573176964215" target="_blank" rel="noreferrer" className="rounded-full bg-emerald-400 px-4 py-2.5 text-xs font-extrabold text-slate-950">WhatsApp</a>
+                  <a href="https://wa.me/573176964215" target="_blank" rel="noreferrer" className="rounded-full bg-sky-400 px-4 py-2.5 text-xs font-extrabold text-slate-950">WhatsApp</a>
                 </div>
               </div>
             ) : (

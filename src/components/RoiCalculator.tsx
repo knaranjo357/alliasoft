@@ -21,7 +21,7 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
   return (
     <section id="roi" className="studio-interactive py-24 px-6 bg-slate-900 text-white relative overflow-hidden">
       {/* Glow Effects */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-teal-500/15 via-blue-500/10 to-transparent blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-sky-500/15 via-blue-500/10 to-transparent blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-gradient-to-tr from-indigo-500/15 via-purple-500/10 to-transparent blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -32,8 +32,8 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="studio-interactive-tag px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-bold tracking-widest uppercase mb-4 inline-flex items-center gap-2">
-            <CalculatorIcon className="w-3.5 h-3.5 text-teal-400" />
+          <span className="studio-interactive-tag px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-bold tracking-widest uppercase mb-4 inline-flex items-center gap-2">
+            <CalculatorIcon className="w-3.5 h-3.5 text-sky-400" />
             {t('roiCalculator.tag')}
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mt-3 mb-4 bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
@@ -60,7 +60,7 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
                   <label htmlFor="roi-team-size" className="text-sm font-semibold text-slate-300">
                     {t('roiCalculator.teamSize')}
                   </label>
-                  <span className="text-lg font-extrabold text-teal-400 font-mono bg-teal-950/60 border border-teal-800/60 px-3 py-1 rounded-lg">
+                  <span className="text-lg font-extrabold text-sky-400 font-mono bg-sky-950/60 border border-sky-800/60 px-3 py-1 rounded-lg">
                     {teamSize} {isEnglish ? 'people' : 'personas'}
                   </span>
                 </div>
@@ -71,7 +71,7 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
                   id="roi-team-size"
                   value={teamSize}
                   onChange={(e) => setTeamSize(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-teal-400"
+                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-sky-400"
                 />
                 <div className="flex justify-between text-[11px] text-slate-500 mt-1 font-mono">
                   <span>1</span>
@@ -162,7 +162,7 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
             </div>
 
             <div className="mt-8 pt-6 border-t border-slate-800 text-xs text-slate-400 flex items-center gap-2">
-              <ShieldIcon className="w-4 h-4 text-emerald-400 shrink-0" />
+              <ShieldIcon className="w-4 h-4 text-sky-400 shrink-0" />
               <span>{t('roiCalculator.assumptionNote')}</span>
             </div>
           </motion.div>
@@ -176,7 +176,7 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
             className="studio-roi-results studio-interactive-panel lg:col-span-6 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden"
           >
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-teal-400 block mb-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-sky-400 block mb-2">
                 {t('roiCalculator.resultsTitle')}
               </span>
 
@@ -195,10 +195,10 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
                 {/* Metric 2 */}
                 <div className="studio-roi-metric bg-slate-900/90 border border-slate-800 p-5 rounded-2xl">
                   <div className="flex items-center gap-2 text-slate-400 text-xs font-medium mb-1">
-                    <CoinIcon className="w-4 h-4 text-emerald-400" />
+                    <CoinIcon className="w-4 h-4 text-sky-400" />
                     <span>{t('roiCalculator.monthlyMoneySaved')}</span>
                   </div>
-                  <span className="text-3xl md:text-4xl font-extrabold text-emerald-400 font-mono tracking-tight">
+                  <span className="text-3xl md:text-4xl font-extrabold text-sky-400 font-mono tracking-tight">
                     ${monthlyMoneySaved.toLocaleString()} <span className="text-xs font-normal text-slate-400">USD</span>
                   </span>
                 </div>
@@ -230,7 +230,7 @@ const RoiCalculator: React.FC<{ onOpenQuote?: () => void }> = ({ onOpenQuote }) 
             <div className="pt-4 border-t border-slate-800">
               <button
                 onClick={() => (onOpenQuote ? onOpenQuote() : (window.location.href = '#contact'))}
-                className="studio-interactive-action w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-teal-500 via-emerald-500 to-blue-600 hover:from-teal-400 hover:to-blue-500 text-white font-bold text-sm shadow-[0_0_30px_rgba(20,184,166,0.3)] transition-all duration-300 flex items-center justify-center gap-2 group"
+                className="studio-interactive-action w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm shadow-[0_0_30px_rgba(10,152,215,0.3)] transition-all duration-300 flex items-center justify-center gap-2 group"
               >
                 <span>{t('roiCalculator.cta')}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

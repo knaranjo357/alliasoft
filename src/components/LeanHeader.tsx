@@ -38,7 +38,7 @@ const LeanHeader: React.FC = () => {
     setTheme(next);
     document.documentElement.dataset.theme = next;
     try { localStorage.setItem('alliasoft-theme', next); } catch { /* Theme remains usable when storage is disabled. */ }
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#080c12' : '#f4f5ef');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#070b14' : '#f3f6f9');
   };
   const themeLabel = theme === 'dark' ? (isEnglish ? 'Light mode' : 'Modo claro') : (isEnglish ? 'Dark mode' : 'Modo oscuro');
   const navItems = [

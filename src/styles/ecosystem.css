@@ -1,17 +1,17 @@
-.premium-site .studio-ecosystem { position: relative; padding: 94px 0 30px; background: #e9ece4; color: #17291f; border-top: 1px solid #d6ddd1; }
-html[data-theme='light'] .premium-site .studio-ecosystem { background: #e9ece4 !important; }
+.premium-site .studio-ecosystem { position: relative; padding: 94px 0 30px; background: #e4e9ec; color: #171f29; border-top: 1px solid #d1d8dd; }
+html[data-theme='light'] .premium-site .studio-ecosystem { background: #e4e9ec !important; }
 .premium-site .ecosystem-shell { width: min(1280px, calc(100% - 112px)); margin-inline: auto; }
-.premium-site .ecosystem-overline { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid #17291f30; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; }
+.premium-site .ecosystem-overline { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid #171f2930; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; }
 .premium-site .ecosystem-overline > span { display: flex; align-items: center; gap: 12px; }
-.premium-site .ecosystem-overline > span:first-child > span { width: 6px; height: 6px; border-radius: 50%; background: #286840; }
-.premium-site .ecosystem-overline > span:last-child { color: #56635a; font-size: 9px; letter-spacing: .05em; }
+.premium-site .ecosystem-overline > span:first-child > span { width: 6px; height: 6px; border-radius: 50%; background: #0a72c0; }
+.premium-site .ecosystem-overline > span:last-child { color: #565c63; font-size: 9px; letter-spacing: .05em; }
 .premium-site .ecosystem-intro { display: grid; grid-template-columns: 1.6fr 1fr; gap: 70px; align-items: end; padding: 43px 0 54px; }
 .premium-site .ecosystem-intro h2 { font-size: clamp(35px, 4.4vw, 65px); font-weight: 500; letter-spacing: -.055em; line-height: 1.1; }
-.premium-site .ecosystem-intro h2 > span { color: #617263; }
-.premium-site .ecosystem-intro p { max-width: 350px; justify-self: end; padding-bottom: 5px; font-size: 14px; line-height: 1.85; color: #56635a; }
+.premium-site .ecosystem-intro h2 > span { color: #616a72; }
+.premium-site .ecosystem-intro p { max-width: 350px; justify-self: end; padding-bottom: 5px; font-size: 14px; line-height: 1.85; color: #565c63; }
 .premium-site .ecosystem-grid { display: grid; grid-template-columns: 1.12fr 1fr; gap: 26px; }
-.premium-site .ecosystem-brand { min-width: 0; background: #f5f5ef; border-radius: 11px; overflow: hidden; border: 1px solid #17291f1a; }
-html[data-theme='light'] .premium-site .ecosystem-brand { background: #f5f5ef !important; background-image: none !important; border-color: #17291f1a !important; box-shadow: none !important; }
+.premium-site .ecosystem-brand { min-width: 0; background: #eff3f5; border-radius: 11px; overflow: hidden; border: 1px solid #171f291a; }
+html[data-theme='light'] .premium-site .ecosystem-brand { background: #eff3f5 !important; background-image: none !important; border-color: #171f291a !important; box-shadow: none !important; }
 .premium-site .ecosystem-edu-art, .premium-site .ecosystem-money-art { position: relative; height: 385px; overflow: hidden; isolation: isolate; }
 .premium-site .ecosystem-edu-art { color: #362e57; background: #cdc7e6; }
 .premium-site .ecosystem-art-meta { position: absolute; inset: 24px 26px auto; display: flex; align-items: center; gap: 11px; z-index: 4; font: 9px/1.4 var(--font-mono); letter-spacing: .08em; }
@@ -34,41 +34,41 @@ html[data-theme='light'] .premium-site .ecosystem-brand { background: #f5f5ef !i
 .premium-site .ecosystem-art-caption { position: absolute; bottom: 17px; left: 26px; z-index: 4; font-size: 9px; letter-spacing: .02em; }
 .premium-site .ecosystem-money-art { background: #e9be99; color: #3b3027; }
 .premium-site .money-backdrop-type { position: absolute; left: -15px; top: 150px; color: #67452714; font-size: 130px; font-weight: 700; letter-spacing: -.09em; line-height: 1; transform: rotate(-9deg); }
-.premium-site .money-phone { position: absolute; display: flex; flex-direction: column; left: 50%; top: 68px; width: 179px; height: 286px; padding: 19px 15px 14px; background: #1e2c24; border: 5px solid #314336; border-radius: 25px; transform: translateX(-50%) rotate(9deg); box-shadow: 14px 22px 30px #4b351e2e,inset 0 0 0 1px #c3d4bf20; color: #f0eada; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.premium-site .money-phone { position: absolute; display: flex; flex-direction: column; left: 50%; top: 68px; width: 179px; height: 286px; padding: 19px 15px 14px; background: #1e252c; border: 5px solid #313a43; border-radius: 25px; transform: translateX(-50%) rotate(9deg); box-shadow: 14px 22px 30px #4b351e2e,inset 0 0 0 1px #bfcbd420; color: #f0eada; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
 .premium-site .ecosystem-money:hover .money-phone { transform: translateX(-50%) translateY(-6px) rotate(4deg); }
 .premium-site .money-phone-top { display: flex; justify-content: space-between; align-items: center; font-size: 9px; font-weight: 650; letter-spacing: -.03em; }
 .premium-site .money-phone-title { display: block; margin-top: 25px; font-size: 25px; font-weight: 500; letter-spacing: -.06em; line-height: 1.13; }
-.premium-site .money-phone-title em { color: #b6efc2; font-family: Georgia, serif; font-weight: 400; }
-.premium-site .money-coin { position: relative; display: grid; place-items: center; width: 81px; height: 81px; margin: 15px auto 0; border: 1px solid #c3d5a955; outline: 1px solid #c3d5a91c; outline-offset: 7px; border-radius: 50%; color: #c5d9a8; font: 49px/1 Georgia,serif; background: radial-gradient(circle at 30% 20%,#abc48a25,transparent 65%); }
+.premium-site .money-phone-title em { color: #1aa6e3; font-family: Georgia, serif; font-weight: 400; }
+.premium-site .money-coin { position: relative; display: grid; place-items: center; width: 81px; height: 81px; margin: 15px auto 0; border: 1px solid #a9c6d555; outline: 1px solid #a9c6d51c; outline-offset: 7px; border-radius: 50%; color: #a8c8d9; font: 49px/1 Georgia,serif; background: radial-gradient(circle at 30% 20%,#8ab0c425,transparent 65%); }
 .premium-site .money-coin > span:last-child { position: absolute; right: -17px; top: -5px; font-size: 24px; }
 .premium-site .money-phone-bottom { display: flex; align-items: center; gap: 8px; margin-top: auto; font-size: 8px; }
 .premium-site .money-play { display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid #ffffff30; border-radius: 50%; }
-.premium-site .money-sticker { position: absolute; top: 110px; right: 12%; display: grid; place-items: center; width: 65px; height: 65px; background: #e6edbd; border: 1px solid #63754740; border-radius: 50%; color: #334b32; font: 34px/1 Georgia,serif; transform: rotate(13deg); box-shadow: 0 8px 20px #3c432421; }
+.premium-site .money-sticker { position: absolute; top: 110px; right: 12%; display: grid; place-items: center; width: 65px; height: 65px; background: #bddfed; border: 1px solid #47657540; border-radius: 50%; color: #32404b; font: 34px/1 Georgia,serif; transform: rotate(13deg); box-shadow: 0 8px 20px #24394321; }
 .premium-site .money-sticker > span { position: absolute; right: 8px; top: 7px; font: 11px/1 var(--font-mono); }
 .premium-site .ecosystem-brand-copy { padding: 28px 30px 30px; }
 .premium-site .ecosystem-brand-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .premium-site .ecosystem-brand-heading h3 { font-size: 32px; font-weight: 650; letter-spacing: -.065em; line-height: 1.2; }
 .premium-site .ecosystem-brand-heading h3 > span { font-size: 10px; vertical-align: top; margin-left: 3px; line-height: 2; }
-.premium-site .ecosystem-category { color: #617263; font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
+.premium-site .ecosystem-category { color: #616a72; font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
 .premium-site .ecosystem-brand-purpose { margin-top: 13px; font-size: 18px; letter-spacing: -.025em; font-weight: 500; }
-.premium-site .ecosystem-brand-description { max-width: 470px; margin-top: 12px; font-size: 13px; line-height: 1.85; color: #59665b; }
+.premium-site .ecosystem-brand-description { max-width: 470px; margin-top: 12px; font-size: 13px; line-height: 1.85; color: #596066; }
 .premium-site .ecosystem-brand-links { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; margin-top: 25px; }
 .premium-site .ecosystem-brand-links a { display: inline-flex; align-items: center; justify-content: center; gap: 11px; min-height: 44px; font-size: 11px; font-weight: 650; transition: background .2s,transform .2s; }
-.premium-site .ecosystem-primary-link { color: #f5f5ef; background: #263c2e; border-radius: 5px; padding: 0 15px; }
-.premium-site .ecosystem-primary-link:hover { background: #38553e; transform: translateY(-2px); }
-.premium-site .ecosystem-secondary-link { color: #374b3a; }
-.premium-site .ecosystem-secondary-link:hover { color: #182a1d; }
-.premium-site .ecosystem-food { display: grid; grid-template-columns: 1fr 1.3fr auto; align-items: center; gap: 35px; padding: 30px 0; margin-top: 30px; border-block: 1px solid #17291f26; }
+.premium-site .ecosystem-primary-link { color: #eff3f5; background: #26303c; border-radius: 5px; padding: 0 15px; }
+.premium-site .ecosystem-primary-link:hover { background: #384755; transform: translateY(-2px); }
+.premium-site .ecosystem-secondary-link { color: #37414b; }
+.premium-site .ecosystem-secondary-link:hover { color: #18212a; }
+.premium-site .ecosystem-food { display: grid; grid-template-columns: 1fr 1.3fr auto; align-items: center; gap: 35px; padding: 30px 0; margin-top: 30px; border-block: 1px solid #171f2926; }
 .premium-site .ecosystem-food-brand { display: flex; align-items: center; gap: 18px; }
-.premium-site .ecosystem-food-symbol { display: grid; place-items: center; width: 54px; height: 54px; flex-shrink: 0; border-radius: 50%; border: 1px solid #17291f30; }
-.premium-site .ecosystem-food-kicker { display: block; color: #617263; font-size: 8px; letter-spacing: .08em; text-transform: uppercase; }
+.premium-site .ecosystem-food-symbol { display: grid; place-items: center; width: 54px; height: 54px; flex-shrink: 0; border-radius: 50%; border: 1px solid #171f2930; }
+.premium-site .ecosystem-food-kicker { display: block; color: #616a72; font-size: 8px; letter-spacing: .08em; text-transform: uppercase; }
 .premium-site .ecosystem-food h3 { margin-top: 5px; font-size: 29px; letter-spacing: -.06em; font-weight: 600; line-height: 1; }
-.premium-site .ecosystem-food p { color: #56635a; font-size: 12px; line-height: 1.8; max-width: 400px; }
+.premium-site .ecosystem-food p { color: #565c63; font-size: 12px; line-height: 1.8; max-width: 400px; }
 .premium-site .ecosystem-food > a { display: inline-flex; align-items: center; gap: 22px; padding-block: 12px; font-size: 11px; font-weight: 650; }
-.premium-site .ecosystem-food > a:hover { color: #286840; }
-.premium-site .ecosystem-signature { display: flex; align-items: center; justify-content: space-between; margin-top: 26px; color: #617263; font: 8px/1.5 var(--font-mono); letter-spacing: .13em; }
+.premium-site .ecosystem-food > a:hover { color: #0a72c0; }
+.premium-site .ecosystem-signature { display: flex; align-items: center; justify-content: space-between; margin-top: 26px; color: #616a72; font: 8px/1.5 var(--font-mono); letter-spacing: .13em; }
 .premium-site .ecosystem-signature > span:last-child { font-size: 25px; }
-.premium-site .studio-ecosystem a:focus-visible { outline-color: #286840; }
+.premium-site .studio-ecosystem a:focus-visible { outline-color: #0a72c0; }
 
 @media (max-width: 1100px) {
   .premium-site .ecosystem-shell { width: calc(100% - 64px); }

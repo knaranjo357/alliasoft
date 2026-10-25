@@ -258,9 +258,9 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
     },
     {
       icon: <WhatsAppIcon className="w-5 h-5" />,
-      iconColor: 'text-emerald-400',
-      glowColor: 'group-hover:shadow-emerald-500/20',
-      iconBg: 'bg-emerald-500/15 border-emerald-500/30',
+      iconColor: 'text-sky-400',
+      glowColor: 'group-hover:shadow-sky-500/20',
+      iconBg: 'bg-sky-500/15 border-sky-500/30',
       cardClass: 'glass-card hover-glow-teal',
       title: t('contact.chat.title'),
       value: t('contact.chat.value'),
@@ -280,19 +280,19 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
 
   /* ─── Confetti colors ─── */
   const confettiColors = [
-    '#b6efc2', '#eff1e9', '#89bda0', '#b6efc2',
-    '#eff1e9', '#89bda0', '#b6efc2', '#89bda0',
+    '#1aa6e3', '#eef3f8', '#08cbe5', '#1aa6e3',
+    '#eef3f8', '#0a7ed1', '#1aa6e3', '#08cbe5',
   ];
 
   /* ─── Trust badges ─── */
   const trustBadges = [
-    { icon: <ShieldIcon className="w-4 h-4 text-emerald-400" />, label: 'Tus datos viajan directo a WhatsApp' },
+    { icon: <ShieldIcon className="w-4 h-4 text-sky-400" />, label: 'Tus datos viajan directo a WhatsApp' },
     { icon: <StopwatchIcon className="w-4 h-4 text-blue-400" />, label: 'Respuesta en un día hábil' },
   ];
 
   const localizedTrustBadges = i18n.isInitialized
     ? [
-        { icon: <ShieldIcon className="w-4 h-4 text-emerald-400" />, label: t('contact.form.trust1') },
+        { icon: <ShieldIcon className="w-4 h-4 text-sky-400" />, label: t('contact.form.trust1') },
         { icon: <StopwatchIcon className="w-4 h-4 text-blue-400" />, label: t('contact.form.trust2') },
       ]
     : trustBadges;
@@ -456,8 +456,8 @@ const Contact: React.FC<ContactProps> = ({ quotePrefill }) => {
                       transition={{ type: 'spring', stiffness: 200, damping: 12, delay: 0.2 }}
                       className="relative mx-auto w-20 h-20 mb-6"
                     >
-                      <div className="absolute inset-0 rounded-full bg-emerald-500/20 animate-ping" />
-                      <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-[0_0_40px_rgba(16,185,129,0.4)]">
+                      <div className="absolute inset-0 rounded-full bg-sky-500/20 animate-ping" />
+                      <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center shadow-[0_0_40px_rgba(10,152,215,0.4)]">
                         <CheckCircle className="w-10 h-10 text-white" />
                       </div>
                     </motion.div>

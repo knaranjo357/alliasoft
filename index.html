@@ -8,7 +8,7 @@
     <meta name="author" content="Alliasoft S.A.S." />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <meta name="theme-color" content="#080c12" />
+    <meta name="theme-color" content="#070b14" />
     <meta name="application-name" content="Alliasoft" />
     <meta name="apple-mobile-web-app-title" content="Alliasoft" />
     <meta name="color-scheme" content="dark light" />
@@ -39,7 +39,7 @@
         const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
         const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : (prefersLight ? 'light' : 'dark');
         document.documentElement.dataset.theme = theme;
-        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#080c12' : '#f4f5ef';
+        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#070b14' : '#f3f6f9';
       })();
     </script>
 

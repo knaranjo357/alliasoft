@@ -121,7 +121,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({
               {t('quoteModal.step2')}
             </span>
             <span className="text-slate-700">→</span>
-            <span className={step >= 3 ? 'text-emerald-400' : 'text-slate-600'}>
+            <span className={step >= 3 ? 'text-sky-400' : 'text-slate-600'}>
               {t('quoteModal.step3')}
             </span>
           </div>
@@ -204,7 +204,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({
                   {t('quoteModal.summaryTitle')}
                 </h4>
                 <div className="text-sm font-bold text-white flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  <span className="w-2 h-2 rounded-full bg-sky-400" />
                   {services.find((s) => s.id === selectedService)?.title}
                 </div>
                 <div className="text-xs text-slate-400">
@@ -217,7 +217,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({
                     <StopwatchIcon className="w-3.5 h-3.5 text-blue-400" />
                     {t('quoteModal.estTime')}
                   </span>
-                  <span className="text-emerald-400 font-bold">{t('quoteModal.estTimeVal')}</span>
+                  <span className="text-sky-400 font-bold">{t('quoteModal.estTimeVal')}</span>
                 </div>
               </div>
 
@@ -252,7 +252,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({
             ) : (
               <button
                 onClick={handleFinish}
-                className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)]"
+                className="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(10,152,215,0.4)]"
               >
                 <Send className="w-4 h-4" />
                 {t('quoteModal.sendQuoteBtn')}

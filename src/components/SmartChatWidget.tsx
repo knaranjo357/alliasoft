@@ -259,7 +259,7 @@ const SmartChatWidget: React.FC = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 flex items-center justify-center gap-1.5 py-1 text-xs font-bold text-emerald-300 hover:text-emerald-200"
+              className="mt-2 flex items-center justify-center gap-1.5 py-1 text-xs font-bold text-sky-300 hover:text-sky-200"
             >
               {text.contact} · +57 317 696 4215
               <ExternalLink className="h-3 w-3" aria-hidden="true" />

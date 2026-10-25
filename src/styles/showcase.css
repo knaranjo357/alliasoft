@@ -61,8 +61,8 @@
 .premium-site .portfolio-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .premium-site .portfolio-case { display: flex; flex-direction: column; min-width: 0; text-decoration: none; color: var(--studio-text); background: var(--studio-bg); border: 1px solid var(--studio-line); overflow: hidden; transition: border-color .3s, box-shadow .3s; }
 .premium-site .portfolio-case:hover { border-color: var(--studio-muted); box-shadow: 0 16px 40px -24px rgb(0 0 0 / .3); }
-.premium-site .portfolio-case-art { position: relative; height: 200px; flex-shrink: 0; padding: 23px 26px; overflow: hidden; color: #24372c; background: #b7c8ad; isolation: isolate; }
-.premium-site .portfolio-case-ai .portfolio-case-art { color: #163d36; background: #b5d4c2; }
+.premium-site .portfolio-case-art { position: relative; height: 200px; flex-shrink: 0; padding: 23px 26px; overflow: hidden; color: #242d37; background: #adbec8; isolation: isolate; }
+.premium-site .portfolio-case-ai .portfolio-case-art { color: #16253d; background: #b5c3d4; }
 .premium-site .portfolio-case-crm .portfolio-case-art { color: #263339; background: #b9c8cd; }
 .premium-site .portfolio-case-ecommerce .portfolio-case-art { color: #3d392f; background: #d5d0c1; }
 .premium-site .portfolio-art-topline { display: flex; justify-content: space-between; gap: 20px; position: relative; z-index: 1; font: 500 9px/1 var(--font-mono); letter-spacing: .13em; }

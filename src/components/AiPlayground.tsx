@@ -8,7 +8,7 @@ import '../styles/interactive.css';
 type TabKey = 'whatsapp' | 'leads' | 'extraction';
 
 const tabColors: Record<TabKey, { ring: string; bg: string; text: string; glow: string }> = {
-  whatsapp: { ring: 'ring-emerald-500', bg: 'bg-emerald-500/10', text: 'text-emerald-400', glow: 'shadow-emerald-500/20' },
+  whatsapp: { ring: 'ring-sky-500', bg: 'bg-sky-500/10', text: 'text-sky-400', glow: 'shadow-sky-500/20' },
   leads: { ring: 'ring-blue-500', bg: 'bg-blue-500/10', text: 'text-blue-400', glow: 'shadow-blue-500/20' },
   extraction: { ring: 'ring-violet-500', bg: 'bg-violet-500/10', text: 'text-violet-400', glow: 'shadow-violet-500/20' },
 };
@@ -99,7 +99,7 @@ const AiPlayground: React.FC<{ onOpenQuote?: (serviceId?: string) => void }> = (
                   <div>
                     <h3 className="text-sm font-bold text-white flex items-center gap-2">
                       AlliaBot Pro
-                      <span className="relative flex h-2.5 w-2.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" /></span>
+                      <span className="relative flex h-2.5 w-2.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" /><span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-sky-500" /></span>
                     </h3>
                     <p className="text-[11px] text-slate-500 font-medium">{sc.subtitle}</p>
                   </div>
@@ -133,11 +133,11 @@ const AiPlayground: React.FC<{ onOpenQuote?: (serviceId?: string) => void }> = (
                 {showReply && (
                   <motion.div initial={{ opacity: 0, y: 12, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ type: 'spring', damping: 22 }}
                     className="flex gap-2.5">
-                    <div className="studio-demo-avatar w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center shrink-0 mt-1 shadow-md"><AgentIcon className="w-4 h-4 text-white" /></div>
+                    <div className="studio-demo-avatar w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-sky-400 flex items-center justify-center shrink-0 mt-1 shadow-md"><AgentIcon className="w-4 h-4 text-white" /></div>
                     <div className="bg-white/[0.04] border border-white/[0.08] text-slate-200 p-4 rounded-[1.25rem] rounded-tl-md max-w-[88%] text-sm shadow-xl">
                       <p className="leading-relaxed">{sc.agentReply}</p>
                       <span className="text-[10px] text-slate-500 mt-2 font-mono flex items-center gap-1.5 pt-2 border-t border-white/[0.05]">
-                        <CheckCircle className="w-3 h-3 text-emerald-400" /> Alliasoft · {t('aiPlayground.tag')}
+                        <CheckCircle className="w-3 h-3 text-sky-400" /> Alliasoft · {t('aiPlayground.tag')}
                       </span>
                     </div>
                   </motion.div>
